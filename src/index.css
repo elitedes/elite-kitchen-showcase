@@ -151,17 +151,24 @@
   }
 
   .kitchen-card {
-    @apply relative overflow-hidden group cursor-pointer;
+    @apply relative overflow-hidden cursor-pointer;
   }
 
   .kitchen-card-overlay {
     @apply absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent
-           opacity-60 group-hover:opacity-80 transition-opacity duration-500;
+           opacity-60 transition-opacity duration-500;
+  }
+
+  .kitchen-card:hover .kitchen-card-overlay {
+    @apply opacity-80;
   }
 
   .kitchen-card-image {
-    @apply w-full h-full object-cover transition-transform duration-700 
-           group-hover:scale-110;
+    @apply w-full h-full object-cover transition-transform duration-700;
+  }
+
+  .kitchen-card:hover .kitchen-card-image {
+    @apply scale-110;
   }
 
   .kitchen-card-title {
