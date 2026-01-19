@@ -1,0 +1,196 @@
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const Header = () => {
+  const { language, setLanguage, t, dir } = useLanguage();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [kitchensDropdownOpen, setKitchensDropdownOpen] = useState(false);
+  const location = useLocation();
+
+  const kitchenCategories = [
+    { key: 'modern', path: '/kitchens/modern' },
+    { key: 'country', path: '/kitchens/country' },
+    { key: 'formica', path: '/kitchens/formica' },
+    { key: 'wood', path: '/kitchens/wood' },
+    { key: 'nano', path: '/kitchens/nano' },
+  ];
+
+  const navItems = [
+    { key: 'nav.home', path: '/' },
+    { key: 'nav.about', path: '/about' },
+    { key: 'nav.kitchens', path: '/kitchens', hasDropdown: true },
+    { key: 'nav.projects', path: '/projects' },
+    { key: 'nav.promotions', path: '/promotions' },
+    { key: 'nav.installation', path: '/installation' },
+    { key: 'nav.magazine', path: '/magazine' },
+    { key: 'nav.showroom', path: '/showroom' },
+    { key: 'nav.contact', path: '/contact' },
+  ];
+
+  return (
+    <header className="bg-header sticky top-0 z-50 shadow-lg" dir={dir}>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link to="/" className="flex flex-col items-center text-header-foreground">
+            <span className="text-3xl font-bold tracking-wide">Elite Design</span>
+            <span className="text-sm font-light">kitchens & more</span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {navItems.map((item) => (
+              <div 
+                key={item.key} 
+                className="relative"
+                onMouseEnter={() => item.hasDropdown && setKitchensDropdownOpen(true)}
+                onMouseLeave={() => item.hasDropdown && setKitchensDropdownOpen(false)}
+              >
+                <Link
+                  to={item.path}
+                  className={`nav-link flex items-center gap-1 ${
+                    location.pathname === item.path ? 'text-accent' : ''
+                  }`}
+                >
+                  {t(item.key)}
+                  {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
+                </Link>
+
+                {/* Dropdown for Kitchens */}
+                {item.hasDropdown && (
+                  <AnimatePresence>
+                    {kitchensDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full start-0 bg-background shadow-xl rounded-md py-2 min-w-48 z-50"
+                      >
+                        {kitchenCategories.map((cat) => (
+                          <Link
+                            key={cat.key}
+                            to={cat.path}
+                            className="block px-4 py-2 text-foreground hover:bg-muted hover:text-primary transition-colors"
+                          >
+                            {t(`nav.kitchens.${cat.key}`)}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          {/* Language Switcher & Phone */}
+          <div className="hidden lg:flex items-center gap-4">
+            <div className="flex items-center gap-2 text-header-foreground">
+              <button
+                onClick={() => setLanguage('he')}
+                className={`px-2 py-1 text-sm transition-colors ${
+                  language === 'he' ? 'text-accent font-bold' : 'hover:text-accent'
+                }`}
+              >
+                עברית
+              </button>
+              <span className="text-header-foreground/50">|</span>
+              <button
+                onClick={() => setLanguage('ru')}
+                className={`px-2 py-1 text-sm transition-colors ${
+                  language === 'ru' ? 'text-accent font-bold' : 'hover:text-accent'
+                }`}
+              >
+                Русский
+              </button>
+            </div>
+            <a 
+              href="tel:08-671-1767" 
+              className="flex items-center gap-2 text-header-foreground hover:text-accent transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              <span className="font-semibold">08-671-1767</span>
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden text-header-foreground p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-header border-t border-header-foreground/20"
+          >
+            <nav className="container mx-auto px-4 py-4 flex flex-col gap-2">
+              {navItems.map((item) => (
+                <div key={item.key}>
+                  <Link
+                    to={item.path}
+                    className="block py-2 text-header-foreground hover:text-accent transition-colors"
+                    onClick={() => !item.hasDropdown && setMobileMenuOpen(false)}
+                  >
+                    {t(item.key)}
+                  </Link>
+                  {item.hasDropdown && (
+                    <div className="ps-4 flex flex-col gap-1">
+                      {kitchenCategories.map((cat) => (
+                        <Link
+                          key={cat.key}
+                          to={cat.path}
+                          className="block py-1 text-header-foreground/80 hover:text-accent transition-colors text-sm"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {t(`nav.kitchens.${cat.key}`)}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {/* Mobile Language Switcher */}
+              <div className="flex items-center gap-4 py-4 border-t border-header-foreground/20">
+                <button
+                  onClick={() => setLanguage('he')}
+                  className={`text-header-foreground ${language === 'he' ? 'font-bold text-accent' : ''}`}
+                >
+                  עברית
+                </button>
+                <button
+                  onClick={() => setLanguage('ru')}
+                  className={`text-header-foreground ${language === 'ru' ? 'font-bold text-accent' : ''}`}
+                >
+                  Русский
+                </button>
+              </div>
+
+              <a 
+                href="tel:08-671-1767" 
+                className="flex items-center gap-2 text-header-foreground py-2"
+              >
+                <Phone className="w-4 h-4" />
+                <span className="font-semibold">08-671-1767</span>
+              </a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
+
+export default Header;
