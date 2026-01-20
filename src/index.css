@@ -134,20 +134,21 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground px-8 py-3 font-semibold 
-           transition-all duration-300 hover:opacity-90 hover:scale-105;
+    @apply bg-accent text-accent-foreground px-8 py-3 font-bold 
+           transition-all duration-300 hover:brightness-110 hover:scale-105
+           shadow-lg hover:shadow-xl;
   }
 
   .btn-hero {
-    @apply bg-primary text-primary-foreground px-10 py-4 text-lg font-bold
-           transition-all duration-300 hover:bg-accent hover:scale-105
-           border-2 border-primary hover:border-accent;
+    @apply bg-gradient-to-r from-accent to-amber-500 text-accent-foreground px-10 py-4 text-lg font-bold
+           transition-all duration-300 hover:scale-105 hover:shadow-2xl
+           shadow-lg shadow-amber-500/30 border-0;
   }
 
   .btn-outline-hero {
-    @apply bg-transparent border-2 border-primary-foreground text-primary-foreground
+    @apply bg-transparent border-2 border-accent text-accent
            px-10 py-4 text-lg font-bold transition-all duration-300
-           hover:bg-primary-foreground hover:text-primary;
+           hover:bg-accent hover:text-accent-foreground shadow-lg;
   }
 
   .kitchen-card {
@@ -180,9 +181,10 @@
   }
 
   .floating-cta-btn {
-    @apply flex flex-col items-center gap-1 bg-primary text-primary-foreground
-           p-3 rounded-lg shadow-lg hover:bg-accent transition-all duration-300
-           text-xs font-medium;
+    @apply flex flex-col items-center gap-1 bg-gradient-to-br from-accent to-amber-600 
+           text-accent-foreground p-3 rounded-lg shadow-lg shadow-amber-500/40 
+           hover:scale-110 hover:shadow-xl transition-all duration-300
+           text-xs font-bold animate-pulse hover:animate-none;
   }
 
   .nav-link {
