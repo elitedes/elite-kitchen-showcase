@@ -25,7 +25,6 @@ const Header = () => {
     { key: 'nav.projects', path: '/projects' },
     { key: 'nav.promotions', path: '/promotions' },
     { key: 'nav.installation', path: '/installation' },
-    { key: 'nav.magazine', path: '/magazine' },
     { key: 'nav.showroom', path: '/showroom' },
     { key: 'nav.contact', path: '/contact' },
   ];
