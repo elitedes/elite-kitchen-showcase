@@ -4,18 +4,68 @@ import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 
+// Main category images
 import kitchenModern from '@/assets/kitchen-modern.jpg';
 import kitchenCountry from '@/assets/kitchen-country.jpg';
 import kitchenFormica from '@/assets/kitchen-formica.jpg';
 import kitchenWood from '@/assets/kitchen-wood.jpg';
 import kitchenNano from '@/assets/kitchen-nano.jpg';
 
-const categoryData: Record<string, { image: string; galleryCount: number }> = {
-  modern: { image: kitchenModern, galleryCount: 6 },
-  country: { image: kitchenCountry, galleryCount: 4 },
-  formica: { image: kitchenFormica, galleryCount: 5 },
-  wood: { image: kitchenWood, galleryCount: 4 },
-  nano: { image: kitchenNano, galleryCount: 5 },
+// Gallery images - Modern
+import modern1 from '@/assets/gallery/modern-1.jpg';
+import modern2 from '@/assets/gallery/modern-2.jpg';
+import modern3 from '@/assets/gallery/modern-3.jpg';
+import modern4 from '@/assets/gallery/modern-4.jpg';
+import modern5 from '@/assets/gallery/modern-5.jpg';
+import modern6 from '@/assets/gallery/modern-6.jpg';
+
+// Gallery images - Country
+import country1 from '@/assets/gallery/country-1.jpg';
+import country2 from '@/assets/gallery/country-2.jpg';
+import country3 from '@/assets/gallery/country-3.jpg';
+import country4 from '@/assets/gallery/country-4.jpg';
+
+// Gallery images - Formica
+import formica1 from '@/assets/gallery/formica-1.jpg';
+import formica2 from '@/assets/gallery/formica-2.jpg';
+import formica3 from '@/assets/gallery/formica-3.jpg';
+import formica4 from '@/assets/gallery/formica-4.jpg';
+import formica5 from '@/assets/gallery/formica-5.jpg';
+
+// Gallery images - Wood
+import wood1 from '@/assets/gallery/wood-1.jpg';
+import wood2 from '@/assets/gallery/wood-2.jpg';
+import wood3 from '@/assets/gallery/wood-3.jpg';
+import wood4 from '@/assets/gallery/wood-4.jpg';
+
+// Gallery images - Nano
+import nano1 from '@/assets/gallery/nano-1.jpg';
+import nano2 from '@/assets/gallery/nano-2.jpg';
+import nano3 from '@/assets/gallery/nano-3.jpg';
+import nano4 from '@/assets/gallery/nano-4.jpg';
+import nano5 from '@/assets/gallery/nano-5.jpg';
+
+const categoryData: Record<string, { image: string; gallery: string[] }> = {
+  modern: { 
+    image: kitchenModern, 
+    gallery: [modern1, modern2, modern3, modern4, modern5, modern6] 
+  },
+  country: { 
+    image: kitchenCountry, 
+    gallery: [country1, country2, country3, country4] 
+  },
+  formica: { 
+    image: kitchenFormica, 
+    gallery: [formica1, formica2, formica3, formica4, formica5] 
+  },
+  wood: { 
+    image: kitchenWood, 
+    gallery: [wood1, wood2, wood3, wood4] 
+  },
+  nano: { 
+    image: kitchenNano, 
+    gallery: [nano1, nano2, nano3, nano4, nano5] 
+  },
 };
 
 const KitchenCategory = () => {
@@ -78,7 +128,7 @@ const KitchenCategory = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.from({ length: data.galleryCount }).map((_, index) => (
+            {data.gallery.map((image, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -88,11 +138,11 @@ const KitchenCategory = () => {
                 className="kitchen-card h-72"
               >
                 <img
-                  src={data.image}
+                  src={image}
                   alt={`${t(`kitchens.${category}`)} ${index + 1}`}
                   className="kitchen-card-image"
                 />
-                <div className="kitchen-card-overlay opacity-0 group-hover:opacity-60" />
+                <div className="kitchen-card-overlay" />
               </motion.div>
             ))}
           </div>
