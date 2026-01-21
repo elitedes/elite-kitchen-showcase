@@ -1,7 +1,10 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Star, Quote } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+
+import customer1 from '@/assets/testimonials/customer-1.jpg';
+import customer2 from '@/assets/testimonials/customer-2.jpg';
+import customer3 from '@/assets/testimonials/customer-3.jpg';
 
 const testimonials = [
   {
@@ -10,6 +13,7 @@ const testimonials = [
     text: '"מכל הבחינות הם באמת מדהימים, הכול היה בסדר, עמידה בזמנים כמו שהבטיחו ואפילו מעבר למה שהבטיחו, באמת, רק מילים טובות"',
     textRu: '"Во всех отношениях они действительно потрясающие, всё было в порядке, соблюдение сроков как обещали и даже больше"',
     rating: 5,
+    image: customer1,
   },
   {
     name: 'מאיר זכות',
@@ -17,6 +21,7 @@ const testimonials = [
     text: '"הגעתי בהמלצת חבר, שירות אדיב ומקצועי, יחס מקסים במיוחד של יניב המקסימה משירות הלקוחות. ממליצים בחום!"',
     textRu: '"Пришёл по рекомендации друга, вежливое и профессиональное обслуживание, особенно приятное отношение. Очень рекомендую!"',
     rating: 5,
+    image: customer2,
   },
   {
     name: 'יניב לוב',
@@ -24,27 +29,19 @@ const testimonials = [
     text: '"שותפים מלאים מרגע התכנון שבוצע במקצועיות נדירה ועד למימוש המושלם, תודה לקמילה על הגשמת חלום!"',
     textRu: '"Полные партнёры с момента профессионального планирования до идеальной реализации, спасибо за воплощение мечты!"',
     rating: 5,
+    image: customer3,
   },
 ];
 
 const TestimonialsSection = () => {
-  const { t, language, dir } = useLanguage();
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  const { t, language } = useLanguage();
 
   return (
     <section className="py-20 relative overflow-hidden bg-muted">
-      {/* Decorative kitchen images background */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 start-0 w-1/4 h-full bg-gradient-to-e from-muted to-transparent" />
-        <div className="absolute top-0 end-0 w-1/4 h-full bg-gradient-to-s from-muted to-transparent" />
+      {/* Decorative background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 start-10 w-64 h-64 bg-primary rounded-full blur-3xl" />
+        <div className="absolute bottom-10 end-10 w-96 h-96 bg-gold rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -53,70 +50,85 @@ const TestimonialsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2 className="section-title">{t('testimonials.title')}</h2>
           <p className="decorative-text">{t('testimonials.decorative')}</p>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto relative">
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevTestimonial}
-            className="absolute start-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-card shadow-lg hover:bg-muted p-3 rounded-full transition-all z-10"
-          >
-            {dir === 'rtl' ? <ChevronRight className="w-5 h-5 text-foreground" /> : <ChevronLeft className="w-5 h-5 text-foreground" />}
-          </button>
-          <button
-            onClick={nextTestimonial}
-            className="absolute end-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-card shadow-lg hover:bg-muted p-3 rounded-full transition-all z-10"
-          >
-            {dir === 'rtl' ? <ChevronLeft className="w-5 h-5 text-foreground" /> : <ChevronRight className="w-5 h-5 text-foreground" />}
-          </button>
-
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card p-8 shadow-lg"
-              >
-                {/* Stars */}
-                <div className="flex justify-center gap-1 mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-gold text-gold" />
-                  ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group relative"
+            >
+              <div className="bg-card rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
+                {/* Quote Icon */}
+                <div className="absolute -top-4 start-8">
+                  <div className="bg-gold p-3 rounded-full shadow-lg">
+                    <Quote className="w-5 h-5 text-white" />
+                  </div>
                 </div>
 
-                {/* Quote */}
-                <p className="text-muted-foreground text-center mb-6 leading-relaxed">
+                {/* Customer Photo */}
+                <div className="flex justify-center mb-6 pt-4">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="relative"
+                  >
+                    <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-gold/20 shadow-xl">
+                      <img
+                        src={testimonial.image}
+                        alt={language === 'he' ? testimonial.name : testimonial.nameRu}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="absolute -bottom-2 start-1/2 -translate-x-1/2 bg-gold px-3 py-1 rounded-full">
+                      <div className="flex gap-0.5">
+                        {Array.from({ length: testimonial.rating }).map((_, i) => (
+                          <Star key={i} className="w-3 h-3 fill-white text-white" />
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Quote Text */}
+                <p className="text-muted-foreground text-center mb-6 leading-relaxed flex-grow text-sm md:text-base">
                   {language === 'he' ? testimonial.text : testimonial.textRu}
                 </p>
 
-                {/* Name */}
-                <p className="text-center font-semibold text-foreground">
-                  {language === 'he' ? testimonial.name : testimonial.nameRu}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Dots */}
-          <div className="flex justify-center gap-2 mt-8">
-            {[0, 1, 2, 3, 4].map((dot) => (
-              <button
-                key={dot}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  dot === 0 ? 'bg-foreground' : 'bg-foreground/30'
-                }`}
-              />
-            ))}
-          </div>
+                {/* Customer Name */}
+                <div className="text-center pt-4 border-t border-border">
+                  <p className="font-semibold text-foreground text-lg">
+                    {language === 'he' ? testimonial.name : testimonial.nameRu}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Bottom decoration */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="flex justify-center gap-2 mt-12"
+        >
+          {testimonials.map((_, index) => (
+            <div
+              key={index}
+              className="w-2 h-2 rounded-full bg-gold"
+            />
+          ))}
+        </motion.div>
       </div>
     </section>
   );
