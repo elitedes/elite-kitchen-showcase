@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import heroImage1 from '@/assets/hero-kitchen-1.jpg';
-import heroImage2 from '@/assets/hero-kitchen-2.jpg';
+import heroImage1 from '@/assets/hero-new-1.jpg';
+import heroImage2 from '@/assets/hero-new-2.jpg';
+import heroImage3 from '@/assets/hero-new-3.jpg';
+import heroImage4 from '@/assets/hero-new-4.jpg';
 
 // High-quality kitchen video from Pexels
 const HERO_VIDEO_URL = 'https://videos.pexels.com/video-files/6585814/6585814-uhd_2732_1440_25fps.mp4';
@@ -11,6 +13,8 @@ const HERO_VIDEO_URL = 'https://videos.pexels.com/video-files/6585814/6585814-uh
 const heroSlides = [
   { image: heroImage1 },
   { image: heroImage2 },
+  { image: heroImage3 },
+  { image: heroImage4 },
 ];
 
 const HeroSection = () => {
@@ -179,8 +183,8 @@ const HeroSection = () => {
         <button
           onClick={() => setShowVideo(true)}
           className={`w-3 h-3 rounded-full transition-all ${showVideo
-              ? 'bg-primary-foreground scale-125'
-              : 'bg-primary-foreground/50 hover:bg-primary-foreground/70'
+            ? 'bg-primary-foreground scale-125'
+            : 'bg-primary-foreground/50 hover:bg-primary-foreground/70'
             }`}
           title="Video"
         />
@@ -192,8 +196,8 @@ const HeroSection = () => {
               setCurrentSlide(index);
             }}
             className={`w-3 h-3 rounded-full transition-all ${!showVideo && index === currentSlide
-                ? 'bg-primary-foreground scale-125'
-                : 'bg-primary-foreground/50 hover:bg-primary-foreground/70'
+              ? 'bg-primary-foreground scale-125'
+              : 'bg-primary-foreground/50 hover:bg-primary-foreground/70'
               }`}
             title={`Image ${index + 1}`}
           />

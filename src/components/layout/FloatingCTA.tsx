@@ -15,10 +15,7 @@ const FloatingCTA = () => {
         <MessageCircle className="w-5 h-5" />
         <span>WhatsApp</span>
       </a>
-      <a href="#" className="floating-cta-btn">
-        <Headphones className="w-5 h-5" />
-        <span className="max-w-16 text-center leading-tight">{t('floating.customer')}</span>
-      </a>
+
       <a href="#contact" className="floating-cta-btn">
         <Calendar className="w-5 h-5" />
         <span className="max-w-16 text-center leading-tight">{t('floating.appointment')}</span>

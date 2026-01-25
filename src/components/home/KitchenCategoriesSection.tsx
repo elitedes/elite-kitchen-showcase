@@ -30,7 +30,7 @@ const KitchenCategoriesSection = () => {
           className="text-center mb-12"
         >
           <h2 className="section-title">{t('kitchens.title')}</h2>
-          <p className="decorative-text">house of design and creation</p>
+          <p className="decorative-text">Design. Quality. Individuality.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

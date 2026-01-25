@@ -26,21 +26,21 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.magazine': 'מגזין',
     'nav.showroom': 'אולם תצוגה',
     'nav.contact': 'צרו קשר',
-    
+
     // Hero
     'hero.title': 'Elite Design',
     'hero.subtitle': 'kitchens & more',
-    'hero.tagline': 'house of design and creation',
+    'hero.tagline': 'Design. Quality. Individuality.',
     'hero.promo': 'הנחה מיוחדת על כל המטבחים',
     'hero.discount': '20% הנחה',
     'hero.cta.appointment': 'לתיאום פגישה',
     'hero.cta.details': 'השאירו פרטים',
-    
+
     // About Section
     'about.title': 'Elite Design מטבחים',
-    'about.decorative': 'house of design and creation',
+    'about.decorative': 'Design. Quality. Individuality.',
     'about.description': 'אנו ב-Elite Design מתמחים בעיצוב ויצור מטבחים יוקרתיים המשלבים פונקציונליות מושלמת עם אסתטיקה עכשווית. עם שנים של ניסיון בתחום, אנו מציעים פתרונות מטבח המותאמים אישית לכל לקוח.',
-    
+
     // Why Us Section
     'whyus.title': 'למה Elite Design מטבחים',
     'whyus.decorative': 'a reputation that you can built on',
@@ -53,7 +53,7 @@ const translations: Record<Language, Record<string, string>> = {
     'whyus.personal.title': 'התאמה אישית',
     'whyus.personal.desc': 'כל מטבח מתוכנן ומבוצע בהתאמה לדרישותיו הייחודיות של כל לקוח',
     'whyus.cta': 'לפרטים נוספים לחץ כאן',
-    
+
     // Kitchen Categories
     'kitchens.title': 'קטגוריות מטבחים',
     'kitchens.modern': 'מטבחים מודרניים',
@@ -66,15 +66,15 @@ const translations: Record<Language, Record<string, string>> = {
     'kitchens.wood.en': 'Wood kitchens',
     'kitchens.nano': 'מטבחי נאנו',
     'kitchens.nano.en': 'Nano kitchens',
-    
+
     // Testimonials
     'testimonials.title': 'לקוחות ממליצים',
     'testimonials.decorative': 'Testimonials',
-    
+
     // Magazine
     'magazine.title': 'מגזין מטבחי Elite Design',
     'magazine.decorative': 'Magazine',
-    
+
     // Contact
     'contact.title': 'צרו קשר',
     'contact.name': 'שם מלא',
@@ -84,15 +84,15 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.send': 'שליחה',
     'contact.address': 'צה״ל 8, אשקלון',
     'contact.phone.number': '08-671-1767',
-    
+
     // Footer
     'footer.rights': 'כל הזכויות שמורות',
     'footer.address': 'צה״ל 8, אשקלון',
-    
+
     // Floating CTA
     'floating.customer': 'שירות ללקוח קיים',
     'floating.appointment': 'לקביעת פגישה',
-    
+
     // Pages
     'page.about.title': 'אודות Elite Design',
     'page.about.content': 'Elite Design מטבחים הוקמה מתוך אהבה לעיצוב ומחויבות למצוינות. אנו מאמינים שכל מטבח הוא יצירה ייחודית שמשקפת את האישיות והצרכים של בעליו.',
@@ -118,21 +118,21 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.magazine': 'Журнал',
     'nav.showroom': 'Шоурум',
     'nav.contact': 'Контакты',
-    
+
     // Hero
     'hero.title': 'Elite Design',
     'hero.subtitle': 'kitchens & more',
-    'hero.tagline': 'house of design and creation',
+    'hero.tagline': 'Design. Quality. Individuality.',
     'hero.promo': 'Специальная скидка на все кухни',
     'hero.discount': 'Скидка 20%',
     'hero.cta.appointment': 'Записаться на встречу',
     'hero.cta.details': 'Оставить заявку',
-    
+
     // About Section
     'about.title': 'Elite Design Кухни',
-    'about.decorative': 'house of design and creation',
+    'about.decorative': 'Design. Quality. Individuality.',
     'about.description': 'Мы в Elite Design специализируемся на дизайне и производстве элитных кухонь, сочетающих идеальную функциональность с современной эстетикой. С многолетним опытом мы предлагаем индивидуальные кухонные решения.',
-    
+
     // Why Us Section
     'whyus.title': 'Почему Elite Design Кухни',
     'whyus.decorative': 'a reputation that you can built on',
@@ -145,7 +145,7 @@ const translations: Record<Language, Record<string, string>> = {
     'whyus.personal.title': 'Индивидуальный подход',
     'whyus.personal.desc': 'Каждая кухня спланирована и выполнена в соответствии с уникальными требованиями клиента',
     'whyus.cta': 'Подробнее нажмите здесь',
-    
+
     // Kitchen Categories
     'kitchens.title': 'Категории кухонь',
     'kitchens.modern': 'Современные кухни',
@@ -158,15 +158,15 @@ const translations: Record<Language, Record<string, string>> = {
     'kitchens.wood.en': 'Wood kitchens',
     'kitchens.nano': 'Нано кухни',
     'kitchens.nano.en': 'Nano kitchens',
-    
+
     // Testimonials
     'testimonials.title': 'Отзывы клиентов',
     'testimonials.decorative': 'Testimonials',
-    
+
     // Magazine
     'magazine.title': 'Журнал Elite Design Кухни',
     'magazine.decorative': 'Magazine',
-    
+
     // Contact
     'contact.title': 'Свяжитесь с нами',
     'contact.name': 'Полное имя',
@@ -176,15 +176,15 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.send': 'Отправить',
     'contact.address': 'Цахаль 8, Ашкелон',
     'contact.phone.number': '08-671-1767',
-    
+
     // Footer
     'footer.rights': 'Все права защищены',
     'footer.address': 'Цахаль 8, Ашкелон',
-    
+
     // Floating CTA
     'floating.customer': 'Обслуживание клиентов',
     'floating.appointment': 'Записаться',
-    
+
     // Pages
     'page.about.title': 'О Elite Design',
     'page.about.content': 'Elite Design Кухни была основана из любви к дизайну и стремления к совершенству. Мы верим, что каждая кухня — это уникальное творение, отражающее личность и потребности владельца.',

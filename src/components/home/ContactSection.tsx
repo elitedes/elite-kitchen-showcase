@@ -12,15 +12,48 @@ const ContactSection = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Form validation
     if (!formData.name || !formData.phone) {
       toast.error(t('contact.error') || 'Please fill in required fields');
       return;
     }
-    toast.success(t('contact.success') || 'Message sent successfully!');
-    setFormData({ name: '', phone: '', email: '', message: '' });
+
+    const botToken = '7840966634:AAGb94rcHU7WxW9BWBRIwtbh7b48GvYbSgU';
+    const chatId = '1492940504';
+    const text = `
+📩 *Новая заявка с сайта!*
+
+👤 *Имя:* ${formData.name}
+📱 *Телефон:* ${formData.phone}
+📧 *Email:* ${formData.email || 'Не указан'}
+💬 *Сообщение:* ${formData.message || 'Нет сообщения'}
+    `;
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+          parse_mode: 'Markdown',
+        }),
+      });
+
+      if (response.ok) {
+        toast.success(t('contact.success') || 'Message sent successfully!');
+        setFormData({ name: '', phone: '', email: '', message: '' });
+      } else {
+        toast.error('Could not send message. Please contact us directly.');
+      }
+    } catch (error) {
+      console.error('Error sending to Telegram:', error);
+      toast.error('Could not send message. Please contact us directly.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -39,7 +72,7 @@ const ContactSection = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('contact.title')}</h2>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -65,7 +98,7 @@ const ContactSection = () => {
                   />
                 </div>
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium mb-2">{t('contact.email')}</label>
                 <input
@@ -76,7 +109,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium mb-2">{t('contact.message')}</label>
                 <textarea
@@ -87,7 +120,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
                 />
               </div>
-              
+
               <button
                 type="submit"
                 className="btn-primary w-full md:w-auto"
@@ -116,7 +149,7 @@ const ContactSection = () => {
                 className="w-full"
               />
             </div>
-            
+
             <div className="bg-card p-8 mt-6 shadow-lg rounded-lg">
               <h3 className="text-xl font-bold mb-4">Elite Design kitchens & more</h3>
               <div className="space-y-3 text-muted-foreground">
