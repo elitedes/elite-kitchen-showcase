@@ -37,7 +37,7 @@
     --radius: 0.5rem;
 
     /* Custom tokens */
-    --header-bg: 0 0% 0% / 0.85;
+    --header-bg: 0 0% 0% / 0.75;
     --header-foreground: 0 0% 100%;
     --hero-overlay: 0 0% 0%;
     --gold: 36 60% 50%;
@@ -83,7 +83,7 @@
     --input: 240 10% 20%;
     --ring: 270 50% 60%;
 
-    --header-bg: 0 0% 0% / 0.85;
+    --header-bg: 0 0% 0% / 0.75;
     --header-foreground: 0 0% 100%;
 
     --sidebar-background: 240 5.9% 10%;
