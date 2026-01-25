@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const Header = () => {
   const { language, setLanguage, t, dir } = useLanguage();
@@ -42,17 +43,16 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
-              <div 
-                key={item.key} 
+              <div
+                key={item.key}
                 className="relative"
                 onMouseEnter={() => item.hasDropdown && setKitchensDropdownOpen(true)}
                 onMouseLeave={() => item.hasDropdown && setKitchensDropdownOpen(false)}
               >
                 <Link
                   to={item.path}
-                  className={`nav-link flex items-center gap-1 ${
-                    location.pathname === item.path ? 'text-accent' : ''
-                  }`}
+                  className={`nav-link flex items-center gap-1 ${location.pathname === item.path ? 'text-accent' : ''
+                    }`}
                 >
                   {t(item.key)}
                   {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
@@ -87,27 +87,9 @@ const Header = () => {
 
           {/* Language Switcher & Phone */}
           <div className="hidden lg:flex items-center gap-4">
-            <div className="flex items-center gap-2 text-header-foreground">
-              <button
-                onClick={() => setLanguage('he')}
-                className={`px-2 py-1 text-sm transition-colors ${
-                  language === 'he' ? 'text-accent font-bold' : 'hover:text-accent'
-                }`}
-              >
-                עברית
-              </button>
-              <span className="text-header-foreground/50">|</span>
-              <button
-                onClick={() => setLanguage('ru')}
-                className={`px-2 py-1 text-sm transition-colors ${
-                  language === 'ru' ? 'text-accent font-bold' : 'hover:text-accent'
-                }`}
-              >
-                Русский
-              </button>
-            </div>
-            <a 
-              href="tel:08-671-1767" 
+            <LanguageSwitcher variant="desktop" />
+            <a
+              href="tel:08-671-1767"
               className="flex items-center gap-2 text-header-foreground hover:text-accent transition-colors"
             >
               <Phone className="w-4 h-4" />
@@ -162,23 +144,12 @@ const Header = () => {
               ))}
 
               {/* Mobile Language Switcher */}
-              <div className="flex items-center gap-4 py-4 border-t border-header-foreground/20">
-                <button
-                  onClick={() => setLanguage('he')}
-                  className={`text-header-foreground ${language === 'he' ? 'font-bold text-accent' : ''}`}
-                >
-                  עברית
-                </button>
-                <button
-                  onClick={() => setLanguage('ru')}
-                  className={`text-header-foreground ${language === 'ru' ? 'font-bold text-accent' : ''}`}
-                >
-                  Русский
-                </button>
+              <div className="py-4 border-t border-header-foreground/20">
+                <LanguageSwitcher variant="mobile" />
               </div>
 
-              <a 
-                href="tel:08-671-1767" 
+              <a
+                href="tel:08-671-1767"
                 className="flex items-center gap-2 text-header-foreground py-2"
               >
                 <Phone className="w-4 h-4" />

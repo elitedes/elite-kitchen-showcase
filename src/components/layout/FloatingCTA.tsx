@@ -1,4 +1,4 @@
-import { Phone, Calendar, Headphones } from 'lucide-react';
+import { Phone, Calendar, Headphones, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const FloatingCTA = () => {
@@ -6,6 +6,15 @@ const FloatingCTA = () => {
 
   return (
     <div className="floating-cta hidden md:flex">
+      <a
+        href="https://wa.me/972086711767"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="floating-cta-btn bg-green-500 hover:bg-green-600"
+      >
+        <MessageCircle className="w-5 h-5" />
+        <span>WhatsApp</span>
+      </a>
       <a href="#" className="floating-cta-btn">
         <Headphones className="w-5 h-5" />
         <span className="max-w-16 text-center leading-tight">{t('floating.customer')}</span>

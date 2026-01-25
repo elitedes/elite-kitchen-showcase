@@ -3,6 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+import customerAsnat from '@/assets/testimonials/customer-1.jpg';
+import customerMeir from '@/assets/testimonials/customer-2.jpg';
+import customerYaniv from '@/assets/testimonials/customer-3.jpg';
+import customer4 from '@/assets/testimonials/customer-4.jpg';
+import customer5 from '@/assets/testimonials/customer-5.jpg';
+import customer6 from '@/assets/testimonials/customer-6.jpg';
+
 const testimonials = [
   {
     name: 'אסנת א. מיתר',
@@ -10,6 +17,7 @@ const testimonials = [
     text: '"מכל הבחינות הם באמת מדהימים, הכול היה בסדר, עמידה בזמנים כמו שהבטיחו ואפילו מעבר למה שהבטיחו, באמת, רק מילים טובות"',
     textRu: '"Во всех отношениях они действительно потрясающие, всё было в порядке, соблюдение сроков как обещали и даже больше"',
     rating: 5,
+    image: customerAsnat,
   },
   {
     name: 'מאיר זכות',
@@ -17,6 +25,7 @@ const testimonials = [
     text: '"הגעתי בהמלצת חבר, שירות אדיב ומקצועי, יחס מקסים במיוחד של יניב המקסימה משירות הלקוחות. ממליצים בחום!"',
     textRu: '"Пришёл по рекомендации друга, вежливое и профессиональное обслуживание, особенно приятное отношение. Очень рекомендую!"',
     rating: 5,
+    image: customerMeir,
   },
   {
     name: 'יניב לוב',
@@ -24,19 +33,53 @@ const testimonials = [
     text: '"שותפים מלאים מרגע התכנון שבוצע במקצועיות נדירה ועד למימוש המושלם, תודה לקמילה על הגשמת חלום!"',
     textRu: '"Полные партнёры с момента профессионального планирования до идеальной реализации, спасибо за воплощение мечты!"',
     rating: 5,
+    image: customerYaniv,
+  },
+  {
+    name: 'רחל כהן',
+    nameRu: 'Рахель Коэн',
+    text: '"המטבח שלנו הפך לחלל הכי יפה בבית. העיצוב המודרני והאיכות המעולה עלו על כל הציפיות. תודה רבה לצוות המקצועי!"',
+    textRu: '"Наша кухня стала самым красивым пространством в доме. Современный дизайн и отличное качество превзошли все ожидания!"',
+    rating: 5,
+    image: customer4,
+  },
+  {
+    name: 'שירה לוי',
+    nameRu: 'Шира Леви',
+    text: '"מהתכנון ועד ההתקנה - הכול היה מושלם. הצוות המקצועי הקשיב לכל הבקשות שלי והתוצאה פשוט מדהימה!"',
+    textRu: '"От планирования до установки - всё было идеально. Профессиональная команда выслушала все мои пожелания!"',
+    rating: 5,
+    image: customer5,
+  },
+  {
+    name: 'דוד אברהם',
+    nameRu: 'Давид Авраам',
+    text: '"חיפשנו מטבח איכותי במחיר הוגן ומצאנו הרבה יותר מזה. השירות, האיכות והמקצועיות פשוט יוצאי דופן!"',
+    textRu: '"Искали качественную кухню по справедливой цене и нашли намного больше. Сервис, качество и профессионализм просто исключительные!"',
+    rating: 5,
+    image: customer6,
   },
 ];
 
+const ITEMS_PER_PAGE = 3;
+
 const TestimonialsSection = () => {
   const { t, language, dir } = useLanguage();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  const totalPages = Math.ceil(testimonials.length / ITEMS_PER_PAGE);
+
+  const currentTestimonials = testimonials.slice(
+    currentPage * ITEMS_PER_PAGE,
+    (currentPage + 1) * ITEMS_PER_PAGE
+  );
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
   };
 
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
   return (
@@ -62,57 +105,76 @@ const TestimonialsSection = () => {
         <div className="max-w-5xl mx-auto relative">
           {/* Navigation Arrows */}
           <button
-            onClick={prevTestimonial}
+            onClick={prevPage}
             className="absolute start-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-card shadow-lg hover:bg-muted p-3 rounded-full transition-all z-10"
           >
             {dir === 'rtl' ? <ChevronRight className="w-5 h-5 text-foreground" /> : <ChevronLeft className="w-5 h-5 text-foreground" />}
           </button>
           <button
-            onClick={nextTestimonial}
+            onClick={nextPage}
             className="absolute end-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-card shadow-lg hover:bg-muted p-3 rounded-full transition-all z-10"
           >
             {dir === 'rtl' ? <ChevronLeft className="w-5 h-5 text-foreground" /> : <ChevronRight className="w-5 h-5 text-foreground" />}
           </button>
 
           {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card p-8 shadow-lg"
-              >
-                {/* Stars */}
-                <div className="flex justify-center gap-1 mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-gold text-gold" />
-                  ))}
-                </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0, x: dir === 'rtl' ? -50 : 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: dir === 'rtl' ? 50 : -50 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            >
+              {currentTestimonials.map((testimonial, index) => (
+                <motion.div
+                  key={`${currentPage}-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-card p-8 shadow-lg rounded-lg"
+                >
+                  {/* Customer Photo */}
+                  <div className="flex justify-center mb-4">
+                    <img
+                      src={testimonial.image}
+                      alt={language === 'he' ? testimonial.name : testimonial.nameRu}
+                      className="w-20 h-20 rounded-full object-cover border-4 border-accent shadow-md"
+                    />
+                  </div>
 
-                {/* Quote */}
-                <p className="text-muted-foreground text-center mb-6 leading-relaxed">
-                  {language === 'he' ? testimonial.text : testimonial.textRu}
-                </p>
+                  {/* Stars */}
+                  <div className="flex justify-center gap-1 mb-4">
+                    {Array.from({ length: testimonial.rating }).map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-gold text-gold" />
+                    ))}
+                  </div>
 
-                {/* Name */}
-                <p className="text-center font-semibold text-foreground">
-                  {language === 'he' ? testimonial.name : testimonial.nameRu}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+                  {/* Quote */}
+                  <p className="text-muted-foreground text-center mb-6 leading-relaxed">
+                    {language === 'he' ? testimonial.text : testimonial.textRu}
+                  </p>
+
+                  {/* Name */}
+                  <p className="text-center font-semibold text-foreground">
+                    {language === 'he' ? testimonial.name : testimonial.nameRu}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
 
           {/* Dots */}
           <div className="flex justify-center gap-2 mt-8">
-            {[0, 1, 2, 3, 4].map((dot) => (
+            {Array.from({ length: totalPages }).map((_, dot) => (
               <button
                 key={dot}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  dot === 0 ? 'bg-foreground' : 'bg-foreground/30'
-                }`}
+                onClick={() => setCurrentPage(dot)}
+                className={`w-3 h-3 rounded-full transition-all ${dot === currentPage
+                    ? 'bg-accent scale-125'
+                    : 'bg-foreground/30 hover:bg-foreground/50'
+                  }`}
               />
             ))}
           </div>

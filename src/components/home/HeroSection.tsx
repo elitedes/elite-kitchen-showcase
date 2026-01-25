@@ -5,6 +5,9 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage1 from '@/assets/hero-kitchen-1.jpg';
 import heroImage2 from '@/assets/hero-kitchen-2.jpg';
 
+// High-quality kitchen video from Pexels
+const HERO_VIDEO_URL = 'https://videos.pexels.com/video-files/6585814/6585814-uhd_2732_1440_25fps.mp4';
+
 const heroSlides = [
   { image: heroImage1 },
   { image: heroImage2 },
@@ -13,12 +16,21 @@ const heroSlides = [
 const HeroSection = () => {
   const { t, dir } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showVideo, setShowVideo] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Alternate between video and images
+  useEffect(() => {
+    const videoTimer = setInterval(() => {
+      setShowVideo((prev) => !prev);
+    }, 10000); // Switch every 10 seconds
+    return () => clearInterval(videoTimer);
   }, []);
 
   const nextSlide = () => {
@@ -31,22 +43,50 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-[80vh] min-h-[600px] overflow-hidden">
+      {/* Video Background Layer */}
       <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
-          className="absolute inset-0"
-        >
-          <img
-            src={heroSlides[currentSlide].image}
-            alt="Elite Design Kitchen"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/30 to-transparent" />
-        </motion.div>
+        {showVideo && (
+          <motion.div
+            key="video"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0"
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src={HERO_VIDEO_URL} type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-charcoal/20" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Image Slideshow Layer */}
+      <AnimatePresence mode="wait">
+        {!showVideo && (
+          <motion.div
+            key={`image-${currentSlide}`}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7 }}
+            className="absolute inset-0"
+          >
+            <img
+              src={heroSlides[currentSlide].image}
+              alt="Elite Design Kitchen"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/30 to-transparent" />
+          </motion.div>
+        )}
       </AnimatePresence>
 
       {/* Content */}
@@ -58,67 +98,127 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-center text-primary-foreground"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg"
+            >
               {t('hero.title')}
-            </h1>
-            <p className="text-2xl md:text-3xl font-light mb-2">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              className="text-2xl md:text-3xl font-light mb-2 drop-shadow-md"
+            >
               {t('hero.subtitle')}
-            </p>
-            <p className="font-playfair italic text-xl md:text-2xl text-primary-foreground/80 mb-8">
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+              className="font-playfair italic text-xl md:text-2xl text-primary-foreground/80 mb-8 drop-shadow-md"
+            >
               {t('hero.tagline')}
-            </p>
-            
+            </motion.p>
+
             {/* Promo Banner */}
-            <div className="inline-block bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/30 rounded-lg p-6 mb-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.1, duration: 0.5 }}
+              className="inline-block bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/30 rounded-xl p-6 mb-8 shadow-2xl"
+            >
               <p className="text-xl md:text-2xl font-semibold mb-2">
                 {t('hero.promo')}
               </p>
-              <p className="text-3xl md:text-4xl font-bold text-accent">
+              <p className="text-3xl md:text-4xl font-bold text-accent drop-shadow-lg">
                 {t('hero.discount')}
               </p>
-            </div>
+            </motion.div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.3, duration: 0.5 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
               <a href="#contact" className="btn-hero">
                 {t('hero.cta.appointment')}
               </a>
               <a href="#contact" className="btn-outline-hero">
                 {t('hero.cta.details')}
               </a>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute start-4 top-1/2 -translate-y-1/2 bg-primary-foreground/20 hover:bg-primary-foreground/40 backdrop-blur-sm text-primary-foreground p-3 rounded-full transition-all"
-      >
-        {dir === 'rtl' ? <ChevronRight className="w-6 h-6" /> : <ChevronLeft className="w-6 h-6" />}
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute end-4 top-1/2 -translate-y-1/2 bg-primary-foreground/20 hover:bg-primary-foreground/40 backdrop-blur-sm text-primary-foreground p-3 rounded-full transition-all"
-      >
-        {dir === 'rtl' ? <ChevronLeft className="w-6 h-6" /> : <ChevronRight className="w-6 h-6" />}
-      </button>
+      {/* Navigation Arrows - Only show when on image slideshow */}
+      {!showVideo && (
+        <>
+          <button
+            onClick={prevSlide}
+            className="absolute start-4 top-1/2 -translate-y-1/2 bg-primary-foreground/20 hover:bg-primary-foreground/40 backdrop-blur-sm text-primary-foreground p-3 rounded-full transition-all"
+          >
+            {dir === 'rtl' ? <ChevronRight className="w-6 h-6" /> : <ChevronLeft className="w-6 h-6" />}
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute end-4 top-1/2 -translate-y-1/2 bg-primary-foreground/20 hover:bg-primary-foreground/40 backdrop-blur-sm text-primary-foreground p-3 rounded-full transition-all"
+          >
+            {dir === 'rtl' ? <ChevronLeft className="w-6 h-6" /> : <ChevronRight className="w-6 h-6" />}
+          </button>
+        </>
+      )}
 
-      {/* Dots */}
+      {/* Dots - show current media type */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+        <button
+          onClick={() => setShowVideo(true)}
+          className={`w-3 h-3 rounded-full transition-all ${showVideo
+              ? 'bg-primary-foreground scale-125'
+              : 'bg-primary-foreground/50 hover:bg-primary-foreground/70'
+            }`}
+          title="Video"
+        />
         {heroSlides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              index === currentSlide
+            onClick={() => {
+              setShowVideo(false);
+              setCurrentSlide(index);
+            }}
+            className={`w-3 h-3 rounded-full transition-all ${!showVideo && index === currentSlide
                 ? 'bg-primary-foreground scale-125'
                 : 'bg-primary-foreground/50 hover:bg-primary-foreground/70'
-            }`}
+              }`}
+            title={`Image ${index + 1}`}
           />
         ))}
       </div>
+
+      {/* Animated scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 0.5 }}
+        className="absolute bottom-20 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex justify-center"
+        >
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="w-1.5 h-3 bg-primary-foreground/70 rounded-full mt-2"
+          />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
