@@ -103,18 +103,14 @@ const HeroSection = () => {
               </p>
             </motion.div>
 
-            {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.3, duration: 0.5 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <a href="#contact" className="btn-hero">
+              <a href="#contact" className="btn-hero text-xl px-12 py-4">
                 {t('hero.cta.appointment')}
-              </a>
-              <a href="#contact" className="btn-outline-hero">
-                {t('hero.cta.details')}
               </a>
             </motion.div>
           </motion.div>
