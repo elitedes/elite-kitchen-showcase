@@ -7,9 +7,6 @@ import heroImage2 from '@/assets/hero-new-2.jpg';
 import heroImage3 from '@/assets/hero-new-3.jpg';
 import heroImage4 from '@/assets/hero-new-4.jpg';
 
-// High-quality kitchen video from Pexels
-const HERO_VIDEO_URL = 'https://videos.pexels.com/video-files/6585814/6585814-uhd_2732_1440_25fps.mp4';
-
 const heroSlides = [
   { image: heroImage1 },
   { image: heroImage2 },
@@ -20,21 +17,12 @@ const heroSlides = [
 const HeroSection = () => {
   const { t, dir } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [showVideo, setShowVideo] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
-
-  // Alternate between video and images
-  useEffect(() => {
-    const videoTimer = setInterval(() => {
-      setShowVideo((prev) => !prev);
-    }, 10000); // Switch every 10 seconds
-    return () => clearInterval(videoTimer);
   }, []);
 
   const nextSlide = () => {
@@ -47,50 +35,23 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-[80vh] min-h-[600px] overflow-hidden">
-      {/* Video Background Layer */}
-      <AnimatePresence mode="wait">
-        {showVideo && (
-          <motion.div
-            key="video"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0"
-          >
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src={HERO_VIDEO_URL} type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-charcoal/20" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Image Slideshow Layer */}
       <AnimatePresence mode="wait">
-        {!showVideo && (
-          <motion.div
-            key={`image-${currentSlide}`}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.7 }}
-            className="absolute inset-0"
-          >
-            <img
-              src={heroSlides[currentSlide].image}
-              alt="Elite Design Kitchen"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/30 to-transparent" />
-          </motion.div>
-        )}
+        <motion.div
+          key={`image-${currentSlide}`}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7 }}
+          className="absolute inset-0"
+        >
+          <img
+            src={heroSlides[currentSlide].image}
+            alt="Elite Design Kitchen"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/30 to-transparent" />
+        </motion.div>
       </AnimatePresence>
 
       {/* Content */}
@@ -160,42 +121,27 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Navigation Arrows - Only show when on image slideshow */}
-      {!showVideo && (
-        <>
-          <button
-            onClick={prevSlide}
-            className="absolute start-4 top-1/2 -translate-y-1/2 bg-primary-foreground/20 hover:bg-primary-foreground/40 backdrop-blur-sm text-primary-foreground p-3 rounded-full transition-all"
-          >
-            {dir === 'rtl' ? <ChevronRight className="w-6 h-6" /> : <ChevronLeft className="w-6 h-6" />}
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute end-4 top-1/2 -translate-y-1/2 bg-primary-foreground/20 hover:bg-primary-foreground/40 backdrop-blur-sm text-primary-foreground p-3 rounded-full transition-all"
-          >
-            {dir === 'rtl' ? <ChevronLeft className="w-6 h-6" /> : <ChevronRight className="w-6 h-6" />}
-          </button>
-        </>
-      )}
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute start-4 top-1/2 -translate-y-1/2 bg-primary-foreground/20 hover:bg-primary-foreground/40 backdrop-blur-sm text-primary-foreground p-3 rounded-full transition-all"
+      >
+        {dir === 'rtl' ? <ChevronRight className="w-6 h-6" /> : <ChevronLeft className="w-6 h-6" />}
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute end-4 top-1/2 -translate-y-1/2 bg-primary-foreground/20 hover:bg-primary-foreground/40 backdrop-blur-sm text-primary-foreground p-3 rounded-full transition-all"
+      >
+        {dir === 'rtl' ? <ChevronLeft className="w-6 h-6" /> : <ChevronRight className="w-6 h-6" />}
+      </button>
 
-      {/* Dots - show current media type */}
+      {/* Dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
-        <button
-          onClick={() => setShowVideo(true)}
-          className={`w-3 h-3 rounded-full transition-all ${showVideo
-            ? 'bg-primary-foreground scale-125'
-            : 'bg-primary-foreground/50 hover:bg-primary-foreground/70'
-            }`}
-          title="Video"
-        />
         {heroSlides.map((_, index) => (
           <button
             key={index}
-            onClick={() => {
-              setShowVideo(false);
-              setCurrentSlide(index);
-            }}
-            className={`w-3 h-3 rounded-full transition-all ${!showVideo && index === currentSlide
+            onClick={() => setCurrentSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all ${index === currentSlide
               ? 'bg-primary-foreground scale-125'
               : 'bg-primary-foreground/50 hover:bg-primary-foreground/70'
               }`}

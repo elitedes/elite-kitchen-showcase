@@ -1,40 +1,44 @@
 import { motion } from 'framer-motion';
-import { Diamond, Layers, PenTool, UserCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Link } from 'react-router-dom';
+import step1Img from '@/assets/process-step-1.png';
+import step2Img from '@/assets/process-step-2.png';
+import step3Img from '@/assets/process-step-3.jpg';
+import step4Img from '@/assets/process-step-4.png';
 
 const WhyUsSection = () => {
-  const { t } = useLanguage();
+  const { t, dir } = useLanguage();
 
-  const features = [
+  const steps = [
     {
-      icon: Diamond,
-      titleKey: 'whyus.experience.title',
-      descKey: 'whyus.experience.desc',
+      image: step3Img,
+      titleKey: 'process.step1.title',
+      descKey: 'process.step1.desc',
+      number: 1
     },
     {
-      icon: PenTool,
-      titleKey: 'whyus.designer.title',
-      descKey: 'whyus.designer.desc',
+      image: step1Img,
+      titleKey: 'process.step2.title',
+      descKey: 'process.step2.desc',
+      number: 2
     },
     {
-      icon: Layers,
-      titleKey: 'whyus.products.title',
-      descKey: 'whyus.products.desc',
+      image: step2Img,
+      titleKey: 'process.step3.title',
+      descKey: 'process.step3.desc',
+      number: 3
     },
     {
-      icon: UserCheck,
-      titleKey: 'whyus.personal.title',
-      descKey: 'whyus.personal.desc',
+      image: step4Img,
+      titleKey: 'process.step4.title',
+      descKey: 'process.step4.desc',
+      number: 4
     },
   ];
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Background image overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-muted via-background to-muted opacity-90" />
-      
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="py-20 bg-background overflow-hidden">
+      <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,44 +50,45 @@ const WhyUsSection = () => {
           <p className="decorative-text">{t('whyus.decorative')}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {features.map((feature, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((step, index) => (
             <motion.div
-              key={feature.titleKey}
+              key={step.number}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center bg-card p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="flex flex-col group"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-muted rounded-full mb-6">
-                <feature.icon className="w-8 h-8 text-primary" />
+              {/* Image Container */}
+              <div className="relative aspect-video rounded-lg overflow-hidden mb-6 shadow-md">
+                <img
+                  src={step.image}
+                  alt={t(step.titleKey)}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                {/* Step Badge */}
+                <div className="absolute top-0 end-0 bg-charcoal/80 backdrop-blur-sm text-white px-4 py-2 flex flex-col items-center">
+                  <span className="text-xl font-bold leading-none">{step.number}</span>
+                  <span className="text-[10px] uppercase tracking-wider">{t('process.step.label')}</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-foreground">
-                {t(feature.titleKey)}
-              </h3>
-              <div className="w-12 h-0.5 bg-primary mx-auto mb-4" />
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {t(feature.descKey)}
-              </p>
+
+              {/* Content */}
+              <div className="px-1">
+                <h3 className="text-lg font-bold mb-3 uppercase tracking-tight text-primary">
+                  {t(step.titleKey)}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  {t(step.descKey)}
+                </p>
+                <div className="mt-auto">
+                  <ArrowRight className={`w-4 h-4 text-muted-foreground/40 transition-transform ${dir === 'rtl' ? 'rotate-180' : ''}`} />
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center"
-        >
-          <Link
-            to="/about"
-            className="inline-flex items-center gap-2 border-2 border-primary text-primary px-8 py-3 font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-          >
-            ✦ {t('whyus.cta')}
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

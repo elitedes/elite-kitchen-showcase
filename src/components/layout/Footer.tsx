@@ -35,13 +35,13 @@ const Footer = () => {
               {t('about.description').substring(0, 150)}...
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-cream/70 hover:text-accent transition-colors">
+              <a href="https://www.facebook.com/elitedesignkitchens" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-cream/70 hover:text-accent transition-colors">
+              <a href="https://www.instagram.com/elitedesignkitchens/" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-cream/70 hover:text-accent transition-colors">
+              <a href="https://www.youtube.com/@elitedesignkitchens" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
@@ -91,8 +91,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent shrink-0" />
-                <a 
-                  href="tel:08-671-1767" 
+                <a
+                  href="tel:08-671-1767"
                   className="text-cream/70 hover:text-accent transition-colors text-sm"
                 >
                   {t('contact.phone.number')}
@@ -100,8 +100,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent shrink-0" />
-                <a 
-                  href="mailto:info@elitedesign.co.il" 
+                <a
+                  href="mailto:info@elitedesign.co.il"
                   className="text-cream/70 hover:text-accent transition-colors text-sm"
                 >
                   info@elitedesign.co.il
