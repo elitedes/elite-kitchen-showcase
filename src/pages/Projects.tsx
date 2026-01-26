@@ -49,6 +49,11 @@ import project32 from '@/assets/gallery-projects/project-32.jpg';
 import project33 from '@/assets/gallery-projects/project-33.jpg';
 import project34 from '@/assets/gallery-projects/project-34.jpg';
 import project35 from '@/assets/gallery-projects/project-35.jpg';
+import project36 from '@/assets/gallery-projects/project-36.jpg';
+import project37 from '@/assets/gallery-projects/project-37.jpg';
+import project38 from '@/assets/gallery-projects/project-38.jpg';
+import project39 from '@/assets/gallery-projects/project-39.jpg';
+import project40 from '@/assets/gallery-projects/project-40.jpg';
 
 const projects = [
   // Existing ones
@@ -99,7 +104,13 @@ const projects = [
   { id: 38, image: project32, location: 'מזכרת בתיה', locationRu: 'Мазкерет-Батья' },
   { id: 39, image: project33, location: 'גדרה', locationRu: 'Гедера' },
   { id: 40, image: project34, location: 'קריית מלאכי', locationRu: 'Кирьят-Малахи' },
-  { id: 41, image: project35, location: 'קריית עקрон', locationRu: 'Кирьят-Экрон' },
+  { id: 41, image: project35, location: 'קריית עקרון', locationRu: 'Кирьят-Экрон' },
+  // Gallery 8 (Latest Batch)
+  { id: 42, image: project36, location: 'בני ברק', locationRu: 'Бней-Брак' },
+  { id: 43, image: project37, location: 'קריית ביאליק', locationRu: 'Кирьят-Бялик' },
+  { id: 44, image: project38, location: 'קריית מוצקין', locationRu: 'Кирьят-Моцкин' },
+  { id: 45, image: project39, location: 'קריית ים', locationRu: 'Кирьят-Ям' },
+  { id: 46, image: project40, location: 'קריית אתא', locationRu: 'Кирьят-Ата' },
 ];
 
 const Projects = () => {
