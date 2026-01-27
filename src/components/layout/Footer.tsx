@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Phone, MapPin, Mail, Facebook, Instagram, Youtube } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import logoFull from '@/assets/logo-full.png';
 
 const Footer = () => {
   const { t, language, setLanguage, dir } = useLanguage();
@@ -28,8 +29,9 @@ const Footer = () => {
           {/* Logo & Description */}
           <div>
             <div className="mb-6">
-              <h3 className="text-2xl font-bold">Elite Design</h3>
-              <p className="text-cream/70 text-sm">kitchens & more</p>
+              <Link to="/">
+                <img src={logoFull} alt="Elite Design" className="h-16 w-auto object-contain" />
+              </Link>
             </div>
             <p className="text-cream/70 text-sm leading-relaxed mb-6">
               {t('about.description').substring(0, 150)}...
