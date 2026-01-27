@@ -34,6 +34,14 @@ const Header = () => {
     <header className="bg-header sticky top-0 z-50 shadow-lg" dir={dir}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden text-header-foreground p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+
           {/* Logo */}
           <Link to="/" className="flex flex-col items-center text-header-foreground">
             <span className="text-3xl font-bold tracking-wide">Elite Design</span>
@@ -97,13 +105,6 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden text-header-foreground p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
       </div>
 
