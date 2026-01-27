@@ -46,6 +46,9 @@ const Footer = () => {
               <a href="https://www.youtube.com/@elitedesignkitchens" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
+              <a href="https://share.google/2T8SzlQhkHRVIAI6X" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors">
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png" alt="Google Business" className="h-4 w-auto grayscale contrast-200 brightness-200" />
+              </a>
             </div>
           </div>
 

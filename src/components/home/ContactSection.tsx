@@ -159,7 +159,7 @@ const ContactSection = () => {
           >
             <div className="bg-muted rounded-lg overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3390.5!2d34.57!3d31.66!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDM5JzM2LjAiTiAzNMKwMzQnMTIuMCJF!5e0!3m2!1sen!2sil!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3390.669614457497!2d34.5681656!3d31.6666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502910793132057%3A0xe5f903e1e6950967!2sElite%20Design%20Kitchens!5e0!3m2!1sen!2sil!4v1710000000000!5m2!1sen!2sil"
                 width="100%"
                 height="300"
                 style={{ border: 0 }}
