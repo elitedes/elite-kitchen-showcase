@@ -3,7 +3,7 @@ import { Phone, MapPin, Mail, Facebook, Instagram, Youtube } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
-  const { t, dir } = useLanguage();
+  const { t, language, setLanguage, dir } = useLanguage();
 
   const quickLinks = [
     { key: 'nav.home', path: '/' },
@@ -120,9 +120,26 @@ const Footer = () => {
               © {new Date().getFullYear()} Elite Design kitchens & more. {t('footer.rights')}.
             </p>
             <div className="flex items-center gap-4">
-              <button className="text-cream/50 hover:text-cream text-sm">עברית</button>
+              <button
+                onClick={() => setLanguage('he')}
+                className={`transition-colors text-sm ${language === 'he' ? 'text-cream font-bold' : 'text-cream/50 hover:text-cream'}`}
+              >
+                עברית
+              </button>
               <span className="text-cream/30">|</span>
-              <button className="text-cream/50 hover:text-cream text-sm">Русский</button>
+              <button
+                onClick={() => setLanguage('ru')}
+                className={`transition-colors text-sm ${language === 'ru' ? 'text-cream font-bold' : 'text-cream/50 hover:text-cream'}`}
+              >
+                Русский
+              </button>
+              <span className="text-cream/30">|</span>
+              <button
+                onClick={() => setLanguage('en')}
+                className={`transition-colors text-sm ${language === 'en' ? 'text-cream font-bold' : 'text-cream/50 hover:text-cream'}`}
+              >
+                English
+              </button>
             </div>
           </div>
         </div>

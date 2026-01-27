@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Language = 'he' | 'ru';
+type Language = 'he' | 'ru' | 'en';
 
 interface LanguageContextType {
   language: Language;
@@ -193,6 +193,98 @@ const translations: Record<Language, Record<string, string>> = {
     'page.projects.title': 'Наши проекты',
     'page.installation.title': 'Подготовка к установке кухни',
     'page.promotions.title': 'Специальные акции',
+  },
+  en: {
+    // Navigation
+    'nav.home': 'Home',
+    'nav.about': 'About',
+    'nav.kitchens': 'Our Kitchens',
+    'nav.kitchens.modern': 'Modern Kitchens',
+    'nav.kitchens.country': 'Country Kitchens',
+    'nav.kitchens.formica': 'Formica Kitchens',
+    'nav.kitchens.wood': 'Solid Wood Kitchens',
+    'nav.kitchens.nano': 'Nano Kitchens',
+    'nav.projects': 'Projects',
+    'nav.promotions': 'Promotions',
+    'nav.installation': 'Preparation for Installation',
+    'nav.magazine': 'Magazine',
+    'nav.showroom': 'Showroom',
+    'nav.contact': 'Contact Us',
+
+    // Hero
+    'hero.title': 'Elite Design',
+    'hero.subtitle': 'kitchens & more',
+    'hero.tagline': 'Design. Quality. Individuality.',
+    'hero.promo': 'Special discount on all kitchens',
+    'hero.discount': '20% OFF',
+    'hero.cta.appointment': 'Book an Appointment',
+    'hero.cta.details': 'Leave Details',
+
+    // About Section
+    'about.title': 'Elite Design Kitchens',
+    'about.decorative': 'Design. Quality. Individuality.',
+    'about.description': 'At Elite Design, we specialize in designing and manufacturing luxury kitchens that combine perfect functionality with contemporary aesthetics. With years of experience, we offer personalized kitchen solutions for every client.',
+
+    'whyus.title': 'Our Working Process',
+    'whyus.decorative': 'working process',
+    'process.step1.title': 'SKETCH & ESTIMATE',
+    'process.step1.desc': 'We will create a preliminary sketch and calculate the cost for you',
+    'process.step2.title': 'MEASUREMENT',
+    'process.step2.desc': 'Our professional measurer will visit at your convenience',
+    'process.step3.title': 'PRODUCTION',
+    'process.step3.desc': 'We manufacture your kitchen in our own factory with cutting-edge technology',
+    'process.step4.title': 'DELIVERY & ASSEMBLY',
+    'process.step4.desc': 'We transport and professionally install the kitchen in your home',
+    'process.step.label': 'step',
+    'whyus.cta': 'Click here for more details',
+
+    // Kitchen Categories
+    'kitchens.title': 'Kitchen Categories',
+    'kitchens.modern': 'Modern Kitchens',
+    'kitchens.modern.en': 'Modern Kitchens',
+    'kitchens.country': 'Country Kitchens',
+    'kitchens.country.en': 'Country Kitchens',
+    'kitchens.formica': 'Formica Kitchens',
+    'kitchens.formica.en': 'Formica Kitchens',
+    'kitchens.wood': 'Solid Wood Kitchens',
+    'kitchens.wood.en': 'Solid Wood Kitchens',
+    'kitchens.nano': 'Nano Kitchens',
+    'kitchens.nano.en': 'Nano Kitchens',
+
+    // Testimonials
+    'testimonials.title': 'Client Testimonials',
+    'testimonials.decorative': 'Testimonials',
+
+    // Magazine
+    'magazine.title': 'Elite Design Kitchens Magazine',
+    'magazine.decorative': 'Magazine',
+
+    // Contact
+    'contact.title': 'Contact Us',
+    'contact.name': 'Full Name',
+    'contact.phone': 'Phone',
+    'contact.email': 'Email',
+    'contact.message': 'Message',
+    'contact.send': 'Send',
+    'contact.address': '8 Zahal St, Ashkelon',
+    'contact.phone.number': '08-671-1767',
+
+    // Footer
+    'footer.rights': 'All rights reserved',
+    'footer.address': '8 Zahal St, Ashkelon',
+
+    // Floating CTA
+    'floating.customer': 'Customer Service',
+    'floating.appointment': 'Book Appointment',
+
+    // Pages
+    'page.about.title': 'About Elite Design',
+    'page.about.content': 'Elite Design Kitchens was established out of a love for design and a commitment to excellence. We believe that every kitchen is a unique creation that reflects the personality and needs of its owner.',
+    'page.showroom.title': 'Our Showroom',
+    'page.showroom.desc': 'We invite you to visit our showroom and experience our kitchens up close',
+    'page.projects.title': 'Our Projects',
+    'page.installation.title': 'Preparation for Kitchen Installation',
+    'page.promotions.title': 'Special Promotions',
   },
 };
 

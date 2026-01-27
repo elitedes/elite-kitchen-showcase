@@ -10,6 +10,7 @@ import {
 const languages = [
   { code: 'ru', name: 'Русский', flag: '🇷🇺' },
   { code: 'he', name: 'עברית', flag: '🇮🇱' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
 ] as const;
 
 interface LanguageSwitcherProps {

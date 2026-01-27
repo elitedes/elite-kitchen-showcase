@@ -9,21 +9,53 @@ import kitchenWood from '@/assets/kitchen-wood.jpg';
 const Magazine = () => {
   const { t, language } = useLanguage();
 
-  const articles = [
+  const articles = language === 'he' ? [
     {
       image: kitchenModern,
-      title: language === 'he' ? 'טרנדים בעיצוב מטבחים 2024' : 'Тренды дизайна кухонь 2024',
-      excerpt: language === 'he' ? 'כל מה שצריך לדעת על הטרנדים החמים ביותר בעיצוב מטבחים השנה' : 'Все, что нужно знать о самых горячих трендах в дизайне кухонь этого года',
+      title: 'טרנדים בעיצוב מטבחים 2024',
+      excerpt: 'כל מה שצריך לדעת על הטרנדים החמים ביותר בעיצוב מטבחים השנה',
     },
     {
       image: kitchenNano,
-      title: language === 'he' ? 'יתרונות ציפוי נאנו למטבח' : 'Преимущества нано-покрытия для кухни',
-      excerpt: language === 'he' ? 'למה כדאי לבחור במטבח עם ציפוי נאנו ומה היתרונות המרכזיים' : 'Почему стоит выбрать кухню с нано-покрытием и каковы основные преимущества',
+      title: 'יתרונות ציפוי נאנו למטבח',
+      excerpt: 'למה כדאי לבחור במטבח עם ציפוי נאנו ומה היתרונות המרכזיים',
     },
     {
       image: kitchenWood,
-      title: language === 'he' ? 'מטבח עץ מלא - מדריך מלא' : 'Кухня из массива дерева - полное руководство',
-      excerpt: language === 'he' ? 'כל מה שצריך לדעת לפני רכישת מטבח עץ מלא' : 'Все, что нужно знать перед покупкой кухни из массива дерева',
+      title: 'מטבח עץ מלא - מדריך מלא',
+      excerpt: 'כל מה שצריך לדעת לפני רכישת מטבח עץ מלא',
+    },
+  ] : language === 'ru' ? [
+    {
+      image: kitchenModern,
+      title: 'Тренды дизайна кухонь 2024',
+      excerpt: 'Все, что нужно знать о самых горячих трендах в дизайне кухонь этого года',
+    },
+    {
+      image: kitchenNano,
+      title: 'Преимущества нано-покрытия для кухни',
+      excerpt: 'Почему стоит выбрать кухню с нано-покрытием и каковы основные преимущества',
+    },
+    {
+      image: kitchenWood,
+      title: 'Кухня из массива дерева - полное руководство',
+      excerpt: 'Все, что нужно знать перед покупкой кухни из массива дерева',
+    },
+  ] : [
+    {
+      image: kitchenModern,
+      title: 'Kitchen Design Trends 2024',
+      excerpt: 'Everything you need to know about the hottest kitchen design trends this year',
+    },
+    {
+      image: kitchenNano,
+      title: 'Benefits of Nano Coating for Kitchens',
+      excerpt: 'Why you should choose a kitchen with nano coating and what the key benefits are',
+    },
+    {
+      image: kitchenWood,
+      title: 'Solid Wood Kitchens - Full Guide',
+      excerpt: 'Everything you need to know before purchasing a solid wood kitchen',
     },
   ];
 

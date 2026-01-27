@@ -57,60 +57,60 @@ import project40 from '@/assets/gallery-projects/project-40.jpg';
 
 const projects = [
   // Existing ones
-  { id: 1, image: kitchenModern, location: 'אשדוד', locationRu: 'Ашдод' },
-  { id: 2, image: kitchenWood, location: 'תל אביב', locationRu: 'Тель-Авив' },
-  { id: 3, image: kitchenNano, location: 'ירושלים', locationRu: 'Иерусалим' },
-  { id: 4, image: kitchenFormica, location: 'באר שבע', locationRu: 'Беэр-Шева' },
-  { id: 5, image: heroKitchen, location: 'אשקלון', locationRu: 'Ашкелон' },
-  { id: 6, image: kitchenCountry, location: 'חיפה', locationRu: 'Хайфа' },
+  { id: 1, image: kitchenModern, location: 'אשדוד', locationRu: 'Ашдод', locationEn: 'Ashdod' },
+  { id: 2, image: kitchenWood, location: 'תל אביב', locationRu: 'Тель-Авив', locationEn: 'Tel Aviv' },
+  { id: 3, image: kitchenNano, location: 'ירושלים', locationRu: 'Иерусалим', locationEn: 'Jerusalem' },
+  { id: 4, image: kitchenFormica, location: 'באר שבע', locationRu: 'Беэр-Шева', locationEn: 'Beer Sheva' },
+  { id: 5, image: heroKitchen, location: 'אשקלון', locationRu: 'Ашкелон', locationEn: 'Ashkelon' },
+  { id: 6, image: kitchenCountry, location: 'חיפה', locationRu: 'Хайфа', locationEn: 'Haifa' },
   // Gallery 1 (New)
-  { id: 7, image: project1, location: 'ראשון לציון', locationRu: 'Ришон ле-Цион' },
-  { id: 8, image: project2, location: 'בת ים', locationRu: 'Бат-Ям' },
-  { id: 9, image: project3, location: 'פתח תקווה', locationRu: 'Петах-Тиква' },
-  { id: 10, image: project4, location: 'נתניה', locationRu: 'Нетания' },
-  { id: 11, image: project5, location: 'הרצליה', locationRu: 'Герцлия' },
+  { id: 7, image: project1, location: 'ראשון לציון', locationRu: 'Ришон ле-Цион', locationEn: 'Rishon LeZion' },
+  { id: 8, image: project2, location: 'בת ים', locationRu: 'Бат-Ям', locationEn: 'Bat Yam' },
+  { id: 9, image: project3, location: 'פתח תקווה', locationRu: 'Петах-Тиква', locationEn: 'Petah Tikva' },
+  { id: 10, image: project4, location: 'נתניה', locationRu: 'Нетания', locationEn: 'Netanya' },
+  { id: 11, image: project5, location: 'הרצליה', locationRu: 'Герцлия', locationEn: 'Herzliya' },
   // Gallery 2 (Newer)
-  { id: 12, image: project6, location: 'רעננה', locationRu: 'Раанана' },
-  { id: 13, image: project7, location: 'כפר סבא', locationRu: 'Кфар-Саба' },
-  { id: 14, image: project8, location: 'הוד השרון', locationRu: 'Ход-ха-Шарон' },
-  { id: 15, image: project9, location: 'רמת גן', locationRu: 'Рамат-Ган' },
-  { id: 16, image: project10, location: 'גבעתיים', locationRu: 'Гиватаим' },
+  { id: 12, image: project6, location: 'רעננה', locationRu: 'Раанана', locationEn: "Ra'anana" },
+  { id: 13, image: project7, location: 'כפר סבא', locationRu: 'Кфар-Саба', locationEn: 'Kfar Saba' },
+  { id: 14, image: project8, location: 'הוד השרון', locationRu: 'Ход-ха-Шарон', locationEn: 'Hod HaSharon' },
+  { id: 15, image: project9, location: 'רמת גן', locationRu: 'Рамат-Ган', locationEn: 'Ramat Gan' },
+  { id: 16, image: project10, location: 'גבעתיים', locationRu: 'Гиватаим', locationEn: 'Givatayim' },
   // Gallery 3 (Newest)
-  { id: 17, image: project11, location: 'חולון', locationRu: 'Холон' },
-  { id: 18, image: project12, location: 'רחובות', locationRu: 'Реховот' },
-  { id: 19, image: project13, location: 'ראש העין', locationRu: 'Рош-ха-Аин' },
-  { id: 20, image: project14, location: 'כפר יונה', locationRu: 'Кфар-Йона' },
-  { id: 21, image: project15, location: 'רמת השרון', locationRu: 'Рамат-ха-Шарон' },
+  { id: 17, image: project11, location: 'חולון', locationRu: 'Холон', locationEn: 'Holon' },
+  { id: 18, image: project12, location: 'רחובות', locationRu: 'Реховот', locationEn: 'Rehovot' },
+  { id: 19, image: project13, location: 'ראש העין', locationRu: 'Рош-ха-Аин', locationEn: 'Rosh HaAyin' },
+  { id: 20, image: project14, location: 'כפר יונה', locationRu: 'Кфар-Йона', locationEn: 'Kfar Yona' },
+  { id: 21, image: project15, location: 'רמת השרון', locationRu: 'Рамат-ха-Шарон', locationEn: 'Ramat HaSharon' },
   // Gallery 4 (Latest)
-  { id: 22, image: project16, location: 'נתיבות', locationRu: 'Нетивот' },
-  { id: 23, image: project17, location: 'אופקים', locationRu: 'Офаким' },
-  { id: 24, image: project18, location: 'שדרות', locationRu: 'Сдерот' },
-  { id: 25, image: project19, location: 'קריית גת', locationRu: 'Кирьят-Гат' },
-  { id: 26, image: project20, location: 'מודיעין', locationRu: 'Модиин' },
+  { id: 22, image: project16, location: 'נתיבות', locationRu: 'Нетивот', locationEn: 'Netivot' },
+  { id: 23, image: project17, location: 'אופקים', locationRu: 'Офаким', locationEn: 'Ofakim' },
+  { id: 24, image: project18, location: 'שדרות', locationRu: 'Сдерот', locationEn: 'Sderot' },
+  { id: 25, image: project19, location: 'קריית גת', locationRu: 'Кирьят-Гат', locationEn: 'Kiryat Gat' },
+  { id: 26, image: project20, location: 'מודיעין', locationRu: 'Модиин', locationEn: "Modi'in" },
   // Gallery 5 (Freshly Addded)
-  { id: 27, image: project21, location: 'יבנה', locationRu: 'Явне' },
-  { id: 28, image: project22, location: 'לוד', locationRu: 'Лод' },
-  { id: 29, image: project23, location: 'רמלה', locationRu: 'Рамла' },
-  { id: 30, image: project24, location: 'גבעת שמואל', locationRu: 'Гиват-Шмуэль' },
-  { id: 31, image: project25, location: 'אור יהודה', locationRu: 'Ор-Йехуда' },
+  { id: 27, image: project21, location: 'יבנה', locationRu: 'Явне', locationEn: 'Yavne' },
+  { id: 28, image: project22, location: 'לוד', locationRu: 'Лод', locationEn: 'Lod' },
+  { id: 29, image: project23, location: 'רמלה', locationRu: 'Рамла', locationEn: 'Ramla' },
+  { id: 30, image: project24, location: 'גבעת שמואל', locationRu: 'Гиват-Шмуэль', locationEn: 'Givat Shmuel' },
+  { id: 31, image: project25, location: 'אור יהודה', locationRu: 'Ор-Йехуда', locationEn: 'Or Yehuda' },
   // Gallery 6 (Latest Batch)
-  { id: 32, image: project26, location: 'נס ציונה', locationRu: 'Нес-Циона' },
-  { id: 33, image: project27, location: 'קרית אונו', locationRu: 'Кирьят-Оно' },
-  { id: 34, image: project28, location: 'יהוד', locationRu: 'Йехуд' },
-  { id: 35, image: project29, location: 'אלעד', locationRu: 'Эльад' },
-  { id: 36, image: project30, location: 'שהם', locationRu: 'Шохам' },
+  { id: 32, image: project26, location: 'נס ציונה', locationRu: 'Нес-Циона', locationEn: 'Ness Ziona' },
+  { id: 33, image: project27, location: 'קרית אונו', locationRu: 'Кирьят-Оно', locationEn: 'Kiryat Ono' },
+  { id: 34, image: project28, location: 'יהוד', locationRu: 'Йехуд', locationEn: 'Yehud' },
+  { id: 35, image: project29, location: 'אלעד', locationRu: 'Эльад', locationEn: "El'ad" },
+  { id: 36, image: project30, location: 'שהם', locationRu: 'Шохам', locationEn: 'Shoham' },
   // Gallery 7 (Latest Batch)
-  { id: 37, image: project31, location: 'גן יבנה', locationRu: 'Ган-Явне' },
-  { id: 38, image: project32, location: 'מזכרת בתיה', locationRu: 'Мазкерет-Батья' },
-  { id: 39, image: project33, location: 'גדרה', locationRu: 'Гедера' },
-  { id: 40, image: project34, location: 'קריית מלאכי', locationRu: 'Кирьят-Малахи' },
-  { id: 41, image: project35, location: 'קריית עקרון', locationRu: 'Кирьят-Экрон' },
+  { id: 37, image: project31, location: 'גן יבנה', locationRu: 'Ган-Явне', locationEn: 'Gan Yavne' },
+  { id: 38, image: project32, location: 'מזכרת בתיה', locationRu: 'Мазкерет-Батья', locationEn: 'Mazkeret Batya' },
+  { id: 39, image: project33, location: 'גדרה', locationRu: 'Гедера', locationEn: 'Gedera' },
+  { id: 40, image: project34, location: 'קריית מלאכי', locationRu: 'Кирьят-Малахи', locationEn: 'Kiryat Malakhi' },
+  { id: 41, image: project35, location: 'קריית עקרון', locationRu: 'Кирьят-Экрон', locationEn: 'Kiryat Ekron' },
   // Gallery 8 (Latest Batch)
-  { id: 42, image: project36, location: 'בני ברק', locationRu: 'Бней-Брак' },
-  { id: 43, image: project37, location: 'קריית ביאליק', locationRu: 'Кирьят-Бялик' },
-  { id: 44, image: project38, location: 'קריית מוצקין', locationRu: 'Кирьят-Моцкин' },
-  { id: 45, image: project39, location: 'קריית ים', locationRu: 'Кирьят-Ям' },
-  { id: 46, image: project40, location: 'קריית אתא', locationRu: 'Кирьят-Ата' },
+  { id: 42, image: project36, location: 'בני ברק', locationRu: 'Бней-Брак', locationEn: 'Bnei Brak' },
+  { id: 43, image: project37, location: 'קריית ביאליק', locationRu: 'Кирьят-Бялик', locationEn: 'Kiryat Bialik' },
+  { id: 44, image: project38, location: 'קריית מוצקין', locationRu: 'Кирьят-Моцкин', locationEn: 'Kiryat Motzkin' },
+  { id: 45, image: project39, location: 'קריית ים', locationRu: 'Кирьят-Ям', locationEn: 'Kiryat Yam' },
+  { id: 46, image: project40, location: 'קריית אתא', locationRu: 'Кирьят-Ата', locationEn: 'Kiryat Ata' },
 ];
 
 const Projects = () => {
@@ -178,7 +178,7 @@ const Projects = () => {
                 <div className="kitchen-card-overlay" />
                 <div className="kitchen-card-title">
                   <h3 className="text-xl font-bold text-primary-foreground">
-                    {language === 'he' ? project.location : project.locationRu}
+                    {language === 'he' ? project.location : language === 'ru' ? project.locationRu : project.locationEn}
                   </h3>
                 </div>
               </motion.div>
@@ -225,7 +225,9 @@ const Projects = () => {
                 <p className="text-lg font-semibold">
                   {language === 'he'
                     ? projects[selectedImageIndex].location
-                    : projects[selectedImageIndex].locationRu}
+                    : language === 'ru'
+                      ? projects[selectedImageIndex].locationRu
+                      : projects[selectedImageIndex].locationEn}
                 </p>
               </div>
             </motion.div>

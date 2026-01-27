@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { toast } from 'sonner';
 
 const ContactSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -22,7 +22,16 @@ const ContactSection = () => {
 
     const botToken = '7840966634:AAGb94rcHU7WxW9BWBRIwtbh7b48GvYbSgU';
     const chatId = '1492940504';
-    const text = `
+    const textHe = `
+📩 *פנייה חדשה מהאתר!*
+
+👤 *שם:* ${formData.name}
+📱 *טלפון:* ${formData.phone}
+📧 *אימייל:* ${formData.email || 'לא צוין'}
+💬 *הודעה:* ${formData.message || 'אין הודעה'}
+    `;
+
+    const textRu = `
 📩 *Новая заявка с сайта!*
 
 👤 *Имя:* ${formData.name}
@@ -30,6 +39,17 @@ const ContactSection = () => {
 📧 *Email:* ${formData.email || 'Не указан'}
 💬 *Сообщение:* ${formData.message || 'Нет сообщения'}
     `;
+
+    const textEn = `
+📩 *New Lead from Website!*
+
+👤 *Name:* ${formData.name}
+📱 *Phone:* ${formData.phone}
+📧 *Email:* ${formData.email || 'Not specified'}
+💬 *Message:* ${formData.message || 'No message'}
+    `;
+
+    const text = language === 'he' ? textHe : language === 'ru' ? textRu : textEn;
 
     try {
       const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
@@ -45,14 +65,14 @@ const ContactSection = () => {
       });
 
       if (response.ok) {
-        toast.success(t('contact.success') || 'Message sent successfully!');
+        toast.success(t('contact.success') || (language === 'he' ? 'ההודעה נשלחה בהצלחה!' : language === 'ru' ? 'Сообщение успешно отправлено!' : 'Message sent successfully!'));
         setFormData({ name: '', phone: '', email: '', message: '' });
       } else {
-        toast.error('Could not send message. Please contact us directly.');
+        toast.error(language === 'he' ? 'לא ניתן לשלוח את ההודעה. אנא צור קשר ישירות.' : language === 'ru' ? 'Не удалось отправить сообщение. Пожалуйста, свяжитесь с нами напрямую.' : 'Could not send message. Please contact us directly.');
       }
     } catch (error) {
       console.error('Error sending to Telegram:', error);
-      toast.error('Could not send message. Please contact us directly.');
+      toast.error(language === 'he' ? 'לא ניתן לשלוח את ההודעה. אנא צור קשר ישירות.' : language === 'ru' ? 'Не удалось отправить сообщение. Пожалуйста, свяжитесь с нами напрямую.' : 'Could not send message. Please contact us directly.');
     }
   };
 

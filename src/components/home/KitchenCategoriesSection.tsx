@@ -17,7 +17,7 @@ const categories = [
 ];
 
 const KitchenCategoriesSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section className="py-20 bg-muted">
@@ -30,7 +30,7 @@ const KitchenCategoriesSection = () => {
           className="text-center mb-12"
         >
           <h2 className="section-title">{t('kitchens.title')}</h2>
-          <p className="decorative-text">Design. Quality. Individuality.</p>
+          <p className="decorative-text">{t('about.decorative')}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -53,9 +53,11 @@ const KitchenCategoriesSection = () => {
                   <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-1">
                     {t(`kitchens.${category.key}`)}
                   </h3>
-                  <p className="font-playfair italic text-primary-foreground/70">
-                    {t(`kitchens.${category.key}.en`)}
-                  </p>
+                  {language !== 'en' && (
+                    <p className="font-playfair italic text-primary-foreground/70">
+                      {t(`kitchens.${category.key}.en`)}
+                    </p>
+                  )}
                 </div>
               </Link>
             </motion.div>
@@ -82,9 +84,11 @@ const KitchenCategoriesSection = () => {
                   <h3 className="text-xl md:text-2xl font-bold text-primary-foreground mb-1">
                     {t(`kitchens.${category.key}`)}
                   </h3>
-                  <p className="font-playfair italic text-primary-foreground/70 text-sm">
-                    {t(`kitchens.${category.key}.en`)}
-                  </p>
+                  {language !== 'en' && (
+                    <p className="font-playfair italic text-primary-foreground/70 text-sm">
+                      {t(`kitchens.${category.key}.en`)}
+                    </p>
+                  )}
                 </div>
               </Link>
             </motion.div>

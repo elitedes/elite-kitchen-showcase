@@ -6,18 +6,44 @@ import ContactSection from '@/components/home/ContactSection';
 const Promotions = () => {
   const { t, language } = useLanguage();
 
-  const promotions = [
+  const promotions = language === 'he' ? [
     {
-      title: language === 'he' ? '20% הנחה על כל המטבחים' : 'Скидка 20% на все кухни',
-      desc: language === 'he' ? 'מבצע מיוחד לחודש זה בלבד' : 'Специальное предложение только в этом месяце',
+      title: '20% הנחה על כל המטבחים',
+      desc: 'מבצע מיוחד לחודש זה בלבד',
     },
     {
-      title: language === 'he' ? 'משלוח והתקנה חינם' : 'Бесплатная доставка и установка',
-      desc: language === 'he' ? 'על הזמנות מעל ₪50,000' : 'На заказы от ₪50,000',
+      title: 'משלוח והתקנה חינם',
+      desc: 'על הזמנות מעל ₪50,000',
     },
     {
-      title: language === 'he' ? 'ייעוץ עיצוב חינם' : 'Бесплатная консультация дизайнера',
-      desc: language === 'he' ? 'מעצב/ת עד הבית בחינם' : 'Дизайнер к вам домой бесплатно',
+      title: 'ייעוץ עיצוב חינם',
+      desc: 'מעצב/ת עד הבית בחינם',
+    },
+  ] : language === 'ru' ? [
+    {
+      title: 'Скидка 20% на все кухни',
+      desc: 'Специальное предложение только в этом месяце',
+    },
+    {
+      title: 'Бесплатная доставка и установка',
+      desc: 'На заказы от ₪50,000',
+    },
+    {
+      title: 'Бесплатная консультация дизайнера',
+      desc: 'Дизайнер к вам домой бесплатно',
+    },
+  ] : [
+    {
+      title: '20% Discount on All Kitchens',
+      desc: 'Special offer for this month only',
+    },
+    {
+      title: 'Free Delivery and Installation',
+      desc: 'On orders over ₪50,000',
+    },
+    {
+      title: 'Free Design Consultation',
+      desc: 'Free in-home designer visit',
     },
   ];
 

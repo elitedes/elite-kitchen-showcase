@@ -46,31 +46,31 @@ import nano4 from '@/assets/gallery/nano-4.jpg';
 import nano5 from '@/assets/gallery/nano-5.jpg';
 
 const categoryData: Record<string, { image: string; gallery: string[] }> = {
-  modern: { 
-    image: kitchenModern, 
-    gallery: [modern1, modern2, modern3, modern4, modern5, modern6] 
+  modern: {
+    image: kitchenModern,
+    gallery: [modern1, modern2, modern3, modern4, modern5, modern6]
   },
-  country: { 
-    image: kitchenCountry, 
-    gallery: [country1, country2, country3, country4] 
+  country: {
+    image: kitchenCountry,
+    gallery: [country1, country2, country3, country4]
   },
-  formica: { 
-    image: kitchenFormica, 
-    gallery: [formica1, formica2, formica3, formica4, formica5] 
+  formica: {
+    image: kitchenFormica,
+    gallery: [formica1, formica2, formica3, formica4, formica5]
   },
-  wood: { 
-    image: kitchenWood, 
-    gallery: [wood1, wood2, wood3, wood4] 
+  wood: {
+    image: kitchenWood,
+    gallery: [wood1, wood2, wood3, wood4]
   },
-  nano: { 
-    image: kitchenNano, 
-    gallery: [nano1, nano2, nano3, nano4, nano5] 
+  nano: {
+    image: kitchenNano,
+    gallery: [nano1, nano2, nano3, nano4, nano5]
   },
 };
 
 const KitchenCategory = () => {
   const { category } = useParams<{ category: string }>();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const data = categoryData[category || 'modern'] || categoryData.modern;
 
@@ -96,9 +96,11 @@ const KitchenCategory = () => {
             <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-4">
               {t(`kitchens.${category}`)}
             </h1>
-            <p className="font-playfair italic text-xl text-primary-foreground/80">
-              {t(`kitchens.${category}.en`)}
-            </p>
+            {language !== 'en' && (
+              <p className="font-playfair italic text-xl text-primary-foreground/80">
+                {t(`kitchens.${category}.en`)}
+              </p>
+            )}
           </motion.div>
         </div>
       </section>
@@ -111,11 +113,10 @@ const KitchenCategory = () => {
               <Link
                 key={cat}
                 to={`/kitchens/${cat}`}
-                className={`px-6 py-2 font-medium transition-all ${
-                  cat === category
+                className={`px-6 py-2 font-medium transition-all ${cat === category
                     ? 'bg-primary text-primary-foreground'
                     : 'bg-background text-foreground hover:bg-primary/10'
-                }`}
+                  }`}
               >
                 {t(`kitchens.${cat}`)}
               </Link>

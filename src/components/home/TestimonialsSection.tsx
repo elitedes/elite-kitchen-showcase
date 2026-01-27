@@ -14,48 +14,60 @@ const testimonials = [
   {
     name: 'אסנת א. מיתר',
     nameRu: 'Аснат А., Мейтар',
+    nameEn: 'Asnat A., Meitar',
     text: '"מכל הבחינות הם באמת מדהימים, הכול היה בסדר, עמידה בזמנים כמו שהבטיחו ואפילו מעבר למה שהבטיחו, באמת, רק מילים טובות"',
     textRu: '"Во всех отношениях они действительно потрясающие, всё было в порядке, соблюдение сроков как обещали и даже больше"',
+    textEn: '"In all respects they are truly amazing, everything was fine, meeting deadlines as promised and even beyond what was promised, truly, only good words"',
     rating: 5,
     image: customerAsnat,
   },
   {
     name: 'מאיר זכות',
     nameRu: 'Меир Захут',
+    nameEn: 'Meir Zahut',
     text: '"הגעתי בהמלצת חבר, שירות אדיב ומקצועי, יחס מקסים במיוחד של יניב המקסימה משירות הלקוחות. ממליצים בחום!"',
     textRu: '"Пришёл по рекомендации друга, вежливое и профессиональное обслуживание, особенно приятное отношение. Очень рекомендую!"',
+    textEn: '"I came on the recommendation of a friend, kind and professional service, especially charming attitude from Yaniv in customer service. Highly recommend!"',
     rating: 5,
     image: customerMeir,
   },
   {
     name: 'יניב לוב',
     nameRu: 'Янив Лов',
+    nameEn: 'Yaniv Lov',
     text: '"שותפים מלאים מרגע התכנון שבוצע במקצועיות נדירה ועד למימוש המושלם, תודה לקמילה על הגשמת חלום!"',
     textRu: '"Полные партнёры с момента профессионального планирования до идеальной реализации, спасибо за воплощение мечты!"',
+    textEn: '"Full partners from the moment of planning carried out with rare professionalism to the perfect realization, thanks to Camila for fulfilling a dream!"',
     rating: 5,
     image: customerYaniv,
   },
   {
     name: 'רחל כהן',
     nameRu: 'Рахель Коэн',
+    nameEn: 'Rachel Cohen',
     text: '"המטבח שלנו הפך לחלל הכי יפה בבית. העיצוב המודרני והאיכות המעולה עלו על כל הציפיות. תודה רבה לצוות המקצועי!"',
     textRu: '"Наша кухня стала самым красивым пространством в доме. Современный дизайн и отличное качество превзошли все ожидания!"',
+    textEn: '"Our kitchen has become the most beautiful space in the house. The modern design and excellent quality exceeded all expectations. Many thanks to the professional team!"',
     rating: 5,
     image: customer4,
   },
   {
     name: 'שירה לוי',
     nameRu: 'Шира Леви',
+    nameEn: 'Shira Levi',
     text: '"מהתכנון ועד ההתקנה - הכול היה מושלם. הצוות המקצועי הקשיב לכל הבקשות שלי והתוצאה פשוט מדהימה!"',
     textRu: '"От планирования до установки - всё было идеально. Профессиональная команда выслушала все мои пожелания!"',
+    textEn: '"From planning to installation - everything was perfect. The professional team listened to all my requests and the result is just amazing!"',
     rating: 5,
     image: customer5,
   },
   {
     name: 'דוד אברהם',
     nameRu: 'Давид Авраам',
-    text: '"חיפשנו מטבח איכותי במחיר הוגן ומצאנו הרבה יותר מזה. השירות, האיכות והמקצועיות פשוט יוצאי דופן!"',
+    nameEn: 'David Avraham',
+    text: '"חיפשנו מטבח איכותי במחיר הוגן וממצאנו הרבה יותר מזה. השירות, האיכות והמקצועיות פשוט יוצאי דופן!"',
     textRu: '"Искали качественную кухню по справедливой цене и нашли намного больше. Сервис, качество и профессионализм просто исключительные!"',
+    textEn: '"We were looking for a high-quality kitchen at a fair price and found much more than that. The service, quality, and professionalism are simply outstanding!"',
     rating: 5,
     image: customer6,
   },
@@ -139,7 +151,7 @@ const TestimonialsSection = () => {
                   <div className="flex justify-center mb-4">
                     <img
                       src={testimonial.image}
-                      alt={language === 'he' ? testimonial.name : testimonial.nameRu}
+                      alt={language === 'he' ? testimonial.name : language === 'ru' ? testimonial.nameRu : testimonial.nameEn}
                       className="w-20 h-20 rounded-full object-cover border-4 border-accent shadow-md"
                     />
                   </div>
@@ -153,12 +165,12 @@ const TestimonialsSection = () => {
 
                   {/* Quote */}
                   <p className="text-muted-foreground text-center mb-6 leading-relaxed">
-                    {language === 'he' ? testimonial.text : testimonial.textRu}
+                    {language === 'he' ? testimonial.text : language === 'ru' ? testimonial.textRu : testimonial.textEn}
                   </p>
 
                   {/* Name */}
                   <p className="text-center font-semibold text-foreground">
-                    {language === 'he' ? testimonial.name : testimonial.nameRu}
+                    {language === 'he' ? testimonial.name : language === 'ru' ? testimonial.nameRu : testimonial.nameEn}
                   </p>
                 </motion.div>
               ))}
@@ -172,8 +184,8 @@ const TestimonialsSection = () => {
                 key={dot}
                 onClick={() => setCurrentPage(dot)}
                 className={`w-3 h-3 rounded-full transition-all ${dot === currentPage
-                    ? 'bg-accent scale-125'
-                    : 'bg-foreground/30 hover:bg-foreground/50'
+                  ? 'bg-accent scale-125'
+                  : 'bg-foreground/30 hover:bg-foreground/50'
                   }`}
               />
             ))}

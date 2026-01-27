@@ -28,7 +28,7 @@ const Showroom = () => {
               {t('page.showroom.title')}
             </h1>
             <p className="font-playfair italic text-xl text-primary-foreground/80">
-              Showroom
+              {t('nav.showroom')}
             </p>
           </motion.div>
         </div>
@@ -47,7 +47,7 @@ const Showroom = () => {
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                 {t('page.showroom.desc')}
               </p>
-              
+
               <div className="bg-card p-8 shadow-lg rounded-lg">
                 <h3 className="text-2xl font-bold mb-4">Elite Design kitchens & more</h3>
                 <p className="text-muted-foreground mb-2">{t('contact.address')}</p>
