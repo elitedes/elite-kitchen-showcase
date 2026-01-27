@@ -65,14 +65,14 @@ const ContactSection = () => {
       });
 
       if (response.ok) {
-        toast.success(t('contact.success') || (language === 'he' ? 'ההודעה נשלחה בהצלחה!' : language === 'ru' ? 'Сообщение успешно отправлено!' : 'Message sent successfully!'));
+        toast.success(t('contact.success'));
         setFormData({ name: '', phone: '', email: '', message: '' });
       } else {
-        toast.error(language === 'he' ? 'לא ניתן לשלוח את ההודעה. אנא צור קשר ישירות.' : language === 'ru' ? 'Не удалось отправить сообщение. Пожалуйста, свяжитесь с нами напрямую.' : 'Could not send message. Please contact us directly.');
+        toast.error(t('contact.error'));
       }
     } catch (error) {
       console.error('Error sending to Telegram:', error);
-      toast.error(language === 'he' ? 'לא ניתן לשלוח את ההודעה. אנא צור קשר ישירות.' : language === 'ru' ? 'Не удалось отправить сообщение. Пожалуйста, свяжитесь с нами напрямую.' : 'Could not send message. Please contact us directly.');
+      toast.error(t('contact.error'));
     }
   };
 

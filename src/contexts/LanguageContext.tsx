@@ -101,6 +101,11 @@ const translations: Record<Language, Record<string, string>> = {
     'page.projects.title': 'הפרויקטים שלנו',
     'page.installation.title': 'הכנה להתקנת מטבח',
     'page.promotions.title': 'מבצעים מיוחדים',
+    'contact.success': 'ההודעה נשלחה בהצלחה!',
+    'contact.error': 'לא ניתן לשלוח את ההודעה. אנא צור קשר ישירות.',
+    'page.notfound.title': '404 - דף לא נמצא',
+    'page.notfound.desc': 'אופס! הדף שחיפשת לא קיים.',
+    'page.notfound.back': 'חזרה לדף הבית',
   },
   ru: {
     // Navigation
@@ -193,6 +198,11 @@ const translations: Record<Language, Record<string, string>> = {
     'page.projects.title': 'Наши проекты',
     'page.installation.title': 'Подготовка к установке кухни',
     'page.promotions.title': 'Специальные акции',
+    'contact.success': 'Сообщение успешно отправлено!',
+    'contact.error': 'Не удалось отправить сообщение. Пожалуйста, свяжитесь с нами напрямую.',
+    'page.notfound.title': '404 - Страница не найдена',
+    'page.notfound.desc': 'Ой! Страница, которую вы ищете, не существует.',
+    'page.notfound.back': 'Вернуться на главную',
   },
   en: {
     // Navigation
@@ -285,6 +295,11 @@ const translations: Record<Language, Record<string, string>> = {
     'page.projects.title': 'Our Projects',
     'page.installation.title': 'Preparation for Kitchen Installation',
     'page.promotions.title': 'Special Promotions',
+    'contact.success': 'Message sent successfully!',
+    'contact.error': 'Could not send message. Please contact us directly.',
+    'page.notfound.title': '404 - Page Not Found',
+    'page.notfound.desc': "Oops! The page you are looking for doesn't exist.",
+    'page.notfound.back': 'Return Home',
   },
 };
 

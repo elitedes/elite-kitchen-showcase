@@ -21,7 +21,7 @@ const Contact = () => {
               {t('contact.title')}
             </h1>
             <p className="font-playfair italic text-xl text-header-foreground/80">
-              Contact Us
+              {t('nav.contact')}
             </p>
           </motion.div>
         </div>
