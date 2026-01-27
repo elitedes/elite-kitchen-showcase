@@ -303,10 +303,39 @@ const translations: Record<Language, Record<string, string>> = {
   },
 };
 
+const FALLBACK_LANGUAGE: Language = 'he';
+const SUPPORTED_LANGUAGES: Language[] = ['he', 'ru', 'en'];
+
+const getInitialLanguage = (): Language => {
+  if (typeof window === 'undefined') return FALLBACK_LANGUAGE;
+
+  // 1. Check localStorage
+  try {
+    const saved = localStorage.getItem('language') as Language;
+    if (saved && SUPPORTED_LANGUAGES.includes(saved)) {
+      return saved;
+    }
+  } catch (e) {
+    console.error('Error reading from localStorage', e);
+  }
+
+  // 2. Check browser language
+  try {
+    const browserLang = navigator.language.split('-')[0] as Language;
+    if (SUPPORTED_LANGUAGES.includes(browserLang)) {
+      return browserLang;
+    }
+  } catch (e) {
+    console.error('Error detecting browser language', e);
+  }
+
+  return FALLBACK_LANGUAGE;
+};
+
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('he');
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
 
   const dir = language === 'he' ? 'rtl' : 'ltr';
 
@@ -314,6 +343,15 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     document.documentElement.dir = dir;
     document.documentElement.lang = language;
   }, [language, dir]);
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    try {
+      localStorage.setItem('language', lang);
+    } catch (e) {
+      console.error('Error saving to localStorage', e);
+    }
+  };
 
   const t = (key: string): string => {
     return translations[language][key] || key;
