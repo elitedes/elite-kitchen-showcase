@@ -34,22 +34,24 @@ const Header = () => {
     <header className="bg-header sticky top-0 z-50 shadow-lg" dir={dir}>
       <div className="container mx-auto px-4">
         <div className="relative flex items-center justify-between h-20">
-          {/* Mobile Menu & Language Wrapper */}
-          <div className="flex items-center lg:hidden">
-            <LanguageSwitcher variant="mobile-header" />
-            <button
-              className="text-header-foreground p-2 relative z-10"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          {/* Mobile Burger Button */}
+          <button
+            className="lg:hidden text-header-foreground p-2 relative z-10"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
 
           {/* Logo */}
           <Link to="/" className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex flex-col items-center text-header-foreground z-0">
             <span className="text-xl lg:text-3xl font-bold tracking-wide whitespace-nowrap">Elite Design</span>
             <span className="text-[10px] lg:text-sm font-light whitespace-nowrap">kitchens & more</span>
           </Link>
+
+          {/* Mobile Language Switcher (Opposite Side) */}
+          <div className="lg:hidden relative z-10">
+            <LanguageSwitcher variant="mobile-header" />
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">

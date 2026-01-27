@@ -57,7 +57,7 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
           )}
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align={variant === 'mobile-header' ? "start" : "end"} className="min-w-[160px] z-[60]">
+      <DropdownMenuContent align="end" className="min-w-[160px] z-[60]">
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
