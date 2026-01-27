@@ -13,7 +13,7 @@ const languages = [
 ] as const;
 
 interface LanguageSwitcherProps {
-  variant?: 'desktop' | 'mobile';
+  variant?: 'desktop' | 'mobile' | 'mobile-header';
 }
 
 const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
@@ -29,8 +29,8 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
             key={lang.code}
             onClick={() => setLanguage(lang.code)}
             className={`flex-1 py-3 px-4 rounded-lg flex items-center justify-center gap-3 border transition-all duration-200 ${language === lang.code
-                ? 'bg-accent/10 border-accent/30 text-accent font-bold ring-1 ring-accent/20'
-                : 'bg-header-foreground/5 border-transparent text-header-foreground/60 hover:bg-header-foreground/10'
+              ? 'bg-accent/10 border-accent/30 text-accent font-bold ring-1 ring-accent/20'
+              : 'bg-header-foreground/5 border-transparent text-header-foreground/60 hover:bg-header-foreground/10'
               }`}
           >
             <span className="text-xl leading-none">{lang.flag}</span>
@@ -45,13 +45,19 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          className="flex items-center gap-2 transition-all duration-200 px-3 py-2 rounded-full bg-header-foreground/10 hover:bg-header-foreground/20 text-header-foreground border border-header-foreground/20 hover:border-header-foreground/40"
+          className={
+            variant === 'mobile-header'
+              ? "flex items-center justify-center p-2 text-header-foreground relative z-10"
+              : "flex items-center gap-2 transition-all duration-200 px-3 py-2 rounded-full bg-header-foreground/10 hover:bg-header-foreground/20 text-header-foreground border border-header-foreground/20 hover:border-header-foreground/40"
+          }
         >
-          <Globe className="w-4 h-4" />
-          <span className="text-sm font-medium">{currentLang?.flag} {currentLang?.name}</span>
+          <Globe className={variant === 'mobile-header' ? "w-6 h-6" : "w-4 h-4"} />
+          {variant !== 'mobile-header' && (
+            <span className="text-sm font-medium">{currentLang?.flag} {currentLang?.name}</span>
+          )}
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[160px]">
+      <DropdownMenuContent align={variant === 'mobile-header' ? "start" : "end"} className="min-w-[160px] z-[60]">
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
