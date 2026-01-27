@@ -33,19 +33,19 @@ const Header = () => {
   return (
     <header className="bg-header sticky top-0 z-50 shadow-lg" dir={dir}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="relative flex items-center justify-between h-20">
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-header-foreground p-2"
+            className="lg:hidden text-header-foreground p-2 relative z-10"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
           {/* Logo */}
-          <Link to="/" className="flex flex-col items-center text-header-foreground">
-            <span className="text-3xl font-bold tracking-wide">Elite Design</span>
-            <span className="text-sm font-light">kitchens & more</span>
+          <Link to="/" className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex flex-col items-center text-header-foreground z-0">
+            <span className="text-xl lg:text-3xl font-bold tracking-wide whitespace-nowrap">Elite Design</span>
+            <span className="text-[10px] lg:text-sm font-light whitespace-nowrap">kitchens & more</span>
           </Link>
 
           {/* Desktop Navigation */}
