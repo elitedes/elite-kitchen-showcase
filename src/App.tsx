@@ -14,7 +14,6 @@ import Showroom from "./pages/Showroom";
 import Promotions from "./pages/Promotions";
 import Installation from "./pages/Installation";
 import Magazine from "./pages/Magazine";
-import Closets from "./pages/Closets";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,7 +36,6 @@ const App = () => (
             <Route path="/promotions" element={<Promotions />} />
             <Route path="/installation" element={<Installation />} />
             <Route path="/magazine" element={<Magazine />} />
-            <Route path="/closets" element={<Closets />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
