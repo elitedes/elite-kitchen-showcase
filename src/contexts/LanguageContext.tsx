@@ -417,7 +417,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const t = (key: string): string => {
-    return translations[language][key] || key;
+    const translation = translations[language][key];
+    return translation !== undefined ? translation : key;
   };
 
   return (
