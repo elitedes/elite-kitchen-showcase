@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage1 from '@/assets/hero-new-1.jpg';
 import heroImage2 from '@/assets/hero-new-2.jpg';
@@ -16,6 +17,7 @@ const heroSlides = [
 
 const HeroSection = () => {
   const { t, dir } = useLanguage();
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -112,6 +114,12 @@ const HeroSection = () => {
               <a href="#contact" className="btn-hero text-xl px-12 py-4">
                 {t('hero.cta.appointment')}
               </a>
+              <button
+                onClick={() => window.location.href = '/calculator'}
+                className="bg-accent text-accent-foreground text-xl px-12 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition-all"
+              >
+                {t('hero.cta.calculator')}
+              </button>
             </motion.div>
           </motion.div>
         </div>

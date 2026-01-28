@@ -28,6 +28,7 @@ const Header = () => {
     { key: 'nav.promotions', path: '/promotions' },
     { key: 'nav.installation', path: '/installation' },
     { key: 'nav.showroom', path: '/showroom' },
+    { key: 'nav.calculator', path: '/calculator' },
     { key: 'nav.contact', path: '/contact' },
   ];
 

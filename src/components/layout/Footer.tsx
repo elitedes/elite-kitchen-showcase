@@ -12,6 +12,7 @@ const Footer = () => {
     { key: 'nav.closets', path: '/closets' },
     { key: 'nav.kitchens', path: '/kitchens' },
     { key: 'nav.projects', path: '/projects' },
+    { key: 'nav.calculator', path: '/calculator' },
     { key: 'nav.contact', path: '/contact' },
   ];
 

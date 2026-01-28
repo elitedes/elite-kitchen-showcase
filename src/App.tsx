@@ -15,6 +15,7 @@ import Promotions from "./pages/Promotions";
 import Installation from "./pages/Installation";
 import Magazine from "./pages/Magazine";
 import Closets from "./pages/Closets";
+import Calculator from "./pages/Calculator";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/layout/ScrollToTop";
 
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/installation" element={<Installation />} />
             <Route path="/magazine" element={<Magazine />} />
             <Route path="/closets" element={<Closets />} />
+            <Route path="/calculator" element={<Calculator />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
