@@ -35,7 +35,7 @@ const Kitchens = () => {
               {t('nav.kitchens')}
             </h1>
             <p className="font-playfair italic text-xl text-header-foreground/80">
-              Design. Quality. Individuality.
+              Where Design Meets Quality
             </p>
           </motion.div>
         </div>

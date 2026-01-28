@@ -30,7 +30,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.title': 'Elite Design',
     'hero.subtitle': 'kitchens & more',
-    'hero.tagline': 'Design. Quality. Individuality.',
+    'hero.tagline': 'Where Design Meets Quality',
     'hero.promo': 'הנחה מיוחדת על כל המטבחים',
     'hero.discount': '20% הנחה',
     'hero.cta.appointment': 'לתיאום פגישה',
@@ -38,7 +38,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About Section
     'about.title': 'Elite Design: מטבחים מעוצבים ונגרות בהתאמה אישית',
-    'about.decorative': 'Design. Quality. Individuality.',
+    'about.decorative': 'Where Design Meets Quality',
     'about.description': 'חברת Elite Design היא עסק עם וותק של מעל 20 שנה בתחום הנגרות. לאורך השנים בנינו אלפי מטבחים ורהיטים עבור לקוחות בכל רחבי הארץ. הסוד שלנו פשוט: אנחנו אוהבים את העבודה שלנו. הניסיון שצברנו בשני עשורים מאפשר לנו לתת לכם פתרון לכל תקציב ולכל צורך. אנחנו לא מאמינים ב"שיטת הסרט הנע" – אצלנו כל לקוח מקבל יחס אישי, תכנון מדויק וליווי מלא עד שהרהיט מותקן בבית.',
     'about.benefits.title': '',
     'about.benefits.1.title': '20 שנות ניסיון',
@@ -148,7 +148,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.title': 'Elite Design',
     'hero.subtitle': 'kitchens & more',
-    'hero.tagline': 'Design. Quality. Individuality.',
+    'hero.tagline': 'Where Design Meets Quality',
     'hero.promo': 'Специальная скидка на все кухни',
     'hero.discount': 'Скидка 20%',
     'hero.cta.appointment': 'Записаться на встречу',
@@ -156,7 +156,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About Section
     'about.title': 'Elite Design: Дизайнерские кухни и столярные изделия по индивидуальному заказу',
-    'about.decorative': 'Design. Quality. Individuality.',
+    'about.decorative': 'Where Design Meets Quality',
     'about.description': 'Elite Design — это компания с более чем 20-летним опытом работы в сфере столярного дела. За эти годы мы построили тысячи кухонь и мебели для клиентов по всей стране. Наш секрет прост: мы любим свою работу. Опыт, накопленный нами за два десятилетия, позволяет нам предложить вам решение для любого бюджета и любых потребностей. Мы не верим в метод "конвейера" — у нас каждый клиент получает индивидуальный подход, точное планирование и полную поддержку до момента установки в доме.',
     'about.benefits.title': '',
     'about.benefits.1.title': '20 лет опыта',
@@ -266,7 +266,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.title': 'Elite Design',
     'hero.subtitle': 'kitchens & more',
-    'hero.tagline': 'Design. Quality. Individuality.',
+    'hero.tagline': 'Where Design Meets Quality',
     'hero.promo': 'Special discount on all kitchens',
     'hero.discount': '20% OFF',
     'hero.cta.appointment': 'Book an Appointment',
@@ -274,7 +274,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About Section
     'about.title': 'Elite Design: Designer Kitchens & Custom Cabinetry',
-    'about.decorative': 'Design. Quality. Individuality.',
+    'about.decorative': 'Where Design Meets Quality',
     'about.description': 'Elite Design is a company with over 20 years of experience in the carpentry field. Over the years, we have built thousands of kitchens and furniture for customers all over the country. Our secret is simple: we love our work. The experience we have gained over two decades allows us to provide you with a solution for every budget and every need. We do not believe in the "conveyor belt system" – with us, every customer receives personal attention, precise planning, and full support until the furniture is installed in the home.',
     'about.benefits.title': '',
     'about.benefits.1.title': '20 Years of Experience',
