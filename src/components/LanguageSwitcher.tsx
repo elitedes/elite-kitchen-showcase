@@ -34,6 +34,7 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
               : 'bg-header-foreground/5 border-transparent text-header-foreground/60 hover:bg-header-foreground/10'
               }`}
           >
+            <span className="text-xl leading-none">{lang.flag}</span>
             <span className="text-sm uppercase tracking-wide">{lang.name}</span>
           </button>
         ))}
@@ -65,7 +66,7 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
             className="flex items-center justify-between cursor-pointer py-2.5"
           >
             <span className="flex items-center gap-2 text-sm">
-              {variant !== 'mobile-header' && <span>{lang.flag}</span>}
+              <span>{lang.flag}</span>
               <span>{lang.name}</span>
             </span>
             {language === lang.code && <Check className="w-4 h-4 text-accent" />}
