@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
   const { dir } = useLanguage();
 
   return (
-    <div className="min-h-screen flex flex-col" dir={dir}>
+    <div className="min-h-screen flex flex-col overflow-hidden" dir={dir}>
       <Header />
       <main className="flex-grow">
         {children}
