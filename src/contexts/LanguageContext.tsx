@@ -39,8 +39,8 @@ const translations: Record<Language, Record<string, string>> = {
     // About Section
     'about.title': 'Elite Design: מטבחים מעוצבים ונגרות בהתאמה אישית',
     'about.decorative': 'Design. Quality. Individuality.',
-    'about.description': 'מי אנחנו? חברת Elite Design היא עסק עם וותק של מעל 20 שנה בתחום הנגרות. לאורך השנים בנינו אלפי מטבחים ורהיטים עבור לקוחות בכל רחבי הארץ. הסוד שלנו פשוט: אנחנו אוהבים את העבודה שלנו. הניסיון שצברנו בשני עשורים מאפשר לנו לתת לכם פתרון לכל תקציב ולכל צורך. אנחנו לא מאמינים ב"שיטת הסרט הנע" – אצלנו כל לקוח מקבל יחס אישי, תכנון מדויק וליווי מלא עד שהרהיט מותקן בבית.',
-    'about.benefits.title': 'למה כדאי לעבוד איתנו?',
+    'about.description': 'חברת Elite Design היא עסק עם וותק של מעל 20 שנה בתחום הנגרות. לאורך השנים בנינו אלפי מטבחים ורהיטים עבור לקוחות בכל רחבי הארץ. הסוד שלנו פשוט: אנחנו אוהבים את העבודה שלנו. הניסיון שצברנו בשני עשורים מאפשר לנו לתת לכם פתרון לכל תקציב ולכל צורך. אנחנו לא מאמינים ב"שיטת הסרט הנע" – אצלנו כל לקוח מקבל יחס אישי, תכנון מדויק וליווי מלא עד שהרהיט מותקן בבית.',
+    'about.benefits.title': '',
     'about.benefits.1.title': '20 שנות ניסיון',
     'about.benefits.1.desc': 'ראינו הכל, עשינו הכל – אין פרויקט שגדול עלינו.',
     'about.benefits.2.title': 'איכות ללא פשרות',
@@ -157,8 +157,8 @@ const translations: Record<Language, Record<string, string>> = {
     // About Section
     'about.title': 'Elite Design: Дизайнерские кухни и столярные изделия по индивидуальному заказу',
     'about.decorative': 'Design. Quality. Individuality.',
-    'about.description': 'Кто мы? Elite Design — это компания с более чем 20-летним опытом работы в сфере столярного дела. За эти годы мы построили тысячи кухонь и мебели для клиентов по всей стране. Наш секрет прост: мы любим свою работу. Опыт, накопленный нами за два десятилетия, позволяет нам предложить вам решение для любого бюджета и любых потребностей. Мы не верим в метод "конвейера" — у нас каждый клиент получает индивидуальный подход, точное планирование и полную поддержку до момента установки в доме.',
-    'about.benefits.title': 'Почему стоит работать с нами?',
+    'about.description': 'Elite Design — это компания с более чем 20-летним опытом работы в сфере столярного дела. За эти годы мы построили тысячи кухонь и мебели для клиентов по всей стране. Наш секрет прост: мы любим свою работу. Опыт, накопленный нами за два десятилетия, позволяет нам предложить вам решение для любого бюджета и любых потребностей. Мы не верим в метод "конвейера" — у нас каждый клиент получает индивидуальный подход, точное планирование и полную поддержку до момента установки в доме.',
+    'about.benefits.title': '',
     'about.benefits.1.title': '20 лет опыта',
     'about.benefits.1.desc': 'Мы видели всё, мы делали всё — нет проекта, который был бы для нас слишком велик.',
     'about.benefits.2.title': 'Бескомпромиссное качество',
@@ -275,8 +275,8 @@ const translations: Record<Language, Record<string, string>> = {
     // About Section
     'about.title': 'Elite Design: Designer Kitchens & Custom Cabinetry',
     'about.decorative': 'Design. Quality. Individuality.',
-    'about.description': 'Who are we? Elite Design is a company with over 20 years of experience in the carpentry field. Over the years, we have built thousands of kitchens and furniture for customers all over the country. Our secret is simple: we love our work. The experience we have gained over two decades allows us to provide you with a solution for every budget and every need. We do not believe in the "conveyor belt system" – with us, every customer receives personal attention, precise planning, and full support until the furniture is installed in the home.',
-    'about.benefits.title': 'Why should you work with us?',
+    'about.description': 'Elite Design is a company with over 20 years of experience in the carpentry field. Over the years, we have built thousands of kitchens and furniture for customers all over the country. Our secret is simple: we love our work. The experience we have gained over two decades allows us to provide you with a solution for every budget and every need. We do not believe in the "conveyor belt system" – with us, every customer receives personal attention, precise planning, and full support until the furniture is installed in the home.',
+    'about.benefits.title': '',
     'about.benefits.1.title': '20 Years of Experience',
     'about.benefits.1.desc': 'We have seen it all, we have done it all – no project is too big for us.',
     'about.benefits.2.title': 'Uncompromising Quality',

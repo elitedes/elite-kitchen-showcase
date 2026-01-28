@@ -56,10 +56,12 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:w-1/2 bg-secondary/20 p-8 lg:p-12 rounded-3xl border border-primary/10 shadow-sm"
           >
-            <h3 className="text-2xl font-bold mb-8 text-charcoal flex items-center gap-3">
-              <span className="w-8 h-1 bg-primary rounded-full"></span>
-              {t('about.benefits.title')}
-            </h3>
+            {t('about.benefits.title') && (
+              <h3 className="text-2xl font-bold mb-8 text-charcoal flex items-center gap-3">
+                <span className="w-8 h-1 bg-primary rounded-full"></span>
+                {t('about.benefits.title')}
+              </h3>
+            )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {benefits.map((benefit, index) => (
