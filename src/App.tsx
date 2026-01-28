@@ -10,7 +10,6 @@ import Kitchens from "./pages/Kitchens";
 import KitchenCategory from "./pages/KitchenCategory";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import Showroom from "./pages/Showroom";
 import Promotions from "./pages/Promotions";
 import Installation from "./pages/Installation";
 import Magazine from "./pages/Magazine";
@@ -36,7 +35,6 @@ const App = () => (
             <Route path="/kitchens/:category" element={<KitchenCategory />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/showroom" element={<Showroom />} />
             <Route path="/promotions" element={<Promotions />} />
             <Route path="/installation" element={<Installation />} />
             <Route path="/magazine" element={<Magazine />} />
