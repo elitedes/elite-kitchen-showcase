@@ -5,7 +5,7 @@ import { Check, X, Shield, Star, Camera, Settings, Layout as LayoutIcon, Home, B
 import ContactSection from '@/components/home/ContactSection';
 
 // Import local assets
-import heroImage from '@/assets/closets/sliding-bedroom.jpg';
+const heroImage = "https://images.unsplash.com/photo-1546484396-fb3bb6f95d98?auto=format&fit=crop&q=80&w=2000";
 import slidingClosetImg from '@/assets/closets/sliding-mirror.jpg';
 import hingedClosetImg from '@/assets/closets/hinged-open.jpg';
 import hallwayImg from '@/assets/closets/walk-in.jpg';
