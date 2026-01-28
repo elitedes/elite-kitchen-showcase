@@ -11,6 +11,8 @@ interface LanguageContextType {
 
 const translations: Record<Language, Record<string, string>> = {
   he: {
+    'seo.title': 'Elite Design | מטבחים, ארונות ונגרות בהתאמה אישית - 20 שנות ניסיון',
+    'seo.description': 'נגריית Elite Design מתמחה בייצור מטבחים ורהיטים מעל 20 שנה. ארונות, חדרי רחצה ופתרונות נגרות לכל הבית במחירים נוחים ובאיכות מעולה. פנו לייעוץ!',
     // Navigation
     'nav.home': 'עמוד הבית',
     'nav.about': 'אודות',
@@ -175,6 +177,8 @@ const translations: Record<Language, Record<string, string>> = {
     'page.notfound.back': 'חזרה לדף הבית',
   },
   ru: {
+    'seo.title': 'Elite Design | Кухни, шкафы и столярные изделия на заказ - 20 лет опыта',
+    'seo.description': 'Столярная мастерская Elite Design специализируется на производстве кухонь и мебели более 20 лет. Шкафы, ванные комнаты и столярные решения для всего дома по доступным ценам и в отличном качестве. Обращайтесь за консультацией!',
     // Navigation
     'nav.home': 'Главная',
     'nav.about': 'О нас',
@@ -339,6 +343,8 @@ const translations: Record<Language, Record<string, string>> = {
     'page.notfound.back': 'Вернуться на главную',
   },
   en: {
+    'seo.title': 'Elite Design | Custom Kitchens, Closets & Woodworking - 20 Years Experience',
+    'seo.description': 'Elite Design Carpentry specializes in manufacturing kitchens and furniture for over 20 years. Closets, bathrooms, and woodworking solutions for the whole home at affordable prices and excellent quality. Contact us for a consultation!',
     // Navigation
     'nav.home': 'Home',
     'nav.about': 'About',

@@ -2,6 +2,7 @@ import { ReactNode, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import FloatingCTA from './FloatingCTA';
+import ScrollTopButton from './ScrollTopButton';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface LayoutProps {
@@ -42,6 +43,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <FloatingCTA />
+      <ScrollTopButton />
       <Footer />
     </div>
   );
