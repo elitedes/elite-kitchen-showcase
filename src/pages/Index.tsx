@@ -4,8 +4,8 @@ import AboutSection from '@/components/home/AboutSection';
 import BenefitsSection from '@/components/home/BenefitsSection';
 import KitchenCategoriesSection from '@/components/home/KitchenCategoriesSection';
 import WhyUsSection from '@/components/home/WhyUsSection';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
 import ContactSection from '@/components/home/ContactSection';
-import GoogleReviewsSection from '@/components/home/GoogleReviewsSection'; // New import
 
 const Index = () => {
   return (
@@ -15,7 +15,7 @@ const Index = () => {
       <KitchenCategoriesSection />
       <BenefitsSection />
       <WhyUsSection />
-      <GoogleReviewsSection /> {/* New component */}
+      <TestimonialsSection />
       <ContactSection />
     </Layout>
   );
