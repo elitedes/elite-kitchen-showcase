@@ -155,13 +155,13 @@ const translations: Record<Language, Record<string, string>> = {
     'closets.care.desc': 'לעבודה תקינה של ארונות הזזה, מומלץ לנקות את המסילות מאבק מדי פעם. בארונות ציר חשוב לעקוב אחר מצב הצירים ולכוון אותם בעת הצורך. בטיפול נכון, שתי האפשרויות שומרות על פונקציונליות ומראה לאורך שנים רבות.',
     'closets.rooms.title': 'איך לבחור ארון לחדרים שונים',
     'closets.rooms.hallway.title': 'ארון למסדרון',
-    'closets.rooms.hallway.desc': 'למסדרונות או כניסות קטנות, ארון הזזה הוא הפתרון האופטימלי החוסך מקום. בחללים רחבים יותר ניתן להתקין ארון ציר או ארון מובנה.',
+    'closets.rooms.hallway.desc': 'פתרונות חכמים לכניסה מרשימה וניצול שטח המסדרון.',
     'closets.rooms.bedroom.title': 'ארון לחדר שינה',
-    'closets.rooms.bedroom.desc': 'בחדרי שינה עם שטח מספיק, לרוב בוחרים בארונות ציר בזכות העומק שלהם. לחדרים קומפקטיים יתאימו ארונות הזזה בשילוב מערכות אחסון משלימות.',
+    'closets.rooms.bedroom.desc': 'ארונות מעוצבים ושקטים לאווירה רגועה ואחסון מקסימלי.',
     'closets.rooms.kids.title': 'ארון לחדר ילדים',
-    'closets.rooms.kids.desc': 'ארונות ציר נוחים לילדים בזכות פתיחה פשוטה ומבט מלא על תכולת הארון.',
+    'closets.rooms.kids.desc': 'עיצוב בטיחותי וצבעוני המותאם לצרכי הילדים.',
     'closets.rooms.living.title': 'ארון לסלון',
-    'closets.rooms.living.desc': 'ליצירת מערכות אחסון "בלתי נראות", משתמשים בארונות ציר ללא ידיות עם חזיתות בצבע הקירות. ניתן לשלב גם פתרונות עם ארונות הזזה.',
+    'closets.rooms.living.desc': 'מערכות אחסון דקורטיביות המשתלבות בעיצוב הסלון.',
     'closets.custom.title': 'ייצור ארונות בהתאמה אישית',
     'closets.custom.desc': 'אנו מתכננים ומייצרים:',
     'closets.custom.list.1': 'ארונות הזזה בהתאמה אישית',
@@ -354,13 +354,13 @@ const translations: Record<Language, Record<string, string>> = {
     'closets.care.desc': 'Для корректной работы шкафов-купе рекомендуется периодически очищать направляющие от пыли. В распашных шкафах важно следить за состоянием петель и при необходимости регулировать их. При правильном уходе оба варианта сохраняют функциональность и внешний вид на протяжении многих лет.',
     'closets.rooms.title': 'Как выбрать шкаф для разных помещений',
     'closets.rooms.hallway.title': 'Шкаф в прихожую',
-    'closets.rooms.hallway.desc': 'Для небольших прихожих оптимальным решением станет шкаф-купе, который позволяет экономить пространство. В просторных помещениях можно установить распашной или встроенный шкаф.',
+    'closets.rooms.hallway.desc': 'Умные решения для прихожей и эффективного использования коридора.',
     'closets.rooms.bedroom.title': 'Шкаф в спальню',
-    'closets.rooms.bedroom.desc': 'В спальнях с достаточной площадью часто выбирают распашные шкафы за счёт их глубины. Для компактных комнат подойдут шкафы-купе, дополненные альтернативными системами хранения.',
+    'closets.rooms.bedroom.desc': 'Стильные и бесшумные шкафы для максимального комфорта в спальне.',
     'closets.rooms.kids.title': 'Шкаф в детскую',
-    'closets.rooms.kids.desc': 'Распашные шкафы удобны для детей благодаря простому открыванию и полному обзору содержимого.',
+    'closets.rooms.kids.desc': 'Безопасный и яркий дизайн, адаптированный для нужд детей.',
     'closets.rooms.living.title': 'Шкаф в гостиную',
-    'closets.rooms.living.desc': 'Для создания визуально «незаметных» систем хранения используются распашные шкафы без ручек с фасадами в цвет стен. Возможны и трансформируемые решения со шкафами-купе.',
+    'closets.rooms.living.desc': 'Декоративные системы хранения, идеально дополняющие интерьер гостиной.',
     'closets.custom.title': 'Изготовление шкафов на заказ',
     'closets.custom.desc': 'Мы разрабатываем и изготавливаем:',
     'closets.custom.list.1': 'шкафы-купе на заказ',
@@ -553,13 +553,13 @@ const translations: Record<Language, Record<string, string>> = {
     'closets.care.desc': 'For correct operation of sliding wardrobes, it is recommended to periodically clean the tracks from dust. In hinged wardrobes, it is important to monitor the state of the hinges and adjust them if necessary. With proper care, both options maintain functionality and appearance for many years.',
     'closets.rooms.title': 'How to Choose a Closet for Different Rooms',
     'closets.rooms.hallway.title': 'Hallway Closet',
-    'closets.rooms.hallway.desc': 'For small hallways, a sliding wardrobe is the optimal solution, saving space. In spacious rooms, a hinged or built-in closet can be installed.',
+    'closets.rooms.hallway.desc': 'Smart storage solutions for a welcoming and efficient entryway.',
     'closets.rooms.bedroom.title': 'Bedroom Closet',
-    'closets.rooms.bedroom.desc': 'In bedrooms with sufficient area, hinged wardrobes are often chosen due to their depth. For compact rooms, sliding wardrobes supplemented with alternative storage systems are suitable.',
+    'closets.rooms.bedroom.desc': 'Elegant, quiet wardrobes for maximum comfort and storage.',
     'closets.rooms.kids.title': 'Kids Room Closet',
-    'closets.rooms.kids.desc': 'Hinged wardrobes are convenient for children due to easy opening and a full view of the contents.',
+    'closets.rooms.kids.desc': 'Safe and colorful designs tailored specifically for children.',
     'closets.rooms.living.title': 'Living Room Closet',
-    'closets.rooms.living.desc': 'To create visually "invisible" storage systems, handleless hinged wardrobes with facades matching the wall color are used. Transformable solutions with sliding wardrobes are also possible.',
+    'closets.rooms.living.desc': 'Decorative storage systems that blend seamlessly with your living room.',
     'closets.custom.title': 'Custom Closet Production',
     'closets.custom.desc': 'We develop and manufacture:',
     'closets.custom.list.1': 'custom sliding wardrobes',
@@ -615,7 +615,7 @@ const SUPPORTED_LANGUAGES: Language[] = ['he', 'ru', 'en'];
 const getInitialLanguage = (): Language => {
   if (typeof window === 'undefined') return FALLBACK_LANGUAGE;
 
-  // 1. Check localStorage
+  // Check localStorage for user's manual language choice
   try {
     const saved = localStorage.getItem('language') as Language;
     if (saved && SUPPORTED_LANGUAGES.includes(saved)) {
@@ -625,16 +625,7 @@ const getInitialLanguage = (): Language => {
     console.error('Error reading from localStorage', e);
   }
 
-  // 2. Check browser language
-  try {
-    const browserLang = navigator.language.split('-')[0] as Language;
-    if (SUPPORTED_LANGUAGES.includes(browserLang)) {
-      return browserLang;
-    }
-  } catch (e) {
-    console.error('Error detecting browser language', e);
-  }
-
+  // Default to Hebrew
   return FALLBACK_LANGUAGE;
 };
 

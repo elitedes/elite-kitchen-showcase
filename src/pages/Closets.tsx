@@ -5,13 +5,14 @@ import { Check, X, Shield, Star, Camera, Settings, Layout as LayoutIcon, Home, B
 import ContactSection from '@/components/home/ContactSection';
 
 // Import local assets
+// Import local assets
 const heroImage = "https://images.unsplash.com/photo-1516053350711-28562725f101?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-import slidingClosetImg from '@/assets/closets/sliding-mirror.jpg';
-import hingedClosetImg from '@/assets/closets/hinged-open.jpg';
-import hallwayImg from '@/assets/closets/walk-in.jpg';
-import bedroomImg from '@/assets/closets/hinged-minimal.jpg';
-import kidsImg from '@/assets/closets/sliding-mirror.jpg'; // Reusing for variety
-import livingImg from '@/assets/closets/hinged-minimal.jpg'; // Reusing for variety
+import slidingClosetImg from '@/assets/closets/sliding-new.png';
+import hingedClosetImg from '@/assets/closets/hinged-new.png';
+import hallwayImg from '@/assets/closets/hallway-small.png';
+import bedroomImg from '@/assets/closets/bedroom-new.png';
+import kidsImg from '@/assets/closets/kids-new.png';
+import livingImg from '@/assets/closets/living-tv-mirror.png';
 
 const Closets = () => {
     const { t, dir } = useLanguage();
@@ -220,7 +221,7 @@ const Closets = () => {
                                             </div>
                                             <h3 className="text-xl font-bold text-charcoal">{t(`closets.rooms.${room.key}.title`)}</h3>
                                         </div>
-                                        <p className="text-muted-foreground text-sm line-clamp-3">
+                                        <p className="text-muted-foreground text-xs font-medium italic">
                                             {t(`closets.rooms.${room.key}.desc`)}
                                         </p>
                                     </div>
