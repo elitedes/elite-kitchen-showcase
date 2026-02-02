@@ -5,9 +5,7 @@ import { Check, X, Shield, Star, Camera, Settings, Layout as LayoutIcon, Home, B
 import ContactSection from '@/components/home/ContactSection';
 
 // Import local assets
-const heroImage = "https://images.unsplash.com/photo-1546484396-fb3bb6f95d98?auto=format&fit=crop&q=80&w=2000";
-const woodSliceImage = "https://images.unsplash.com/photo-1542202613-2d6812822a16?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-import slidingClosetImg from '@/assets/closets/sliding-mirror.jpg';
+const heroImage = "https://images.unsplash.com/photo-1516053350711-28562725f101?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 import hingedClosetImg from '@/assets/closets/hinged-open.jpg';
 import hallwayImg from '@/assets/closets/walk-in.jpg';
 import bedroomImg from '@/assets/closets/hinged-minimal.jpg';
@@ -32,10 +30,6 @@ const Closets = () => {
                     className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105"
                     style={{ backgroundImage: `url(${heroImage})` }}
                 >
-                    <div
-                        className="absolute inset-0 z-0 bg-cover bg-center opacity-30"
-                        style={{ backgroundImage: `url(${woodSliceImage})`, backgroundBlendMode: 'multiply' }}
-                    />
                     <div className="absolute inset-0 bg-black/40" />
                 </div>
 
@@ -43,18 +37,10 @@ const Closets = () => {
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight drop-shadow-xl"
+                        className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg"
                     >
                         {t('page.closets.title')}
                     </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg"
-                    >
-                        {t('page.closets.hero.desc')}
-                    </motion.p>
                 </div>
             </section>
 
