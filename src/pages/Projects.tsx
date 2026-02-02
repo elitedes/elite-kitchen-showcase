@@ -174,6 +174,8 @@ const Projects = () => {
                   src={project.image}
                   alt={`Project ${project.id}`}
                   className="kitchen-card-image transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="kitchen-card-overlay" />
                 <div className="kitchen-card-title">

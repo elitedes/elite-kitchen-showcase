@@ -61,6 +61,8 @@ const Kitchens = () => {
                     src={category.image}
                     alt={t(`kitchens.${category.key}`)}
                     className="kitchen-card-image"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="kitchen-card-overlay" />
                   <div className="kitchen-card-title">

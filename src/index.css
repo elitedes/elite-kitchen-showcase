@@ -123,7 +123,12 @@
     text-align: left;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heebo font-bold;
   }
 }
@@ -138,20 +143,15 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground px-8 py-3 font-semibold 
-           transition-all duration-300 hover:opacity-90 hover:scale-105;
+    @apply bg-primary text-primary-foreground px-8 py-3 font-semibold transition-all duration-300 hover:opacity-90 hover:scale-105;
   }
 
   .btn-hero {
-    @apply bg-primary text-primary-foreground px-10 py-4 text-lg font-bold rounded-full
-           transition-all duration-300 hover:bg-accent hover:scale-105
-           border-2 border-primary hover:border-accent;
+    @apply bg-primary text-primary-foreground px-10 py-4 text-lg font-bold rounded-full transition-all duration-300 hover:bg-accent hover:scale-105 border-2 border-primary hover:border-accent;
   }
 
   .btn-outline-hero {
-    @apply bg-transparent border-2 border-primary-foreground text-primary-foreground
-           px-10 py-4 text-lg font-bold transition-all duration-300
-           hover:bg-primary-foreground hover:text-primary;
+    @apply bg-transparent border-2 border-primary-foreground text-primary-foreground px-10 py-4 text-lg font-bold transition-all duration-300 hover:bg-primary-foreground hover:text-primary;
   }
 
   .kitchen-card {
@@ -159,8 +159,7 @@
   }
 
   .kitchen-card-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent
-           opacity-60 transition-opacity duration-500;
+    @apply absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent opacity-60 transition-opacity duration-500;
   }
 
   .kitchen-card:hover .kitchen-card-overlay {
@@ -184,16 +183,11 @@
   }
 
   .floating-cta-btn {
-    @apply flex flex-col items-center gap-1 bg-primary text-primary-foreground
-           p-3 rounded-lg shadow-lg hover:bg-accent transition-all duration-300
-           text-xs font-medium;
+    @apply flex flex-col items-center gap-1 bg-primary text-primary-foreground p-3 rounded-lg shadow-lg hover:bg-accent transition-all duration-300 text-xs font-medium;
   }
 
   .nav-link {
-    @apply relative text-header-foreground font-medium px-3 py-2 transition-colors
-           hover:text-accent after:absolute after:bottom-0 after:start-0 
-           after:w-0 after:h-0.5 after:bg-accent after:transition-all
-           hover:after:w-full;
+    @apply relative text-header-foreground font-medium px-3 py-2 transition-colors hover:text-accent after:absolute after:bottom-0 after:start-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all hover:after:w-full;
   }
 
   .decorative-text {
@@ -247,6 +241,7 @@
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -257,6 +252,7 @@
       opacity: 0;
       transform: translateY(30px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -268,6 +264,7 @@
       opacity: 0;
       transform: scale(0.95);
     }
+
     to {
       opacity: 1;
       transform: scale(1);

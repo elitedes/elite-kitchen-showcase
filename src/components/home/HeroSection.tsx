@@ -49,8 +49,11 @@ const HeroSection = () => {
         >
           <img
             src={heroSlides[currentSlide].image}
-            alt="Elite Design Kitchen"
+            alt={`Elite Design - מטבח מעוצב ${currentSlide + 1}`}
             className="w-full h-full object-cover"
+            loading={currentSlide === 0 ? "eager" : "lazy"}
+            fetchPriority={currentSlide === 0 ? "high" : "auto"}
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/30 to-transparent" />
         </motion.div>
