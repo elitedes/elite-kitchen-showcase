@@ -6,6 +6,7 @@ import ContactSection from '@/components/home/ContactSection';
 
 // Import local assets
 const heroImage = "https://images.unsplash.com/photo-1516053350711-28562725f101?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+import slidingClosetImg from '@/assets/closets/sliding-mirror.jpg';
 import hingedClosetImg from '@/assets/closets/hinged-open.jpg';
 import hallwayImg from '@/assets/closets/walk-in.jpg';
 import bedroomImg from '@/assets/closets/hinged-minimal.jpg';
@@ -24,23 +25,21 @@ const Closets = () => {
 
     return (
         <Layout>
-            {/* Hero Section */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105"
-                    style={{ backgroundImage: `url(${heroImage})` }}
-                >
-                    <div className="absolute inset-0 bg-black/40" />
-                </div>
-
-                <div className="container mx-auto px-4 relative z-10 text-center">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
+            {/* Hero Banner */}
+            <section className="bg-header py-20">
+                <div className="container mx-auto px-4 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg"
+                        transition={{ duration: 0.6 }}
                     >
-                        {t('page.closets.title')}
-                    </motion.h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-header-foreground mb-4">
+                            {t('page.closets.title')}
+                        </h1>
+                        <p className="font-playfair italic text-header-foreground/80 text-xl md:text-2xl">
+                            {t('page.closets.decorative')}
+                        </p>
+                    </motion.div>
                 </div>
             </section>
 

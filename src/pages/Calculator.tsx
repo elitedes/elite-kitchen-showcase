@@ -13,9 +13,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
+import safeCheck from '@/assets/calc-concept.png';
 
 const Calculator = () => {
-    const { t, dir } = useLanguage();
+    const { t, dir, language } = useLanguage();
     const [formData, setFormData] = useState({
         kitchenType: '',
         frontType: '',
@@ -29,16 +30,101 @@ const Calculator = () => {
     });
 
     const [submitted, setSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!formData.name || !formData.phone) {
             toast.error(t('contact.error'));
             return;
         }
-        console.log('Calculator Submission:', formData);
-        setSubmitted(true);
-        toast.success(t('calc.success'));
+
+        setIsSubmitting(true);
+
+        const botToken = '7840966634:AAGb94rcHU7WxW9BWBRIwtbh7b48GvYbSgU';
+        const chatId = '1492940504';
+
+        const textHe = `
+🧮 *חישוב עלות מטבח חדש!*
+
+👤 *שם:* ${formData.name}
+📱 *טלפון:* ${formData.phone}
+
+🏗️ *פרטי המטבח:*
+• *סוג:* ${t(`calc.type.${formData.kitchenType}`)}
+• *חזית:* ${t(`calc.front.${formData.frontType}`)}
+• *שיש:* ${t(`calc.counter.${formData.countertopType}`)}
+• *פרזול:* ${t(`calc.hardware.${formData.hardwareType}`)}
+
+📏 *מידות:*
+• ${t('calc.dimensions.len1')}: ${formData.dim1} ס"מ
+• ${t('calc.dimensions.len2')}: ${formData.dim2} ס"מ
+${formData.dim3 ? `• ${t('calc.dimensions.len3')}: ${formData.dim3} ס"מ` : ''}
+        `;
+
+        const textRu = `
+🧮 *Новый расчет кухни!*
+
+👤 *Имя:* ${formData.name}
+📱 *Телефон:* ${formData.phone}
+
+🏗️ *Детали кухни:*
+• *Тип:* ${t(`calc.type.${formData.kitchenType}`)}
+• *Фасад:* ${t(`calc.front.${formData.frontType}`)}
+• *Столешница:* ${t(`calc.counter.${formData.countertopType}`)}
+• *Фурнитура:* ${t(`calc.hardware.${formData.hardwareType}`)}
+
+📏 *Размеры:*
+• ${t('calc.dimensions.len1')}: ${formData.dim1} см
+• ${t('calc.dimensions.len2')}: ${formData.dim2} см
+${formData.dim3 ? `• ${t('calc.dimensions.len3')}: ${formData.dim3} см` : ''}
+        `;
+
+        const textEn = `
+🧮 *New Kitchen Calculation!*
+
+👤 *Name:* ${formData.name}
+📱 *Phone:* ${formData.phone}
+
+🏗️ *Kitchen Details:*
+• *Type:* ${t(`calc.type.${formData.kitchenType}`)}
+• *Front:* ${t(`calc.front.${formData.frontType}`)}
+• *Countertop:* ${t(`calc.counter.${formData.countertopType}`)}
+• *Hardware:* ${t(`calc.hardware.${formData.hardwareType}`)}
+
+📏 *Dimensions:*
+• ${t('calc.dimensions.len1')}: ${formData.dim1} cm
+• ${t('calc.dimensions.len2')}: ${formData.dim2} cm
+${formData.dim3 ? `• ${t('calc.dimensions.len3')}: ${formData.dim3} cm` : ''}
+        `;
+
+        const text = language === 'he' ? textHe : language === 'ru' ? textRu : textEn;
+
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: text,
+                    parse_mode: 'Markdown',
+                }),
+            });
+
+            if (response.ok) {
+                setSubmitted(true);
+                toast.success(t('calc.success'));
+            } else {
+                toast.error(t('contact.error'));
+            }
+        } catch (error) {
+            console.error('Error sending to Telegram:', error);
+            toast.error(t('contact.error'));
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const hardwareOptions = [
@@ -100,8 +186,8 @@ const Calculator = () => {
                                     {/* Select: Kitchen Type */}
                                     <div className="space-y-3">
                                         <Label className="text-charcoal font-bold text-lg">{t('calc.type.label')}</Label>
-                                        <Select onValueChange={(val) => setFormData({ ...formData, kitchenType: val })}>
-                                            <SelectTrigger className="h-14 rounded-xl border-border bg-gray-50/50">
+                                        <Select onValueChange={(val) => setFormData({ ...formData, kitchenType: val })} dir={dir}>
+                                            <SelectTrigger className="h-14 rounded-xl border-border bg-gray-50/50 text-start">
                                                 <SelectValue placeholder={t('calc.type.straight')} />
                                             </SelectTrigger>
                                             <SelectContent>
@@ -116,8 +202,8 @@ const Calculator = () => {
                                     {/* Select: Front Material */}
                                     <div className="space-y-3">
                                         <Label className="text-charcoal font-bold text-lg">{t('calc.front.label')}</Label>
-                                        <Select onValueChange={(val) => setFormData({ ...formData, frontType: val })}>
-                                            <SelectTrigger className="h-14 rounded-xl border-border bg-gray-50/50">
+                                        <Select onValueChange={(val) => setFormData({ ...formData, frontType: val })} dir={dir}>
+                                            <SelectTrigger className="h-14 rounded-xl border-border bg-gray-50/50 text-start">
                                                 <SelectValue placeholder={t('calc.front.formica')} />
                                             </SelectTrigger>
                                             <SelectContent>
@@ -133,8 +219,8 @@ const Calculator = () => {
                                     {/* Select: Countertop */}
                                     <div className="space-y-3">
                                         <Label className="text-charcoal font-bold text-lg">{t('calc.counter.label')}</Label>
-                                        <Select onValueChange={(val) => setFormData({ ...formData, countertopType: val })}>
-                                            <SelectTrigger className="h-14 rounded-xl border-border bg-gray-50/50">
+                                        <Select onValueChange={(val) => setFormData({ ...formData, countertopType: val })} dir={dir}>
+                                            <SelectTrigger className="h-14 rounded-xl border-border bg-gray-50/50 text-start">
                                                 <SelectValue placeholder={t('calc.counter.caes20')} />
                                             </SelectTrigger>
                                             <SelectContent>
@@ -156,8 +242,8 @@ const Calculator = () => {
                                                     type="button"
                                                     onClick={() => setFormData({ ...formData, hardwareType: opt.id })}
                                                     className={`flex-1 min-w-[100px] py-3 px-4 rounded-full font-bold transition-all border-2 ${formData.hardwareType === opt.id
-                                                            ? 'bg-accent text-accent-foreground border-accent shadow-lg scale-105'
-                                                            : 'bg-gray-50 text-muted-foreground border-transparent hover:border-accent/30'
+                                                        ? 'bg-accent text-accent-foreground border-accent shadow-lg scale-105'
+                                                        : 'bg-gray-50 text-muted-foreground border-transparent hover:border-accent/30'
                                                         }`}
                                                 >
                                                     {t(opt.key)}
@@ -198,22 +284,22 @@ const Calculator = () => {
                                     {/* Contact Info Section */}
                                     <div className="pt-6 border-t border-dashed border-border/60 grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
-                                            <Label className="font-bold">{t('calc.name')}</Label>
+                                            <Label className="font-bold flex items-center gap-1">{t('calc.name')}</Label>
                                             <Input
                                                 required
                                                 placeholder={t('calc.name')}
-                                                className="h-12 rounded-xl"
+                                                className={`h-12 rounded-xl ${dir === 'rtl' ? 'text-right' : 'text-left'}`}
                                                 value={formData.name}
                                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <Label className="font-bold">{t('calc.phone')}</Label>
+                                            <Label className="font-bold flex items-center gap-1">{t('calc.phone')}</Label>
                                             <Input
                                                 required
                                                 type="tel"
                                                 placeholder={t('calc.phone')}
-                                                className="h-12 rounded-xl"
+                                                className={`h-12 rounded-xl ${dir === 'rtl' ? 'text-right' : 'text-left'}`}
                                                 value={formData.phone}
                                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                             />
@@ -222,9 +308,17 @@ const Calculator = () => {
 
                                     <Button
                                         type="submit"
-                                        className="w-full h-16 text-xl font-bold rounded-2xl bg-gradient-to-r from-accent to-[#f1c40f] hover:from-[#f1c40f] hover:to-accent text-accent-foreground shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+                                        disabled={isSubmitting}
+                                        className="w-full h-16 text-xl font-bold rounded-2xl bg-gradient-to-r from-accent to-[#f1c40f] hover:from-[#f1c40f] hover:to-accent text-accent-foreground shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
                                     >
-                                        {t('calc.submit')}
+                                        {isSubmitting ? (
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-5 h-5 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
+                                                <span>...</span>
+                                            </div>
+                                        ) : (
+                                            t('calc.submit')
+                                        )}
                                     </Button>
                                 </form>
                             </motion.div>
@@ -237,6 +331,10 @@ const Calculator = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="space-y-8"
                             >
+                                <div className="rounded-3xl overflow-hidden shadow-2xl mb-8 border-4 border-white/50">
+                                    <img src={safeCheck} alt="Kitchen Planning Concept" className="w-full h-auto" />
+                                </div>
+
                                 <div className="inline-block p-1 bg-accent/20 rounded-full mb-4">
                                     <div className="bg-accent h-2 w-16 rounded-full" />
                                 </div>
