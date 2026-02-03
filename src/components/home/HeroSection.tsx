@@ -11,12 +11,12 @@ const HeroSection = () => {
       {/* Video Background Layer */}
       <div className="absolute inset-0 z-0">
         <video
-          autoPlay
+          autoPlay={typeof navigator !== 'undefined' && 'connection' in navigator && (navigator as any).connection?.saveData ? false : true}
           muted
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/logo.png"
+          poster="/hero-poster.jpg"
         >
           <source src="/elite_design_kitchens.webm" type="video/webm" />
           Your browser does not support the video tag.
