@@ -207,7 +207,8 @@ const translations: Record<Language, Record<string, string>> = {
     'calc.submit': 'קבל הצעת מחיר',
     'calc.success': 'הנתונים הוכנסו בהצלחה! ניצור איתך קשר בהקדם עם הצעת מחיר מדויקת.',
     'nav.calculator': 'חישוב עלות',
-    'page.notfound.back': 'חזרה לדף הבית',
+    'page.notfound.back': 'חזרה للدף הבית',
+    'whatsapp.tooltip': 'חישוב עלות ב-WhatsApp',
   },
   ru: {
     'seo.title': 'Elite Design | Кухни, шкафы и столярные изделия на заказ - 20 лет опыта',
@@ -407,6 +408,7 @@ const translations: Record<Language, Record<string, string>> = {
     'calc.success': 'Данные успешно отправлены! Мы свяжемся с вами в ближайшее время с точным расчетом.',
     'nav.calculator': 'Калькулятор',
     'page.notfound.back': 'Вернуться на главную',
+    'whatsapp.tooltip': 'Рассчитать стоимость в WhatsApp',
   },
   en: {
     'seo.title': 'Elite Design | Custom Kitchens, Closets & Woodworking - 20 Years Experience',
@@ -606,6 +608,7 @@ const translations: Record<Language, Record<string, string>> = {
     'calc.success': 'Data submitted successfully! We will contact you shortly with an accurate quote.',
     'nav.calculator': 'Cost Calculator',
     'page.notfound.back': 'Return Home',
+    'whatsapp.tooltip': 'Calculate cost in WhatsApp',
   },
 };
 

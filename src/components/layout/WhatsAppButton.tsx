@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { MessageCircle, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const WhatsAppButton = () => {
+    const { t } = useLanguage();
     const [isVisible, setIsVisible] = useState(false);
     const [showTooltip, setShowTooltip] = useState(true);
 
@@ -43,7 +45,7 @@ const WhatsAppButton = () => {
                         >
                             <X className="w-3 h-3" />
                         </button>
-                        Рассчитать стоимость в WhatsApp
+                        {t('whatsapp.tooltip')}
                         {/* Tooltip triangle */}
                         <div className="absolute -bottom-2 right-6 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-white"></div>
                     </motion.div>
