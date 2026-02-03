@@ -2,6 +2,7 @@ import { ReactNode, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import FloatingCTA from './FloatingCTA';
+import WhatsAppButton from './WhatsAppButton';
 import ScrollTopButton from './ScrollTopButton';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -80,6 +81,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <FloatingCTA />
+      <WhatsAppButton />
       <ScrollTopButton />
       <Footer />
     </div>

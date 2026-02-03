@@ -1,0 +1,67 @@
+import { useState, useEffect } from 'react';
+import { MessageCircle, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const WhatsAppButton = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const [showTooltip, setShowTooltip] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollHeight = document.documentElement.scrollHeight;
+            const scrollTop = document.documentElement.scrollTop;
+            const clientHeight = document.documentElement.clientHeight;
+
+            const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+
+            if (scrollPercentage > 20) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    if (!isVisible) return null;
+
+    return (
+        <div className="fixed bottom-5 right-5 z-[9999] flex flex-col items-end gap-2">
+            <AnimatePresence>
+                {showTooltip && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8, x: 20 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, x: 20 }}
+                        className="relative bg-white text-charcoal px-4 py-2 rounded-xl shadow-lg border border-gray-100 text-sm font-medium mb-1 mr-2"
+                    >
+                        <button
+                            onClick={() => setShowTooltip(false)}
+                            className="absolute -top-2 -left-2 bg-gray-200 rounded-full p-0.5 hover:bg-gray-300 transition-colors"
+                        >
+                            <X className="w-3 h-3" />
+                        </button>
+                        Рассчитать стоимость в WhatsApp
+                        {/* Tooltip triangle */}
+                        <div className="absolute -bottom-2 right-6 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-white"></div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <a
+                href="https://wa.me/972086711767"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95 animate-pulse-scale"
+            >
+                <div className="animate-sway">
+                    <MessageCircle className="w-8 h-8 md:w-10 md:h-10 fill-current" />
+                </div>
+            </a>
+        </div>
+    );
+};
+
+export default WhatsAppButton;
