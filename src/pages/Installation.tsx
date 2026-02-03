@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
+import InstallationDiagram from './InstallationDiagram';
+import InstallationChecklist from './InstallationChecklist';
 import {
   Trash2,
   Plug,
@@ -9,312 +12,157 @@ import {
   DoorOpen,
   Package,
   Wrench,
-  ShieldCheck,
-  Clock,
-  CheckCircle2
+  Download,
+  MessageSquare,
+  ChevronRight
 } from 'lucide-react';
 
 const Installation = () => {
-  const { t, language } = useLanguage();
+  const { t, language, dir } = useLanguage();
 
-  const steps = language === 'he' ? [
+  const steps = [
     {
       icon: Trash2,
-      title: 'פינוי המטבח הישן',
-      description: 'הסירו את כל הארונות, המכשירים והציוד מהמטבח הקיים',
-      color: 'from-red-500 to-orange-500'
+      title: 'install.check.clear',
+      color: 'bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400',
+      link: '/blog/kitchen-demolition-guide'
     },
     {
       icon: Plug,
-      title: 'בדיקת תשתיות',
-      description: 'וודאו שחיבורי מים, חשמל וגז תקינים ומוכנים לחיבור',
-      color: 'from-yellow-500 to-amber-500'
+      title: 'install.check.plumbing',
+      color: 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400',
+      link: '/blog/kitchen-plumbing-prep'
+    },
+    {
+      icon: Wrench,
+      title: 'install.check.electric',
+      color: 'bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400',
+      link: '/blog/kitchen-electrical-plan'
     },
     {
       icon: PaintBucket,
-      title: 'הכנת משטחים',
-      description: 'הכינו את הקירות והרצפה - צביעה, ריצוף וטיח במידת הצורך',
-      color: 'from-blue-500 to-cyan-500'
+      title: 'install.check.walls',
+      color: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400',
+      link: '/blog/kitchen-walls-prep'
     },
     {
       icon: DoorOpen,
-      title: 'גישה נוחה',
-      description: 'הבטיחו מעבר חופשי לצוות ההתקנה וכניסה רחבה לציוד',
-      color: 'from-green-500 to-emerald-500'
+      title: 'install.check.floor',
+      color: 'bg-purple-50 text-purple-600 dark:bg-purple-900/20 dark:text-purple-400',
+      link: '/blog/kitchen-flooring-guide'
     },
     {
       icon: Package,
-      title: 'מקום אחסון',
-      description: 'הכינו מקום זמני לאחסון ציוד וכלים במהלך ההתקנה',
-      color: 'from-purple-500 to-violet-500'
-    },
-  ] : language === 'ru' ? [
-    {
-      icon: Trash2,
-      title: 'Освобождение кухни',
-      description: 'Удалите все шкафы, технику и оборудование из существующей кухни',
-      color: 'from-red-500 to-orange-500'
-    },
-    {
-      icon: Plug,
-      title: 'Проверка коммуникаций',
-      description: 'Убедитесь, что подключения воды, электричества и газа исправны',
-      color: 'from-yellow-500 to-amber-500'
-    },
-    {
-      icon: PaintBucket,
-      title: 'Подготовка поверхностей',
-      description: 'Подготовьте стены и пол - покраска, плитка и штукатурка при необходимости',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: DoorOpen,
-      title: 'Удобный доступ',
-      description: 'Обеспечьте свободный проход для команды и широкий вход для оборудования',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: Package,
-      title: 'Место хранения',
-      description: 'Подготовьте временное место для хранения оборудования во время установки',
-      color: 'from-purple-500 to-violet-500'
-    },
-  ] : [
-    {
-      icon: Trash2,
-      title: 'Clear the Old Kitchen',
-      description: 'Remove all cabinets, appliances, and equipment from the existing kitchen',
-      color: 'from-red-500 to-orange-500'
-    },
-    {
-      icon: Plug,
-      title: 'Check Infrastructure',
-      description: 'Ensure water, electricity, and gas connections are proper and ready for connection',
-      color: 'from-yellow-500 to-amber-500'
-    },
-    {
-      icon: PaintBucket,
-      title: 'Surface Preparation',
-      description: 'Prepare walls and floor - painting, tiling, and plastering if necessary',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: DoorOpen,
-      title: 'Clear Access',
-      description: 'Ensure free passage for the installation team and wide entrance for equipment',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: Package,
-      title: 'Storage Space',
-      description: 'Prepare temporary space for storing equipment and tools during installation',
-      color: 'from-purple-500 to-violet-500'
+      title: 'install.check.access',
+      color: 'bg-orange-50 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400',
+      link: '/blog/kitchen-installation-access'
     },
   ];
-
-  const tips = language === 'he' ? [
-    { icon: Wrench, text: 'התקנה מקצועית על ידי צוות מומחים' },
-    { icon: ShieldCheck, text: 'אחריות מלאה על כל העבודות' },
-    { icon: Clock, text: 'זמני התקנה מהירים ומדויקים' },
-  ] : language === 'ru' ? [
-    { icon: Wrench, text: 'Профессиональная установка командой экспертов' },
-    { icon: ShieldCheck, text: 'Полная гарантия на все работы' },
-    { icon: Clock, text: 'Быстрые и точные сроки установки' },
-  ] : [
-    { icon: Wrench, text: 'Professional installation by experts' },
-    { icon: ShieldCheck, text: 'Full warranty on all works' },
-    { icon: Clock, text: 'Fast and precise installation times' },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 12
-      }
-    }
-  };
 
   return (
     <Layout>
-      {/* Hero Banner */}
-      <section className="relative bg-header py-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-accent rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-10 right-10 w-48 h-48 bg-primary rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
+      {/* Hero Banner - Elite Style */}
+      <section className="relative bg-[#1a1a1a] text-white py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#1a1a1a]" />
+
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+            transition={{ duration: 0.8 }}
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-              className="inline-flex items-center justify-center w-20 h-20 bg-accent/20 rounded-full mb-6"
-            >
-              <CheckCircle2 className="w-10 h-10 text-accent" />
-            </motion.div>
-            <h1 className="text-4xl md:text-5xl font-bold text-header-foreground mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold font-playfair mb-6 tracking-tight">
               {t('page.installation.title')}
             </h1>
-            <p className="font-playfair italic text-xl text-header-foreground/80">
-              Installation Preparation
+            <p className="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto font-playfair italic">
+              {t('install.checklist.desc')}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Steps Section */}
-      <section className="py-20 bg-background">
+      {/* Intro & Steps Grid */}
+      <section className="py-24 bg-white dark:bg-[#1a1a1a] dark:text-white">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {language === 'he' ? 'רשימת הכנות לפני התקנה' : language === 'ru' ? 'Список подготовки к установке' : 'Installation Checklist'}
+            <h2 className="text-3xl md:text-4xl font-bold font-playfair mb-4 text-charcoal dark:text-white">
+              {t('install.steps.title')}
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              {language === 'he'
-                ? 'עקבו אחר השלבים הבאים להכנה מושלמת לפני הגעת צוות ההתקנה'
-                : language === 'ru'
-                  ? 'Следуйте этим шагам для идеальной подготовки к приезду команды установки'
-                  : 'Follow these steps for perfect preparation before the installation team arrives'}
-            </p>
+            <div className="w-24 h-1 bg-accent mx-auto" />
           </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <motion.div
                 key={index}
-                variants={itemVariants}
-                whileHover={{
-                  y: -8,
-                  transition: { type: "spring", stiffness: 300 }
-                }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
                 className="group relative"
               >
-                <div className="relative bg-card rounded-2xl p-6 shadow-lg border border-border/50 overflow-hidden h-full transition-shadow duration-300 hover:shadow-2xl">
-                  {/* Gradient background on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-
-                  {/* Step number */}
-                  <div className="absolute top-4 end-4 text-6xl font-bold text-muted/10 group-hover:text-primary/10 transition-colors">
-                    {index + 1}
+                <Link to={step.link} className="block p-8 rounded-2xl border border-gray-100 dark:border-white/10 hover:border-accent/50 hover:shadow-xl transition-all duration-300 bg-white dark:bg-white/5 h-full">
+                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-2xl ${step.color} transition-transform group-hover:scale-110`}>
+                    <step.icon className="w-7 h-7" />
                   </div>
-
-                  {/* Icon container with animation */}
-                  <motion.div
-                    className={`relative w-16 h-16 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-6 shadow-lg`}
-                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <step.icon className="w-8 h-8 text-white" />
-                  </motion.div>
-
-                  {/* Content */}
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
-
-                  {/* Bottom decoration line */}
-                  <div className={`absolute bottom-0 start-0 h-1 bg-gradient-to-r ${step.color} w-0 group-hover:w-full transition-all duration-500`} />
-                </div>
+                  <h3 className="text-xl font-bold mb-3">{t(step.title)}</h3>
+                  <div className="flex items-center text-accent font-medium text-sm group-hover:translate-x-2 transition-transform rtl:group-hover:-translate-x-2 absolute bottom-8">
+                    <span>{t('whyus.cta')}</span>
+                    <ChevronRight className={`w-4 h-4 ${language === 'he' ? 'rotate-180 mr-1' : 'ml-1'}`} />
+                  </div>
+                  <div className="h-6"></div> {/* Spacer for absolute positioned link */}
+                </Link>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Tips Section */}
-      <section className="py-16 bg-muted">
+      {/* Interactive Diagram Section */}
+      <section className="py-24 bg-muted/30 dark:bg-black/20">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {tips.map((tip, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center gap-4 bg-background rounded-xl p-5 shadow-md"
-                >
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <tip.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <p className="font-medium text-foreground">{tip.text}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+          <div className="grid lg:grid-cols-[1fr_400px] gap-12 items-start">
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-primary/10 via-background to-accent/10">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              {language === 'he' ? 'מוכנים להתחיל?' : language === 'ru' ? 'Готовы начать?' : 'Ready to start?'}
-            </h3>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              {language === 'he'
-                ? 'צרו איתנו קשר לתיאום פגישת ייעוץ והתקנה'
-                : language === 'ru'
-                  ? 'Свяжитесь с нами для консультации и установки'
-                  : 'Contact us to schedule a consultation and installation'}
-            </p>
-            <motion.a
-              href="/contact"
-              className="btn-primary inline-flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            {/* Diagram */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
             >
-              {t('hero.cta.appointment')}
-            </motion.a>
-          </motion.div>
+              <h2 className="text-3xl font-bold font-playfair mb-8">
+                {t('install.check.electric')} & {t('install.check.plumbing')}
+              </h2>
+              <InstallationDiagram />
+            </motion.div>
+
+            {/* Checklist Side */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:sticky lg:top-24"
+            >
+              <InstallationChecklist />
+
+              {/* Action Buttons */}
+              <div className="mt-8 space-y-4">
+                <button className="w-full flex items-center justify-center gap-2 bg-charcoal text-white py-4 rounded-xl hover:bg-black transition-colors shadow-lg group">
+                  <Download className="w-5 h-5 group-hover:animate-bounce" />
+                  <span className="font-medium">{t('install.download.pdf')}</span>
+                </button>
+                <button className="w-full flex items-center justify-center gap-2 bg-white border-2 border-charcoal text-charcoal py-4 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                  <MessageSquare className="w-5 h-5" />
+                  <span>{t('install.ask.expert')}</span>
+                </button>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

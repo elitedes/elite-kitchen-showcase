@@ -25,6 +25,7 @@ const Header = () => {
     { key: 'nav.kitchens', path: '/kitchens', hasDropdown: true },
     { key: 'nav.projects', path: '/projects' },
     { key: 'nav.promotions', path: '/promotions' },
+    { key: 'nav.magazine', path: '/blog' },
     { key: 'nav.installation', path: '/installation' },
     { key: 'nav.calculator', path: '/calculator' },
     { key: 'nav.contact', path: '/contact' },

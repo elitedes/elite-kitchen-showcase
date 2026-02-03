@@ -25,7 +25,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.projects': 'פרויקטים',
     'nav.promotions': 'מבצעים',
     'nav.installation': 'הכנה להתקנת מטבח',
-    'nav.magazine': 'מגזין',
+    'nav.magazine': 'בלוג',
     'nav.showroom': 'אולם תצוגה',
     'nav.contact': 'צרו קשר',
 
@@ -96,8 +96,8 @@ const translations: Record<Language, Record<string, string>> = {
     'testimonials.decorative': 'Testimonials',
 
     // Magazine
-    'magazine.title': 'מגזין מטבחי Elite Design',
-    'magazine.decorative': 'Magazine',
+    'magazine.title': 'בלוג מטבחי Elite Design',
+    'magazine.decorative': 'Blog',
 
     // Contact
     'contact.title': 'צרו קשר',
@@ -141,6 +141,32 @@ const translations: Record<Language, Record<string, string>> = {
     'closets.sliding.cons.1': 'התקנה מורכבת יותר בהשוואה לארונות ציר',
     'closets.sliding.cons.2': 'חלק מהנפח הפנימי נתפס על ידי מנגנון ההזזה',
     'closets.sliding.cons.3': 'ניתן לראות רק חלק אחד מהתכולה בכל פעם',
+
+    // Installation Page
+    'install.steps.title': 'רשימת הכנות לפני התקנה',
+    'install.diagram.footer': 'המיקומים הם להמחשה בלבד. יש להיעזר בתוכנית המטבח האישית.',
+    'install.checklist.title': 'רשימת ביקורת עצמית',
+    'install.checklist.desc': 'סמנו כל שלב שביצעתם כדי לוודא שאתם מוכנים ב-100%',
+    'install.checklist.complete': 'הושלם',
+    'install.check.clear': 'פינוי מלא של המטבח הישן',
+    'install.check.plumbing': 'נקודות מים וביוב לפי תוכנית',
+    'install.check.electric': 'שקעים ונקודות חשמל במיקום הנכון',
+    'install.check.walls': 'קירות צבועים וישרים (זווית 90)',
+    'install.check.floor': 'ריצוף מושלם ופנלים מותקנים',
+    'install.check.access': 'גישה חופשית למשאית וצוות',
+    'install.point.hood': 'שקע לקולט אדים',
+    'install.point.hood.desc': 'גובה מומלץ: 200-210 ס"מ מהרצפה',
+    'install.point.counter': 'שקעי שירות',
+    'install.point.counter.desc': 'מעל השיש, גובה 105 ס"מ',
+    'install.point.dishwasher': 'הכנה למדיח',
+    'install.point.dishwasher.desc': 'שקע, ברז וכניסת ביוב בארון כיור',
+    'install.point.oven': 'שרשור לתנור',
+    'install.point.oven.desc': 'שקע כוח נפרד לתנור וכיריים',
+    'install.point.fridge': 'נקודה למקרר',
+    'install.point.fridge.desc': 'ברז מים ושקע חשמל בגובה 220 ס"מ',
+    'install.download.pdf': 'הורד סכמה (PDF)',
+    'install.ask.expert': 'שאלה למתקין',
+
     'closets.hinged.title': 'ארונות ציר: יתרונות וחסרונות',
     'closets.hinged.desc': 'ארונות ציר (פתיחה רגילה) הם הפתרון הקלאסי עם דלתות על צירים. הם מתאפיינים בפשטות מבנית ומתאים לעיצובים שבהם חשובים חזיתות ישרות ועומק אחסון מקסימלי.',
     'closets.hinged.pros.title': 'יתרונות ארונות ציר',
@@ -225,7 +251,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.projects': 'Проекты',
     'nav.promotions': 'Акции',
     'nav.installation': 'Подготовка к установке',
-    'nav.magazine': 'Журнал',
+    'nav.magazine': 'Блог',
     'nav.showroom': 'Шоурум',
     'nav.contact': 'Контакты',
 
@@ -296,8 +322,8 @@ const translations: Record<Language, Record<string, string>> = {
     'testimonials.decorative': 'Testimonials',
 
     // Magazine
-    'magazine.title': 'Журнал Elite Design Кухни',
-    'magazine.decorative': 'Magazine',
+    'magazine.title': 'Блог Elite Design',
+    'magazine.decorative': 'Blog',
 
     // Contact
     'contact.title': 'Свяжитесь с нами',
@@ -348,6 +374,32 @@ const translations: Record<Language, Record<string, string>> = {
     'closets.hinged.pros.2': 'максимальный полезный внутренний объём',
     'closets.hinged.pros.3': 'фасады находятся в одной плоскости',
     'closets.hinged.pros.4': 'подходят для современных и минималистичных интерьеров',
+
+    // Installation Page
+    'install.steps.title': 'Подготовка к установке',
+    'install.diagram.footer': 'Расположение указано для примера. Следуйте вашему персональному плану.',
+    'install.checklist.title': 'Чек-лист готовности',
+    'install.checklist.desc': 'Отмечайте выполненные пункты, чтобы быть уверенными на 100%',
+    'install.checklist.complete': 'Готово',
+    'install.check.clear': 'Полный демонтаж старой кухни',
+    'install.check.plumbing': 'Точки воды и слива по плану',
+    'install.check.electric': 'Розетки и выводы электричества',
+    'install.check.walls': 'Стены покрашены и выровнены (угол 90)',
+    'install.check.floor': 'Пол готов, плинтуса установлены',
+    'install.check.access': 'Свободный доступ для бригады',
+    'install.point.hood': 'Розетка для вытяжки',
+    'install.point.hood.desc': 'Реком. высота: 200-210 см',
+    'install.point.counter': 'Рабочие розетки',
+    'install.point.counter.desc': 'Над столешницей, высота 105 см',
+    'install.point.dishwasher': 'Посудомойка',
+    'install.point.dishwasher.desc': 'Розетка, кран и слив в шкафу мойки',
+    'install.point.oven': 'Духовой шкаф',
+    'install.point.oven.desc': 'Отдельная силовая розетка',
+    'install.point.fridge': 'Холодильник',
+    'install.point.fridge.desc': 'Розетка и кран воды на высоте 220 см',
+    'install.download.pdf': 'Скачать схему (PDF)',
+    'install.ask.expert': 'Вопрос мастеру',
+
     'closets.hinged.cons.title': 'Недостатки распашных шкафов',
     'closets.hinged.cons.1': 'требуется свободное пространство перед шкафом',
     'closets.hinged.cons.2': 'срок службы зависит от качества фурнитуры',
@@ -425,7 +477,9 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.projects': 'Projects',
     'nav.promotions': 'Promotions',
     'nav.installation': 'Preparation for Installation',
-    'nav.magazine': 'Magazine',
+    'nav.promotions': 'Promotions',
+    'nav.installation': 'Preparation for Installation',
+    'nav.magazine': 'Blog',
     'nav.showroom': 'Showroom',
     'nav.contact': 'Contact Us',
 
@@ -496,8 +550,8 @@ const translations: Record<Language, Record<string, string>> = {
     'testimonials.decorative': 'Testimonials',
 
     // Magazine
-    'magazine.title': 'Elite Design Kitchens Magazine',
-    'magazine.decorative': 'Magazine',
+    'magazine.title': 'Elite Design Blog',
+    'magazine.decorative': 'Blog',
 
     // Contact
     'contact.title': 'Contact Us',
@@ -547,6 +601,32 @@ const translations: Record<Language, Record<string, string>> = {
     'closets.hinged.pros.1': 'quiet and smooth opening',
     'closets.hinged.pros.2': 'maximum useful internal volume',
     'closets.hinged.pros.3': 'facades are in the same plane',
+
+    // Installation Page
+    'install.steps.title': 'Preparation Checklist',
+    'install.diagram.footer': 'Locations are for illustration only. Refer to your personal kitchen plan.',
+    'install.checklist.title': 'Self-Check List',
+    'install.checklist.desc': 'Check off each completed step to ensure 100% readiness',
+    'install.checklist.complete': 'Complete',
+    'install.check.clear': 'Complete removal of old kitchen',
+    'install.check.plumbing': 'Water and sewage points per plan',
+    'install.check.electric': 'Sockets and electrical points correctly placed',
+    'install.check.walls': 'Walls painted and straight (90 degree angles)',
+    'install.check.floor': 'Flooring complete and skirting installed',
+    'install.check.access': 'Clear access for truck and team',
+    'install.point.hood': 'Hood Socket',
+    'install.point.hood.desc': 'Rec. height: 200-210 cm',
+    'install.point.counter': 'Service Sockets',
+    'install.point.counter.desc': 'Above counter, height 105 cm',
+    'install.point.dishwasher': 'Dishwasher Prep',
+    'install.point.dishwasher.desc': 'Socket, tap, and drain in sink cabinet',
+    'install.point.oven': 'Oven Power',
+    'install.point.oven.desc': 'Separate power socket for oven/hob',
+    'install.point.fridge': 'Refrigerator',
+    'install.point.fridge.desc': 'Water tap and socket at 220 cm',
+    'install.download.pdf': 'Download Plan (PDF)',
+    'install.ask.expert': 'Ask Expert',
+
     'closets.hinged.pros.4': 'suitable for modern and minimalist interiors',
     'closets.hinged.cons.title': 'Disadvantages of Hinged Closets',
     'closets.hinged.cons.1': 'free space is required in front of the closet',
