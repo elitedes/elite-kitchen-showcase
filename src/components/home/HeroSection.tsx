@@ -16,7 +16,7 @@ const HeroSection = () => {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/hero-poster.jpg"
+          poster="/hero-poster.png"
         >
           <source src="/elite_design_kitchens.webm" type="video/webm" />
           Your browser does not support the video tag.
