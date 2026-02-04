@@ -21,7 +21,7 @@ const BlogPost = () => {
 
     return (
         <Layout>
-            <article className="min-h-screen bg-background pt-24 pb-16">
+            <article className="min-h-screen bg-background pb-16">
                 {/* Header Image */}
                 <div className="relative h-[400px] w-full overflow-hidden mb-12">
                     <div className="absolute inset-0 bg-black/40 z-10" />
