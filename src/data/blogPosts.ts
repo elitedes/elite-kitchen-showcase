@@ -445,7 +445,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
           <div class="my-8">
-            <img src="https://images.unsplash.com/photo-1581858726768-7589d36de639?auto=format&fit=crop&q=80&w=800" alt="ריצוף מטבח" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/blog/flooring-details.jpg" alt="ריצוף מטבח" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>פנלים (Skirting) - זהירות!</h2>
@@ -462,7 +462,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
           <div class="my-8">
-            <img src="https://images.unsplash.com/photo-1581858726768-7589d36de639?auto=format&fit=crop&q=80&w=800" alt="Укладка пола" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/blog/flooring-details.jpg" alt="Укладка пола" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>Плинтуса - Осторожно!</h2>
@@ -478,7 +478,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
           <div class="my-8">
-            <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=800" alt="Flooring" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/blog/flooring-details.jpg" alt="Flooring" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>Skirting Boards - Warning!</h2>
@@ -490,7 +490,7 @@ export const blogPosts: BlogPost[] = [
         author: 'Elite Design Team',
         category: 'installation',
         readTime: 3,
-        image: 'https://images.unsplash.com/photo-1502005229766-31e70d3a3e75?auto=format&fit=crop&q=80&w=800',
+        image: '/blog/flooring-main.png',
     },
     {
         id: '6',
