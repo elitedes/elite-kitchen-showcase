@@ -7,6 +7,7 @@ import WhyUsSection from '@/components/home/WhyUsSection';
 import ContactSection from '@/components/home/ContactSection';
 import GoogleReviewsSection from '@/components/home/GoogleReviewsSection';
 import ImageComparisonSlider from '@/components/home/ImageComparisonSlider';
+import InteractiveFitting from '@/components/home/InteractiveFitting';
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <KitchenCategoriesSection />
       <BenefitsSection />
       <ImageComparisonSlider />
+      <InteractiveFitting />
       <WhyUsSection />
       <GoogleReviewsSection />
       <ContactSection />
