@@ -167,6 +167,13 @@ const translations: Record<Language, Record<string, string>> = {
     'install.download.pdf': 'הורד סכמה (PDF)',
     'install.ask.expert': 'שאלה למתקין',
 
+    // Image Comparison Slider
+    'comparison.label.before': 'ציפייה',
+    'comparison.label.after': 'הגשמת חלום',
+    'comparison.btn.calc': 'אני רוצה גם! חישוב עלות',
+    'comparison.title': 'שינוי עיצוב הפנים בקליק אחד',
+    'comparison.subtitle': 'Interior transformation in one click',
+
     'closets.hinged.title': 'ארונות ציר: יתרונות וחסרונות',
     'closets.hinged.desc': 'ארונות ציר (פתיחה רגילה) הם הפתרון הקלאסי עם דלתות על צירים. הם מתאפיינים בפשטות מבנית ומתאים לעיצובים שבהם חשובים חזיתות ישרות ועומק אחסון מקסימלי.',
     'closets.hinged.pros.title': 'יתרונות ארונות ציר',
@@ -400,6 +407,14 @@ const translations: Record<Language, Record<string, string>> = {
     'install.download.pdf': 'Скачать схему (PDF)',
     'install.ask.expert': 'Вопрос мастеру',
 
+    // Image Comparison Slider
+    'comparison.label.before': 'Ожидание',
+    'comparison.label.after': 'Воплощение мечты',
+    'comparison.btn.calc': 'Хочу так же! Рассчитать стоимость',
+    'comparison.title': 'Трансформация интерьера в один клик',
+    'comparison.subtitle': 'Interior transformation in one click',
+
+
     'closets.hinged.cons.title': 'Недостатки распашных шкафов',
     'closets.hinged.cons.1': 'требуется свободное пространство перед шкафом',
     'closets.hinged.cons.2': 'срок службы зависит от качества фурнитуры',
@@ -475,8 +490,6 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.kitchens.wood': 'Solid Wood Kitchens',
     'nav.kitchens.nano': 'Nano Kitchens',
     'nav.projects': 'Projects',
-    'nav.promotions': 'Promotions',
-    'nav.installation': 'Preparation for Installation',
     'nav.promotions': 'Promotions',
     'nav.installation': 'Preparation for Installation',
     'nav.magazine': 'Blog',
@@ -626,6 +639,13 @@ const translations: Record<Language, Record<string, string>> = {
     'install.point.fridge.desc': 'Water tap and socket at 220 cm',
     'install.download.pdf': 'Download Plan (PDF)',
     'install.ask.expert': 'Ask Expert',
+
+    // Image Comparison Slider
+    'comparison.label.before': 'Expectation',
+    'comparison.label.after': 'Dream Realized',
+    'comparison.btn.calc': 'I want this too! Calculate Cost',
+    'comparison.title': 'Interior Transformation in One Click',
+    'comparison.subtitle': 'Interior transformation in one click',
 
     'closets.hinged.pros.4': 'suitable for modern and minimalist interiors',
     'closets.hinged.cons.title': 'Disadvantages of Hinged Closets',

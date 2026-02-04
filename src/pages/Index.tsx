@@ -5,7 +5,8 @@ import BenefitsSection from '@/components/home/BenefitsSection';
 import KitchenCategoriesSection from '@/components/home/KitchenCategoriesSection';
 import WhyUsSection from '@/components/home/WhyUsSection';
 import ContactSection from '@/components/home/ContactSection';
-import GoogleReviewsSection from '@/components/home/GoogleReviewsSection'; // New import
+import GoogleReviewsSection from '@/components/home/GoogleReviewsSection';
+import ImageComparisonSlider from '@/components/home/ImageComparisonSlider';
 
 const Index = () => {
   return (
@@ -14,8 +15,9 @@ const Index = () => {
       <AboutSection />
       <KitchenCategoriesSection />
       <BenefitsSection />
+      <ImageComparisonSlider />
       <WhyUsSection />
-      <GoogleReviewsSection /> {/* New component */}
+      <GoogleReviewsSection />
       <ContactSection />
     </Layout>
   );
