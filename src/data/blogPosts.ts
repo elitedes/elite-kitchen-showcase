@@ -177,7 +177,7 @@ export const blogPosts: BlogPost[] = [
         ההמלצה שלנו: גובה 220 ס"מ (מעל המקרר) או בתוך ארון מזווה סמוך.</p>
 
         <div class="my-8">
-            <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&q=80&w=800" alt="שרטוט אינסטלציה" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/blog/plumbing-details.jpg" alt="שרטוט אינסטלציה" class="rounded-xl shadow-lg w-full h-64 object-cover" />
             <p class="text-sm text-gray-500 mt-2 text-center">תכנון נכון מונע בעיות בהתקנת הארונות</p>
         </div>
 
@@ -203,7 +203,7 @@ export const blogPosts: BlogPost[] = [
         Наша рекомендация: высота 220 см (над холодильником) или в соседнем шкафу.</p>
 
          <div class="my-8">
-            <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&q=80&w=800" alt="План сантехники" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/blog/plumbing-details.jpg" alt="План сантехники" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>Рекомендуемые высоты (от чистого пола)</h2>
@@ -228,7 +228,7 @@ export const blogPosts: BlogPost[] = [
         We recommend: 220cm height (above fridge) or inside a pantry cabinet.</p>
 
         <div class="my-8">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800" alt="Plumbing Rough-in" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/blog/plumbing-details.jpg" alt="Plumbing Rough-in" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>Standard Heights (AFF - Above Finished Floor)</h2>
@@ -243,7 +243,7 @@ export const blogPosts: BlogPost[] = [
         author: 'Daniel Master',
         category: 'installation',
         readTime: 5,
-        image: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?auto=format&fit=crop&q=80&w=800',
+        image: '/blog/plumbing-main.jpg',
     },
     {
         id: '3',
