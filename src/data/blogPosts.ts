@@ -38,7 +38,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
         <div class="my-8">
-            <img src="https://images.unsplash.com/photo-1590487372728-64478d10f27f?auto=format&fit=crop&q=80&w=800" alt="ניתוק ברזים וצנרת" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/blog/demolition-safety.jpg" alt="ניתוק ברזים וצנרת" class="rounded-xl shadow-lg w-full h-64 object-cover" />
             <p class="text-sm text-gray-500 mt-2 text-center">הקפידו על סגירת ברזי ניל לפני פירוק הכיור</p>
         </div>
 
@@ -76,7 +76,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
         <div class="my-8">
-            <img src="https://images.unsplash.com/photo-1590487372728-64478d10f27f?auto=format&fit=crop&q=80&w=800" alt="Отключение сантехники" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/blog/demolition-safety.jpg" alt="Отключение сантехники" class="rounded-xl shadow-lg w-full h-64 object-cover" />
             <p class="text-sm text-gray-500 mt-2 text-center">Обязательно перекройте воду перед снятием мойки</p>
         </div>
 
@@ -114,7 +114,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
         <div class="my-8">
-            <img src="https://images.unsplash.com/photo-1621905476059-5f80280c4233?auto=format&fit=crop&q=80&w=800" alt="Plumbing disconnection" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/blog/demolition-safety.jpg" alt="Plumbing disconnection" class="rounded-xl shadow-lg w-full h-64 object-cover" />
             <p class="text-sm text-gray-500 mt-2 text-center">Always shut off water valves before removing the sink</p>
         </div>
 
@@ -145,7 +145,7 @@ export const blogPosts: BlogPost[] = [
         author: 'Elite Design Team',
         category: 'installation',
         readTime: 4,
-        image: 'https://images.unsplash.com/photo-1574359411659-15573a21cccf?auto=format&fit=crop&q=80&w=800',
+        image: '/blog/demolition-main.jpg',
     },
     {
         id: '2',
