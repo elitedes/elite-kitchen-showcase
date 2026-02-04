@@ -58,33 +58,18 @@ const HeroSection = () => {
             {t('hero.tagline')}
           </motion.p>
 
-          {/* Promo Banner */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.1, duration: 0.5 }}
-            className="inline-block bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/30 rounded-xl p-6 mb-8 shadow-2xl"
-          >
-            <p className="text-xl md:text-2xl font-semibold mb-2">
-              {t('hero.promo')}
-            </p>
-            <p className="text-3xl md:text-4xl font-bold text-accent drop-shadow-lg">
-              {t('hero.discount')}
-            </p>
-          </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.3, duration: 0.5 }}
+            transition={{ delay: 1.1, duration: 0.5 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <a href="#contact" className="btn-hero text-xl px-12 py-4">
+            <a href="#contact" className="btn-hero">
               {t('hero.cta.appointment')}
             </a>
             <button
               onClick={() => navigate('/calculator')}
-              className="bg-accent text-accent-foreground text-xl px-12 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition-all outline-none"
+              className="btn-accent-hero outline-none"
             >
               {t('hero.cta.calculator')}
             </button>

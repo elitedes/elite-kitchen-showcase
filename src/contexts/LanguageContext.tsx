@@ -16,7 +16,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation
     'nav.home': 'עמוד הבית',
     'nav.about': 'אודות',
-    'nav.kitchens': 'המטבחים שלנו',
+    'nav.kitchens': 'סגנונות מטבח',
     'nav.kitchens.modern': 'מטבחים מודרניים',
     'nav.kitchens.country': 'מטבחים כפריים',
     'nav.kitchens.formica': 'מטבחי פורמייקה',
@@ -249,7 +249,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation
     'nav.home': 'Главная',
     'nav.about': 'О нас',
-    'nav.kitchens': 'Наши кухни',
+    'nav.kitchens': 'Стили кухни',
     'nav.kitchens.modern': 'Современные кухни',
     'nav.kitchens.country': 'Кухни в стиле кантри',
     'nav.kitchens.formica': 'Кухни из формайки',
@@ -483,7 +483,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation
     'nav.home': 'Home',
     'nav.about': 'About',
-    'nav.kitchens': 'Our Kitchens',
+    'nav.kitchens': 'Kitchen Styles',
     'nav.kitchens.modern': 'Modern Kitchens',
     'nav.kitchens.country': 'Country Kitchens',
     'nav.kitchens.formica': 'Formica Kitchens',

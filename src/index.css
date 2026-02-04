@@ -143,15 +143,56 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground px-8 py-3 font-semibold transition-all duration-300 hover:opacity-90 hover:scale-105;
+    background: rgba(89, 49, 129, 0.6);
+    /* Purple primary with transparency */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    @apply text-white px-8 py-3 font-semibold rounded-lg transition-all duration-500 shadow-md inline-flex items-center justify-center;
+  }
+
+  .btn-primary:hover {
+    background: rgba(89, 49, 129, 0.9);
+    backdrop-filter: blur(15px);
+    @apply scale-105 shadow-xl;
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px) scale(1.05);
+  }
+
+  .btn-accent {
+    background: rgba(204, 122, 51, 0.6);
+    /* Orange accent with transparency */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    @apply text-white px-8 py-3 font-semibold rounded-lg transition-all duration-500 shadow-md inline-flex items-center justify-center;
+  }
+
+  .btn-accent:hover {
+    background: rgba(204, 122, 51, 0.9);
+    backdrop-filter: blur(15px);
+    @apply scale-105 shadow-xl;
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px) scale(1.05);
   }
 
   .btn-hero {
-    @apply bg-primary text-primary-foreground px-10 py-4 text-lg font-bold rounded-full transition-all duration-300 hover:bg-accent hover:scale-105 border-2 border-primary hover:border-accent;
+    @apply btn-primary px-10 py-4 text-lg font-bold rounded-full;
+  }
+
+  .btn-accent-hero {
+    @apply btn-accent px-10 py-4 text-lg font-bold rounded-full;
   }
 
   .btn-outline-hero {
-    @apply bg-transparent border-2 border-primary-foreground text-primary-foreground px-10 py-4 text-lg font-bold transition-all duration-300 hover:bg-primary-foreground hover:text-primary;
+    @apply bg-transparent border-2 border-primary-foreground text-primary-foreground px-10 py-4 text-lg font-bold transition-all duration-300 hover:bg-primary-foreground/20 hover:backdrop-blur-md;
+  }
+
+  /* Keep legacy glass classes for compatibility if needed, but standardizing on primary/accent */
+  .btn-glass-purple {
+    @apply btn-hero;
+  }
+
+  .btn-glass-orange {
+    @apply btn-accent-hero;
   }
 
   .kitchen-card {
@@ -183,7 +224,17 @@
   }
 
   .floating-cta-btn {
-    @apply flex flex-col items-center gap-1 bg-primary text-primary-foreground p-3 rounded-lg shadow-lg hover:bg-accent transition-all duration-300 text-xs font-medium;
+    background: rgba(89, 49, 129, 0.6);
+    /* Glassy primary */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply flex flex-col items-center gap-1 text-primary-foreground p-3 rounded-xl shadow-lg transition-all duration-300 text-xs font-medium;
+  }
+
+  .floating-cta-btn:hover {
+    background: rgba(89, 49, 129, 0.9);
+    backdrop-filter: blur(12px);
+    @apply scale-110 shadow-xl border-white/20;
   }
 
   .nav-link {

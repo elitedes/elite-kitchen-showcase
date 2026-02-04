@@ -37,17 +37,17 @@ const WhatsAppButton = () => {
                         initial={{ opacity: 0, scale: 0.8, x: 20 }}
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0.8, x: 20 }}
-                        className="relative bg-white text-charcoal px-4 py-2 rounded-xl shadow-lg border border-gray-100 text-sm font-medium mb-1 mr-2"
+                        className="relative bg-white/80 backdrop-blur-md text-charcoal px-4 py-2 rounded-xl shadow-lg border border-white/30 text-sm font-medium mb-1 mr-2"
                     >
                         <button
                             onClick={() => setShowTooltip(false)}
-                            className="absolute -top-2 -left-2 bg-gray-200 rounded-full p-0.5 hover:bg-gray-300 transition-colors"
+                            className="absolute -top-2 -left-2 bg-white/90 backdrop-blur-sm rounded-full p-0.5 shadow-sm hover:bg-white transition-colors border border-gray-100"
                         >
                             <X className="w-3 h-3" />
                         </button>
                         {t('whatsapp.tooltip')}
                         {/* Tooltip triangle */}
-                        <div className="absolute -bottom-2 right-6 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-white"></div>
+                        <div className="absolute -bottom-2 right-6 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-white/80 backdrop-blur-md"></div>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -56,7 +56,7 @@ const WhatsAppButton = () => {
                 href="https://wa.me/972086711767"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95 animate-pulse-scale"
+                className="group relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#25D366]/70 backdrop-blur-md text-white rounded-full shadow-2xl transition-transform hover:scale-110 hover:bg-[#25D366]/90 active:scale-95 animate-pulse-scale border border-white/20"
             >
                 <div className="animate-sway">
                     <MessageCircle className="w-8 h-8 md:w-10 md:h-10 fill-current" />

@@ -241,9 +241,9 @@ ${formData.dim3 ? `• ${t('calc.dimensions.len3')}: ${formData.dim3} cm` : ''}
                                                     key={opt.id}
                                                     type="button"
                                                     onClick={() => setFormData({ ...formData, hardwareType: opt.id })}
-                                                    className={`flex-1 min-w-[100px] py-3 px-4 rounded-full font-bold transition-all border-2 ${formData.hardwareType === opt.id
-                                                        ? 'bg-accent text-accent-foreground border-accent shadow-lg scale-105'
-                                                        : 'bg-gray-50 text-muted-foreground border-transparent hover:border-accent/30'
+                                                    className={`flex-1 min-w-[100px] py-3 px-4 rounded-xl font-bold transition-all border ${formData.hardwareType === opt.id
+                                                        ? 'bg-accent/80 text-white backdrop-blur-md border-white/30 shadow-lg scale-105'
+                                                        : 'bg-gray-50/50 text-muted-foreground border-transparent hover:border-accent/30 backdrop-blur-sm'
                                                         }`}
                                                 >
                                                     {t(opt.key)}
@@ -309,7 +309,7 @@ ${formData.dim3 ? `• ${t('calc.dimensions.len3')}: ${formData.dim3} cm` : ''}
                                     <Button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full h-16 text-xl font-bold rounded-2xl bg-gradient-to-r from-accent to-[#f1c40f] hover:from-[#f1c40f] hover:to-accent text-accent-foreground shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+                                        className="btn-accent-hero w-full h-16 border-none disabled:opacity-70 disabled:cursor-not-allowed"
                                     >
                                         {isSubmitting ? (
                                             <div className="flex items-center gap-2">
