@@ -38,6 +38,9 @@ const FeaturedProjectsSection = () => {
                     <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
                         {t('featured.title')}
                     </h2>
+                    <p className="decorative-text mb-6">
+                        {t('featured.decorative')}
+                    </p>
                     <div className="w-24 h-1.5 bg-muted-gold mx-auto" />
                 </motion.div>
 

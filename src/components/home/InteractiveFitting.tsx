@@ -69,7 +69,7 @@ const InteractiveFitting = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="section-title mb-4">{t('fitting.title')}</h2>
-                    <p className="decorative-text uppercase tracking-widest text-sm opacity-50">
+                    <p className="decorative-text">
                         {t('fitting.subtitle')}
                     </p>
                 </motion.div>

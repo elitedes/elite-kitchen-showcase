@@ -74,6 +74,9 @@ const GoogleReviewsSection = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-charcoal mb-4">
               {t('testimonials.header')}
             </h2>
+            <p className="decorative-text mb-6">
+              {t('testimonials.decorative')}
+            </p>
             <div className="flex items-center gap-3 justify-center md:justify-start">
               <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm border border-green-200">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
