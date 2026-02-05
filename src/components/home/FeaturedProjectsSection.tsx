@@ -14,17 +14,14 @@ const FeaturedProjectsSection = () => {
     const projects = [
         {
             image: project1,
-            title: 'featured.project1.title',
             city: 'featured.project1.city'
         },
         {
             image: project37,
-            title: 'featured.project2.title',
             city: 'featured.project2.city'
         },
         {
             image: project40,
-            title: 'featured.project3.title',
             city: 'featured.project3.city'
         }
     ];
@@ -57,7 +54,7 @@ const FeaturedProjectsSection = () => {
                                 {/* Image */}
                                 <img
                                     src={project.image}
-                                    alt={t(project.title)}
+                                    alt={t(project.city)}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
 
@@ -76,9 +73,6 @@ const FeaturedProjectsSection = () => {
                                             <MapPin className="w-4 h-4" />
                                             {t(project.city)}
                                         </div>
-                                        <h3 className="text-2xl font-bold leading-tight">
-                                            {t(project.title)}
-                                        </h3>
                                     </motion.div>
                                 </div>
                             </motion.div>
