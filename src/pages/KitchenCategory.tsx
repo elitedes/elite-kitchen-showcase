@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 
 // Main category images
 import kitchenModern from '@/assets/kitchen-modern.jpg';
@@ -10,6 +14,7 @@ import kitchenCountry from '@/assets/kitchen-country.jpg';
 import kitchenFormica from '@/assets/kitchen-formica.jpg';
 import kitchenWood from '@/assets/kitchen-wood.jpg';
 import kitchenNano from '@/assets/kitchen-nano.jpg';
+import kitchenAcrylic from '@/assets/kitchen-acrylic.jpg';
 
 // Gallery images - Modern
 import modern1 from '@/assets/gallery/modern-1.jpg';
@@ -45,6 +50,11 @@ import nano3 from '@/assets/gallery/nano-3.jpg';
 import nano4 from '@/assets/gallery/nano-4.jpg';
 import nano5 from '@/assets/gallery/nano-5.jpg';
 
+// Gallery images - Acrylic
+import acrylic1 from '@/assets/gallery/acrylic-1.jpg';
+import acrylic2 from '@/assets/gallery/acrylic-2.jpg';
+import acrylic3 from '@/assets/gallery/acrylic-3.jpg';
+
 const categoryData: Record<string, { image: string; gallery: string[] }> = {
   modern: {
     image: kitchenModern,
@@ -66,15 +76,34 @@ const categoryData: Record<string, { image: string; gallery: string[] }> = {
     image: kitchenNano,
     gallery: [nano1, nano2, nano3, nano4, nano5]
   },
+  acrylic: {
+    image: kitchenAcrylic,
+    gallery: [acrylic1, acrylic2, acrylic3]
+  }
 };
 
 const KitchenCategory = () => {
   const { category } = useParams<{ category: string }>();
   const { t, language } = useLanguage();
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const data = categoryData[category || 'modern'] || categoryData.modern;
 
-  const allCategories = ['modern', 'country', 'formica', 'wood', 'nano'];
+  const allCategories = ['modern', 'country', 'formica', 'wood', 'nano', 'acrylic'];
+
+  const handlePrevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex(selectedImageIndex === 0 ? data.gallery.length - 1 : selectedImageIndex - 1);
+    }
+  };
+
+  const handleNextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex(selectedImageIndex === data.gallery.length - 1 ? 0 : selectedImageIndex + 1);
+    }
+  };
 
   return (
     <Layout>
@@ -114,8 +143,8 @@ const KitchenCategory = () => {
                 key={cat}
                 to={`/kitchens/${cat}`}
                 className={`px-6 py-2 font-medium transition-all ${cat === category
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-background text-foreground hover:bg-primary/10'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-background text-foreground hover:bg-primary/10'
                   }`}
               >
                 {t(`kitchens.${cat}`)}
@@ -136,14 +165,19 @@ const KitchenCategory = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="kitchen-card h-72"
+                className="kitchen-card h-72 cursor-pointer group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                onClick={() => setSelectedImageIndex(index)}
               >
                 <img
                   src={image}
                   alt={`${t(`kitchens.${category}`)} ${index + 1}`}
-                  className="kitchen-card-image"
+                  className="kitchen-card-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="kitchen-card-overlay" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <div className="bg-white/90 p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                    <span className="text-primary font-medium text-sm">{t('gallery.view')}</span>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -164,6 +198,63 @@ const KitchenCategory = () => {
       </section>
 
       <ContactSection />
+
+      {/* Lightbox */}
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full md:h-auto md:aspect-video p-0 bg-black/95 border-none">
+          <DialogTitle className="sr-only">
+            {t(`kitchens.${category}`)} Image {selectedImageIndex !== null ? selectedImageIndex + 1 : ''}
+          </DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-4 top-4 text-white/70 hover:text-white hover:bg-white/10 z-50 rounded-full"
+              onClick={() => setSelectedImageIndex(null)}
+            >
+              <X className="h-6 w-6" />
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:bg-white/10 z-50 rounded-full h-12 w-12 hidden md:flex"
+              onClick={handlePrevImage}
+            >
+              <ChevronLeft className="h-8 w-8" />
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:bg-white/10 z-50 rounded-full h-12 w-12 hidden md:flex"
+              onClick={handleNextImage}
+            >
+              <ChevronRight className="h-8 w-8" />
+            </Button>
+
+            {selectedImageIndex !== null && (
+              <motion.img
+                key={selectedImageIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x > 100) handlePrevImage(new MouseEvent('click') as any);
+                  else if (info.offset.x < -100) handleNextImage(new MouseEvent('click') as any);
+                }}
+                transition={{ duration: 0.2 }}
+                src={data.gallery[selectedImageIndex]}
+                alt={`${t(`kitchens.${category}`)} view`}
+                className="max-w-full max-h-full object-contain cursor-grab active:cursor-grabbing"
+              />
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };

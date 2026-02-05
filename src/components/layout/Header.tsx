@@ -8,15 +8,17 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 const Header = () => {
   const { language, setLanguage, t, dir } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileKitchensOpen, setMobileKitchensOpen] = useState(false);
   const [kitchensDropdownOpen, setKitchensDropdownOpen] = useState(false);
   const location = useLocation();
 
   const kitchenCategories = [
     { key: 'modern', path: '/kitchens/modern' },
-    { key: 'country', path: '/kitchens/country' },
     { key: 'formica', path: '/kitchens/formica' },
     { key: 'wood', path: '/kitchens/wood' },
+    { key: 'country', path: '/kitchens/country' },
     { key: 'nano', path: '/kitchens/nano' },
+    { key: 'acrylic', path: '/kitchens/acrylic' },
   ];
 
   const navItems = [
@@ -38,7 +40,10 @@ const Header = () => {
           {/* Mobile Burger Button */}
           <button
             className="lg:hidden text-header-foreground p-2 relative z-10"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              setMobileMenuOpen(!mobileMenuOpen);
+              if (mobileMenuOpen) setMobileKitchensOpen(false);
+            }}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -69,7 +74,7 @@ const Header = () => {
                     }`}
                 >
                   {t(item.key)}
-                  {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
+                  {item.hasDropdown && <ChevronDown className={`w-4 h-4 transition-transform ${kitchensDropdownOpen ? 'rotate-180' : ''}`} />}
                 </Link>
 
                 {/* Dropdown for Kitchens */}
@@ -126,26 +131,43 @@ const Header = () => {
             <nav className="container mx-auto px-4 py-4 flex flex-col gap-2">
               {navItems.map((item) => (
                 <div key={item.key}>
-                  <Link
-                    to={item.path}
-                    className="block py-2 text-header-foreground hover:text-accent transition-colors"
-                    onClick={() => !item.hasDropdown && setMobileMenuOpen(false)}
-                  >
-                    {t(item.key)}
-                  </Link>
+                  <div className="flex items-center justify-between">
+                    <Link
+                      to={item.path}
+                      className="flex-grow py-2 text-header-foreground hover:text-accent transition-colors"
+                      onClick={() => !item.hasDropdown && setMobileMenuOpen(false)}
+                    >
+                      {t(item.key)}
+                    </Link>
+                    {item.hasDropdown && (
+                      <button
+                        className="p-2 text-header-foreground/70"
+                        onClick={() => setMobileKitchensOpen(!mobileKitchensOpen)}
+                      >
+                        <ChevronDown className={`w-5 h-5 transition-transform ${mobileKitchensOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                    )}
+                  </div>
                   {item.hasDropdown && (
-                    <div className="ps-4 flex flex-col gap-1">
+                    <motion.div
+                      initial={false}
+                      animate={{ height: mobileKitchensOpen ? 'auto' : 0, opacity: mobileKitchensOpen ? 1 : 0 }}
+                      className="overflow-hidden ps-4 flex flex-col gap-1"
+                    >
                       {kitchenCategories.map((cat) => (
                         <Link
                           key={cat.key}
                           to={cat.path}
                           className="block py-1 text-header-foreground/80 hover:text-accent transition-colors text-sm"
-                          onClick={() => setMobileMenuOpen(false)}
+                          onClick={() => {
+                            setMobileMenuOpen(false);
+                            setMobileKitchensOpen(false);
+                          }}
                         >
                           {t(`nav.kitchens.${cat.key}`)}
                         </Link>
                       ))}
-                    </div>
+                    </motion.div>
                   )}
                 </div>
               ))}

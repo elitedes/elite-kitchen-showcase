@@ -12,6 +12,7 @@ interface LanguageContextType {
 const translations: Record<Language, Record<string, string>> = {
   he: {
     'about.cta.invite': 'תיאום פגישה למדידה',
+    'gallery.view': 'לצפייה',
     'about.process.desc': 'הדרך שלכם למטבח המושלם מתחילה כאן. אנו מנתחים את החלל שלכם, מתחשבים בהרגלים של כל בני המשפחה והופכים משימות טכניות מורכבות לפתרונות אלגנטיים. ב-Elite Design אנו לא רק מייצרים רהיטים – אנו יוצרים את הנוחות שתרגישו בכל יום.',
     'about.philosophy': 'אנחנו לא רק מתקינים ארונות, אנחנו מעצבים את הארגונומיה של החיים שלכם',
     'seo.title': 'Elite Design | מטבחים, ארונות ונגרות בהתאמה אישית - 20 שנות ניסיון',
@@ -25,6 +26,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.kitchens.formica': 'מטבחי פורמייקה',
     'nav.kitchens.wood': 'מטבחי עץ מלא',
     'nav.kitchens.nano': 'מטבחי נאנו',
+    'nav.kitchens.acrylic': 'מטבחי אקריל',
     'nav.projects': 'פרויקטים',
     'nav.promotions': 'מבצעים',
     'nav.installation': 'הכנה להתקנת מטבח',
@@ -101,10 +103,11 @@ const translations: Record<Language, Record<string, string>> = {
     'kitchens.nano': 'מטבחי נאנו',
     'kitchens.nano.en': 'Nano kitchens',
     'kitchens.nano.desc': 'מטבחי נאנו: המילה האחרונה בעיצוב המטבח – עמידות בפני שריטות וטביעות אצבע במראה מט יוקרתי.',
+    'kitchens.acrylic': 'מטבחי אקריל',
+    'kitchens.acrylic.en': 'Acrylic kitchens',
 
     // Testimonials
     'testimonials.title': 'לקוחות ממליצים',
-    'testimonials.decorative': 'Testimonials',
 
     // Magazine
     'magazine.title': 'בלוג מטבחי Elite Design',
@@ -292,7 +295,8 @@ const translations: Record<Language, Record<string, string>> = {
     'whatsapp.tooltip': 'חישוב עלות ב-WhatsApp',
   },
   ru: {
-    'about.cta.invite': 'Пригласить дизайнера на замер',
+    'about.cta.invite': 'Записаться на встречу (дизайнер)',
+    'gallery.view': 'Смотреть',
     'about.process.desc': 'Ваш путь к идеальной кухне начинается здесь. Мы анализируем ваше пространство, учитываем привычки каждого члена семьи и превращаем сложные технические задачи в элегантные решения. В Elite Design мы не просто производим мебель — мы создаем комфорт, который вы будете чувствовать каждый день.',
     'about.philosophy': '«Мы не просто ставим шкафы, мы создаем эргономику вашей жизни»',
     'seo.title': 'Elite Design | Кухни, шкафы и столярные изделия на заказ - 20 лет опыта',
@@ -306,6 +310,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.kitchens.formica': 'Кухни из формайки',
     'nav.kitchens.wood': 'Кухни из массива',
     'nav.kitchens.nano': 'Нано кухни',
+    'nav.kitchens.acrylic': 'Кухни из акрила',
     'nav.projects': 'Проекты',
     'nav.promotions': 'Акции',
     'nav.installation': 'Подготовка к установке',
@@ -382,10 +387,11 @@ const translations: Record<Language, Record<string, string>> = {
     'kitchens.nano': 'Нано кухни',
     'kitchens.nano.en': 'Nano kitchens',
     'kitchens.nano.desc': 'Нано кухни: последнее слово в дизайне кухни – устойчивость к царапинам и отпечаткам пальцев с роскошным матовым видом.',
+    'kitchens.acrylic': 'Кухни из акрила',
+    'kitchens.acrylic.en': 'Acrylic kitchens',
 
     // Testimonials
     'testimonials.title': 'Отзывы клиентов',
-    'testimonials.decorative': 'Testimonials',
 
     // Magazine
     'magazine.title': 'Блог Elite Design',
@@ -575,6 +581,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   en: {
     'about.cta.invite': 'Invite Designer for Measurement',
+    'gallery.view': 'View',
     'about.process.desc': 'Your journey to the perfect kitchen starts here. We analyze your space, consider every family members habits, and turn complex technical tasks into elegant solutions. At Elite Design, we don’t just make furniture—we create the comfort you’ll feel every day.',
     'about.philosophy': '“We don’t just install cabinets, we design the ergonomics of your life”',
     'seo.title': 'Elite Design | Custom Kitchens, Closets & Woodworking - 20 Years Experience',
@@ -588,6 +595,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.kitchens.formica': 'Formica Kitchens',
     'nav.kitchens.wood': 'Solid Wood Kitchens',
     'nav.kitchens.nano': 'Nano Kitchens',
+    'nav.kitchens.acrylic': 'Acrylic Kitchens',
     'nav.projects': 'Projects',
     'nav.promotions': 'Promotions',
     'nav.installation': 'Preparation for Installation',
@@ -664,10 +672,11 @@ const translations: Record<Language, Record<string, string>> = {
     'kitchens.nano': 'Nano Kitchens',
     'kitchens.nano.en': 'Nano Kitchens',
     'kitchens.nano.desc': 'Nano Kitchens: The last word in kitchen design – resistance to scratches and fingerprints with a luxury matte look.',
+    'kitchens.acrylic': 'Acrylic Kitchens',
+    'kitchens.acrylic.en': 'Acrylic Kitchens',
 
     // Testimonials
     'testimonials.title': 'Client Testimonials',
-    'testimonials.decorative': 'Testimonials',
 
     // Magazine
     'magazine.title': 'Elite Design Blog',

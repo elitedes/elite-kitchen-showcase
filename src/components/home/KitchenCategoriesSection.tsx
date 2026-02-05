@@ -7,6 +7,7 @@ import kitchenCountry from '@/assets/kitchen-country.jpg';
 import kitchenFormica from '@/assets/kitchen-formica.jpg';
 import kitchenWood from '@/assets/kitchen-wood.jpg';
 import kitchenNano from '@/assets/kitchen-nano.jpg';
+import kitchenAcrylic from '@/assets/kitchen-acrylic.jpg';
 
 const categories = [
   { key: 'modern', image: kitchenModern, path: '/kitchens/modern' },
@@ -14,6 +15,7 @@ const categories = [
   { key: 'wood', image: kitchenWood, path: '/kitchens/wood' },
   { key: 'country', image: kitchenCountry, path: '/kitchens/country' },
   { key: 'nano', image: kitchenNano, path: '/kitchens/nano' },
+  { key: 'acrylic', image: kitchenAcrylic, path: '/kitchens/acrylic' },
 ];
 
 const KitchenCategoriesSection = () => {
@@ -33,8 +35,8 @@ const KitchenCategoriesSection = () => {
           <p className="decorative-text">{t('about.decorative')}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {categories.slice(0, 2).map((category, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {categories.slice(0, 3).map((category, index) => (
             <motion.div
               key={category.key}
               initial={{ opacity: 0, y: 30 }}
@@ -65,13 +67,13 @@ const KitchenCategoriesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          {categories.slice(2).map((category, index) => (
+          {categories.slice(3).map((category, index) => (
             <motion.div
               key={category.key}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (index + 2) * 0.1 }}
+              transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
             >
               <Link to={category.path} className="kitchen-card block h-72">
                 <img
