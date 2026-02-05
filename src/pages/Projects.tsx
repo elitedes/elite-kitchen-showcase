@@ -1,11 +1,17 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
-// Original projects (keep or merge)
+// Original projects
 import kitchenModern from '@/assets/kitchen-modern.jpg';
 import kitchenWood from '@/assets/kitchen-wood.jpg';
 import kitchenNano from '@/assets/kitchen-nano.jpg';
@@ -104,7 +110,7 @@ const projects = [
   { id: 38, image: project32, location: 'מזכרת בתיה', locationRu: 'Мазкерет-Батья', locationEn: 'Mazkeret Batya' },
   { id: 39, image: project33, location: 'גדרה', locationRu: 'Гедера', locationEn: 'Gedera' },
   { id: 40, image: project34, location: 'קריית מלאכי', locationRu: 'Кирьят-Малахи', locationEn: 'Kiryat Malakhi' },
-  { id: 41, image: project35, location: 'קריית עקרון', locationRu: 'Кирьят-Экрон', locationEn: 'Kiryat Ekron' },
+  { id: 41, image: project35, location: 'קריית עקрон', locationRu: 'Кирьят-Экрон', locationEn: 'Kiryat Ekron' },
   // Gallery 8 (Latest Batch)
   { id: 42, image: project36, location: 'בני ברק', locationRu: 'Бней-Брак', locationEn: 'Bnei Brak' },
   { id: 43, image: project37, location: 'קריית ביאליק', locationRu: 'Кирьят-Бялик', locationEn: 'Kiryat Bialik' },
@@ -117,17 +123,14 @@ const Projects = () => {
   const { t, language, dir } = useLanguage();
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
-  const openLightbox = (index: number) => setSelectedImageIndex(index);
-  const closeLightbox = () => setSelectedImageIndex(null);
-
-  const nextImage = (e: React.MouseEvent) => {
+  const handleNextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (selectedImageIndex !== null) {
       setSelectedImageIndex((selectedImageIndex + 1) % projects.length);
     }
   };
 
-  const prevImage = (e: React.MouseEvent) => {
+  const handlePrevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (selectedImageIndex !== null) {
       setSelectedImageIndex((selectedImageIndex - 1 + projects.length) % projects.length);
@@ -158,7 +161,7 @@ const Projects = () => {
       {/* Projects Grid */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -166,20 +169,23 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="kitchen-card h-80 cursor-pointer group"
-                onClick={() => openLightbox(index)}
-                layoutId={`project-${project.id}`}
+                className="kitchen-card h-72 cursor-pointer group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                onClick={() => setSelectedImageIndex(index)}
               >
                 <img
                   src={project.image}
                   alt={`Project ${project.id}`}
-                  className="kitchen-card-image transition-transform duration-500 group-hover:scale-110"
+                  className="kitchen-card-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                   decoding="async"
                 />
-                <div className="kitchen-card-overlay" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <div className="bg-white/90 p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                    <span className="text-primary font-medium text-sm">{t('gallery.view')}</span>
+                  </div>
+                </div>
                 <div className="kitchen-card-title">
-                  <h3 className="text-xl font-bold text-primary-foreground">
+                  <h3 className="text-lg font-bold text-primary-foreground">
                     {language === 'he' ? project.location : language === 'ru' ? project.locationRu : project.locationEn}
                   </h3>
                 </div>
@@ -189,62 +195,77 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
-      <AnimatePresence>
-        {selectedImageIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-            onClick={closeLightbox}
-          >
-            <button
-              className="absolute top-4 right-4 text-white hover:text-gray-300 z-50 p-2"
-              onClick={closeLightbox}
-            >
-              <X className="w-8 h-8" />
-            </button>
-
-            <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 p-2 rounded-full transition-colors z-50"
-              onClick={prevImage}
-            >
-              <ChevronLeft className="w-8 h-8" />
-            </button>
-
-            <motion.div
-              layoutId={`project-${projects[selectedImageIndex].id}`}
-              className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={projects[selectedImageIndex].image}
-                alt="Gallery view"
-                className="max-w-full max-h-full object-contain rounded-sm"
-              />
-              <div className="absolute bottom-4 left-0 right-0 text-center text-white/80 bg-black/50 py-2 rounded-b-sm">
-                <p className="text-lg font-semibold">
-                  {language === 'he'
-                    ? projects[selectedImageIndex].location
-                    : language === 'ru'
-                      ? projects[selectedImageIndex].locationRu
-                      : projects[selectedImageIndex].locationEn}
-                </p>
-              </div>
-            </motion.div>
-
-            <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 p-2 rounded-full transition-colors z-50"
-              onClick={nextImage}
-            >
-              <ChevronRight className="w-8 h-8" />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <ContactSection />
+
+      {/* Lightbox */}
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full md:h-auto md:aspect-video p-0 bg-black/95 border-none">
+          <DialogTitle className="sr-only">
+            Project Image {selectedImageIndex !== null ? selectedImageIndex + 1 : ''}
+          </DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-4 top-4 text-white/70 hover:text-white hover:bg-white/10 z-50 rounded-full"
+              onClick={() => setSelectedImageIndex(null)}
+            >
+              <X className="h-6 w-6" />
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:bg-white/10 z-50 rounded-full h-12 w-12 hidden md:flex"
+              onClick={handlePrevImage}
+            >
+              <ChevronLeft className="h-8 w-8" />
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white hover:bg-white/10 z-50 rounded-full h-12 w-12 hidden md:flex"
+              onClick={handleNextImage}
+            >
+              <ChevronRight className="h-8 w-8" />
+            </Button>
+
+            {selectedImageIndex !== null && (
+              <motion.div
+                key={selectedImageIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.2 }}
+                className="w-full h-full flex items-center justify-center"
+              >
+                <motion.img
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(_, info) => {
+                    if (info.offset.x > 100) handlePrevImage(new MouseEvent('click') as any);
+                    else if (info.offset.x < -100) handleNextImage(new MouseEvent('click') as any);
+                  }}
+                  src={projects[selectedImageIndex].image}
+                  alt="Gallery view"
+                  className="max-w-full max-h-full object-contain cursor-grab active:cursor-grabbing"
+                />
+                <div className="absolute bottom-4 left-0 right-0 text-center text-white/80 bg-black/50 py-2 hidden md:block">
+                  <p className="text-lg font-semibold">
+                    {language === 'he'
+                      ? projects[selectedImageIndex].location
+                      : language === 'ru'
+                        ? projects[selectedImageIndex].locationRu
+                        : projects[selectedImageIndex].locationEn}
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };
