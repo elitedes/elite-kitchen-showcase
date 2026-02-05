@@ -2,50 +2,204 @@ import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
+import StatCounter from '@/components/common/StatCounter';
+import { Award, CheckCircle2, Users, Briefcase, History, Quote, MousePointer2, Hammer, Zap } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import WhyUsSection from '@/components/home/WhyUsSection';
 
 const About = () => {
-  const { t } = useLanguage();
+  const { t, dir } = useLanguage();
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
 
   return (
     <Layout>
-      {/* Hero Banner */}
-      <section className="bg-header py-20">
-        <div className="container mx-auto px-4">
+      {/* Hero Banner - Elite Style */}
+      <section className="relative bg-[#1a1a1a] text-white py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#1a1a1a]" />
+
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+            transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-header-foreground mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold font-playfair mb-6 tracking-tight">
               {t('page.about.title')}
             </h1>
-            <p className="font-playfair italic text-xl text-header-foreground/80">
+            <p className="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto font-playfair italic">
               {t('about.decorative')}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="py-20 bg-background">
+      {/* Block 1: Philosophy (Quote) */}
+      <section className="py-24 bg-background relative z-20 -mt-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <motion.div
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto glass-card-light p-12 md:p-20 text-center relative overflow-hidden"
+          >
+            <Quote className="w-16 h-16 text-muted-gold/20 absolute top-8 left-8" />
+            <h2 className="text-3xl md:text-5xl font-playfair italic text-charcoal leading-snug mb-0 relative z-10">
+              {t('about.philosophy')}
+            </h2>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Block 2: About (SEO) & Stats Bento */}
+      <section className="py-24 bg-background overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* SEO Content Card */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="prose prose-lg mx-auto text-center"
+              className="lg:col-span-12 glass-card p-10 md:p-16 mb-8"
             >
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                {t('page.about.content')}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="status-heading text-muted-gold text-lg mb-4">Elite Design</h3>
+                  <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-8 leading-tight">
+                    {t('about.title')}
+                  </h2>
+                </div>
+                <div className="text-content text-xl text-muted-foreground whitespace-pre-line leading-relaxed">
+                  {t('page.about.content')}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Stats Items */}
+            <motion.div
+              className="lg:col-span-4 bg-muted-gold text-white rounded-[2.5rem] p-12 flex flex-col items-center justify-center text-center shadow-gold transition-transform hover:scale-[1.02]"
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <History className="w-12 h-12 mb-6 opacity-80" />
+              <div className="text-7xl font-black mb-2 flex items-center tracking-tighter">
+                <StatCounter end={20} suffix="+" />
+              </div>
+              <p className="text-xl font-bold uppercase tracking-widest opacity-90">
+                {t('about.benefits.1.title')}
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {t('about.description')}
+            </motion.div>
+
+            <motion.div
+              className="lg:col-span-4 rounded-[2.5rem] overflow-hidden shadow-2xl h-[400px]"
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <img src="/interactive-fitting/oak.jpg" className="w-full h-full object-cover transition-transform duration-1000 hover:scale-110" alt="Excellence" />
+            </motion.div>
+
+            <motion.div
+              className="lg:col-span-4 bg-charcoal text-white rounded-[2.5rem] p-12 flex flex-col items-center justify-center text-center group"
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <Briefcase className="w-12 h-12 mb-6 text-muted-gold opacity-80" />
+              <div className="text-7xl font-black mb-2 group-hover:text-muted-gold transition-colors tracking-tighter">
+                <StatCounter end={1000} suffix="+" />
+              </div>
+              <p className="text-xl font-bold uppercase tracking-widest opacity-60">
+                {t('nav.projects')}
               </p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Block 3: Why Choose Us (List) */}
+      <section className="py-24 bg-secondary/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 px-4">
+            <h2 className="text-4xl md:text-6xl font-black text-charcoal mb-6 tracking-tight">
+              {t('benefits.title')}
+            </h2>
+            <div className="w-24 h-2 bg-muted-gold mx-auto rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: <MousePointer2 />, title: 'about.benefits.1.title', desc: 'about.benefits.1.desc' },
+              { icon: <Zap />, title: 'about.benefits.2.title', desc: 'about.benefits.2.desc' },
+              { icon: <Hammer />, title: 'about.benefits.3.title', desc: 'about.benefits.3.desc' },
+              { icon: <Award />, title: 'about.benefits.4.title', desc: 'about.benefits.4.desc' }
+            ].map((value, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="glass-card-light hover:glass-card p-10 flex flex-col items-start transition-all"
+              >
+                <div className="w-14 h-14 bg-muted-gold/10 rounded-2xl flex items-center justify-center text-muted-gold mb-8 shadow-sm">
+                  {value.icon}
+                </div>
+                <h4 className="text-2xl font-bold mb-4 text-charcoal leading-tight">
+                  {t(value.title)}
+                </h4>
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  {t(value.desc)}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <WhyUsSection />
+
+      {/* Final CTA Section */}
+      <section className="py-32 bg-charcoal relative overflow-hidden">
+        {/* Decorative Background */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-muted-gold opacity-5 skew-x-[-20deg] translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-muted-gold opacity-10 rounded-full blur-[120px] -translate-x-1/2" />
+
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <motion.div
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-7xl font-black text-white mb-10 tracking-tighter leading-tight">
+              הגיע הזמן להגשים את החלום
+              <br />
+              <span className="text-muted-gold italic font-playfair">{t('about.cta.invite')}</span>
+            </h2>
+
+            <Button
+              onClick={() => window.location.hash = '#contact'}
+              className="bg-muted-gold hover:bg-muted-gold/80 text-white text-2xl md:text-3xl font-black px-12 py-10 md:px-20 md:py-12 rounded-2xl shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 border-b-8 border-gold/40"
+            >
+              {t('about.cta.invite')}
+            </Button>
+
+            <p className="mt-8 text-white/40 text-sm uppercase tracking-[0.5em] font-bold">
+              Elite Design • Excellence in Carpentry
+            </p>
+          </motion.div>
         </div>
       </section>
 

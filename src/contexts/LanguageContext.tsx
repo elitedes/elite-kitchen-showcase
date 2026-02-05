@@ -11,6 +11,9 @@ interface LanguageContextType {
 
 const translations: Record<Language, Record<string, string>> = {
   he: {
+    'about.cta.invite': 'תיאום פגישה למדידה',
+    'about.process.desc': 'הדרך שלכם למטבח המושלם מתחילה כאן. אנו מנתחים את החלל שלכם, מתחשבים בהרגלים של כל בני המשפחה והופכים משימות טכניות מורכבות לפתרונות אלגנטיים. ב-Elite Design אנו לא רק מייצרים רהיטים – אנו יוצרים את הנוחות שתרגישו בכל יום.',
+    'about.philosophy': 'אנחנו לא רק מתקינים ארונות, אנחנו מעצבים את הארגונומיה של החיים שלכם',
     'seo.title': 'Elite Design | מטבחים, ארונות ונגרות בהתאמה אישית - 20 שנות ניסיון',
     'seo.description': 'נגריית Elite Design מתמחה בייצור מטבחים ורהיטים מעל 20 שנה. ארונות, חדרי רחצה ופתרונות נגרות לכל הבית במחירים נוחים ובאיכות מעולה. פנו לייעוץ!',
     // Navigation
@@ -44,14 +47,22 @@ const translations: Record<Language, Record<string, string>> = {
     'about.decorative': 'Where Design Meets Quality',
     'about.description': 'חברת Elite Design היא עסק עם וותק של מעל 20 שנה בתחום הנגרות. לאורך השנים בנינו אלפי מטבחים ורהיטים עבור לקוחות בכל רחבי הארץ. הסוד שלנו פשוט: אנחנו אוהבים את העבודה שלנו. הניסיון שצברנו בשני עשורים מאפשר לנו לתת לכם פתרון לכל תקציב ולכל צורך. אנחנו לא מאמינים ב"שיטת הסרט הנע" – אצלנו כל לקוח מקבל יחס אישי, תכנון מדויק וליווי מלא עד שהרהיט מותקן בבית.',
     'about.benefits.title': '',
-    'about.benefits.1.title': '20 שנות ניסיון',
-    'about.benefits.1.desc': 'ראינו הכל, עשינו הכל – אין פרויקט שגדול עלינו.',
-    'about.benefits.2.title': 'איכות ללא פשרות',
-    'about.benefits.2.desc': 'משתמשים בחומרים הכי טובים כדי שהרהיטים שלכם ישמרו לשנים.',
-    'about.benefits.3.title': 'התאמה אישית',
-    'about.benefits.3.desc': 'אתם בוחרים את הצבע, החומר והעיצוב – אנחנו מבצעים.',
-    'about.benefits.4.title': 'שירות מכל הלב',
-    'about.benefits.4.desc': 'אנחנו כאן בשבילכם גם אחרי שההתקנה מסתיימת.',
+    'about.benefits.1.title': 'גישה אישית',
+
+    'about.benefits.1.desc': 'אנו יוצרים פרויקטים שמתאימים באופן מושלם לחלל שלכם ולקצב החיים שלכם.',
+
+    'about.benefits.2.title': 'חומרי העתיד',
+
+    'about.benefits.2.desc': 'עבודה עם ציפויים חדשניים (נאנו), פורמייקה, אקריל ופורניר טבעי.',
+
+    'about.benefits.3.title': 'מחזור מלא',
+
+    'about.benefits.3.desc': 'ממדידה מקצועית ותכנון בתלת-מימד ועד להתקנה ללא פשרות.',
+
+    'about.benefits.4.title': 'איכות ללא פשרות',
+
+    'about.benefits.4.desc': 'שימוש בפרזול של המותגים המובילים בעולם (Blum, Hettich, Grass) לעמידות מירבית.',
+
 
     'benefits.title': 'למה לבחור במטבחים של עלית דיזיין?',
     'whyus.title': 'שלבי העבודה שלנו',
@@ -118,8 +129,10 @@ const translations: Record<Language, Record<string, string>> = {
     'floating.appointment': 'לקביעת פגישה',
 
     // Pages
-    'page.about.title': 'אודות Elite Design',
-    'page.about.content': 'Elite Design מטבחים הוקמה מתוך אהבה לעיצוב ומחויבות למצוינות. אנו מאמינים שכל מטבח הוא יצירה ייחודית שמשקפת את האישיות והצרכים של בעליו.',
+    'page.about.title': 'עלית דיזיין האומנות שבעיצוב החלל',
+
+    'page.about.content': 'Elite Design — מעל 20 שנות ניסיון בתכנון וייצור מטבחים בהתאמה אישית בישראל. אנו מאמינים שהמטבח הוא לא רק רהיט, אלא לב הבית, שבו כל פרט קטן חשוב. אנו מתמחים בפתרונות יצירתיים: ממטבחי יוקרה בעיצוב מודרני עם ציפוי נאנו ועד לנגרות בהתאמה אישית וארונות מעוצבים. הייצור שלנו משלב טכנולוגיה מתקדמת ועבודת יד מוקפדת. אנו פועלים באזור המרכז והדרום: אשקלון, אשדוד ויישובים נוספים.',
+
     'page.showroom.title': 'אולם התצוגה שלנו',
     'page.showroom.desc': 'הזמנו אתכם לבקר באולם התצוגה שלנו ולחוות את המטבחים שלנו מקרוב',
     'page.projects.title': 'הפרויקטים שלנו',
@@ -261,6 +274,9 @@ const translations: Record<Language, Record<string, string>> = {
     'whatsapp.tooltip': 'חישוב עלות ב-WhatsApp',
   },
   ru: {
+    'about.cta.invite': 'Пригласить дизайнера на замер',
+    'about.process.desc': 'Ваш путь к идеальной кухне начинается здесь. Мы анализируем ваше пространство, учитываем привычки каждого члена семьи и превращаем сложные технические задачи в элегантные решения. В Elite Design мы не просто производим мебель — мы создаем комфорт, который вы будете чувствовать каждый день.',
+    'about.philosophy': '«Мы не просто ставим шкафы, мы создаем эргономику вашей жизни»',
     'seo.title': 'Elite Design | Кухни, шкафы и столярные изделия на заказ - 20 лет опыта',
     'seo.description': 'Столярная мастерская Elite Design специализируется на производстве кухонь и мебели более 20 лет. Шкафы, ванные комнаты и столярные решения для всего дома по доступным ценам и в отличном качестве. Обращайтесь за консультацией!',
     // Navigation
@@ -294,14 +310,22 @@ const translations: Record<Language, Record<string, string>> = {
     'about.decorative': 'Where Design Meets Quality',
     'about.description': 'Elite Design — это компания с более чем 20-летним опытом работы в сфере столярного дела. За эти годы мы построили тысячи кухонь и мебели для клиентов по всей стране. Наш секрет прост: мы любим свою работу. Опыт, накопленный нами за два десятилетия, позволяет нам предложить вам решение для любого бюджета и любых потребностей. Мы не верим в метод "конвейера" — у нас каждый клиент получает индивидуальный подход, точное планирование и полную поддержку до момента установки в доме.',
     'about.benefits.title': '',
-    'about.benefits.1.title': '20 лет опыта',
-    'about.benefits.1.desc': 'Мы видели всё, мы делали всё — нет проекта, который был бы для нас слишком велик.',
-    'about.benefits.2.title': 'Бескомпромиссное качество',
-    'about.benefits.2.desc': 'Используем лучшие материалы, чтобы ваша мебель служила долгие годы.',
-    'about.benefits.3.title': 'Индивидуальный заказ',
-    'about.benefits.3.desc': 'Вы выбираете цвет, материал и дизайн — мы воплощаем это в жизнь.',
-    'about.benefits.4.title': 'Сервис от души',
-    'about.benefits.4.desc': 'Мы здесь для вас и после завершения установки.',
+    'about.benefits.1.title': 'Индивидуальный подход',
+
+    'about.benefits.1.desc': 'Мы создаем проекты, которые идеально вписываются в ваш интерьер и ритм жизни.',
+
+    'about.benefits.2.title': 'Материалы будущего',
+
+    'about.benefits.2.desc': 'Работаем с инновационными покрытиями (Nano), формайка, акрил, натуральный шпон.',
+
+    'about.benefits.3.title': 'Полный цикл',
+
+    'about.benefits.3.desc': 'От профессионального замера и 3D-проектирования до безупречного монтажа.',
+
+    'about.benefits.4.title': 'Качество без компромиссов',
+
+    'about.benefits.4.desc': 'Используем лучшую фурнитуру мировых брендов (Blum, Hettich, Grass) для долговечности мебели.',
+
 
     'benefits.title': 'Почему стоит выбрать кухни Elite Design?',
     'whyus.title': 'Этапы нашей работы',
@@ -368,8 +392,10 @@ const translations: Record<Language, Record<string, string>> = {
     'floating.appointment': 'Записаться',
 
     // Pages
-    'page.about.title': 'О Elite Design',
-    'page.about.content': 'Elite Design Кухни была основана из любви к дизайну и стремления к совершенству. Мы верим, что каждая кухня — это уникальное творение, отражающее личность и потребности владельца.',
+    'page.about.title': 'Elite Design Искусство создания пространства',
+
+    'page.about.content': 'Elite Design — это более 20 лет опыта в проектировании и производстве кухонь на заказ в Израиле. Мы верим, что кухня — это не просто мебель, а сердце дома, где важна каждая деталь. Мы специализируемся на индивидуальных решениях: от современных дизайнерских кухонь с покрытием Nano до эксклюзивных столярных изделий и шкафов. Наше производство объединяет передовые технологии и мастерство ручной работы. Мы работаем в центре и на юге страны: Ашкелон, Ашдод и другие города.',
+
     'page.showroom.title': 'Наш шоурум',
     'page.showroom.desc': 'Приглашаем вас посетить наш шоурум и лично оценить качество наших кухонь',
     'page.projects.title': 'Наши проекты',
@@ -512,6 +538,9 @@ const translations: Record<Language, Record<string, string>> = {
     'whatsapp.tooltip': 'Рассчитать стоимость в WhatsApp',
   },
   en: {
+    'about.cta.invite': 'Invite Designer for Measurement',
+    'about.process.desc': 'Your journey to the perfect kitchen starts here. We analyze your space, consider every family members habits, and turn complex technical tasks into elegant solutions. At Elite Design, we don’t just make furniture—we create the comfort you’ll feel every day.',
+    'about.philosophy': '“We don’t just install cabinets, we design the ergonomics of your life”',
     'seo.title': 'Elite Design | Custom Kitchens, Closets & Woodworking - 20 Years Experience',
     'seo.description': 'Elite Design Carpentry specializes in manufacturing kitchens and furniture for over 20 years. Closets, bathrooms, and woodworking solutions for the whole home at affordable prices and excellent quality. Contact us for a consultation!',
     // Navigation
@@ -545,14 +574,22 @@ const translations: Record<Language, Record<string, string>> = {
     'about.decorative': 'Where Design Meets Quality',
     'about.description': 'Elite Design is a company with over 20 years of experience in the carpentry field. Over the years, we have built thousands of kitchens and furniture for customers all over the country. Our secret is simple: we love our work. The experience we have gained over two decades allows us to provide you with a solution for every budget and every need. We do not believe in the "conveyor belt system" – with us, every customer receives personal attention, precise planning, and full support until the furniture is installed in the home.',
     'about.benefits.title': '',
-    'about.benefits.1.title': '20 Years of Experience',
-    'about.benefits.1.desc': 'We have seen it all, we have done it all – no project is too big for us.',
-    'about.benefits.2.title': 'Uncompromising Quality',
-    'about.benefits.2.desc': 'Using the best materials so that your furniture lasts for years.',
-    'about.benefits.3.title': 'Customization',
-    'about.benefits.3.desc': 'You choose the color, material, and design – we perform.',
-    'about.benefits.4.title': 'Service from the Heart',
-    'about.benefits.4.desc': 'We are here for you even after the installation is complete.',
+    'about.benefits.1.title': 'Individual Approach',
+
+    'about.benefits.1.desc': 'We create projects that fit perfectly into your interior and lifestyle.',
+
+    'about.benefits.2.title': 'Future Materials',
+
+    'about.benefits.2.desc': 'Working with innovative coatings (Nano), Formica, Acrylic, and natural Veneer.',
+
+    'about.benefits.3.title': 'Full Cycle',
+
+    'about.benefits.3.desc': 'From professional measurement and 3D design to flawless installation.',
+
+    'about.benefits.4.title': 'Uncompromising Quality',
+
+    'about.benefits.4.desc': 'Using the worlds best hardware (Blum, Hettich, Grass) for your furnitures longevity.',
+
 
     'benefits.title': 'Why Choose Elite Design Kitchens?',
     'whyus.title': 'Stages of our work',
@@ -619,8 +656,10 @@ const translations: Record<Language, Record<string, string>> = {
     'floating.appointment': 'Book Appointment',
 
     // Pages
-    'page.about.title': 'About Elite Design',
-    'page.about.content': 'Elite Design Kitchens was established out of a love for design and a commitment to excellence. We believe that every kitchen is a unique creation that reflects the personality and needs of its owner.',
+    'page.about.title': 'Elite Design The Art of Space Creation',
+
+    'page.about.content': 'Elite Design brings over 20 years of experience in custom kitchen design and production in Israel. We believe a kitchen is more than just furniture—it’s the heart of the home, where every detail matters. We specialize in bespoke solutions: from modern designer kitchens with Nano coating to exclusive carpentry and closets. Our production combines cutting-edge technology with handcrafted mastery. Serving the Central and Southern regions, including Ashkelon, Ashdod, and surrounding areas.',
+
     'page.showroom.title': 'Our Showroom',
     'page.showroom.desc': 'We invite you to visit our showroom and experience our kitchens up close',
     'page.projects.title': 'Our Projects',

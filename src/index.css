@@ -321,6 +321,54 @@
       transform: scale(1);
     }
   }
+
+  .text-muted-gold {
+    color: #D4AF37;
+  }
+
+  .bg-muted-gold {
+    background-color: #D4AF37;
+  }
+
+  .border-muted-gold {
+    border-color: rgba(212, 175, 55, 0.3);
+  }
+
+  .shadow-gold {
+    box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.4);
+  }
+
+  /* Glassmorphism Refinement */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply rounded-[2rem] shadow-2xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    @apply rounded-[2rem] shadow-xl transition-all duration-300;
+  }
+
+  .status-heading {
+    @apply font-bold uppercase tracking-[0.05em] leading-tight;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+
+  .text-content {
+    line-height: 1.6;
+  }
 }
 
 @keyframes pulse-scale {
