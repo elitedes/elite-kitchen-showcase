@@ -13,31 +13,34 @@ const WhatsAppButton = () => {
             const scrollHeight = document.documentElement.scrollHeight;
             const scrollTop = document.documentElement.scrollTop;
             const clientHeight = document.documentElement.clientHeight;
-
             const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-
-            if (scrollPercentage > 20) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
+            setIsVisible(scrollPercentage > 20);
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (isVisible && showTooltip) {
+            const timer = setTimeout(() => {
+                setShowTooltip(false);
+            }, 4000);
+            return () => clearTimeout(timer);
+        }
+    }, [isVisible, showTooltip]);
+
     if (!isVisible) return null;
 
     return (
-        <div className="fixed bottom-5 right-5 z-[9999] flex flex-col items-end gap-2">
+        <div className="fixed bottom-4 right-4 md:bottom-5 md:right-5 z-[9999] flex flex-col items-end gap-2">
             <AnimatePresence>
                 {showTooltip && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, x: 20 }}
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0.8, x: 20 }}
-                        className="relative bg-white/80 backdrop-blur-md text-charcoal px-4 py-2 rounded-xl shadow-lg border border-white/30 text-sm font-medium mb-1 mr-2"
+                        className="relative bg-white/80 backdrop-blur-md text-charcoal px-3 py-1.5 md:px-4 md:py-2 rounded-xl shadow-lg border border-white/30 text-xs md:text-sm font-medium mb-1 mr-2"
                     >
                         <button
                             onClick={() => setShowTooltip(false)}
@@ -56,10 +59,10 @@ const WhatsAppButton = () => {
                 href="https://wa.me/972086711767"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#25D366]/70 backdrop-blur-md text-white rounded-full shadow-2xl transition-transform hover:scale-110 hover:bg-[#25D366]/90 active:scale-95 animate-pulse-scale border border-white/20"
+                className="group relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-[#25D366]/70 backdrop-blur-md text-white rounded-full shadow-2xl transition-transform hover:scale-110 hover:bg-[#25D366]/90 active:scale-95 animate-pulse-scale border border-white/20"
             >
                 <div className="animate-sway">
-                    <MessageCircle className="w-8 h-8 md:w-10 md:h-10 fill-current" />
+                    <MessageCircle className="w-6 h-6 md:w-10 md:h-10 fill-current" />
                 </div>
             </a>
         </div>
