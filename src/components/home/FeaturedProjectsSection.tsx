@@ -4,23 +4,26 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { MapPin } from 'lucide-react';
+import project1 from '@/assets/gallery-projects/project-1.jpg';
+import project37 from '@/assets/gallery-projects/project-37.jpg';
+import project40 from '@/assets/gallery-projects/project-40.jpg';
 
 const FeaturedProjectsSection = () => {
     const { t } = useLanguage();
 
     const projects = [
         {
-            image: '/gallery-projects/project-1.jpg',
+            image: project1,
             title: 'featured.project1.title',
             city: 'featured.project1.city'
         },
         {
-            image: '/gallery-projects/project-37.jpg',
+            image: project37,
             title: 'featured.project2.title',
             city: 'featured.project2.city'
         },
         {
-            image: '/gallery-projects/project-40.jpg',
+            image: project40,
             title: 'featured.project3.title',
             city: 'featured.project3.city'
         }
