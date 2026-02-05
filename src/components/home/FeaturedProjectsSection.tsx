@@ -1,0 +1,106 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from '@/components/ui/button';
+import { MapPin } from 'lucide-react';
+
+const FeaturedProjectsSection = () => {
+    const { t } = useLanguage();
+
+    const projects = [
+        {
+            image: '/gallery-projects/project-1.jpg',
+            title: 'featured.project1.title',
+            city: 'featured.project1.city'
+        },
+        {
+            image: '/gallery-projects/project-37.jpg',
+            title: 'featured.project2.title',
+            city: 'featured.project2.city'
+        },
+        {
+            image: '/gallery-projects/project-40.jpg',
+            title: 'featured.project3.title',
+            city: 'featured.project3.city'
+        }
+    ];
+
+    return (
+        <section className="py-24 bg-white overflow-hidden">
+            <div className="container mx-auto px-4">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
+                >
+                    <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
+                        {t('featured.title')}
+                    </h2>
+                    <div className="w-24 h-1.5 bg-muted-gold mx-auto" />
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    {projects.map((project, index) => (
+                        <Link key={index} to="/projects">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="group relative h-[450px] rounded-[2rem] overflow-hidden shadow-xl cursor-pointer"
+                            >
+                                {/* Image */}
+                                <img
+                                    src={project.image}
+                                    alt={t(project.title)}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+
+                                {/* Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80" />
+
+                                {/* Content */}
+                                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                                    <motion.div
+                                        initial={{ y: 20, opacity: 0 }}
+                                        whileInView={{ y: 0, opacity: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 + 0.2 }}
+                                    >
+                                        <div className="flex items-center gap-2 mb-2 text-muted-gold font-bold uppercase tracking-widest text-sm">
+                                            <MapPin className="w-4 h-4" />
+                                            {t(project.city)}
+                                        </div>
+                                        <h3 className="text-2xl font-bold leading-tight">
+                                            {t(project.title)}
+                                        </h3>
+                                    </motion.div>
+                                </div>
+                            </motion.div>
+                        </Link>
+                    ))}
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                >
+                    <Button
+                        asChild
+                        className="bg-charcoal hover:bg-muted-gold text-white px-10 py-8 text-xl rounded-2xl transition-all duration-300 shadow-xl hover:scale-105"
+                    >
+                        <Link to="/projects">
+                            {t('featured.cta')}
+                        </Link>
+                    </Button>
+                </motion.div>
+            </div>
+        </section>
+    );
+};
+
+export default FeaturedProjectsSection;
