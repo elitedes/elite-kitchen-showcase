@@ -573,4 +573,187 @@ export const blogPosts: BlogPost[] = [
         readTime: 2,
         image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=800',
     },
+    {
+        id: '7',
+        slug: 'custom-closets-guide',
+        title: {
+            he: 'המדריך המלא לארונות קיר: הזזה או פתיחה?',
+            ru: 'Полный гид по встроенным шкафам: Купе или Распашные?',
+            en: 'The Ultimate Guide to Custom Closets: Sliding vs. Hinged',
+        },
+        excerpt: {
+            he: 'כל מה שרציתם לדעת על תכנון ארונות לחדר השינה. יתרונות, חסרונות, וטיפים לתחזוקה נכונה שתשמור על הארון לשנים.',
+            ru: 'Всё, что вы хотели знать о проектировании шкафов в спальню. Плюсы, минусы и советы по уходу.',
+            en: 'Everything you wanted to know about bedroom closet design. Pros, cons, and maintenance tips to keep your closet lasting for years.',
+        },
+        content: {
+            he: `
+        <p class="lead">בחירת ארון היא אחת ההחלטות החשובות בריהוט הבית. הארון תופס נפח משמעותי בחלל ומשמש אותנו יום-יום. אז מה עדיף - דלתות הזזה או פתיחה?</p>
+
+        <h2>ארונות הזזה (Sliding Closets)</h2>
+        <p>ארונות הזזה הם הפתרון המודרני לניצול מקום מקסימלי, במיוחד בחדרים קטנים.</p>
+        
+        <h3>יתרונות:</h3>
+        <ul class="check-list">
+            <li>חיסכון משמעותי במקום בחדר (אין צורך במקום לפתיחת דלתות).</li>
+            <li>מראה נקי, מודרני ומינימליסטי.</li>
+            <li>אפשרות לדלתות רחבות במיוחד (עד 1.2 מטר לדלת).</li>
+            <li>שילוב מראות ענק שמגדילות את תחושת החלל.</li>
+        </ul>
+
+        <h3>חסרונות:</h3>
+        <ul class="cross-list">
+            <li>לא ניתן לפתוח את כל הארון בבת אחת (תמיד דלת אחת מסתירה חלק מהארון).</li>
+            <li>מנגנון מורכב יותר הדורש איכות גבוהה למניעת תקלות.</li>
+            <li>דורש עומק גדול יותר (כ-65 ס"מ לעומת 60 ס"מ) בגלל המסילות.</li>
+        </ul>
+
+        <div class="my-8">
+            <img src="/src/assets/closets/sliding-new.png" alt="Sliding Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+
+        <h2>ארונות פתיחה (Hinged Closets)</h2>
+        <p>הקלאסיקה שלא נעלמת. ארונות פתיחה מעניקים גישה מלאה ונוחה לכל התכולה.</p>
+
+        <h3>יתרונות:</h3>
+        <ul class="check-list">
+            <li>גישה מלאה לכל חלקי הארון בו זמנית.</li>
+            <li>אפשרות להתקנת מגירות חיצוניות ועיצובים מגוונים בידיות.</li>
+            <li>עומק ארון סטנדרטי (60 ס"מ) - מתאים לנישות.</li>
+            <li>מנגנונים פשוטים ואמינים לאורך שנים.</li>
+        </ul>
+
+        <h3>חסרונות:</h3>
+        <ul class="cross-list">
+            <li>דורשים מקום פנוי לפני הארון לפתיחת הדלתות.</li>
+            <li>רוחב דלת מוגבל (לרוב עד 60 ס"מ) כדי לא להעמיס על הצירים.</li>
+        </ul>
+
+        <div class="my-8">
+            <img src="/src/assets/closets/hinged-new.png" alt="Hinged Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+
+        <h2>טיפים לתחזוקה נכונה</h2>
+        <p>כדי שהארון יחזיק מעמד שנים רבות:</p>
+        <ul class="list-disc pl-6 space-y-2">
+            <li>נקו את המסילות של ארונות ההזזה מאבק אחת לחודש בעזרת שואב אבק.</li>
+            <li>הימנעו מטריקה חזקה של הדלתות - זה שומר על הצירים והמעצורים.</li>
+            <li>אל תעמיסו יתר על המידה על המדפים (מקסימום 20 ק"ג למדף סטנדרטי).</li>
+        </ul>
+      `,
+            ru: `
+        <p class="lead">Выбор шкафа — одно из важнейших решений при меблировке. Шкаф занимает много места и используется ежедневно. Так что же лучше — купе или распашной?</p>
+
+        <h2>Шкафы-купе (Sliding Closets)</h2>
+        <p>Шкафы-купе — это современное решение для максимальной экономии места, особенно в небольших комнатах.</p>
+        
+        <h3>Плюсы:</h3>
+        <ul class="check-list">
+            <li>Значительная экономия места (не нужно пространство для открывания дверей).</li>
+            <li>Чистый, современный и минималистичный вид.</li>
+            <li>Возможность очень широких дверей (до 1.2 метра).</li>
+            <li>Использование огромных зеркал, расширяющих пространство.</li>
+        </ul>
+
+        <h3>Минусы:</h3>
+        <ul class="cross-list">
+            <li>Нельзя открыть весь шкаф сразу (одна дверь всегда перекрывает часть секций).</li>
+            <li>Более сложный механизм, требующий высокого качества.</li>
+            <li>Требует большей глубины (около 65 см против 60 см) из-за рельсов.</li>
+        </ul>
+
+        <div class="my-8">
+            <img src="/src/assets/closets/sliding-new.png" alt="Шкаф-купе" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+
+        <h2>Распашные шкафы (Hinged Closets)</h2>
+        <p>Классика, которая не стареет. Распашные шкафы дают полный и удобный доступ ко всему содержимому.</p>
+
+        <h3>Плюсы:</h3>
+        <ul class="check-list">
+            <li>Полный доступ ко всем частям шкафа одновременно.</li>
+            <li>Возможность внешних ящиков и разнообразных ручек.</li>
+            <li>Стандартная глубина (60 см) — идеально для ниш.</li>
+            <li>Простые и надежные механизмы на долгие годы.</li>
+        </ul>
+
+        <h3>Минусы:</h3>
+        <ul class="cross-list">
+            <li>Требуют свободного места перед шкафом для открывания дверей.</li>
+            <li>Ограниченная ширина двери (обычно до 60 см), чтобы не нагружать петли.</li>
+        </ul>
+
+        <div class="my-8">
+            <img src="/src/assets/closets/hinged-new.png" alt="Распашной шкаф" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+
+        <h2>Советы по уходу</h2>
+        <p>Чтобы шкаф служил долгие годы:</p>
+        <ul class="list-disc pl-6 space-y-2">
+            <li>Очищайте рельсы шкафов-купе от пыли пылесосом раз в месяц.</li>
+            <li>Избегайте сильного хлопанья дверями — это бережет петли и доводчики.</li>
+            <li>Не перегружайте полки (максимум 20 кг на стандартную полку).</li>
+        </ul>
+      `,
+            en: `
+        <p class="lead">Choosing a closet is a key furnishing decision. It takes up significant space and is used daily. So, Sliding or Hinged?</p>
+
+        <h2>Sliding Closets</h2>
+        <p>Sliding closets are the modern solution for maximizing space, especially in small rooms.</p>
+        
+        <h3>Pros:</h3>
+        <ul class="check-list">
+            <li>Significant space saving (no clearance needed for doors).</li>
+            <li>Clean, modern, and minimalist look.</li>
+            <li>Extra-wide doors possible (up to 1.2m per door).</li>
+            <li>Integration of large mirrors to expand the room feel.</li>
+        </ul>
+
+        <h3>Cons:</h3>
+        <ul class="cross-list">
+            <li>Cannot open the entire closet at once.</li>
+            <li>More complex mechanism requiring high quality.</li>
+            <li>Requires more depth (approx 65cm vs 60cm) due to tracks.</li>
+        </ul>
+
+        <div class="my-8">
+            <img src="/src/assets/closets/sliding-new.png" alt="Sliding Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+
+        <h2>Hinged Closets</h2>
+        <p>The classic that never ages. Hinged closets provide full access.</p>
+
+        <h3>Pros:</h3>
+        <ul class="check-list">
+            <li>Full access to all parts of the closet simultaneously.</li>
+            <li>Option for external drawers and varied handle designs.</li>
+            <li>Standard depth (60cm) - fits niches perfectly.</li>
+            <li>Simple and reliable mechanisms for years.</li>
+        </ul>
+
+        <h3>Cons:</h3>
+        <ul class="cross-list">
+            <li>Requires clearance space in front of the closet.</li>
+            <li>Limited door width (usually up to 60cm) to save hinges.</li>
+        </ul>
+
+        <div class="my-8">
+            <img src="/src/assets/closets/hinged-new.png" alt="Hinged Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+
+        <h2>Care Tips</h2>
+        <p>To keep your closet lasting for years:</p>
+        <ul class="list-disc pl-6 space-y-2">
+            <li>Vacuum the sliding tracks monthly to remove dust.</li>
+            <li>Avoid slamming doors - this protects hinges and soft-close mechanisms.</li>
+            <li>Do not overload shelves (max 20kg per standard shelf).</li>
+        </ul>
+      `,
+        },
+        date: '2024-02-10',
+        author: 'Elite Design Team',
+        category: 'design',
+        readTime: 5,
+        image: '/src/assets/closets/bedroom-new.png',
+    },
 ];

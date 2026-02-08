@@ -1,231 +1,330 @@
-import { motion } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue, useMotionTemplate } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Check, X, Shield, Star, Camera, Settings, Layout as LayoutIcon, Home, Bed, Baby, Sofa, ArrowRight } from 'lucide-react';
 import ContactSection from '@/components/home/ContactSection';
+import { ArrowRight, Star, Shield, Settings, Play, CheckCircle2, X } from 'lucide-react';
+import WhatsAppButton from '@/components/layout/WhatsAppButton';
 
-// Import local assets
-// Import local assets
-const heroImage = "https://images.unsplash.com/photo-1516053350711-28562725f101?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-import slidingClosetImg from '@/assets/closets/sliding-new.png';
-import hingedClosetImg from '@/assets/closets/hinged-new.png';
-import hallwayImg from '@/assets/closets/hallway-small.png';
+// Assets
+import heroVideo from '@/assets/closets/closet_video.mp4';
+import slidingImg from '@/assets/closets/sliding-new.png';
+import hingedImg from '@/assets/closets/hinged-new.png';
+import walkinImg from '@/assets/closets/walkin-new.png';
+import frameImg from '@/assets/closets/frame.png';
 import bedroomImg from '@/assets/closets/bedroom-new.png';
-import kidsImg from '@/assets/closets/kids-new.png';
 import livingImg from '@/assets/closets/living-tv-mirror.png';
+import hallwayImg from '@/assets/closets/hallway-small.png';
+
+// Types
+type TabType = 'sliding' | 'hinged' | 'walkin' | 'glass';
 
 const Closets = () => {
-    const { t, dir } = useLanguage();
+    const { t, language, dir } = useLanguage();
+    const [activeTab, setActiveTab] = useState<TabType>('sliding');
+    const [isMobile, setIsMobile] = useState(false);
 
-    const fadeIn = {
-        initial: { opacity: 0, y: 20 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true },
-        transition: { duration: 0.6 }
+    // Mobile detection
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // 3D Tilt Hook
+    const useTilt = () => {
+        const x = useMotionValue(0);
+        const y = useMotionValue(0);
+        const rotateX = useTransform(y, [-100, 100], [3, -3]);
+        const rotateY = useTransform(x, [-100, 100], [-3, 3]);
+
+        function handleMouseMove(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+            const xPct = mouseX / width - 0.5;
+            const yPct = mouseY / height - 0.5;
+            x.set(xPct * width);
+            y.set(yPct * height);
+        }
+
+        function handleMouseLeave() {
+            x.set(0);
+            y.set(0);
+        }
+
+        return { rotateX, rotateY, handleMouseMove, handleMouseLeave };
     };
+
+    const tabs = [
+        { id: 'sliding', label: language === 'he' ? 'ארונות הזזה' : language === 'ru' ? 'Шкафы-купе' : 'Sliding Closets' },
+        { id: 'hinged', label: language === 'he' ? 'ארונות פתיחה' : language === 'ru' ? 'Распашные шкафы' : 'Hinged Closets' },
+        { id: 'walkin', label: language === 'he' ? 'חדרי ארונות' : language === 'ru' ? 'Гардеробные' : 'Walk-in Closets' },
+        { id: 'glass', label: language === 'he' ? 'ארונות זכוכית' : language === 'ru' ? 'Стеклянные витрины' : 'Glass Closets' },
+    ];
+
+    const features = [
+        {
+            icon: <Star className="w-6 h-6" />,
+            title: language === 'he' ? 'תאורת LED חכמה' : language === 'ru' ? 'Умная LED подсветка' : 'Smart LED Lighting',
+            desc: language === 'he' ? 'נדלקת אוטומטית בפתיחת הדלת' : language === 'ru' ? 'Включается при открытии' : 'Auto-on with door opening',
+            animation: 'glow'
+        },
+        {
+            icon: <Settings className="w-6 h-6" />,
+            title: language === 'he' ? 'טריקה שקטה' : language === 'ru' ? 'Тихое закрытие' : 'Soft Close',
+            desc: language === 'he' ? 'מגירות ודלתות עם מנגנון בלימה' : language === 'ru' ? 'Ящики и двери с доводчиками' : 'Drawers and doors with damping',
+            animation: 'slide'
+        },
+        {
+            icon: <Shield className="w-6 h-6" />,
+            title: language === 'he' ? '10 שנות אחריות' : language === 'ru' ? '10 лет гарантии' : '10 Year Warranty',
+            desc: language === 'he' ? 'על כל הפרזול והמנגנונים' : language === 'ru' ? 'На всю фурнитуру' : 'On all hardware',
+            animation: 'pulse'
+        }
+    ];
 
     return (
         <Layout>
-            {/* Hero Banner */}
-            <section className="bg-header py-20">
-                <div className="container mx-auto px-4 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <h1 className="text-4xl md:text-5xl font-bold text-header-foreground mb-4">
-                            {t('page.closets.title')}
-                        </h1>
-                        <p className="font-playfair italic text-header-foreground/80 text-xl md:text-2xl">
-                            {t('page.closets.decorative')}
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+            <div className="bg-[#F5F5F0] min-h-screen font-sans selection:bg-charcoal selection:text-white overflow-x-hidden">
+                <WhatsAppButton />
 
-            {/* Main Content */}
-            <div className="bg-background">
-                {/* Sliding Closets Section */}
-                <section className="py-20 border-b border-border/50">
-                    <div className="container mx-auto px-4">
-                        <div className={`flex flex-col ${dir === 'rtl' ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center`}>
-                            <div className="lg:w-1/2">
-                                <motion.div {...fadeIn}>
-                                    <h2 className="text-3xl font-bold text-charcoal mb-6">{t('closets.sliding.title')}</h2>
-                                    <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                                        {t('closets.sliding.desc')}
-                                    </p>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div>
-                                            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                                                <Check className="w-5 h-5" />
-                                                {t('closets.sliding.pros.title')}
-                                            </h3>
-                                            <ul className="space-y-3">
-                                                {[1, 2, 3, 4].map(idx => (
-                                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground italic">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                                                        {t(`closets.sliding.pros.${idx}`)}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-xl font-bold text-destructive mb-4 flex items-center gap-2">
-                                                <X className="w-5 h-5" />
-                                                {t('closets.sliding.cons.title')}
-                                            </h3>
-                                            <ul className="space-y-3">
-                                                {[1, 2, 3].map(idx => (
-                                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground italic">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-destructive/50 mt-2 flex-shrink-0" />
-                                                        {t(`closets.sliding.cons.${idx}`)}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            </div>
-                            <div className="lg:w-1/2">
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    className="rounded-2xl overflow-hidden shadow-2xl h-[500px]"
-                                >
-                                    <img
-                                        src={slidingClosetImg}
-                                        alt="Sliding Closet"
-                                        className="w-full h-full object-cover"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                </motion.div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Hinged Closets Section */}
-                <section className="py-20 bg-accent/5">
-                    <div className="container mx-auto px-4">
-                        <div className={`flex flex-col ${dir === 'rtl' ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
-                            <div className="lg:w-1/2">
-                                <motion.div {...fadeIn}>
-                                    <h2 className="text-3xl font-bold text-charcoal mb-6">{t('closets.hinged.title')}</h2>
-                                    <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                                        {t('closets.hinged.desc')}
-                                    </p>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div>
-                                            <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                                                <Check className="w-5 h-5" />
-                                                {t('closets.hinged.pros.title')}
-                                            </h3>
-                                            <ul className="space-y-3">
-                                                {[1, 2, 3, 4].map(idx => (
-                                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground italic">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                                                        {t(`closets.hinged.pros.${idx}`)}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-xl font-bold text-destructive mb-4 flex items-center gap-2">
-                                                <X className="w-5 h-5" />
-                                                {t('closets.hinged.cons.title')}
-                                            </h3>
-                                            <ul className="space-y-3">
-                                                {[1, 2].map(idx => (
-                                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground italic">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-destructive/50 mt-2 flex-shrink-0" />
-                                                        {t(`closets.hinged.cons.${idx}`)}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            </div>
-                            <div className="lg:w-1/2">
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    className="rounded-2xl overflow-hidden shadow-2xl h-[500px]"
-                                >
-                                    <img
-                                        src={hingedClosetImg}
-                                        alt="Hinged Closet"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </motion.div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Care Section */}
-                <section className="py-16 bg-white">
-                    <div className="container mx-auto px-4 max-w-4xl">
-                        <motion.div
-                            {...fadeIn}
-                            className="bg-primary/5 rounded-3xl p-8 md:p-12 border border-primary/10 text-center"
+                {/* HERO SECTION */}
+                <section className="relative h-screen w-full overflow-hidden">
+                    {/* Video Background */}
+                    <div className="absolute inset-0 w-full h-full z-0">
+                        <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay */}
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            poster={frameImg}
+                            className="w-full h-full object-cover scale-105"
                         >
-                            <Settings className="w-12 h-12 text-primary mx-auto mb-6" />
-                            <h2 className="text-3xl font-bold text-charcoal mb-4">{t('closets.care.title')}</h2>
-                            <p className="text-muted-foreground text-lg leading-relaxed italic">
-                                {t('closets.care.desc')}
+                            <source src={heroVideo} type="video/mp4" />
+                        </video>
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-start text-white">
+                        <motion.div
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="max-w-3xl"
+                        >
+                            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
+                                {language === 'he'
+                                    ? 'האומנות שבסדר.'
+                                    : language === 'ru'
+                                        ? 'Искусство порядка.'
+                                        : 'The Art of Order.'}
+                            </h1>
+                            <p className="text-xl md:text-2xl font-light text-white/90 mb-10 max-w-2xl leading-relaxed">
+                                {language === 'he'
+                                    ? 'עיצוב פרימיום בהתאמה אישית, שמשלב אסתטיקה עוצרת נשימה עם פרקטיקה חכמה.'
+                                    : language === 'ru'
+                                        ? 'Премиальный дизайн по индивидуальному проекту, сочетающий эстетику и умную функциональность.'
+                                        : 'Premium custom design combining breathtaking aesthetics with smart functionality.'}
                             </p>
+
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="group relative px-8 py-4 bg-white text-black rounded-full font-bold text-lg overflow-hidden flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)] transition-shadow"
+                            >
+                                <span className="relative z-10">
+                                    {language === 'he' ? 'הזמן פגישת ייעוץ' : language === 'ru' ? 'Заказать консультацию' : 'Book Consultation'}
+                                </span>
+                                <ArrowRight className={`w-5 h-5 relative z-10 transition-transform duration-300 ${dir === 'rtl' ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} />
+                                <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            </motion.button>
                         </motion.div>
                     </div>
                 </section>
 
-                {/* Room Selection Grid */}
-                <section className="py-20">
+                {/* TABS SECTION - CLOSET TYPES */}
+                <section className="py-24 bg-[#F5F5F0]">
                     <div className="container mx-auto px-4">
-                        <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">{t('closets.rooms.title')}</h2>
-                            <div className="w-20 h-1.5 bg-accent mx-auto rounded-full" />
+                        {/* Tabs Navigation */}
+                        <div className="flex flex-wrap justify-center gap-4 mb-16">
+                            {tabs.map((tab) => (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setActiveTab(tab.id as TabType)}
+                                    className={`px-6 py-3 rounded-full text-lg transition-all duration-300 relative ${activeTab === tab.id
+                                        ? 'text-white'
+                                        : 'text-gray-500 hover:text-black'
+                                        }`}
+                                >
+                                    {activeTab === tab.id && (
+                                        <motion.div
+                                            layoutId="activeTab"
+                                            className="absolute inset-0 bg-[#2C2C2C] rounded-full"
+                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        />
+                                    )}
+                                    <span className="relative z-10 font-medium">{tab.label}</span>
+                                </button>
+                            ))}
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {[
-                                { key: 'hallway', icon: LayoutIcon, img: hallwayImg },
-                                { key: 'bedroom', icon: Bed, img: bedroomImg },
-                                { key: 'kids', icon: Baby, img: kidsImg },
-                                { key: 'living', icon: Sofa, img: livingImg }
-                            ].map((room, index) => (
+                        {/* Content Area */}
+                        <div className="min-h-[600px]">
+                            <AnimatePresence mode="wait">
                                 <motion.div
-                                    key={room.key}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="group relative overflow-hidden rounded-2xl shadow-lg bg-white"
+                                    key={activeTab}
+                                    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                    exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
+                                    transition={{ duration: 0.5 }}
+                                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
                                 >
-                                    <div className="aspect-[4/3] overflow-hidden">
-                                        <img
-                                            src={room.img}
-                                            alt={t(`closets.rooms.${room.key}.title`)}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                        />
-                                    </div>
-                                    <div className="p-6">
-                                        <div className="flex items-center gap-3 mb-3">
-                                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                                                <room.icon className="w-5 h-5" />
-                                            </div>
-                                            <h3 className="text-xl font-bold text-charcoal">{t(`closets.rooms.${room.key}.title`)}</h3>
-                                        </div>
-                                        <p className="text-muted-foreground text-xs font-medium italic">
-                                            {t(`closets.rooms.${room.key}.desc`)}
+                                    {/* Text Content */}
+                                    <div className={`space-y-8 ${dir === 'rtl' ? 'lg:order-2' : ''}`}>
+                                        <h2 className="text-4xl font-bold text-[#2C2C2C]">
+                                            {activeTab === 'sliding' && (language === 'he' ? 'ארונות הזזה: מינימליזם בתנועה' : language === 'ru' ? 'Шкафы-купе: Минимализм в движении' : 'Sliding Closets: Minimalism in Motion')}
+                                            {activeTab === 'hinged' && (language === 'he' ? 'ארונות פתיחה: הקלאסיקה החדשה' : language === 'ru' ? 'Распашные шкафы: Новая классика' : 'Hinged Closets: The New Classic')}
+                                            {activeTab === 'walkin' && (language === 'he' ? 'חדרי ארונות: הממלכה שלך' : language === 'ru' ? 'Гардеробные: Ваше королевство' : 'Walk-in Closets: Your Kingdom')}
+                                            {activeTab === 'glass' && (language === 'he' ? 'ויטרינות זכוכית: שקיפות יוקרתית' : language === 'ru' ? 'Стеклянные витрины: Роскошная прозрачность' : 'Glass Showcases: Luxurious Transparency')}
+                                        </h2>
+                                        <p className="text-xl text-gray-600 leading-relaxed">
+                                            {activeTab === 'sliding' && (language === 'he'
+                                                ? 'ניצול מקסימלי של החלל עם דלתות מרחפות שנעות בשקט מופתי. המסילות הנסתרות שלנו מבטיחות מראה נקי ואחיד.'
+                                                : 'Максимальное использование пространства с парящими дверями, скользящими в полной тишине. Скрытые направляющие обеспечивают чистый вид.')}
+                                            {activeTab === 'hinged' && (language === 'he'
+                                                ? 'גמישות עיצובית אינסופית. שלבו ידיות אינטגרליות, חזיתות תלת-ממדיות ושילוב חומרים ליצירת ארון שהוא רהיט אומנותי.'
+                                                : 'Бесконечная гибкость дизайна. Интегрированные ручки, 3D фасады и комбинации материалов создают шкаф как арт-объект.')}
+                                            {activeTab === 'walkin' && (language === 'he'
+                                                ? 'תכנון ארגונומי מדויק לכל פריט לבוש. ממגירות תכשיטים מרופדות ועד מתקנים נשלפים למכנסיים - הכל במקום ובנגישות מיידית.'
+                                                : 'Точная эргономика для каждой вещи. От бархатных ящиков для украшений до выдвижных брючниц - всё на месте.')}
+                                            {activeTab === 'glass' && (language === 'he'
+                                                ? 'מערכות אלומיניום דקיקות וזכוכית כהה שחושפת את הביגוד רק כשהתאורה נדלקת. המראה של בוטיק יוקרה בתוך הבית.'
+                                                : 'Тончайший алюминий и тонированное стекло, открывающее одежду только при включении света. Вид роскошного бутика дома.')}
                                         </p>
+
+                                        <div className="grid grid-cols-2 gap-6">
+                                            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                                                <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
+                                                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                                                    {language === 'he' ? 'יתרונות' : 'Преимущества'}
+                                                </h4>
+                                                <p className="text-sm text-gray-500">
+                                                    {activeTab === 'sliding' ? (language === 'he' ? 'חיסכון במקום, דלתות רחבות' : 'Экономия места, широкие двери') : ''}
+                                                    {activeTab === 'hinged' ? (language === 'he' ? 'גישה מלאה, עיצוב גמיש' : 'Полный доступ, гибкий дизайн') : ''}
+                                                </p>
+                                            </div>
+                                            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                                                <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
+                                                    <Settings className="w-5 h-5 text-blue-500" />
+                                                    {language === 'he' ? 'מפרט' : 'Спецификация'}
+                                                </h4>
+                                                <p className="text-sm text-gray-500">
+                                                    {language === 'he' ? 'פרזול בלום, גוף סנדוויץ׳' : 'Фурнитура Blum, корпус сэндвич'}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Image Area */}
+                                    <div className={`relative h-[500px] rounded-3xl overflow-hidden shadow-2xl ${dir === 'rtl' ? 'lg:order-1' : ''}`}>
+                                        <img
+                                            src={activeTab === 'sliding' ? slidingImg : activeTab === 'hinged' ? hingedImg : activeTab === 'walkin' ? walkinImg : livingImg}
+                                            alt={activeTab}
+                                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                                        />
+                                        {/* Floating Tag */}
+                                        <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur px-6 py-3 rounded-xl shadow-lg">
+                                            <p className="text-xs font-bold uppercase tracking-widest text-[#2C2C2C]">Model 2024</p>
+                                            <p className="text-lg font-serif italic">{tabs.find(t => t.id === activeTab)?.label}</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
+                    </div>
+                </section>
+
+                {/* PROJECTS GRID - MASONRY + TILT */}
+                <section className="py-24 bg-white">
+                    <div className="container mx-auto px-4">
+                        <div className="flex justify-between items-end mb-12">
+                            <div>
+                                <h2 className="text-4xl font-bold text-[#2C2C2C] mb-4">
+                                    {language === 'he' ? 'פרויקטים נבחרים' : language === 'ru' ? 'Избранные проекты' : 'Featured Projects'}
+                                </h2>
+                                <p className="text-gray-500 max-w-lg">
+                                    {language === 'he' ? 'הצצה לקולקציה האחרונה של ארונות שתכננו והתקנו.' : language === 'ru' ? 'Взгляд на последнюю коллекцию наших работ.' : 'A glimpse into our latest collection.'}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {[
+                                { img: bedroomImg, title: 'Master Bedroom Suite', mat: 'Acrylic & Glass' },
+                                { img: hallwayImg, title: 'Entrance Hallway', mat: 'Nano Black' },
+                                { img: slidingImg, title: 'Guest Room Sliding', mat: 'Mirror & Wood' }
+                            ].map((project, idx) => {
+                                const { rotateX, rotateY, handleMouseMove, handleMouseLeave } = useTilt();
+
+                                return (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, y: 50 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: idx * 0.1 }}
+                                        style={{ rotateX: isMobile ? 0 : rotateX, rotateY: isMobile ? 0 : rotateY, perspective: 1000 }}
+                                        onMouseMove={handleMouseMove}
+                                        onMouseLeave={handleMouseLeave}
+                                        className="group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer"
+                                    >
+                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500 z-10" />
+                                        <img
+                                            src={project.img}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        />
+
+                                        <div className="absolute bottom-0 left-0 w-full p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                            <p className="text-white/70 text-sm uppercase tracking-widest mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{project.mat}</p>
+                                            <h3 className="text-3xl font-bold text-white mb-4">{project.title}</h3>
+                                            <div className="w-12 h-1 bg-white rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </section>
+
+                {/* FEATURES - INTERACTIVE */}
+                <section className="py-24 bg-[#2C2C2C] text-white overflow-hidden">
+                    <div className="container mx-auto px-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                            {features.map((feature, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.2 }}
+                                    className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                                >
+                                    <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-accent">
+                                        {feature.icon}
+                                    </div>
+                                    <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
+                                    <p className="text-white/60 mb-6">{feature.desc}</p>
+
+                                    {/* Visual Indicator of Animation */}
+                                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                                        <div className="h-full bg-accent w-1/3 group-hover:w-full transition-all duration-1000 ease-in-out" />
                                     </div>
                                 </motion.div>
                             ))}
@@ -233,72 +332,37 @@ const Closets = () => {
                     </div>
                 </section>
 
-                {/* Custom Production Section */}
-                <section className="py-20 bg-charcoal text-white">
-                    <div className="container mx-auto px-4">
-                        <div className={`flex flex-col lg:flex-row gap-16 items-center ${dir === 'rtl' ? 'lg:flex-row-reverse' : ''}`}>
-                            <div className="lg:w-1/2">
-                                <motion.h2 {...fadeIn} className="text-4xl font-bold mb-8">{t('closets.custom.title')}</motion.h2>
-                                <div className="space-y-6">
-                                    <p className="text-white/80 text-lg">{t('closets.custom.desc')}</p>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        {[1, 2, 3, 4].map(idx => (
-                                            <div key={idx} className="flex items-center gap-3 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
-                                                <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold">
-                                                    {idx}
-                                                </div>
-                                                <span className="font-medium">{t(`closets.custom.list.${idx}`)}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <p className="text-white/60 italic pt-6">
-                                        {t('closets.custom.footer')}
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/2">
-                                <div className="rounded-2xl overflow-hidden shadow-2xl">
-                                    <img src={hallwayImg} alt="Custom Production" className="w-full object-cover" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                {/* FINAL CTA */}
+                <section className="relative py-32 bg-black text-center overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
+                    <div className="relative z-10 container mx-auto px-4">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="text-4xl md:text-6xl font-bold text-white mb-8"
+                        >
+                            {language === 'he' ? 'מוכנים לשדרג את הבית?' : language === 'ru' ? 'Готовы обновить дом?' : 'Ready to upgrade your home?'}
+                        </motion.h2>
+                        <p className="text-xl text-white/70 max-w-2xl mx-auto mb-12">
+                            {language === 'he' ? 'הצוות שלנו מחכה להפוך את החלום למציאות.' : language === 'ru' ? 'Наша команда ждет, чтобы воплотить мечту в реальность.' : 'Our team is waiting to turn your dream into reality.'}
+                        </p>
 
-                {/* CTA Section */}
-                <section className="py-24 bg-accent relative overflow-hidden text-accent-foreground">
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-                    <div className="container mx-auto px-4 relative z-10 text-center">
-                        <motion.div {...fadeIn}>
-                            <h2 className="text-4xl md:text-5xl font-bold mb-6">{t('closets.cta.title')}</h2>
-                            <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
-                                {t('closets.cta.desc')}
-                            </p>
-                            <a
-                                href="#contact"
-                                className="inline-flex items-center gap-3 bg-white text-accent px-10 py-5 rounded-full font-bold text-lg shadow-2xl hover:bg-muted transition-all hover:scale-105"
-                            >
-                                {t('hero.cta.details')}
-                                <ArrowRight className="w-6 h-6" />
-                            </a>
-                        </motion.div>
+                        <form className="max-w-md mx-auto bg-white/10 backdrop-blur-md p-2 rounded-full flex pl-6">
+                            <input
+                                type="tel"
+                                placeholder={language === 'he' ? 'מספר טלפון' : 'Номер телефона'}
+                                className="bg-transparent border-none text-white placeholder-white/50 focus:ring-0 w-full"
+                            />
+                            <button className="bg-white text-black rounded-full px-8 py-4 font-bold hover:bg-accent hover:text-white transition-colors">
+                                {language === 'he' ? 'שלח' : 'Send'}
+                            </button>
+                        </form>
                     </div>
                 </section>
 
                 <div id="contact">
                     <ContactSection />
                 </div>
-
-                {/* SEO Footer */}
-                <section className="py-12 bg-muted/30">
-                    <div className="container mx-auto px-4">
-                        <p className="text-muted-foreground/60 text-xs text-center max-w-4xl mx-auto leading-relaxed">
-                            {t('closets.seo.title')}
-                        </p>
-                    </div>
-                </section>
             </div>
         </Layout>
     );
