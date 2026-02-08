@@ -1,3 +1,4 @@
+// Triggering update to ensure dev server picks up changes
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -8,6 +9,9 @@ import kitchenModern from '@/assets/kitchen-modern.jpg';
 import kitchenFormica from '@/assets/kitchen-formica.jpg';
 import kitchenCountry from '@/assets/kitchen-country.jpg';
 import kitchenNano from '@/assets/kitchen-nano.jpg';
+import formaykaBama from '@/assets/formayka_bama.jpg';
+import polymerImg from '@/assets/polymer.jpg';
+import prevCountryImg from '@/assets/kitchen-country-promo.jpg';
 
 interface Promotion {
   id: number;
@@ -19,6 +23,7 @@ interface Promotion {
     doors: string;
     length: string;
     drawers: string;
+    body: string;
     design: string;
     delivery: string;
   };
@@ -31,16 +36,17 @@ const Promotions = () => {
   const promotions: Promotion[] = language === 'he' ? [
     {
       id: 1,
-      image: kitchenModern,
-      title: 'מבצע מטבח דלתות אקריל + במה',
+      image: formaykaBama,
+      title: 'מבצע מטבח חזיתות אקריל עם פרופיל ללא ידיות',
       price: '₪25,000',
       priceNote: 'המחיר כולל מע״מ ואינו כולל הובלה',
       specs: {
-        doors: 'דלתות אקריל',
+        doors: 'חזיתות אקריל + פרופיל ללא ידיות',
         length: '10 מטר מטבח',
-        drawers: '10 מגירות',
+        drawers: '10 מגירות עם טריקה שקטה',
+        body: "סנדוויץ'",
         design: 'עיצוב תכנון והדמיה ממוחשבת',
-        delivery: 'מדידה והתקנה',
+        delivery: 'מדידה',
       },
       ctaText: 'לפרטי המבצע',
     },
@@ -53,7 +59,8 @@ const Promotions = () => {
       specs: {
         doors: 'דלתות פורמייקה',
         length: '10 מטר מטבח',
-        drawers: '10 מגירות',
+        drawers: '10 מגירות עם טריקה שקטה',
+        body: "סנדוויץ'",
         design: 'עיצוב תכנון והדמיה ממוחשבת',
         delivery: 'מדידה',
       },
@@ -61,14 +68,15 @@ const Promotions = () => {
     },
     {
       id: 3,
-      image: kitchenCountry,
+      image: prevCountryImg,
       title: 'מבצע מטבח דלתות פורמייקה עם פרופיל ללא ידיות',
       price: '₪22,000',
       priceNote: 'המחיר כולל מע״מ ואינו כולל הובלה',
       specs: {
         doors: 'פורמייקה + פרופיל ללא ידיות',
         length: '10 מטר מטבח',
-        drawers: '10 מגירות',
+        drawers: '10 מגירות עם טריקה שקטה',
+        body: "סנדוויץ'",
         design: 'עיצוב תכנון והדמיה ממוחשבת',
         delivery: 'כולל מדידה והתקנה',
       },
@@ -76,14 +84,15 @@ const Promotions = () => {
     },
     {
       id: 4,
-      image: kitchenNano,
+      image: polymerImg,
       title: 'מבצע מטבח פולימר כפרי',
       price: '₪27,500',
       priceNote: 'המחיר כולל מע״מ ואינו כולל הובלה',
       specs: {
         doors: 'פולימר כפרי',
         length: '10 מטר מטבח',
-        drawers: '10 מגירות',
+        drawers: '10 מגירות עם טריקה שקטה',
+        body: "סנדוויץ'",
         design: 'עיצוב תכנון והדמיה ממוחשבת',
         delivery: 'כולל מדידה והתקנה',
       },
@@ -92,14 +101,15 @@ const Promotions = () => {
   ] : language === 'ru' ? [
     {
       id: 1,
-      image: kitchenModern,
-      title: 'Акция: Кухня с акриловыми дверями + остров',
+      image: formaykaBama,
+      title: 'Акция: Кухня с фасадами акрил с профилем без ручек',
       price: '₪25,000',
       priceNote: 'Цена включает НДС и не включает доставку',
       specs: {
-        doors: 'Акриловые двери',
+        doors: 'Акриловые фасады + профиль',
         length: '10 м кухни',
-        drawers: '10 ящиков',
+        drawers: '10 ящиков с тихим закрытием',
+        body: 'Сендвич',
         design: 'Компьютерный дизайн и визуализация',
         delivery: 'Замер и установка включены',
       },
@@ -114,7 +124,8 @@ const Promotions = () => {
       specs: {
         doors: 'Двери из формайки',
         length: '10 м кухни',
-        drawers: '10 ящиков',
+        drawers: '10 ящиков с тихим закрытием',
+        body: 'Сендвич',
         design: 'Компьютерный дизайн и визуализация',
         delivery: 'Замер включен',
       },
@@ -122,14 +133,15 @@ const Promotions = () => {
     },
     {
       id: 3,
-      image: kitchenCountry,
+      image: prevCountryImg,
       title: 'Акция: Кухня из формайки с профилем без ручек',
       price: '₪22,000',
       priceNote: 'Цена включает НДС и не включает доставку',
       specs: {
         doors: 'Формайка + профиль без ручек',
         length: '10 м кухни',
-        drawers: '10 ящиков',
+        drawers: '10 ящиков с тихим закрытием',
+        body: 'Сендвич',
         design: 'Компьютерный дизайн и визуализация',
         delivery: 'Замер и установка включены',
       },
@@ -137,14 +149,15 @@ const Promotions = () => {
     },
     {
       id: 4,
-      image: kitchenNano,
+      image: polymerImg,
       title: 'Акция: Кухня в стиле кантри полимер',
       price: '₪27,500',
       priceNote: 'Цена включает НДС и не включает доставку',
       specs: {
         doors: 'Полимер (кантри)',
         length: '10 м кухни',
-        drawers: '10 ящиков',
+        drawers: '10 ящиков с тихим закрытием',
+        body: 'Сендвич',
         design: 'Компьютерный дизайн и визуализация',
         delivery: 'Замер и установка включены',
       },
@@ -153,14 +166,15 @@ const Promotions = () => {
   ] : [
     {
       id: 1,
-      image: kitchenModern,
-      title: 'Promo: Acrylic Door Kitchen + Island',
+      image: formaykaBama,
+      title: 'Promo: Acrylic Facades with handleless profile',
       price: '₪25,000',
       priceNote: 'Price includes VAT and does not include delivery',
       specs: {
-        doors: 'Acrylic doors',
+        doors: 'Acrylic facades + profile',
         length: '10 m kitchen',
-        drawers: '10 drawers',
+        drawers: '10 drawers with soft close',
+        body: 'Sandwich',
         design: 'Computerized design & visualization',
         delivery: 'Measurement & installation included',
       },
@@ -175,7 +189,8 @@ const Promotions = () => {
       specs: {
         doors: 'Formica doors',
         length: '10 m kitchen',
-        drawers: '10 drawers',
+        drawers: '10 drawers with soft close',
+        body: 'Sandwich',
         design: 'Computerized design & visualization',
         delivery: 'Measurement included',
       },
@@ -183,14 +198,15 @@ const Promotions = () => {
     },
     {
       id: 3,
-      image: kitchenCountry,
+      image: prevCountryImg,
       title: 'Promo: Formica Kitchen with handleless profile',
       price: '₪22,000',
       priceNote: 'Price includes VAT and does not include delivery',
       specs: {
         doors: 'Formica + handleless profile',
         length: '10 m kitchen',
-        drawers: '10 drawers',
+        drawers: '10 drawers with soft close',
+        body: 'Sandwich',
         design: 'Computerized design & visualization',
         delivery: 'Measurement & installation included',
       },
@@ -198,14 +214,15 @@ const Promotions = () => {
     },
     {
       id: 4,
-      image: kitchenNano,
+      image: polymerImg,
       title: 'Promo: Country Style Polymer Kitchen',
       price: '₪27,500',
       priceNote: 'Price includes VAT and does not include delivery',
       specs: {
         doors: 'Country polymer',
         length: '10 m kitchen',
-        drawers: '10 drawers',
+        drawers: '10 drawers with soft close',
+        body: 'Sandwich',
         design: 'Computerized design & visualization',
         delivery: 'Measurement & installation included',
       },
@@ -217,18 +234,21 @@ const Promotions = () => {
     doors: 'דלתות:',
     length: 'אורך מטבח:',
     drawers: 'מספר מגירות:',
+    body: 'גוף המטבח:',
     design: 'תכנון ועיצוב:',
     delivery: 'מדידה והתקנה:',
   } : language === 'ru' ? {
     doors: 'Двери:',
     length: 'Длина кухни:',
     drawers: 'Кол-во ящиков:',
+    body: 'Корпус кухни:',
     design: 'Дизайн:',
     delivery: 'Замер и установка:',
   } : {
     doors: 'Doors:',
     length: 'Kitchen Length:',
     drawers: 'Number of Drawers:',
+    body: 'Kitchen Body:',
     design: 'Design:',
     delivery: 'Measurement & Installation:',
   };
@@ -267,55 +287,89 @@ const Promotions = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-card rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
               >
-                {/* Image with Sale Badge */}
-                <div className="relative h-56 md:h-64 overflow-hidden">
-                  <img
-                    src={promo.image}
-                    alt={promo.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute top-4 start-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg uppercase tracking-wide">
-                    SALE
+                <div
+                  className="relative h-full flex flex-col"
+                  style={{
+                    backgroundImage: `
+                      linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)
+                    `,
+                    backgroundSize: '30px 30px'
+                  }}
+                >
+                  {/* Technical Markers (Corners) */}
+                  <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-black/20" />
+                  <div className="absolute top-0 right-0 w-3 h-3 border-r-2 border-t-2 border-black/20" />
+                  <div className="absolute bottom-0 left-0 w-3 h-3 border-l-2 border-b-2 border-black/20" />
+                  <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-black/20" />
+
+                  {/* Coordinates/Technical text decorations */}
+                  <div className="absolute top-1 left-2 text-[8px] font-mono text-black/30 tracking-widest hidden md:block">
+                    {`X:${100 + index * 45} Y:${240 + index * 12}`}
                   </div>
-                </div>
 
-                {/* Content */}
-                <div className="p-6 text-center border-t-4 border-primary/20">
-                  <h3 className="text-xl font-bold text-foreground mb-2">{promo.title}</h3>
-                  <p className="text-4xl font-extrabold text-primary mb-1">{promo.price}</p>
-                  <p className="text-sm text-muted-foreground mb-6">{promo.priceNote}</p>
-
-                  {/* Specs Grid */}
-                  <div className="grid grid-cols-2 gap-3 text-sm border-t border-border pt-4">
-                    <div className="flex justify-between py-1 border-b border-border/50">
-                      <span className="text-muted-foreground">{specLabels.doors}</span>
-                      <span className="font-medium">{promo.specs.doors}</span>
-                    </div>
-                    <div className="flex justify-between py-1 border-b border-border/50">
-                      <span className="text-muted-foreground">{specLabels.length}</span>
-                      <span className="font-medium">{promo.specs.length}</span>
-                    </div>
-                    <div className="flex justify-between py-1 border-b border-border/50">
-                      <span className="text-muted-foreground">{specLabels.drawers}</span>
-                      <span className="font-medium">{promo.specs.drawers}</span>
-                    </div>
-                    <div className="flex justify-between py-1 border-b border-border/50">
-                      <span className="text-muted-foreground">{specLabels.design}</span>
-                      <span className="font-medium">{promo.specs.design}</span>
-                    </div>
-                    <div className="col-span-2 flex justify-between py-1">
-                      <span className="text-muted-foreground">{specLabels.delivery}</span>
-                      <span className="font-medium">{promo.specs.delivery}</span>
+                  {/* Image with Sale Badge */}
+                  <div className="relative h-56 md:h-64 overflow-hidden m-2 border border-black/5">
+                    <img
+                      src={promo.image}
+                      alt={promo.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 uppercase tracking-wide">
+                      SALE
                     </div>
                   </div>
 
-                  {/* CTA Button */}
-                  <a
-                    href="#contact"
-                    className="inline-block mt-6 text-primary font-semibold hover:text-primary/80 transition-colors underline underline-offset-4"
-                  >
-                    {promo.ctaText} →
-                  </a>
+                  {/* Content */}
+                  <div className="flex-grow flex flex-col relative z-10 px-6 pb-6 pt-2">
+                    {/* Glassmorphism background for Content Area */}
+                    <div className="absolute inset-x-4 inset-y-2 bg-white/40 backdrop-blur-sm -z-10 rounded-sm border border-white/50" />
+
+                    <h3 className="text-lg font-bold text-foreground mb-1 mt-2 line-clamp-1" style={{ lineHeight: '30px', height: '30px' }}>{promo.title}</h3>
+                    <div className="flex items-baseline justify-center gap-2" style={{ height: '60px' }}>
+                      <p className="text-3xl font-extrabold text-primary">{promo.price}</p>
+                    </div>
+                    <p className="text-xs text-muted-foreground mb-4 text-center" style={{ lineHeight: '30px', height: '30px' }}>{promo.priceNote}</p>
+
+                    {/* Specs Grid - Strict Lines */}
+                    <div className="text-sm">
+                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.doors}</span>
+                        <span className="font-medium text-foreground">{promo.specs.doors}</span>
+                      </div>
+                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.length}</span>
+                        <span className="font-medium text-foreground">{promo.specs.length}</span>
+                      </div>
+                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.drawers}</span>
+                        <span className="font-medium text-foreground">{promo.specs.drawers}</span>
+                      </div>
+                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.body}</span>
+                        <span className="font-medium text-foreground">{promo.specs.body}</span>
+                      </div>
+                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.design}</span>
+                        <span className="font-medium text-foreground">{promo.specs.design}</span>
+                      </div>
+                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.delivery}</span>
+                        <span className="font-medium text-foreground">{promo.specs.delivery}</span>
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="mt-auto pt-4 flex justify-center w-full">
+                      <a
+                        href="#contact"
+                        className="inline-block px-8 py-1 border border-primary text-primary text-sm font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all bg-white/80 backdrop-blur-sm shadow-sm"
+                        style={{ height: '30px', lineHeight: '22px' }}
+                      >
+                        {promo.ctaText}
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
