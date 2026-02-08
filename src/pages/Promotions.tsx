@@ -325,37 +325,37 @@ const Promotions = () => {
                     {/* Glassmorphism background for Content Area */}
                     <div className="absolute inset-x-4 inset-y-2 bg-white/40 backdrop-blur-sm -z-10 rounded-sm border border-white/50" />
 
-                    <h3 className="text-lg font-bold text-foreground mb-1 mt-2 line-clamp-1" style={{ lineHeight: '30px', height: '30px' }}>{promo.title}</h3>
-                    <div className="flex items-baseline justify-center gap-2" style={{ height: '60px' }}>
+                    <h3 className="text-lg font-bold text-foreground mb-1 mt-2 sm:line-clamp-1 min-h-[30px]" style={{ lineHeight: '1.2' }}>{promo.title}</h3>
+                    <div className="flex items-baseline justify-center gap-2" style={{ minHeight: '60px' }}>
                       <p className="text-3xl font-extrabold text-primary">{promo.price}</p>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-4 text-center" style={{ lineHeight: '30px', height: '30px' }}>{promo.priceNote}</p>
+                    <p className="text-xs text-muted-foreground mb-4 text-center min-h-[30px] flex items-center justify-center" style={{ lineHeight: '1.4' }}>{promo.priceNote}</p>
 
-                    {/* Specs Grid - Strict Lines */}
+                    {/* Specs Grid - Flexible on mobile, strict on desktop */}
                     <div className="text-sm">
-                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
-                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.doors}</span>
-                        <span className="font-medium text-foreground">{promo.specs.doors}</span>
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-black/5 py-1.5 sm:py-0" style={{ minHeight: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-[10px] sm:text-xs uppercase tracking-wider mb-1 sm:mb-0">{specLabels.doors}</span>
+                        <span className="font-medium text-foreground text-left sm:text-right">{promo.specs.doors}</span>
                       </div>
-                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
-                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.length}</span>
-                        <span className="font-medium text-foreground">{promo.specs.length}</span>
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-black/5 py-1.5 sm:py-0" style={{ minHeight: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-[10px] sm:text-xs uppercase tracking-wider mb-1 sm:mb-0">{specLabels.length}</span>
+                        <span className="font-medium text-foreground text-left sm:text-right">{promo.specs.length}</span>
                       </div>
-                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
-                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.drawers}</span>
-                        <span className="font-medium text-foreground">{promo.specs.drawers}</span>
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-black/5 py-1.5 sm:py-0" style={{ minHeight: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-[10px] sm:text-xs uppercase tracking-wider mb-1 sm:mb-0">{specLabels.drawers}</span>
+                        <span className="font-medium text-foreground text-left sm:text-right">{promo.specs.drawers}</span>
                       </div>
-                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
-                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.body}</span>
-                        <span className="font-medium text-foreground">{promo.specs.body}</span>
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-black/5 py-1.5 sm:py-0" style={{ minHeight: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-[10px] sm:text-xs uppercase tracking-wider mb-1 sm:mb-0">{specLabels.body}</span>
+                        <span className="font-medium text-foreground text-left sm:text-right">{promo.specs.body}</span>
                       </div>
-                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
-                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.design}</span>
-                        <span className="font-medium text-foreground">{promo.specs.design}</span>
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-black/5 py-1.5 sm:py-0" style={{ minHeight: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-[10px] sm:text-xs uppercase tracking-wider mb-1 sm:mb-0">{specLabels.design}</span>
+                        <span className="font-medium text-foreground text-left sm:text-right">{promo.specs.design}</span>
                       </div>
-                      <div className="flex justify-between items-center border-b border-black/5" style={{ height: '30px' }}>
-                        <span className="text-muted-foreground font-mono text-xs uppercase tracking-wider">{specLabels.delivery}</span>
-                        <span className="font-medium text-foreground">{promo.specs.delivery}</span>
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-black/5 py-1.5 sm:py-0" style={{ minHeight: '30px' }}>
+                        <span className="text-muted-foreground font-mono text-[10px] sm:text-xs uppercase tracking-wider mb-1 sm:mb-0">{specLabels.delivery}</span>
+                        <span className="font-medium text-foreground text-left sm:text-right">{promo.specs.delivery}</span>
                       </div>
                     </div>
 
