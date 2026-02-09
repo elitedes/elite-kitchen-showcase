@@ -194,38 +194,66 @@ const Closets = () => {
                                             {activeTab === 'glass' && (language === 'he' ? 'ויטרינות זכוכית: שקיפות יוקרתית' : language === 'ru' ? 'Стеклянные витрины: Роскошная прозрачность' : 'Glass Showcases: Luxurious Transparency')}
                                         </h2>
                                         <p className="text-xl text-gray-600 leading-relaxed">
-                                            {activeTab === 'sliding' && (language === 'he'
-                                                ? 'ניצול מקסימלי של החלל עם דלתות מרחפות שנעות בשקט מופתי. המסילות הנסתרות שלנו מבטיחות מראה נקי ואחיד.'
-                                                : 'Максимальное использование пространства с парящими дверями, скользящими в полной тишине. Скрытые направляющие обеспечивают чистый вид.')}
-                                            {activeTab === 'hinged' && (language === 'he'
-                                                ? 'גמישות עיצובית אינסופית. שלבו ידיות אינטגרליות, חזיתות תלת-ממדיות ושילוב חומרים ליצירת ארון שהוא רהיט אומנותי.'
-                                                : 'Бесконечная гибкость дизайна. Интегрированные ручки, 3D фасады и комбинации материалов создают шкаф как арт-объект.')}
-                                            {activeTab === 'walkin' && (language === 'he'
-                                                ? 'תכנון ארגונומי מדויק לכל פריט לבוש. ממגירות תכשיטים מרופדות ועד מתקנים נשלפים למכנסיים - הכל במקום ובנגישות מיידית.'
-                                                : 'Точная эргономика для каждой вещи. От бархатных ящиков для украшений до выдвижных брючниц - всё на месте.')}
-                                            {activeTab === 'glass' && (language === 'he'
-                                                ? 'מערכות אלומיניום דקיקות וזכוכית כהה שחושפת את הביגוד רק כשהתאורה נדלקת. המראה של בוטיק יוקרה בתוך הבית.'
-                                                : 'Тончайший алюминий и тонированное стекло, открывающее одежду только при включении света. Вид роскошного бутика дома.')}
+                                            {activeTab === 'sliding' && (
+                                                language === 'he' ? 'ניצול מקסימלי של החלל עם דלתות מרחפות שנעות בשקט מופתי. המסילות הנסתרות שלנו מבטיחות מראה נקי ואחיד.' :
+                                                    language === 'ru' ? 'Максимальное использование пространства с парящими дверями, скользящими в полной тишине. Скрытые направляющие обеспечивают чистый вид.' :
+                                                        'Maximum space utilization with floating doors that slide in perfect silence. Our hidden tracks ensure a clean and uniform look.'
+                                            )}
+                                            {activeTab === 'hinged' && (
+                                                language === 'he' ? 'גמישות עיצובית אינסופית. שלבו ידיות אינטגרליות, חזיתות תלת-ממדיות ושילוב חומרים ליצירת ארון שהוא רהיט אומנותי.' :
+                                                    language === 'ru' ? 'Бесконечная гибкость дизайна. Интегрированные ручки, 3D фасады и комбинации материалов создают шкаф как арт-объект.' :
+                                                        'Infinite design flexibility. Combine integrated handles, 3D fronts, and a mix of materials to create a closet that is a piece of art.'
+                                            )}
+                                            {activeTab === 'walkin' && (
+                                                language === 'he' ? 'תכנון ארגונומי מדויק לכל פריט לבוש. ממגירות תכשיטים מרופדות ועד מתקנים נשלפים למכנסיים - הכל במקום ובנגישות מיידית.' :
+                                                    language === 'ru' ? 'Точная эргономика для каждой вещи. От бархатных ящиков для украшений до выдвижных брючниц - всё на месте.' :
+                                                        'Precise ergonomic design for every garment. From lined jewelry drawers to pull-out pant racks - everything is in its place and immediately accessible.'
+                                            )}
+                                            {activeTab === 'glass' && (
+                                                language === 'he' ? 'מערכות אלומיניום דקיקות וזכוכית כהה שחושפת את הביגוד רק כשהתאורה נדלקת. המראה של בוטיק יוקרה בתוך הבית.' :
+                                                    language === 'ru' ? 'Тончайший алюминий и тонированное стекло, открывающее одежду только при включении света. Вид роскошного бутика дома.' :
+                                                        'Slim aluminum systems and tinted glass that reveal clothing only when the lights come on. The look of a luxury boutique inside your home.'
+                                            )}
                                         </p>
 
                                         <div className="grid grid-cols-2 gap-6">
                                             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                                                 <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
                                                     <CheckCircle2 className="w-5 h-5 text-green-500" />
-                                                    {language === 'he' ? 'יתרונות' : 'Преимущества'}
+                                                    {language === 'he' ? 'יתרונות' : language === 'ru' ? 'Преимущества' : 'Advantages'}
                                                 </h4>
                                                 <p className="text-sm text-gray-500">
-                                                    {activeTab === 'sliding' ? (language === 'he' ? 'חיסכון במקום, דלתות רחבות' : 'Экономия места, широкие двери') : ''}
-                                                    {activeTab === 'hinged' ? (language === 'he' ? 'גישה מלאה, עיצוב גמיש' : 'Полный доступ, гибкий дизайн') : ''}
+                                                    {activeTab === 'sliding' ? (
+                                                        language === 'he' ? 'חיסכון במקום, דלתות רחבות' :
+                                                            language === 'ru' ? 'Экономия места, широкие двери' :
+                                                                'Space-saving, wide doors'
+                                                    ) : ''}
+                                                    {activeTab === 'hinged' ? (
+                                                        language === 'he' ? 'גישה מלאה, עיצוב גמיש' :
+                                                            language === 'ru' ? 'Полный доступ, гибкий дизайн' :
+                                                                'Full access, flexible design'
+                                                    ) : ''}
+                                                    {activeTab === 'walkin' ? (
+                                                        language === 'he' ? 'סדר מופתי, נוחות מקסימלית' :
+                                                            language === 'ru' ? 'Идеальный порядок, макс. комфорт' :
+                                                                'Perfect order, maximum comfort'
+                                                    ) : ''}
+                                                    {activeTab === 'glass' ? (
+                                                        language === 'he' ? 'מראה יוקרתי, תאורה פנימית' :
+                                                            language === 'ru' ? 'Роскошный вид, внутр. свет' :
+                                                                'Luxury look, internal lighting'
+                                                    ) : ''}
                                                 </p>
                                             </div>
                                             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                                                 <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
                                                     <Settings className="w-5 h-5 text-blue-500" />
-                                                    {language === 'he' ? 'מפרט' : 'Спецификация'}
+                                                    {language === 'he' ? 'מפרט' : language === 'ru' ? 'Спецификация' : 'Specs'}
                                                 </h4>
                                                 <p className="text-sm text-gray-500">
-                                                    {language === 'he' ? 'פרזול בלום, גוף סנדוויץ׳' : 'Фурнитура Blum, корпус сэндвич'}
+                                                    {language === 'he' ? 'פרזול בלום, גוף סנדוויץ׳' :
+                                                        language === 'ru' ? 'Фурнитура Blum, корпус сэндвич' :
+                                                            'Blum hardware, sandwich body'}
                                                 </p>
                                             </div>
                                         </div>
@@ -240,7 +268,7 @@ const Closets = () => {
                                         />
                                         {/* Floating Tag */}
                                         <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur px-6 py-3 rounded-xl shadow-lg">
-                                            <p className="text-xs font-bold uppercase tracking-widest text-[#2C2C2C]">Model 2024</p>
+                                            <p className="text-xs font-bold uppercase tracking-widest text-[#2C2C2C]">{language === 'he' ? 'דגם 2024' : language === 'ru' ? 'Модель 2024' : 'Model 2024'}</p>
                                             <p className="text-lg font-serif italic">{tabs.find(t => t.id === activeTab)?.label}</p>
                                         </div>
                                     </div>
@@ -266,9 +294,21 @@ const Closets = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {[
-                                { img: bedroomImg, title: 'Master Bedroom Suite', mat: 'Acrylic & Glass' },
-                                { img: hallwayImg, title: 'Entrance Hallway', mat: 'Nano Black' },
-                                { img: slidingImg, title: 'Guest Room Sliding', mat: 'Mirror & Wood' }
+                                {
+                                    img: bedroomImg,
+                                    title: language === 'he' ? 'סוויטת חדר שינה מאסטר' : language === 'ru' ? 'Мастер-спальня' : 'Master Bedroom Suite',
+                                    mat: language === 'he' ? 'אקרילי וזכוכית' : language === 'ru' ? 'Акрил и Стекло' : 'Acrylic & Glass'
+                                },
+                                {
+                                    img: hallwayImg,
+                                    title: language === 'he' ? 'ארון כניסה' : language === 'ru' ? 'Прихожая' : 'Entrance Hallway',
+                                    mat: language === 'he' ? 'נאנו שחור' : language === 'ru' ? 'Нано Черный' : 'Nano Black'
+                                },
+                                {
+                                    img: slidingImg,
+                                    title: language === 'he' ? 'ארון הזזה לחדר אורחים' : language === 'ru' ? 'Шкаф-купе в гостевую' : 'Guest Room Sliding',
+                                    mat: language === 'he' ? 'מראה ועץ' : language === 'ru' ? 'Зеркало и Дерево' : 'Mirror & Wood'
+                                }
                             ].map((project, idx) => {
                                 const { rotateX, rotateY, handleMouseMove, handleMouseLeave } = useTilt();
 
@@ -350,11 +390,11 @@ const Closets = () => {
                         <form className="max-w-md mx-auto bg-white/10 backdrop-blur-md p-2 rounded-full flex pl-6">
                             <input
                                 type="tel"
-                                placeholder={language === 'he' ? 'מספר טלפון' : 'Номер телефона'}
+                                placeholder={language === 'he' ? 'מספר טלפון' : language === 'ru' ? 'Номер телефона' : 'Phone Number'}
                                 className="bg-transparent border-none text-white placeholder-white/50 focus:ring-0 w-full"
                             />
                             <button className="bg-white text-black rounded-full px-8 py-4 font-bold hover:bg-accent hover:text-white transition-colors">
-                                {language === 'he' ? 'שלח' : 'Send'}
+                                {language === 'he' ? 'שלח' : language === 'ru' ? 'Отправить' : 'Send'}
                             </button>
                         </form>
                     </div>
