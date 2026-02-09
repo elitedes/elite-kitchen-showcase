@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import CalculatorModal from '@/components/calculator/CalculatorModal';
 
 const HeroSection = () => {
   const { t, dir } = useLanguage();
-  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section className="relative h-[80vh] min-h-[600px] overflow-hidden flex items-center justify-center">
@@ -53,7 +54,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
-            className="font-playfair italic text-xl md:text-2xl text-primary-foreground/80 mb-8 drop-shadow-md"
+            className="font-playfair italic text-xl md:text-2xl text-primary-foreground/80 mb-10 drop-shadow-md"
           >
             {t('hero.tagline')}
           </motion.p>
@@ -62,20 +63,28 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex justify-center"
           >
-            <a href="#contact" className="btn-hero">
-              {t('hero.cta.appointment')}
-            </a>
-            <button
-              onClick={() => navigate('/calculator')}
-              className="btn-accent-hero outline-none"
+            <motion.button
+              whileHover={{ backgroundColor: "#2C1533", boxShadow: "0 15px 30px rgba(0,0,0,0.4)", y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsModalOpen(true)}
+              className="text-white px-8 py-4 rounded-[14px] font-playfair font-semibold text-lg md:text-xl transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.3)] min-w-[200px]"
+              style={{
+                backgroundColor: "#3E1F47",
+                height: "60px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
             >
-              {t('hero.cta.calculator')}
-            </button>
+              {t('hero.cta.main')}
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>
+
+      <CalculatorModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* Animated scroll indicator */}
       <motion.div

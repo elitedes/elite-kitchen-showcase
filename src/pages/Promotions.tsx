@@ -270,6 +270,9 @@ const Promotions = () => {
             <p className="font-playfair italic text-xl text-header-foreground/80">
               Special Offers
             </p>
+            <p className="font-playfair italic text-lg text-header-foreground/90 mt-2">
+              {language === 'he' ? 'עד סוף החודש' : language === 'ru' ? 'до конца месяца' : 'until the end of the month'}
+            </p>
           </motion.div>
         </div>
       </section>

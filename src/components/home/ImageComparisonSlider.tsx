@@ -174,16 +174,7 @@ const ImageComparisonSlider = () => {
                         </div>
                     </div>
 
-                    {/* CTA Button */}
-                    <div className="mt-12 text-center">
-                        <Link
-                            to="/calculator"
-                            className="inline-flex items-center gap-3 bg-accent hover:bg-accent/90 text-white text-lg md:text-xl font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group"
-                        >
-                            <span>{t('comparison.btn.calc')}</span>
-                            <Calculator className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-                        </Link>
-                    </div>
+                    {/* CTA Button removed to keep single main CTA on homepage */}
                 </div>
             </div>
         </section>

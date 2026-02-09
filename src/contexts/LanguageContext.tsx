@@ -43,6 +43,7 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.cta.appointment': 'לתיאום פגישה',
     'hero.cta.details': 'השאירו פרטים',
     'hero.cta.calculator': 'חישוב עלות מטבח',
+    'hero.cta.main': 'לחשב את הפרויקט שלך',
 
     // About Section
     'about.title': 'מטבחים מעוצבים ונגרות בהתאמה אישית',
@@ -327,6 +328,7 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.cta.appointment': 'Записаться на встречу',
     'hero.cta.details': 'Оставить заявку',
     'hero.cta.calculator': 'Калькулятор стоимости',
+    'hero.cta.main': 'Рассчитать ваш проект',
 
     // About Section
     'about.title': 'Дизайнерские кухни и столярные изделия по индивидуальному заказу',
@@ -612,6 +614,7 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.cta.appointment': 'Book an Appointment',
     'hero.cta.details': 'Leave Details',
     'hero.cta.calculator': 'Cost Calculator',
+    'hero.cta.main': 'Calculate Your Project',
 
     // About Section
     'about.title': 'Designer Kitchens & Custom Cabinetry',

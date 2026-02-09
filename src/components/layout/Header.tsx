@@ -108,11 +108,11 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher variant="desktop" />
             <a
-              href="tel:08-671-1767"
+              href={`tel:${t('contact.phone.number')}`}
               className="flex items-center gap-2 text-header-foreground hover:text-accent transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span className="font-semibold">08-671-1767</span>
+              <span className="font-semibold whitespace-nowrap" dir="ltr">{t('contact.phone.number')}</span>
             </a>
           </div>
 
@@ -175,11 +175,11 @@ const Header = () => {
 
 
               <a
-                href="tel:08-671-1767"
+                href={`tel:${t('contact.phone.number')}`}
                 className="flex items-center gap-2 text-header-foreground py-2"
               >
                 <Phone className="w-4 h-4" />
-                <span className="font-semibold">08-671-1767</span>
+                <span className="font-semibold whitespace-nowrap" dir="ltr">{t('contact.phone.number')}</span>
               </a>
             </nav>
           </motion.div>

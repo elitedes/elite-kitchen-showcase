@@ -83,21 +83,7 @@ const FeaturedProjectsSection = () => {
                     ))}
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center"
-                >
-                    <Button
-                        asChild
-                        className="bg-charcoal hover:bg-muted-gold text-white px-10 py-8 text-xl rounded-2xl transition-all duration-300 shadow-xl hover:scale-105"
-                    >
-                        <Link to="/projects">
-                            {t('featured.cta')}
-                        </Link>
-                    </Button>
-                </motion.div>
+                {/* Button removed to keep single main CTA on homepage */}
             </div>
         </section>
     );
