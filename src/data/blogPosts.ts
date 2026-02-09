@@ -608,8 +608,8 @@ export const blogPosts: BlogPost[] = [
             <li>דורש עומק גדול יותר (כ-65 ס"מ לעומת 60 ס"מ) בגלל המסילות.</li>
         </ul>
 
-        <div class="my-8">
-            <img src="/src/assets/closets/sliding-new.png" alt="Sliding Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        <div className="my-8">
+            <img src="/assets/closets/sliding-new.png" alt="Sliding Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>ארונות פתיחה (Hinged Closets)</h2>
@@ -630,7 +630,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
         <div class="my-8">
-            <img src="/src/assets/closets/hinged-new.png" alt="Hinged Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/assets/closets/hinged-new.png" alt="Hinged Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>טיפים לתחזוקה נכונה</h2>
@@ -663,7 +663,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
         <div class="my-8">
-            <img src="/src/assets/closets/sliding-new.png" alt="Шкаф-купе" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/assets/closets/sliding-new.png" alt="Шкаф-купе" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>Распашные шкафы (Hinged Closets)</h2>
@@ -684,7 +684,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
         <div class="my-8">
-            <img src="/src/assets/closets/hinged-new.png" alt="Распашной шкаф" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/assets/closets/hinged-new.png" alt="Распашной шкаф" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>Советы по уходу</h2>
@@ -717,7 +717,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
         <div class="my-8">
-            <img src="/src/assets/closets/sliding-new.png" alt="Sliding Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/assets/closets/sliding-new.png" alt="Sliding Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>Hinged Closets</h2>
@@ -738,7 +738,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
 
         <div class="my-8">
-            <img src="/src/assets/closets/hinged-new.png" alt="Hinged Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/assets/closets/hinged-new.png" alt="Hinged Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
         </div>
 
         <h2>Care Tips</h2>
@@ -754,6 +754,6 @@ export const blogPosts: BlogPost[] = [
         author: 'Elite Design Team',
         category: 'design',
         readTime: 5,
-        image: '/src/assets/closets/bedroom-new.png',
+        image: '/assets/closets/bedroom-new.png',
     },
 ];
