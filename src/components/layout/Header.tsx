@@ -44,7 +44,7 @@ const Header = () => {
   const headerHeight = isScrolled ? '72px' : '96px';
   const headerBg = isTransparent && !mobileMenuOpen
     ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)'
-    : 'rgba(10, 10, 10, 0.85)';
+    : 'rgba(10, 10, 10, 0.5)';
   const headerBlur = 'blur(5px)';
   const headerShadow = isScrolled ? '0 4px 20px rgba(0,0,0,0.1)' : 'none';
   const textColor = 'text-white';
@@ -128,7 +128,7 @@ const Header = () => {
                           animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)" }}
                           exit={{ opacity: 0, y: 10, clipPath: "inset(0% 0% 100% 0%)" }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full start-0 bg-black/90 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] rounded-xl py-3 min-w-[220px] border border-white/10"
+                          className="absolute top-full start-0 bg-black/80 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] rounded-xl py-3 min-w-[220px] border border-white/10"
                         >
                           {kitchenCategories.map((cat) => (
                             <Link
@@ -166,12 +166,6 @@ const Header = () => {
 
           </div>
         </div>
-
-        {/* Bottom Border on Scroll */}
-        <motion.div
-          animate={{ opacity: isScrolled ? 1 : 0 }}
-          className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#EAEAEA]"
-        />
       </motion.header>
 
       {/* Mobile Menu Overlay */}
@@ -182,7 +176,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col pt-24 pb-8 px-6 lg:hidden"
+            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-xl flex flex-col pt-24 pb-8 px-6 lg:hidden"
             dir={dir}
           >
             <nav className="flex flex-col gap-1 overflow-y-auto">
@@ -197,7 +191,7 @@ const Header = () => {
                     <div className="flex items-center justify-between">
                       <Link
                         to={item.path}
-                        className="block py-4 text-2xl font-medium text-white active:text-accent w-full"
+                        className="block py-4 text-xl font-medium text-white active:text-accent w-full"
                         onClick={() => !item.hasDropdown && setMobileMenuOpen(false)}
                       >
                         {t(item.key)}
@@ -226,7 +220,7 @@ const Header = () => {
                               <Link
                                 key={cat.key}
                                 to={cat.path}
-                                className="block px-6 py-3 text-white/80 text-lg border-b border-white/5 last:border-0"
+                                className="block px-6 py-3 text-white/80 text-base border-b border-white/5 last:border-0"
                                 onClick={() => {
                                   setMobileMenuOpen(false);
                                   setMobileKitchensOpen(false);
