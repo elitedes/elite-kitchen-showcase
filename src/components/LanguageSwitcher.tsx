@@ -47,11 +47,11 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
         <button
           className={
             variant === 'mobile-header'
-              ? "flex items-center justify-center p-2 text-header-foreground relative z-10"
-              : "flex items-center gap-2 transition-all duration-200 px-3 py-2 rounded-full bg-header-foreground/10 hover:bg-header-foreground/20 text-header-foreground border border-header-foreground/20 hover:border-header-foreground/40"
+              ? "flex items-center justify-center p-2 text-current relative z-10"
+              : "flex items-center gap-2 transition-all duration-200 px-3 py-2 rounded-full hover:bg-black/5 border border-current/20 hover:border-current/40 group"
           }
         >
-          <Globe className={variant === 'mobile-header' ? "w-6 h-6" : "w-4 h-4"} />
+          <Globe className={variant === 'mobile-header' ? "w-6 h-6" : "w-4 h-4 opacity-80 group-hover:opacity-100"} />
           {variant !== 'mobile-header' && (
             <span className="text-sm font-medium">{currentLang?.name}</span>
           )}
