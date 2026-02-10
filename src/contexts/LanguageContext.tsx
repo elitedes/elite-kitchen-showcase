@@ -130,7 +130,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Floating CTA
     'floating.customer': 'שירות ללקוח קיים',
-    'floating.appointment': 'לקביעת פגישה',
+    'floating.appointment': 'להזמין מעצב',
 
     // Pages
     'page.about.title': 'עלית דיזיין האומנות שבעיצוב החלל',
@@ -415,7 +415,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Floating CTA
     'floating.customer': 'Обслуживание клиентов',
-    'floating.appointment': 'Записаться',
+    'floating.appointment': 'Пригласить дизайнера',
 
     // Pages
     'page.about.title': 'Elite Design Искусство создания пространства',
@@ -701,7 +701,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Floating CTA
     'floating.customer': 'Customer Service',
-    'floating.appointment': 'Book Appointment',
+    'floating.appointment': 'Invite Designer',
 
     // Pages
     'page.about.title': 'Elite Design The Art of Space Creation',

@@ -756,4 +756,238 @@ export const blogPosts: BlogPost[] = [
         readTime: 5,
         image: '/assets/closets/bedroom-new.png',
     },
+    {
+        id: '8',
+        slug: 'bedroom-closet-guide',
+        title: {
+            he: 'ארון לחדר שינה: המדריך השלם לבחירה נכונה',
+            ru: 'Шкаф в спальню: Полное руководство по выбору',
+            en: 'Bedroom Closet: The Complete Design Guide',
+        },
+        excerpt: {
+            he: 'חדר השינה הוא המקדש הפרטי שלכם, והארון הוא הלב שלו. איך מתכננים ארון שמשלב רוגע, עיצוב ופרקטיקה? כל התשובות בפנים.',
+            ru: 'Спальня — ваш личный храм, а шкаф — его сердце. Как спроектировать шкаф, сочетающий уют, дизайн и практичность?',
+            en: 'The bedroom is your private sanctuary, and the closet is its heart. How to design a closet that combines calm, style, and utility?',
+        },
+        content: {
+            he: `
+        <p class="lead">הארון בחדר השינה הוא הרבה יותר מאשר מקום לאחסון בגדים. הוא קובע את האווירה בחדר, את תחושת המרחב ואת נוחות ההתארגנות בבוקר.</p>
+
+        <h2>שקט נפשי (תרתי משמע)</h2>
+        <p>בחדר השינה, השקט הוא קריטי. לכן, בארונות הפתיחה שלנו אנו משתמשים בצירים בטריקה שקטה, ובארונות הזזה במנגנונים רחפים שנעים בדממה מוחלטת.</p>
+        
+        <h2>תכנון פנימי חכם</h2>
+        <p>הסוד לארון מושלם הוא החלוקה הפנימית:</p>
+        <ul class="check-list">
+            <li><strong>תלייה ארוכה vs קצרה:</strong> הפרידו בין שמלות/מעילים לחולצות ומכנסיים.</li>
+            <li><strong>מגירות שליפה מלאה:</strong> לגישה נוחה גם לגרביים שנמצאים הכי עמוק.</li>
+            <li><strong>מדפים עליונים:</strong> לאחסון מצעים, כריות ושמיכות חורף.</li>
+        </ul>
+
+        <h2>עיצוב וגימור</h2>
+        <p>לאווירה רגועה, אנו ממליצים על גוונים בהירים וניטרליים (לבן, שמנת, אפור בהיר) או שילוב של זכוכית למראה יוקרתי ומאוורר.</p>
+        
+        <div class="my-8">
+            <img src="/assets/closets/bedroom-new.png" alt="ארון חדר שינה" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+      `,
+            ru: `
+        <p class="lead">Шкаф в спальне — это не просто место для хранения одежды. Он задает атмосферу комнаты, ощущение пространства и удобство утренних сборов.</p>
+
+        <h2>Душевное спокойствие (буквально)</h2>
+        <p>В спальне тишина критически важна. Поэтому в наших распашных шкафах мы используем петли с тихим закрыванием, а в шкафах-купе — парящие механизмы, скользящие в полной тишине.</p>
+        
+        <h2>Умная внутренняя планировка</h2>
+        <p>Секрет идеального шкафа — внутри:</p>
+        <ul class="check-list">
+            <li><strong>Длинная vs Короткая вешалка:</strong> Разделите платья/пальто и рубашки/брюки.</li>
+            <li><strong>Ящики полного выдвижения:</strong> Для удобного доступа даже к самым дальним носкам.</li>
+            <li><strong>Верхние полки:</strong> Для постельного белья, подушек и зимних одеял.</li>
+        </ul>
+
+        <h2>Дизайн и отделка</h2>
+        <p>Для спокойной атмосферы мы рекомендуем светлые и нейтральные тона (белый, кремовый, светло-серый) или сочетание со стеклом для роскошного и воздушного вида.</p>
+        
+        <div class="my-8">
+            <img src="/assets/closets/bedroom-new.png" alt="Шкаф в спальню" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+      `,
+            en: `
+        <p class="lead">The bedroom closet is more than just storage. It sets the room's mood, spatial feel, and morning routine comfort.</p>
+
+        <h2>Peace of Mind (Literally)</h2>
+        <p>Silence is critical in the bedroom. That's why we use soft-close hinges for swing doors and silent floating mechanisms for sliding doors.</p>
+        
+        <h2>Smart Internal Layout</h2>
+        <p>The secret is inside:</p>
+        <ul class="check-list">
+            <li><strong>Long vs Short Hang:</strong> Separate dresses/coats from shirts/pants.</li>
+            <li><strong>Full Extension Drawers:</strong> For easy access to items at the back.</li>
+            <li><strong>Top Shelves:</strong> For linens, pillows, and winter blankets.</li>
+        </ul>
+
+        <h2>Design & Finish</h2>
+        <p>For a calm atmosphere, we recommend light neutrals (white, cream, light gray) or glass accents for a luxurious, airy look.</p>
+        
+        <div class="my-8">
+            <img src="/assets/closets/bedroom-new.png" alt="Bedroom Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+      `,
+        },
+        date: '2024-02-12',
+        author: 'Elite Design Team',
+        category: 'design',
+        readTime: 4,
+        image: '/assets/closets/bedroom-new.png',
+    },
+    {
+        id: '9',
+        slug: 'hallway-closet-guide',
+        title: {
+            he: 'ארון כניסה: כרטיס הביקור של הבית',
+            ru: 'Шкаф в прихожую: Визитная карточка вашего дома',
+            en: 'Entryway Closet: Your Home\'s Business Card',
+        },
+        excerpt: {
+            he: 'הדבר הראשון שרואים כשנכנסים הביתה. איך יוצרים ארון כניסה שגם מסתיר את הבלגן (נעליים, מעילים) וגם נראה מדהים?',
+            ru: 'Первое, что видят при входе. Как создать шкаф, который скрывает беспорядок (обувь, куртки) и выглядит потрясающе?',
+            en: 'The first thing seen upon entry. How to create a closet that hides clutter (shoes, coats) and looks amazing?',
+        },
+        content: {
+            he: `
+        <p class="lead">הכניסה לבית היא המקום שבו נוצר הרושם הראשוני. ארון הכניסה (Hallway Closet) חייב להיות המאסטר של ההסוואה: יפה מבחוץ, וסוס עבודה מבפנים.</p>
+
+        <h2>מה מאחסנים שם?</h2>
+        <ul class="check-list">
+            <li><strong>מעילים ותיקים:</strong> תאים גבוהים לתלייה יומיומית.</li>
+            <li><strong>נעליים:</strong> מגירות נשלפות או מדפים משופעים לאחסון נוח של נעליים בשימוש תדיר.</li>
+            <li><strong>דברים קטנים:</strong> מפתחות, דואר, משקפי שמש - במגירה ייעודית שתמנע בלגן על השידה.</li>
+        </ul>
+
+        <h2>טריקים לעיצוב</h2>
+        <ul>
+            <li><strong>מראות:</strong> דלת מראה בארון הכניסה היא חובה כפולה - גם לבדיקת המראה לפני היציאה וגם להגדלת חלל הכניסה שלרוב הוא צר.</li>
+            <li><strong>נישה לישיבה:</strong> טרנד חם - שילוב ספסל התארגנות מרופד בתוך מבנה הארון.</li>
+        </ul>
+        
+        <div class="my-8">
+            <img src="/assets/closets/hallway-small.png" alt="ארון כניסה" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+      `,
+            ru: `
+        <p class="lead">Прихожая — это место первого впечатления. Шкаф в прихожей должен быть мастером маскировки: красивым снаружи и "рабочей лошадкой" внутри.</p>
+
+        <h2>Что храним?</h2>
+        <ul class="check-list">
+            <li><strong>Куртки и сумки:</strong> Высокие секции для повседневной одежды.</li>
+            <li><strong>Обувь:</strong> Выдвижные полки или наклонные стеллажи для часто используемой обуви.</li>
+            <li><strong>Мелочи:</strong> Ключи, почта, очки — в специальном ящике, чтобы не захламлять тумбу.</li>
+        </ul>
+
+        <h2>Дизайнерские трюки</h2>
+        <ul>
+            <li><strong>Зеркала:</strong> Зеркальная дверь обязательна — проверить вид перед выходом и визуально расширить узкий коридор.</li>
+            <li><strong>Ниша для сидения:</strong> Горячий тренд — встроенная мягкая скамья внутри конструкции шкафа.</li>
+        </ul>
+        
+        <div class="my-8">
+            <img src="/assets/closets/hallway-small.png" alt="Шкаф в прихожую" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+      `,
+            en: `
+        <p class="lead">The entryway creates the first impression. The Hallway Closet must be a master of camouflage: beautiful outside, workhorse inside.</p>
+
+        <h2>What's inside?</h2>
+        <ul class="check-list">
+            <li><strong>Coats & Bags:</strong> Tall sections for daily wear.</li>
+            <li><strong>Shoes:</strong> Pull-out drawers or angled shelves for frequent footwear.</li>
+            <li><strong>Small Items:</strong> Keys, mail, sunglasses - in a dedicated drawer to avoid clutter.</li>
+        </ul>
+
+        <h2>Design Tricks</h2>
+        <ul>
+            <li><strong>Mirrors:</strong> A mirror door is a double must - for a last look before leaving and to expand the typically narrow hallway space.</li>
+            <li><strong>Seating Nook:</strong> Hot trend - integrating a padded bench within the closet structure.</li>
+        </ul>
+        
+        <div class="my-8">
+            <img src="/assets/closets/hallway-small.png" alt="Entryway Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+      `,
+        },
+        date: '2024-02-14',
+        author: 'Elite Design Team',
+        category: 'design',
+        readTime: 3,
+        image: '/assets/closets/hallway-small.png',
+    },
+    {
+        id: '10',
+        slug: 'guest-room-sliding-closet',
+        title: {
+            he: 'ארון הזזה לחדר אורחים: אירוח בסטייל',
+            ru: 'Шкаф-купе в гостевую: Максимум функциональности',
+            en: 'Guest Room Sliding Closet: Hosting in Style',
+        },
+        excerpt: {
+            he: 'חדר האורחים הוא לעיתים גם חדר עבודה או חדר אחסון. איך ארון הזזה פותר את בעיית המקום ומעניק לאורחים תחושת מלון?',
+            ru: 'Гостевая комната часто служит кабинетом или складом. Как шкаф-купе решает проблему места и дарит гостям ощущение отеля?',
+            en: 'The guest room often doubles as an office or storage. How does a sliding closet solve space issues and give guests a hotel feel?',
+        },
+        content: {
+            he: `
+        <p class="lead">חדר האורחים הוא החדר ה"גמיש" בבית. ביום יום הוא משמש לאחסון או עבודה, ובסופ"ש הוא הופך לסוויטת אירוח. ארון הזזה הוא הפתרון המושלם כאן.</p>
+
+        <h2>למה דווקא הזזה?</h2>
+        <p>חדרי אורחים הם לרוב קטנים יותר. דלתות הזזה חוסכות את הצורך במקום לפתיחת דלתות, ומאפשרות להציב מיטה או שולחן כתיבה ממש בסמוך לארון.</p>
+
+        <h2>החלוקה המנצחת</h2>
+        <ul class="check-list">
+            <li><strong>צד הבית:</strong> מדפים עמוקים לאחסון ציוד שאינו בשימוש יומיומי (מזוודות, שמיכות קיץ, ספרים).</li>
+            <li><strong>צד האורחים:</strong> חלק עם תלייה ומגירות שנותר ריק ונקי, מוכן תמיד לבואם של האורחים בחגים ובשבתות.</li>
+        </ul>
+        
+        <div class="my-8">
+            <img src="/assets/closets/sliding-new.png" alt="ארון הזזה" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+      `,
+            ru: `
+        <p class="lead">Гостевая — самая "гибкая" комната. В будни это склад или кабинет, в выходные — люкс для гостей. Шкаф-купе здесь идеален.</p>
+
+        <h2>Почему купе?</h2>
+        <p>Гостевые комнаты обычно небольшие. Раздвижные двери экономят место, позволяя поставить кровать или стол вплотную к шкафу.</p>
+
+        <h2>Победная планировка</h2>
+        <ul class="check-list">
+            <li><strong>Сторона дома:</strong> Глубокие полки для хранения вещей не первой необходимости (чемоданы, летние одеяла, архивы).</li>
+            <li><strong>Сторона гостей:</strong> Секция с вешалкой и ящиками, которая всегда пуста и чиста, ожидая гостей на праздники.</li>
+        </ul>
+        
+        <div class="my-8">
+            <img src="/assets/closets/sliding-new.png" alt="Шкаф-купе" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+      `,
+            en: `
+        <p class="lead">The guest room is the "flexible" room. Daily it's storage or office, weekends it's a guest suite. A sliding closet is perfect here.</p>
+
+        <h2>Why Sliding?</h2>
+        <p>Guest rooms are often smaller. Sliding doors save opening space, allowing a bed or desk to be placed right next to the closet.</p>
+
+        <h2>Winning Layout</h2>
+        <ul class="check-list">
+            <li><strong>Home Side:</strong> Deep shelves for long-term storage (suitcases, seasonal bedding, archives).</li>
+            <li><strong>Guest Side:</strong> A section with hanging space and drawers left empty and clean, always ready for visitors.</li>
+        </ul>
+        
+        <div class="my-8">
+            <img src="/assets/closets/sliding-new.png" alt="Sliding Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+        </div>
+      `,
+        },
+        date: '2024-02-15',
+        author: 'Elite Design Team',
+        category: 'design',
+        readTime: 3,
+        image: '/assets/closets/sliding-new.png',
+    },
 ];

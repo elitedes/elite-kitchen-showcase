@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue, useMotionTemplate } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -296,47 +297,55 @@ const Closets = () => {
                             {[
                                 {
                                     img: bedroomImg,
-                                    title: language === 'he' ? 'סוויטת חדר שינה מאסטר' : language === 'ru' ? 'Мастер-спальня' : 'Master Bedroom Suite',
-                                    mat: language === 'he' ? 'אקרילי וזכוכית' : language === 'ru' ? 'Акрил и Стекло' : 'Acrylic & Glass'
+                                    title: language === 'he' ? 'ארון לחדר שינה' : language === 'ru' ? 'Шкаф в спальню' : 'Bedroom Closet',
+                                    mat: language === 'he' ? 'אקרילי וזכוכית' : language === 'ru' ? 'Акрил и Стекло' : 'Acrylic & Glass',
+                                    slug: 'bedroom-closet-guide'
                                 },
                                 {
                                     img: hallwayImg,
-                                    title: language === 'he' ? 'ארון כניסה' : language === 'ru' ? 'Прихожая' : 'Entrance Hallway',
-                                    mat: language === 'he' ? 'נאנו שחור' : language === 'ru' ? 'Нано Черный' : 'Nano Black'
+                                    title: language === 'he' ? 'ארון כניסה' : language === 'ru' ? 'Шкаф в прихожую' : 'Entryway Closet',
+                                    mat: language === 'he' ? 'נאנו שחור' : language === 'ru' ? 'Нано Черный' : 'Nano Black',
+                                    slug: 'hallway-closet-guide'
                                 },
                                 {
                                     img: slidingImg,
                                     title: language === 'he' ? 'ארון הזזה לחדר אורחים' : language === 'ru' ? 'Шкаф-купе в гостевую' : 'Guest Room Sliding',
-                                    mat: language === 'he' ? 'מראה ועץ' : language === 'ru' ? 'Зеркало и Дерево' : 'Mirror & Wood'
+                                    mat: language === 'he' ? 'מראה ועץ' : language === 'ru' ? 'Зеркало и Дерево' : 'Mirror & Wood',
+                                    slug: 'guest-room-sliding-closet'
                                 }
                             ].map((project, idx) => {
                                 const { rotateX, rotateY, handleMouseMove, handleMouseLeave } = useTilt();
 
                                 return (
-                                    <motion.div
+                                    <Link
+                                        to={`/blog/${project.slug}`}
                                         key={idx}
-                                        initial={{ opacity: 0, y: 50 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: idx * 0.1 }}
-                                        style={{ rotateX: isMobile ? 0 : rotateX, rotateY: isMobile ? 0 : rotateY, perspective: 1000 }}
-                                        onMouseMove={handleMouseMove}
-                                        onMouseLeave={handleMouseLeave}
-                                        className="group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer"
+                                        className="group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer block"
                                     >
-                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500 z-10" />
-                                        <img
-                                            src={project.img}
-                                            alt={project.title}
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                        />
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 50 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: idx * 0.1 }}
+                                            style={{ rotateX: isMobile ? 0 : rotateX, rotateY: isMobile ? 0 : rotateY, perspective: 1000 }}
+                                            onMouseMove={handleMouseMove}
+                                            onMouseLeave={handleMouseLeave}
+                                            className="w-full h-full relative"
+                                        >
+                                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500 z-10" />
+                                            <img
+                                                src={project.img}
+                                                alt={project.title}
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
 
-                                        <div className="absolute bottom-0 left-0 w-full p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                            <p className="text-white/70 text-sm uppercase tracking-widest mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{project.mat}</p>
-                                            <h3 className="text-3xl font-bold text-white mb-4">{project.title}</h3>
-                                            <div className="w-12 h-1 bg-white rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                                        </div>
-                                    </motion.div>
+                                            <div className="absolute bottom-0 left-0 w-full p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                                <p className="text-white/70 text-sm uppercase tracking-widest mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{project.mat}</p>
+                                                <h3 className="text-3xl font-bold text-white mb-4">{project.title}</h3>
+                                                <div className="w-12 h-1 bg-white rounded-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                                            </div>
+                                        </motion.div>
+                                    </Link>
                                 );
                             })}
                         </div>
@@ -369,34 +378,6 @@ const Closets = () => {
                                 </motion.div>
                             ))}
                         </div>
-                    </div>
-                </section>
-
-                {/* FINAL CTA */}
-                <section className="relative py-32 bg-black text-center overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
-                    <div className="relative z-10 container mx-auto px-4">
-                        <motion.h2
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-6xl font-bold text-white mb-8"
-                        >
-                            {language === 'he' ? 'מוכנים לשדרג את הבית?' : language === 'ru' ? 'Готовы обновить дом?' : 'Ready to upgrade your home?'}
-                        </motion.h2>
-                        <p className="text-xl text-white/70 max-w-2xl mx-auto mb-12">
-                            {language === 'he' ? 'הצוות שלנו מחכה להפוך את החלום למציאות.' : language === 'ru' ? 'Наша команда ждет, чтобы воплотить мечту в реальность.' : 'Our team is waiting to turn your dream into reality.'}
-                        </p>
-
-                        <form className="max-w-md mx-auto bg-white/10 backdrop-blur-md p-2 rounded-full flex pl-6">
-                            <input
-                                type="tel"
-                                placeholder={language === 'he' ? 'מספר טלפון' : language === 'ru' ? 'Номер телефона' : 'Phone Number'}
-                                className="bg-transparent border-none text-white placeholder-white/50 focus:ring-0 w-full"
-                            />
-                            <button className="bg-white text-black rounded-full px-8 py-4 font-bold hover:bg-accent hover:text-white transition-colors">
-                                {language === 'he' ? 'שלח' : language === 'ru' ? 'Отправить' : 'Send'}
-                            </button>
-                        </form>
                     </div>
                 </section>
 
