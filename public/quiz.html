@@ -388,6 +388,7 @@
 
             // ── Form step ──
             if (step.isForm) {
+                $('#btnNext').style.display = '';
                 $('#btnNext').textContent = txt(T.submit);
                 wrapper.innerHTML = `
       <div class="step-enter text-center pt-8">
@@ -463,6 +464,10 @@
       </div>
     </div>
   `;
+            // Hide Next button for option steps (auto-advance), show for form
+            if (!step.isForm) {
+                $('#btnNext').style.display = 'none';
+            }
             $('#btnNext').disabled = !answers[currentStep];
         }
 
@@ -471,7 +476,12 @@
             answers[step] = id;
             $$('.option-card').forEach(c => c.classList.remove('selected'));
             document.querySelector(`[data-id="${id}"]`)?.classList.add('selected');
-            $('#btnNext').disabled = false;
+            // Auto-advance after brief visual feedback
+            setTimeout(() => {
+                if (currentStep < totalSteps - 1) {
+                    animateOut(() => { currentStep++; renderStep(); });
+                }
+            }, 400);
         }
 
         /* ━━━ VALIDATE FORM ━━━ */
