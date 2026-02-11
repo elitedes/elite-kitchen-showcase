@@ -12,7 +12,14 @@ const Header = () => {
   const [mobileKitchensOpen, setMobileKitchensOpen] = useState(false);
   const [kitchensDropdownOpen, setKitchensDropdownOpen] = useState(false);
   const [stylesSubmenuOpen, setStylesSubmenuOpen] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1024);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => setIsMobileView(window.innerWidth < 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Scroll Logic
   const { scrollDirection, scrollPosition } = useScrollDirection();
@@ -48,7 +55,7 @@ const Header = () => {
   // Dynamic classes based on state
   const headerHeight = isScrolled
     ? '72px'
-    : (window.innerWidth < 1024 ? '80px' : '96px');
+    : (isMobileView ? '80px' : '96px');
   const headerBg = isTransparent && !mobileMenuOpen
     ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)'
     : 'rgba(10, 10, 10, 0.5)';
