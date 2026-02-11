@@ -11,6 +11,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileKitchensOpen, setMobileKitchensOpen] = useState(false);
   const [kitchensDropdownOpen, setKitchensDropdownOpen] = useState(false);
+  const [stylesSubmenuOpen, setStylesSubmenuOpen] = useState(false);
   const location = useLocation();
 
   // Scroll Logic
@@ -19,7 +20,14 @@ const Header = () => {
   const isTransparent = scrollPosition < 96; // Top transparency threshold
   const isVisible = scrollDirection !== 'down' || scrollPosition < 100; // Hide/Show logic
 
-  const kitchenCategories = [
+  const kitchenDropdownItems = [
+    { key: 'styles', path: '/kitchens', hasSubmenu: true },
+    { key: 'projects', path: '/projects' },
+    { key: 'preparation', path: '/installation' },
+    { key: 'quiz', path: '/quiz-selection' },
+  ];
+
+  const kitchenStyles = [
     { key: 'modern', path: '/kitchens/modern' },
     { key: 'formica', path: '/kitchens/formica' },
     { key: 'wood', path: '/kitchens/wood' },
@@ -32,11 +40,8 @@ const Header = () => {
     { key: 'nav.about', path: '/about' },
     { key: 'nav.closets', path: '/closets' },
     { key: 'nav.kitchens', path: '/kitchens', hasDropdown: true },
-    { key: 'nav.projects', path: '/projects' },
     { key: 'nav.promotions', path: '/promotions' },
     { key: 'nav.magazine', path: '/blog' },
-    { key: 'nav.installation', path: '/installation' },
-    { key: 'nav.calculator', path: '/calculator' },
     { key: 'nav.contact', path: '/contact' },
   ];
 
@@ -102,7 +107,7 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-6">
+            <nav className="hidden lg:flex items-center gap-10">
               {navItems.map((item) => (
                 <div
                   key={item.key}
@@ -112,7 +117,7 @@ const Header = () => {
                 >
                   <Link
                     to={item.path}
-                    className={`text-[15px] font-medium tracking-wide transition-opacity hover:opacity-100 flex items-center gap-1 py-4 relative group-hover:text-accent/80`}
+                    className={`text-base font-medium tracking-wide transition-opacity hover:opacity-100 flex items-center gap-1 py-4 relative group-hover:text-accent/80`}
                     style={{ opacity: 0.9 }}
                   >
                     {t(item.key)}
@@ -132,14 +137,49 @@ const Header = () => {
                           transition={{ duration: 0.2 }}
                           className="absolute top-full start-0 bg-black/80 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] rounded-xl py-3 min-w-[220px] border border-white/10"
                         >
-                          {kitchenCategories.map((cat) => (
-                            <Link
+                          {kitchenDropdownItems.map((cat) => (
+                            <div
                               key={cat.key}
-                              to={cat.path}
-                              className="block px-6 py-2.5 text-white/90 hover:bg-white/10 hover:text-accent transition-colors text-[15px] font-medium"
+                              className="relative"
+                              onMouseEnter={() => cat.hasSubmenu && setStylesSubmenuOpen(true)}
+                              onMouseLeave={() => cat.hasSubmenu && setStylesSubmenuOpen(false)}
                             >
-                              {t(`nav.kitchens.${cat.key}`)}
-                            </Link>
+                              <Link
+                                to={cat.path}
+                                className="flex items-center justify-between px-6 py-2.5 text-white/90 hover:bg-white/10 hover:text-accent transition-colors text-base font-medium group/item"
+                              >
+                                {t(`nav.kitchens.${cat.key}`)}
+                                {cat.hasSubmenu && (
+                                  <ChevronDown
+                                    className={`w-4 h-4 transition-transform duration-300 ${dir === 'rtl' ? 'rotate-90' : '-rotate-90'} ${stylesSubmenuOpen ? 'opacity-100' : 'opacity-40'}`}
+                                  />
+                                )}
+                              </Link>
+
+                              {/* Nested Submenu for Styles */}
+                              {cat.hasSubmenu && (
+                                <AnimatePresence>
+                                  {stylesSubmenuOpen && (
+                                    <motion.div
+                                      initial={{ opacity: 0, x: dir === 'rtl' ? 10 : -10 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      exit={{ opacity: 0, x: dir === 'rtl' ? 10 : -10 }}
+                                      className={`absolute top-0 ${dir === 'rtl' ? 'end-full me-[-4px] pe-1' : 'start-full ms-[-4px] ps-1'} bg-black/90 backdrop-blur-xl shadow-2xl rounded-xl py-3 min-w-[210px] border border-white/10`}
+                                    >
+                                      {kitchenStyles.map((style) => (
+                                        <Link
+                                          key={style.key}
+                                          to={style.path}
+                                          className="block px-6 py-2.5 text-white/80 hover:bg-white/10 hover:text-accent transition-colors text-sm font-medium"
+                                        >
+                                          {t(`nav.kitchens.${style.key}`)}
+                                        </Link>
+                                      ))}
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              )}
+                            </div>
                           ))}
                         </motion.div>
                       )}
@@ -218,18 +258,44 @@ const Header = () => {
                             exit={{ height: 0, opacity: 0 }}
                             className="overflow-hidden bg-white/5 rounded-xl mb-4"
                           >
-                            {kitchenCategories.map((cat) => (
-                              <Link
-                                key={cat.key}
-                                to={cat.path}
-                                className="block px-6 py-3 text-white/80 text-base border-b border-white/5 last:border-0"
-                                onClick={() => {
-                                  setMobileMenuOpen(false);
-                                  setMobileKitchensOpen(false);
-                                }}
-                              >
-                                {t(`nav.kitchens.${cat.key}`)}
-                              </Link>
+                            {kitchenDropdownItems.map((cat) => (
+                              <div key={cat.key} className="border-b border-white/5 last:border-0">
+                                <div className="flex items-center justify-between">
+                                  <Link
+                                    to={cat.path}
+                                    className="block px-6 py-3 text-white/80 text-base w-full"
+                                    onClick={() => !cat.hasSubmenu && setMobileMenuOpen(false)}
+                                  >
+                                    {t(`nav.kitchens.${cat.key}`)}
+                                  </Link>
+                                  {cat.hasSubmenu && (
+                                    <button
+                                      className="p-3 text-white/60"
+                                      onClick={() => setStylesSubmenuOpen(!stylesSubmenuOpen)}
+                                    >
+                                      <ChevronDown className={`w-4 h-4 transition-transform ${stylesSubmenuOpen ? 'rotate-180' : ''}`} />
+                                    </button>
+                                  )}
+                                </div>
+                                {cat.hasSubmenu && stylesSubmenuOpen && (
+                                  <div className="bg-black/20 pb-2">
+                                    {kitchenStyles.map((style) => (
+                                      <Link
+                                        key={style.key}
+                                        to={style.path}
+                                        className="block px-10 py-2.5 text-white/60 text-sm hover:text-accent"
+                                        onClick={() => {
+                                          setMobileMenuOpen(false);
+                                          setMobileKitchensOpen(false);
+                                          setStylesSubmenuOpen(false);
+                                        }}
+                                      >
+                                        {t(`nav.kitchens.${style.key}`)}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
                             ))}
                           </motion.div>
                         )}

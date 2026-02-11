@@ -17,6 +17,7 @@ import Closets from "./pages/Closets";
 import Calculator from "./pages/Calculator";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import QuizPage from "./pages/QuizPage";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/layout/ScrollToTop";
 
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/closets" element={<Closets />} />
             <Route path="/calculator" element={<Calculator />} />
+            <Route path="/quiz-selection" element={<QuizPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

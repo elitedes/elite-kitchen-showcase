@@ -8,6 +8,7 @@ import kitchenCountry from '@/assets/kitchen-country.jpg';
 import kitchenFormica from '@/assets/kitchen-formica.jpg';
 import kitchenWood from '@/assets/kitchen-wood.jpg';
 import kitchenNano from '@/assets/kitchen-nano.jpg';
+import kitchenAcrylic from '@/assets/kitchen-acrylic.jpg';
 
 const categories = [
   { key: 'modern', image: kitchenModern },
@@ -15,6 +16,7 @@ const categories = [
   { key: 'formica', image: kitchenFormica },
   { key: 'wood', image: kitchenWood },
   { key: 'nano', image: kitchenNano },
+  { key: 'acrylic', image: kitchenAcrylic },
 ];
 
 const Kitchens = () => {

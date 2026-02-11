@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite Design – Kitchen Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { gold: '#C9A96E', dark: '#1A1A1A', mid: '#2C2C2C', light: '#F7F7F5', muted: '#9A9A9A' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        /* ── Animations ── */
+        .step-enter {
+            animation: fadeSlideIn .4s cubic-bezier(.25, .46, .45, .94) forwards;
+        }
+
+        .step-exit {
+            animation: fadeSlideOut .25s cubic-bezier(.55, .06, .68, .19) forwards;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeSlideOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+        }
+
+        /* ── Option card hover ── */
+        .option-card {
+            transition: all .3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .option-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+            border-color: #C9A96E !important;
+        }
+
+        .option-card.selected {
+            border-color: #C9A96E !important;
+            background-color: #FDFBF7;
+            box-shadow: 0 0 0 2px #C9A96E, 0 10px 20px rgba(201, 169, 110, .1);
+        }
+
+        .option-card.has-image {
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+            position: relative;
+        }
+
+        .option-card.has-image .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            padding: 20px;
+            padding-top: 40px;
+            color: white;
+            z-index: 10;
+        }
+
+        .option-card.has-image img {
+            transition: transform 0.5s ease;
+        }
+
+        .option-card.has-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .option-card.has-image.selected .card-overlay {
+            opacity: 1;
+        }
+
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            border: 3px solid #C9A96E;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 20;
+            pointer-events: none;
+            border-radius: 1rem;
+        }
+
+        /* ── Progress bar ── */
+        .progress-fill {
+            transition: width .5s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        /* ── Smooth body ── */
+        html,
+        body {
+            scroll-behavior: smooth;
+        }
+
+        /* Input focus effect */
+        .quiz-input:focus {
+            border-color: #C9A96E;
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, .15);
+        }
+    </style>
+</head>
+
+<body class="bg-brand-light font-sans text-brand-dark antialiased">
+
+    <!-- ╔═══════════════════════════════════════╗ -->
+    <!-- ║         QUIZ MODAL OVERLAY            ║ -->
+    <!-- ╚═══════════════════════════════════════╝ -->
+    <div id="quizOverlay"
+        class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-md p-4 hidden">
+
+        <!-- Quiz Container -->
+        <div id="quizContainer"
+            class="relative bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[92vh] overflow-y-auto">
+
+            <!-- Close Button -->
+            <button onclick="closeQuiz()"
+                class="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-gray-100 transition-colors backdrop-blur-sm"
+                aria-label="Close quiz">
+                <svg class="w-6 h-6 text-brand-dark" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <!-- Language Switcher -->
+            <div
+                class="absolute top-4 left-4 z-10 flex gap-1 bg-white/80 backdrop-blur-sm p-1 rounded-full border border-gray-100 shadow-sm">
+                <button onclick="setLang('he')" id="langHe"
+                    class="lang-btn px-3 py-1 text-xs rounded-full border border-transparent transition-all font-medium">עב</button>
+                <button onclick="setLang('ru')" id="langRu"
+                    class="lang-btn px-3 py-1 text-xs rounded-full border border-transparent transition-all font-medium">Ру</button>
+                <button onclick="setLang('en')" id="langEn"
+                    class="lang-btn px-3 py-1 text-xs rounded-full border border-transparent transition-all font-medium">En</button>
+            </div>
+
+            <!-- Inner Padding Wrapper -->
+            <div class="px-6 pt-20 pb-10 sm:px-12">
+
+                <!-- Progress Bar -->
+                <div class="mb-10 max-w-xl mx-auto">
+                    <div class="flex justify-between items-center mb-2">
+                        <span id="progressLabel"
+                            class="text-xs font-medium text-brand-muted tracking-wider uppercase"></span>
+                        <span id="progressPercent" class="text-xs font-bold text-brand-gold"></span>
+                    </div>
+                    <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div id="progressBar"
+                            class="progress-fill h-full bg-gradient-to-r from-brand-gold to-amber-300 rounded-full"
+                            style="width:0%"></div>
+                    </div>
+                </div>
+
+                <!-- Steps Container -->
+                <div id="stepsWrapper" class="min-h-[300px]"></div>
+
+                <!-- Navigation Buttons -->
+                <div id="navButtons"
+                    class="flex justify-between items-center mt-12 gap-4 pt-6 border-t border-gray-100">
+                    <button id="btnBack" onclick="prevStep()"
+                        class="px-6 py-3 rounded-xl text-sm font-medium text-brand-muted hover:text-brand-dark transition-all flex items-center gap-2 group">
+                        <span class="group-hover:-translate-x-1 transition-transform">←</span> <span
+                            id="btnBackText"></span>
+                    </button>
+                    <button id="btnNext" onclick="nextStep()"
+                        class="px-10 py-4 rounded-xl text-base font-bold text-white bg-brand-dark hover:bg-brand-gold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-40 disabled:pointer-events-none disabled:transform-none disabled:shadow-none min-w-[140px]"
+                        disabled>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instant overlay show when start=true (runs before paint) -->
+    <script>
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('start') === 'true') {
+                document.getElementById('quizOverlay').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                // Hide landing section as soon as it exists
+                var obs = new MutationObserver(function () {
+                    var landing = document.getElementById('quizLandingSection');
+                    if (landing) { landing.style.display = 'none'; obs.disconnect(); }
+                });
+                obs.observe(document.body, { childList: true, subtree: true });
+            }
+        })();
+    </script>
+
+    <!-- ╔═══════════════════════════════════════╗ -->
+    <!-- ║           OPEN QUIZ BUTTON            ║ -->
+    <!-- ╚═══════════════════════════════════════╝ -->
+    <div id="quizLandingSection"
+        class="flex items-center justify-center min-h-screen bg-[url('assets/quiz/modern.jpg')] bg-cover bg-center relative">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+        <button onclick="openQuiz()"
+            class="group relative px-12 py-6 rounded-2xl font-serif text-2xl font-bold text-white bg-brand-dark hover:bg-brand-gold transition-all duration-300 shadow-2xl hover:shadow-orange-500/20 border border-white/10 overflow-hidden">
+            <span
+                class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+            <span class="relative z-10 flex items-center gap-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                </svg>
+                Start Kitchen Quiz
+            </span>
+        </button>
+    </div>
+
+    <!-- ╔═══════════════════════════════════════╗ -->
+    <!-- ║              SCRIPT                   ║ -->
+    <!-- ╚═══════════════════════════════════════╝ -->
+    <script>
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           TRANSLATIONS
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        const T = {
+            progressLabel: { he: 'שלב', ru: 'ШАГ', en: 'STEP' },
+            of: { he: 'מתוך', ru: 'ИЗ', en: 'OF' },
+            next: { he: 'המשך', ru: 'Далее', en: 'Next Step' },
+            back: { he: 'חזור', ru: 'Назад', en: 'Back' },
+            submit: { he: 'קבלת הצעת מחיר ב-WhatsApp', ru: 'Получить расчёт в WhatsApp', en: 'Get Quote via WhatsApp' },
+            formTitle: { he: 'העיצוב שלכם מוכן!', ru: 'Ваш дизайн готов!', en: 'Your Design is Ready!' },
+            formSubtitle: {
+                he: 'מלאו את הפרטים לקבלת הצעת מחיר אישית וייעוץ מקצועי בחינם', ru: 'Заполните данные для получения расчета и бесплатной консультации', en: "Fill in the details to get a personal quote and free consultation"
+            },
+            namePlaceholder: { he: 'שם מלא', ru: 'Полное имя', en: 'Full name' },
+            phonePlaceholder: { he: 'מספר טלפון', ru: 'Номер телефона', en: 'Phone number' },
+            required: { he: 'נא למלא שדה זה', ru: 'Заполните это поле', en: 'Required field' },
+
+            steps: [
+                /* ── STEP 1: Layout ── */
+                {
+                    title: { he: 'איך נראה המטבח שלכם?', ru: 'Какая у вас форма кухни?', en: 'What is your kitchen layout?' },
+                    subtitle: { he: 'בחרו את הצורה הקרובה ביותר למצב הקיים', ru: 'Выберите форму, наиболее близкую к текущей', en: 'Select the shape closest to current situation' },
+                    options: [
+                        { id: 'straight', label: { he: 'מטבח ישר', ru: 'Прямая', en: 'Straight' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="10" width="16" height="4" rx="1"/></svg>' },
+                        { id: 'l-shape', label: { he: 'מטבח ר', ru: 'Г-образная', en: 'L‑Shape' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16h16v-4H8V4H4z"/></svg>' },
+                        { id: 'u-shape', label: { he: 'מטבח ח', ru: 'П-образная', en: 'U‑Shape' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16h16V4h-4v12H8V4H4z"/></svg>' },
+                        { id: 'island', label: { he: 'מטבח עם אי', ru: 'С островом', en: 'With Island' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="4" height="16" rx="1"/><rect x="12" y="8" width="8" height="8" rx="1"/></svg>' },
+                        { id: 'parallel', label: { he: 'מטבח מקביל', ru: 'Параллельная', en: 'Parallel' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="4" height="16" rx="1"/><rect x="16" y="4" width="4" height="16" rx="1"/></svg>' },
+                    ],
+                },
+                /* ── STEP 2: Kitchen Length ── */
+                {
+                    title: { he: 'מהו האורך הכולל (במטר רץ)?', ru: 'Общая длина (погонные метры)?', en: 'Total length (linear meters)?' },
+                    subtitle: { he: 'הערכה גסה מספיקה בשלב זה', ru: 'Грубой оценки достаточно на данном этапе', en: 'Rough estimate is enough for now' },
+                    options: [
+                        { id: 'up-to-3m', label: { he: 'עד 3 מטר', ru: 'До 3 метров', en: 'Up to 3m' }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16M4 8v8M20 8v8M8 8v4M12 8v4M16 8v4"/></svg>' },
+                        { id: '3-5m', label: { he: '3 - 5 מטר', ru: '3 - 5 метров', en: '3 - 5m' }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 8v8M22 8v8M7 8v4M12 8v4M17 8v4"/></svg>' },
+                        { id: '5-8m', label: { he: '5 - 8 מטר', ru: '5 - 8 метров', en: '5 - 8m' }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 8v8M22 8v8M6 8v4M10 8v4M14 8v4M18 8v4"/></svg>' },
+                        { id: 'over-8m', label: { he: 'מעל 8 מטר', ru: 'Более 8 метров', en: 'Over 8m' }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16m-16 0l4-4m-4 4l4 4m12-4l-4-4m4 4l-4 4"/></svg>' },
+                        { id: 'dont-know', label: { he: 'לא יודע / צריך מדידה', ru: 'Не знаю / нужен замер', en: "Need measurement" }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>' },
+                    ],
+                },
+                /* ── STEP 3: Kashrut ── */
+                {
+                    title: { he: 'האם המטבח צריך להיות כשר?', ru: 'Нужна ли кошерная кухня?', en: 'Do you need a Kosher kitchen?' },
+                    subtitle: { he: 'הפרדה בין כיורים, משטחים ותנורים', ru: 'Разделение раковин, поверхностей и духовок', en: 'Separation of sinks, surfaces, and ovens' },
+                    options: [
+                        { id: 'kosher-yes', label: { he: 'כן, חשוב לי מאוד', ru: 'Да, очень важно', en: 'Yes, very important' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18M12 8l4 4-4 4M8 12l4-4-4-4"/></svg>' }, // Star layoutish
+                        { id: 'kosher-no', label: { he: 'לא / סטנדרטי', ru: 'Нет / Стандарт', en: 'No / Standard' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/></svg>' },
+                    ],
+                },
+                /* ── STEP 4: Style (Images) ── */
+                {
+                    title: { he: 'איזה סגנון אתם אוהבים?', ru: 'Какой стиль вам нравится?', en: 'Which style do you like?' },
+                    subtitle: { he: 'בחרו את הסגנון שהכי מדבר אליכם', ru: 'Выберите стиль, который вам ближе всего', en: 'Choose the style that speaks to you' },
+                    options: [
+                        { id: 'modern', label: { he: 'מודרני / מינימליסטי', ru: 'Модерн / Минимализм', en: 'Modern / Minimalist' }, image: 'assets/quiz/modern.jpg' },
+                        { id: 'classic', label: { he: 'כפרי / פרובנס', ru: 'Классика / Прованс', en: 'Classic / Provence' }, image: 'assets/quiz/classic.jpg' },
+                        { id: 'industrial', label: { he: 'תעשייתי / לופט', ru: 'Индустриальный / Лофт', en: 'Industrial / Loft' }, image: 'assets/quiz/industrial.jpg' },
+                        { id: 'urban', label: { he: 'אורבני / יוקרתי', ru: 'Урбан / Элитный', en: 'Urban / Luxury' }, image: 'assets/quiz/urban.jpg' },
+                    ],
+                },
+                /* ── STEP 5: Countertop (Images) ── */
+                {
+                    title: { he: 'איזה משטח עבודה תרצו?', ru: 'Какую столешницу вы хотите?', en: 'Which countertop do you prefer?' },
+                    subtitle: { he: 'המשטח נותן את הטון הסופי למטבח', ru: 'Столешница задает финальный тон кухне', en: 'The countertop sets the final tone' },
+                    options: [
+                        { id: 'caesarstone', label: { he: 'קיסרסטון / סיליקה', ru: 'Caesarstone', en: 'Caesarstone' }, image: 'assets/quiz/surface-1.jpg' },
+                        { id: 'dekton', label: { he: 'דקטון / גרניט פורצלן', ru: 'Dekton / Porcelain', en: 'Dekton / Porcelain' }, image: 'assets/quiz/surface-2.jpg' },
+                        { id: 'natural-stone', label: { he: 'בוצ׳ר / עץ טבעי', ru: 'Дерево / Бучер', en: 'Butcher / Wood' }, image: 'assets/quiz/surface-3.jpg' },
+                        { id: 'formica', label: { he: 'פורמייקה / HPL', ru: 'Формайка / HPL', en: 'Formica / HPL' }, image: 'assets/quiz/surface-4.jpg' },
+                    ],
+                },
+                /* ── STEP 6: Timing ── */
+                {
+                    title: { he: 'מתי תרצו להתחיל?', ru: 'Когда планируете начать?', en: 'When do you want to start?' },
+                    subtitle: { he: 'כדי שנוכל להתכונן בהתאם', ru: 'Чтобы мы могли подготовиться', en: 'So we can prepare accordingly' },
+                    options: [
+                        { id: 'new-apt', label: { he: 'כניסה לדירה חדשה', ru: 'Новая квартира', en: 'New Apartment' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>' },
+                        { id: 'renovating', label: { he: 'אנחנו בשיפוץ', ru: 'Делаем ремонт', en: 'Renovating' }, icon: '<svg class="w-8 h-8 opacity-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>' },
+                        { id: 'checking', label: { he: 'רק בודקים מחירים', ru: 'Узнаем цены', en: 'Just checking prices' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>' },
+                    ],
+                },
+                /* ── STEP 7: Lead form ── */
+                { isForm: true },
+            ],
+        };
+
+        /* ━━━ STATE ━━━ */
+        let currentLang = 'he';
+        let currentStep = 0;
+        const totalSteps = T.steps.length;
+        const answers = {};
+
+        /* ━━━ HELPERS ━━━ */
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => document.querySelectorAll(sel);
+        const txt = (obj) => obj[currentLang] || obj.en;
+
+        /* ━━━ LANGUAGE ━━━ */
+        function setLang(lang) {
+            currentLang = lang;
+            const isRTL = lang === 'he';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+            $('#quizContainer').dir = isRTL ? 'rtl' : 'ltr';
+
+            // Highlight active lang button
+            $$('.lang-btn').forEach(b => {
+                b.classList.remove('bg-brand-dark', 'text-white', 'border-brand-dark');
+                b.classList.add('border-transparent', 'text-brand-muted', 'hover:bg-gray-100');
+            });
+            const active = $(`#lang${lang.charAt(0).toUpperCase() + lang.slice(1)}`);
+            active.classList.add('bg-brand-dark', 'text-white', 'border-brand-dark');
+            active.classList.remove('border-transparent', 'text-brand-muted', 'hover:bg-gray-100');
+
+            renderStep();
+        }
+
+        /* ━━━ PROGRESS ━━━ */
+        function updateProgress() {
+            const pct = Math.round(((currentStep) / (totalSteps - 1)) * 100);
+            $('#progressBar').style.width = pct + '%';
+            $('#progressLabel').textContent = `${txt(T.progressLabel)} ${currentStep + 1} ${txt(T.of)} ${totalSteps}`;
+            $('#progressPercent').textContent = Math.min(pct, 100) + '%';
+        }
+
+        /* ━━━ RENDER STEP ━━━ */
+        function renderStep() {
+            const wrapper = $('#stepsWrapper');
+            const step = T.steps[currentStep];
+
+            // Navigation labels
+            $('#btnBackText').textContent = txt(T.back);
+            $('#btnBack').style.display = currentStep === 0 ? 'none' : 'flex';
+
+            updateProgress();
+
+            // ── Form step ──
+            if (step.isForm) {
+                $('#btnNext').textContent = txt(T.submit);
+                wrapper.innerHTML = `
+      <div class="step-enter text-center pt-8">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-brand-gold/10 to-brand-gold/5 border border-brand-gold/20 flex items-center justify-center">
+          <svg class="w-10 h-10 text-brand-gold shadow-sm" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-dark mb-3">${txt(T.formTitle)}</h2>
+        <p class="text-brand-muted text-base mb-10 max-w-md mx-auto leading-relaxed">${txt(T.formSubtitle)}</p>
+        <div class="max-w-sm mx-auto space-y-5">
+          <div class="relative group">
+            <input id="inputName" type="text" placeholder="${txt(T.namePlaceholder)}"
+                class="quiz-input w-full px-6 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 text-brand-dark placeholder-brand-muted text-base outline-none transition-all group-hover:bg-white" />
+          </div>
+          <div class="relative group">
+            <input id="inputPhone" type="tel" placeholder="${txt(T.phonePlaceholder)}"
+                class="quiz-input w-full px-6 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 text-brand-dark placeholder-brand-muted text-base outline-none transition-all group-hover:bg-white" dir="ltr" />
+          </div>
+          <p id="formError" class="text-red-500 text-sm hidden flex items-center justify-center gap-1 font-medium bg-red-50 py-2 rounded-lg">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            ${txt(T.required)}
+          </p>
+        </div>
+      </div>
+    `;
+                validateForm();
+                $('#inputName').addEventListener('input', validateForm);
+                $('#inputPhone').addEventListener('input', validateForm);
+                return;
+            }
+
+            // ── Options step ──
+            $('#btnNext').textContent = txt(T.next);
+
+            // Grid logic
+            let gridClass = 'grid-cols-2';
+            if (step.options.some(o => o.image)) {
+                gridClass = 'grid-cols-2'; // Image cards always 2 cols
+            } else if (step.options.length > 4) {
+                gridClass = 'grid-cols-2 sm:grid-cols-3';
+            } else {
+                gridClass = 'grid-cols-2';
+            }
+
+            wrapper.innerHTML = `
+    <div class="step-enter">
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-dark mb-3 text-center sm:text-start">${txt(step.title)}</h2>
+      <p class="text-brand-muted text-base mb-10 text-center sm:text-start max-w-2xl">${txt(step.subtitle)}</p>
+      
+      <div class="grid ${gridClass} gap-4 sm:gap-6">
+        ${step.options.map(opt => {
+                const isSelected = answers[currentStep] === opt.id;
+                const hasImage = !!opt.image;
+
+                if (hasImage) {
+                    return `
+                <button onclick="selectOption(${currentStep},'${opt.id}')" data-id="${opt.id}"
+                    class="option-card has-image rounded-2xl cursor-pointer text-left h-48 sm:h-56 ${isSelected ? 'selected' : ''}">
+                    <img src="${opt.image}" alt="${txt(opt.label)}" class="w-full h-full object-cover">
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <span class="text-lg font-bold font-serif leading-tight block">${txt(opt.label)}</span>
+                    </div>
+                </button>`;
+                } else {
+                    return `
+                <button onclick="selectOption(${currentStep},'${opt.id}')" data-id="${opt.id}"
+                    class="option-card flex flex-col items-center justify-center gap-4 p-6 rounded-2xl border-2 border-gray-100 bg-white cursor-pointer text-center h-full min-h-[140px] hover:bg-gray-50 ${isSelected ? 'selected' : ''}">
+                    <span class="text-brand-dark opacity-80 group-hover:opacity-100 transition-opacity">${opt.icon}</span>
+                    <span class="text-base font-medium text-brand-dark">${txt(opt.label)}</span>
+                </button>`;
+                }
+            }).join('')}
+      </div>
+    </div>
+  `;
+            $('#btnNext').disabled = !answers[currentStep];
+        }
+
+        /* ━━━ SELECT ━━━ */
+        function selectOption(step, id) {
+            answers[step] = id;
+            $$('.option-card').forEach(c => c.classList.remove('selected'));
+            document.querySelector(`[data-id="${id}"]`)?.classList.add('selected');
+            $('#btnNext').disabled = false;
+        }
+
+        /* ━━━ VALIDATE FORM ━━━ */
+        function validateForm() {
+            const name = $('#inputName')?.value.trim();
+            const phone = $('#inputPhone')?.value.trim();
+            const valid = name && phone && phone.length >= 7;
+            $('#btnNext').disabled = !valid;
+            if ($('#formError')) $('#formError').classList.toggle('hidden', !!valid || (!name && !phone));
+        }
+
+        /* ━━━ NAVIGATION ━━━ */
+        function nextStep() {
+            const step = T.steps[currentStep];
+            if (step.isForm) { submitQuiz(); return; }
+            if (!answers[currentStep]) return;
+            if (currentStep < totalSteps - 1) {
+                animateOut(() => { currentStep++; renderStep(); });
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 0) {
+                animateOut(() => { currentStep--; renderStep(); });
+            }
+        }
+
+        function animateOut(cb) {
+            const wrapper = $('#stepsWrapper');
+            const inner = wrapper.firstElementChild;
+            if (inner) {
+                inner.classList.remove('step-enter');
+                inner.classList.add('step-exit');
+                setTimeout(cb, 250);
+            } else { cb(); }
+        }
+
+        /* ━━━ SUBMIT ━━━ */
+        function submitQuiz() {
+            const name = $('#inputName').value.trim();
+            const phone = $('#inputPhone').value.trim();
+            if (!name || !phone) { $('#formError')?.classList.remove('hidden'); return; }
+
+            // Build human-readable summary
+            const labels = { he: {}, ru: {}, en: {} };
+            const summaryParts = [];
+            const stepTitles = [
+                { he: 'צורת מטבח', ru: 'Форма кухни', en: 'Kitchen shape' },
+                { he: 'אורך המטבח', ru: 'Длина кухни', en: 'Kitchen length' },
+                { he: 'כשרות', ru: 'Кашрут', en: 'Kashrut' },
+                { he: 'סגנון', ru: 'Стиль', en: 'Style' },
+                { he: 'משטח', ru: 'Столешница', en: 'Countertop' },
+                { he: 'שלב פרויקט', ru: 'Этап проекта', en: 'Project stage' },
+            ];
+
+            for (let i = 0; i < 6; i++) {
+                const stepData = T.steps[i];
+                const chosen = stepData.options.find(o => o.id === answers[i]);
+                if (chosen) {
+                    summaryParts.push(`*${txt(stepTitles[i])}:* ${txt(chosen.label)}`);
+                }
+            }
+
+            const message = [
+                `🏠 *Elite Design – Kitchen Quiz*`,
+                `👤 *${name}*`,
+                `📞 ${phone}`,
+                ``,
+                ...summaryParts,
+            ].join('\n');
+
+            // REPLACE THIS NUMBER WITH YOUR WHATSAPP NUMBER
+            const whatsappNumber = '972086711767';
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            closeQuiz();
+        }
+
+        /* ━━━ OPEN / CLOSE ━━━ */
+        function openQuiz() {
+            currentStep = 0;
+            Object.keys(answers).forEach(k => delete answers[k]);
+            setLang(currentLang);
+            $('#quizOverlay').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuiz() {
+            // If opened from the main site via ?start=true, go back
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('start') === 'true') {
+                window.location.href = '/';
+                return;
+            }
+            $('#quizOverlay').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Close on overlay click
+        $('#quizOverlay').addEventListener('click', (e) => {
+            if (e.target === $('#quizOverlay')) closeQuiz();
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeQuiz();
+        });
+
+        // Initialize language and handle URL parameters
+        function initQuizFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const lang = params.get('lang');
+            const start = params.get('start');
+
+            if (lang && ['he', 'ru', 'en'].includes(lang)) {
+                setLang(lang);
+            } else {
+                setLang('he');
+            }
+
+            if (start === 'true') {
+                // Overlay is already visible from inline script, just init
+                openQuiz();
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', initQuizFromURL);
+        } else {
+            initQuizFromURL();
+        }
+    </script>
+
+</body>
+
+</html>
