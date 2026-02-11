@@ -151,10 +151,10 @@ const Closets = () => {
                         >
                             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
                                 {language === 'he'
-                                    ? 'האומנות שבסדר.'
+                                    ? 'האומנות שבסדר'
                                     : language === 'ru'
                                         ? 'Искусство порядка'
-                                        : 'The Art of Order.'}
+                                        : 'The Art of Order'}
                             </h1>
                             <p className="text-xl md:text-2xl font-light text-white/90 mb-10 max-w-2xl leading-relaxed">
                                 {language === 'he'
