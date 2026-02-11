@@ -187,7 +187,7 @@ const Closets = () => {
                                     className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
                                 >
                                     {/* Text Content */}
-                                    <div className={`space-y-8 ${dir === 'rtl' ? 'lg:order-2' : ''}`}>
+                                    <div className={`space-y-8 order-2 lg:order-none ${dir === 'rtl' ? 'lg:order-2' : ''}`}>
                                         <h2 className="text-4xl font-bold text-[#2C2C2C]">
                                             {activeTab === 'sliding' && (language === 'he' ? 'ארונות הזזה: מינימליזם בתנועה' : language === 'ru' ? 'Шкафы-купе: Минимализм в движении' : 'Sliding Closets: Minimalism in Motion')}
                                             {activeTab === 'hinged' && (language === 'he' ? 'ארונות פתיחה: הקלאסיקה החדשה' : language === 'ru' ? 'Распашные шкафы: Новая классика' : 'Hinged Closets: The New Classic')}
@@ -261,7 +261,7 @@ const Closets = () => {
                                     </div>
 
                                     {/* Image Area */}
-                                    <div className={`relative h-[500px] rounded-3xl overflow-hidden shadow-2xl ${dir === 'rtl' ? 'lg:order-1' : ''}`}>
+                                    <div className={`relative h-[500px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-none ${dir === 'rtl' ? 'lg:order-1' : ''}`}>
                                         <img
                                             src={activeTab === 'sliding' ? slidingImg : activeTab === 'hinged' ? hingedImg : activeTab === 'walkin' ? walkinImg : livingImg}
                                             alt={activeTab}

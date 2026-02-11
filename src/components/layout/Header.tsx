@@ -84,20 +84,22 @@ const Header = () => {
             </button>
 
             {/* Logo */}
-            <Link to="/" className="flex flex-col items-center z-50 group">
-              <motion.div
-                animate={{ scale: logoScale }}
-                transition={{ duration: 0.3 }}
-                className="flex flex-col items-center"
-              >
-                <span className={`text-xl lg:text-3xl font-bold tracking-wide whitespace-nowrap lg:ml-0 translate-x-[-15%] lg:translate-x-0`}>
-                  Elite Design
-                </span>
-                <span className="text-[10px] lg:text-sm font-light whitespace-nowrap tracking-widest text-center opacity-80 translate-x-[-15%] lg:translate-x-0">
-                  kitchens & more
-                </span>
-              </motion.div>
-            </Link>
+            <div className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 z-50">
+              <Link to="/" className="flex flex-col items-center group">
+                <motion.div
+                  animate={{ scale: logoScale }}
+                  transition={{ duration: 0.3 }}
+                  className="flex flex-col items-center"
+                >
+                  <span className="text-xl lg:text-3xl font-bold tracking-wide whitespace-nowrap">
+                    Elite Design
+                  </span>
+                  <span className="text-[10px] lg:text-sm font-light whitespace-nowrap tracking-widest text-center opacity-80">
+                    kitchens & more
+                  </span>
+                </motion.div>
+              </Link>
+            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6">
