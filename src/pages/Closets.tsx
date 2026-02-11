@@ -381,6 +381,133 @@ const Closets = () => {
                     </div>
                 </section>
 
+                {/* SEO TEXT SECTION */}
+                <section className="py-20 bg-[#f9f9f6]" dir={dir}>
+                    <div className="container mx-auto px-4 max-w-5xl">
+                        {/* Main Title */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <h2 className="text-3xl md:text-4xl font-bold text-[#2C2C2C] mb-6 leading-tight">
+                                {language === 'he'
+                                    ? 'ארונות יוקרה וחדרי ארונות בהתאמה אישית – חוויית אחסון מושלמת'
+                                    : language === 'ru'
+                                        ? 'Премиальные шкафы и гардеробные на заказ — идеальное хранение'
+                                        : 'Premium Custom Closets & Walk-ins — The Perfect Storage Experience'}
+                            </h2>
+                            <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-14">
+                                {language === 'he'
+                                    ? 'ב-Elite Design אנחנו מאמינים שארון הוא הרבה יותר ממקום לאחסון בגדים – הוא חלק בלתי נפרד מעיצוב הבית. עם למעלה מ-20 שנות ניסיון בנגרות עילית, אנו מתמחים בתכנון וייצור ארונות הזזה, ארונות פתיחה וחדרי ארונות בסטנדרט הגבוה ביותר.'
+                                    : language === 'ru'
+                                        ? 'В Elite Design мы убеждены: шкаф — это гораздо больше, чем место для хранения одежды. Это неотъемлемая часть дизайна дома. С более чем 20-летним опытом в элитном столярном деле, мы специализируемся на проектировании и производстве шкафов-купе, распашных шкафов и гардеробных по высшему стандарту.'
+                                        : 'At Elite Design we believe a closet is far more than a place to store clothes — it is an integral part of your home design. With over 20 years of elite carpentry experience, we specialize in designing and manufacturing sliding wardrobes, hinged closets, and walk-in closets to the highest standard.'}
+                            </p>
+                        </motion.div>
+
+                        {/* 3-Column Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                            {[
+                                {
+                                    title: language === 'he' ? 'ארונות הזזה' : language === 'ru' ? 'Шкафы-купе' : 'Sliding Closets',
+                                    subtitle: 'Sliding',
+                                    text: language === 'he'
+                                        ? 'קו נקי, מנגנוני טריקה שקטה, זכוכיות מעוצבות וניצול מקסימלי של המקום.'
+                                        : language === 'ru'
+                                            ? 'Чистые линии, механизмы плавного закрывания, дизайнерское стекло и максимальное использование пространства.'
+                                            : 'Clean lines, soft-close mechanisms, designer glass, and maximum space utilization.',
+                                },
+                                {
+                                    title: language === 'he' ? 'ארונות פתיחה' : language === 'ru' ? 'Распашные шкафы' : 'Hinged Closets',
+                                    subtitle: 'Hinged',
+                                    text: language === 'he'
+                                        ? 'עיצוב קלאסי ומודרני, דלתות בחיפוי צבע בתנור (שלייפלק), פורניר או ננו-טכנולוגיה.'
+                                        : language === 'ru'
+                                            ? 'Классический и современный дизайн, двери с покрытием лаком (Schleiflack), шпоном или нано-технологией.'
+                                            : 'Classic and modern design, doors with lacquer finish (Schleiflack), veneer, or nano-technology.',
+                                },
+                                {
+                                    title: language === 'he' ? 'חדרי ארונות' : language === 'ru' ? 'Гардеробные' : 'Walk-in Closets',
+                                    subtitle: 'Walk-in',
+                                    text: language === 'he'
+                                        ? 'תכנון ארגונומי מדויק, תאורת LED, מגירות עם חלוקה פנימית ופרזול יוקרתי.'
+                                        : language === 'ru'
+                                            ? 'Точная эргономичная планировка, LED-подсветка, ящики с внутренним делением и премиальная фурнитура.'
+                                            : 'Precise ergonomic planning, LED lighting, compartmentalized drawers, and premium hardware.',
+                                },
+                            ].map((item, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.15, duration: 0.5 }}
+                                    className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+                                >
+                                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent/70 mb-2">{item.subtitle}</p>
+                                    <h3 className="text-xl font-bold text-[#2C2C2C] mb-3">{item.title}</h3>
+                                    <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Technical List */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                            className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-gray-100"
+                        >
+                            <h3 className="text-2xl font-bold text-[#2C2C2C] mb-6">
+                                {language === 'he'
+                                    ? 'האיכות נמצאת בפרטים הקטנים'
+                                    : language === 'ru'
+                                        ? 'Качество — в деталях'
+                                        : 'Quality Is in the Details'}
+                            </h3>
+                            <ul className="space-y-4">
+                                {[
+                                    {
+                                        label: language === 'he' ? 'פרזול איכותי' : language === 'ru' ? 'Качественная фурнитура' : 'Premium Hardware',
+                                        text: language === 'he'
+                                            ? 'מסילות וצירים מבית Blum / Hettich.'
+                                            : language === 'ru'
+                                                ? 'Направляющие и петли Blum / Hettich.'
+                                                : 'Tracks and hinges by Blum / Hettich.',
+                                    },
+                                    {
+                                        label: language === 'he' ? 'גופי ארונות' : language === 'ru' ? 'Корпуса шкафов' : 'Cabinet Bodies',
+                                        text: language === 'he'
+                                            ? 'עץ סנדוויץ\' אדום או שבבית אירופאית דחוסה (Egger).'
+                                            : language === 'ru'
+                                                ? 'Красная сэндвич-плита или европейская прессованная ДСП (Egger).'
+                                                : 'Red sandwich board or European compressed chipboard (Egger).',
+                                    },
+                                    {
+                                        label: language === 'he' ? 'טכנולוגיה' : language === 'ru' ? 'Технологии' : 'Technology',
+                                        text: language === 'he'
+                                            ? 'תאורה חכמה, מתקנים נשלפים ומראות מרחפות.'
+                                            : language === 'ru'
+                                                ? 'Умное освещение, выдвижные системы и парящие зеркала.'
+                                                : 'Smart lighting, pull-out systems, and floating mirrors.',
+                                    },
+                                ].map((item, idx) => (
+                                    <li key={idx} className="flex items-start gap-3">
+                                        <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" />
+                                        <p className="text-gray-700">
+                                            <span className="font-semibold text-[#2C2C2C]">{item.label}: </span>
+                                            {item.text}
+                                        </p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                    </div>
+                </section>
+
                 <div id="contact">
                     <ContactSection />
                 </div>
