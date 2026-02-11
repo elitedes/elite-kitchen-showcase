@@ -66,12 +66,12 @@ const HeroSection = () => {
             className="flex justify-center"
           >
             <motion.button
-              whileHover={{ backgroundColor: "#2C1533", boxShadow: "0 15px 30px rgba(0,0,0,0.4)", y: -2 }}
+              whileHover={{ backgroundColor: "rgba(44, 21, 51, 0.8)", boxShadow: "0 15px 30px rgba(0,0,0,0.4)", y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsModalOpen(true)}
-              className="text-white px-8 py-4 rounded-[14px] font-playfair font-semibold text-lg md:text-xl transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.3)] min-w-[200px]"
+              className="text-white px-8 py-4 rounded-[14px] font-playfair font-semibold text-lg md:text-xl transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.3)] min-w-[200px] backdrop-blur-md border border-white/10"
               style={{
-                backgroundColor: "#3E1F47",
+                backgroundColor: "rgba(62, 31, 71, 0.7)",
                 height: "60px",
                 display: "flex",
                 alignItems: "center",
