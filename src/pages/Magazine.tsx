@@ -62,7 +62,7 @@ const Magazine = () => {
   return (
     <Layout>
       {/* Hero Banner */}
-      <section className="bg-header py-20">
+      <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

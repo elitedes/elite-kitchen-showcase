@@ -46,7 +46,9 @@ const Header = () => {
   ];
 
   // Dynamic classes based on state
-  const headerHeight = isScrolled ? '72px' : '96px';
+  const headerHeight = isScrolled
+    ? '72px'
+    : (window.innerWidth < 1024 ? '80px' : '96px');
   const headerBg = isTransparent && !mobileMenuOpen
     ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)'
     : 'rgba(10, 10, 10, 0.5)';

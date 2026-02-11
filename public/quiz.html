@@ -59,6 +59,46 @@
             }
         }
 
+        /* ── Gift reveal animations ── */
+        @keyframes giftPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+
+            60% {
+                transform: scale(1.05) translateY(-5px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .gift-enter {
+            animation: giftPop .6s cubic-bezier(.25, .46, .45, .94) forwards;
+        }
+
+        .gift-shimmer {
+            background: linear-gradient(90deg, #C9A96E 0%, #E8D5A8 40%, #C9A96E 60%, #E8D5A8 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
         /* ── Option card hover ── */
         .option-card {
             transition: all .3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -173,6 +213,14 @@
             <!-- Inner Padding Wrapper -->
             <div class="px-6 pt-20 pb-10 sm:px-12">
 
+                <!-- Marketing Headline -->
+                <div id="quizHeadline" class="text-center mb-6">
+                    <p class="text-base sm:text-lg font-bold text-brand-gold leading-snug tracking-tight">
+                        <span class="inline-block">🎁</span>
+                        <span id="headlineText"></span>
+                    </p>
+                </div>
+
                 <!-- Progress Bar -->
                 <div class="mb-10 max-w-xl mx-auto">
                     <div class="flex justify-between items-center mb-2">
@@ -264,6 +312,22 @@
             namePlaceholder: { he: 'שם מלא', ru: 'Полное имя', en: 'Full name' },
             phonePlaceholder: { he: 'מספר טלפון', ru: 'Номер телефона', en: 'Phone number' },
             required: { he: 'נא למלא שדה זה', ru: 'Заполните это поле', en: 'Required field' },
+            headline: {
+                he: 'ענו על 7 שאלות וקבלו מתנה מובטחת בהזמנת מטבח!',
+                ru: 'Ответьте на 7 вопросов и получите гарантированный подарок при заказе кухни!',
+                en: 'Answer 7 questions and get a guaranteed gift when ordering a kitchen!'
+            },
+            giftTitle: {
+                he: 'מזל טוב! בחרתם את מתנת ההצטרפות שלכם: כיור יוקרתי',
+                ru: 'Поздравляем! Вы получили подарок: премиальная мойка',
+                en: "Congratulations! You've unlocked your gift: A premium kitchen sink"
+            },
+            giftSubtext: {
+                he: 'המעצב שלנו ייצור אתכם קשר בהקדם כדי לדון בפרויקט ולהבטיח את המתנה שלכם.',
+                ru: 'Наш дизайнер свяжется с вами в ближайшее время, чтобы обсудить проект и подтвердить подарок.',
+                en: 'Our designer will contact you shortly to discuss your project and secure your gift.'
+            },
+            giftClose: { he: 'סגור', ru: 'Закрыть', en: 'Close' },
 
             steps: [
                 /* ── STEP 1: Layout ── */
@@ -283,11 +347,11 @@
                     title: { he: 'מהו האורך הכולל (במטר רץ)?', ru: 'Общая длина (погонные метры)?', en: 'Total length (linear meters)?' },
                     subtitle: { he: 'הערכה גסה מספיקה בשלב זה', ru: 'Грубой оценки достаточно на данном этапе', en: 'Rough estimate is enough for now' },
                     options: [
-                        { id: 'up-to-3m', label: { he: 'עד 3 מטר', ru: 'До 3 метров', en: 'Up to 3m' }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16M4 8v8M20 8v8M8 8v4M12 8v4M16 8v4"/></svg>' },
-                        { id: '3-5m', label: { he: '3 - 5 מטר', ru: '3 - 5 метров', en: '3 - 5m' }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 8v8M22 8v8M7 8v4M12 8v4M17 8v4"/></svg>' },
-                        { id: '5-8m', label: { he: '5 - 8 מטר', ru: '5 - 8 метров', en: '5 - 8m' }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 8v8M22 8v8M6 8v4M10 8v4M14 8v4M18 8v4"/></svg>' },
-                        { id: 'over-8m', label: { he: 'מעל 8 מטר', ru: 'Более 8 метров', en: 'Over 8m' }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16m-16 0l4-4m-4 4l4 4m12-4l-4-4m4 4l-4 4"/></svg>' },
-                        { id: 'dont-know', label: { he: 'לא יודע / צריך מדידה', ru: 'Не знаю / нужен замер', en: "Need measurement" }, icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>' },
+                        { id: 'up-to-3m', label: { he: 'עד 3 מטר', ru: 'До 3 метров', en: 'Up to 3m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="8" height="6" rx="1"/><path d="M4 9v6M6 9v3M8 9v6"/><path d="M10 12h10" stroke-dasharray="2 2"/></svg>' },
+                        { id: '3-5m', label: { he: '3 - 5 מטר', ru: '3 - 5 метров', en: '3 - 5m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="12" height="6" rx="1"/><path d="M4 9v6M7 9v3M10 9v6M13 9v3"/><path d="M14 12h7" stroke-dasharray="2 2"/></svg>' },
+                        { id: '5-8m', label: { he: '5 - 8 מטר', ru: '5 - 8 метров', en: '5 - 8m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="16" height="6" rx="1"/><path d="M4 9v6M7 9v3M10 9v6M13 9v3M16 9v6"/><path d="M18 12h3" stroke-dasharray="2 2"/></svg>' },
+                        { id: 'over-8m', label: { he: 'מעל 8 מטר', ru: 'Более 8 метров', en: 'Over 8m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="20" height="6" rx="1"/><path d="M4 9v6M7 9v3M10 9v6M13 9v3M16 9v6M19 9v3"/></svg>' },
+                        { id: 'dont-know', label: { he: 'לא יודע / צריך מדידה', ru: 'Не знаю / нужен замер', en: "Need measurement" }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>' },
                     ],
                 },
                 /* ── STEP 3: Kashrut ── */
@@ -354,6 +418,10 @@
             document.documentElement.lang = lang;
             document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
             $('#quizContainer').dir = isRTL ? 'rtl' : 'ltr';
+
+            // Update marketing headline
+            const headlineEl = $('#headlineText');
+            if (headlineEl) headlineEl.textContent = txt(T.headline);
 
             // Highlight active lang button
             $$('.lang-btn').forEach(b => {
@@ -545,25 +613,82 @@
                 }
             }
 
+            const giftLine = currentLang === 'he' ? '🎁 *מתנה: כיור יוקרתי (מובטחת)*' :
+                currentLang === 'ru' ? '🎁 *Подарок: Премиальная мойка (гарантирован)*' :
+                    '🎁 *Gift: Premium Sink (Guaranteed)*';
+
             const message = [
                 `🏠 *Elite Design – Kitchen Quiz*`,
                 `👤 *${name}*`,
                 `📞 ${phone}`,
                 ``,
                 ...summaryParts,
+                ``,
+                giftLine,
             ].join('\n');
 
             // REPLACE THIS NUMBER WITH YOUR WHATSAPP NUMBER
             const whatsappNumber = '972086711767';
             const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
-            closeQuiz();
+            showGiftReveal();
+        }
+
+        /* ━━━ GIFT REVEAL SCREEN ━━━ */
+        function showGiftReveal() {
+            const wrapper = $('#stepsWrapper');
+            const isRTL = currentLang === 'he';
+
+            // Hide progress bar and nav buttons
+            $('#navButtons').style.display = 'none';
+            const progressSection = wrapper.closest('.px-6')?.querySelector('.mb-10.max-w-xl');
+            if (progressSection) progressSection.style.display = 'none';
+            // Hide headline
+            const headline = $('#quizHeadline');
+            if (headline) headline.style.display = 'none';
+
+            wrapper.innerHTML = `
+              <div class="gift-enter text-center py-6 sm:py-10">
+                <!-- Confetti Icon -->
+                <div class="text-5xl sm:text-6xl mb-4">🎉</div>
+
+                <!-- Gift Image -->
+                <div class="relative w-48 h-48 sm:w-56 sm:h-56 mx-auto mb-8 rounded-2xl overflow-hidden shadow-xl border-2 border-brand-gold/30">
+                  <img src="assets/quiz/sink-gift.jpg" alt="Kitchen Sink Gift"
+                       class="w-full h-full object-cover"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('bg-gradient-to-br','from-brand-gold/20','to-brand-gold/5','flex','items-center','justify-center'); this.parentElement.innerHTML='<svg class=\'w-20 h-20 text-brand-gold\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' d=\'M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z\'/></svg>';" />
+                </div>
+
+                <!-- Title -->
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-brand-dark mb-4 leading-tight gift-shimmer">
+                  ${txt(T.giftTitle)}
+                </h2>
+
+                <!-- Subtext -->
+                <p class="text-brand-muted text-base sm:text-lg mb-10 max-w-md mx-auto leading-relaxed">
+                  ${txt(T.giftSubtext)}
+                </p>
+
+                <!-- Close Button -->
+                <button onclick="closeQuiz()"
+                  class="px-10 py-4 rounded-xl text-base font-bold text-white bg-brand-dark hover:bg-brand-gold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 min-w-[140px]">
+                  ${txt(T.giftClose)}
+                </button>
+              </div>
+            `;
         }
 
         /* ━━━ OPEN / CLOSE ━━━ */
         function openQuiz() {
             currentStep = 0;
             Object.keys(answers).forEach(k => delete answers[k]);
+            // Reset UI elements that may have been hidden by gift reveal
+            const navBtns = $('#navButtons');
+            if (navBtns) navBtns.style.display = '';
+            const headline = $('#quizHeadline');
+            if (headline) headline.style.display = '';
+            const progressSection = $('#stepsWrapper')?.closest('.px-6')?.querySelector('.mb-10.max-w-xl');
+            if (progressSection) progressSection.style.display = '';
             setLang(currentLang);
             $('#quizOverlay').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
