@@ -23,7 +23,13 @@ type TabType = 'sliding' | 'hinged' | 'walkin' | 'glass';
 const Closets = () => {
     const { t, language, dir } = useLanguage();
     const [activeTab, setActiveTab] = useState<TabType>('sliding');
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
+
+    // Reset carousel when tab changes
+    useEffect(() => {
+        setCurrentImageIndex(0);
+    }, [activeTab]);
 
     // Mobile detection
     useEffect(() => {
@@ -66,6 +72,31 @@ const Closets = () => {
         { id: 'walkin', label: language === 'he' ? 'חדרי ארונות' : language === 'ru' ? 'Гардеробные' : 'Walk-in Closets' },
         { id: 'glass', label: language === 'he' ? 'ארונות זכוכית' : language === 'ru' ? 'Стеклянные витрины' : 'Glass Closets' },
     ];
+
+    const closetImages: Record<TabType, { src: string; description: { he: string; ru: string; en: string } }[]> = {
+        sliding: [
+            { src: slidingImg, description: { he: 'הדגם המודרני שלנו עם דלתות הזזה שחורות', ru: 'Наша современная модель с черными дверями-купе', en: 'Our modern model with black sliding doors' } },
+            { src: '/assets/closets/sliding-1.jpg', description: { he: 'עיצוב מינימליסטי בגוון מט', ru: 'Минималистичный дизайн в матовом исполнении', en: 'Minimalist matte design' } },
+            { src: '/assets/closets/sliding-2.jpg', description: { he: 'שילוב זכוכית ופרופילי אלומיניום', ru: 'Сочетание стекла и алюминиевых профилей', en: 'Glass and aluminum profiles combo' } },
+        ],
+        hinged: [
+            { src: hingedImg, description: { he: 'ארון פתיחה יוקרתי עם ידיות אינטגרליות', ru: 'Роскошный распашной шкаф с интегрированными ручками', en: 'Luxury hinged closet with integrated handles' } },
+            { src: '/assets/closets/hinged-1.jpg', description: { he: 'גימור פורניר טבעי למראה חם', ru: 'Шпон натурального дерева для теплого интерьера', en: 'Natural veneer finish for a warm look' } },
+            { src: '/assets/closets/hinged-2.jpg', description: { he: 'דלתות עם חיפוי ננו-טכנולוגי עמיד', ru: 'Двери с прочным нано-технологичным покрытием', en: 'Durable nano-technology coated doors' } },
+            { src: '/assets/closets/hinged-3.jpg', description: { he: 'ארון קיר מלא בעיצוב מודרני', ru: 'Встроенный шкаф во всю стену в современном стиле', en: 'Full wall built-in closet in modern style' } },
+        ],
+        walkin: [
+            { src: walkinImg, description: { he: 'חדר ארונות פתוח עם תכנון חכם', ru: 'Открытая гардеробная с умной планировкой', en: 'Open walk-in closet with smart planning' } },
+            { src: '/assets/closets/walkin-1.jpg', description: { he: 'מקסימום אחסון במינימום שטח', ru: 'Максимум хранения на минимальной площади', en: 'Maximum storage in minimum space' } },
+            { src: '/assets/closets/walkin-2.jpg', description: { he: 'אי מרכזי לאביזרים ותכשיטים', ru: 'Центральный остров для аксессуаров и украшений', en: 'Central island for accessories and jewelry' } },
+            { src: '/assets/closets/walkin-3.jpg', description: { he: 'סידור נעליים ותצוגה יוקרתית', ru: 'Система для обуви и элитная презентация', en: 'Shoe system and elite presentation' } },
+        ],
+        glass: [
+            { src: livingImg, description: { he: 'ויטרינת זכוכית משולבת בתאורה', ru: 'Стеклянная витрина со встроенной подсветкой', en: 'Glass showcase with integrated lighting' } },
+            { src: '/assets/closets/glass-1.jpg', description: { he: 'זכוכית כהה למראה מסתורי ויוקרתי', ru: 'Темное стекло для загадочного и дорогого образа', en: 'Tinted glass for a mysterious and luxurious look' } },
+            { src: '/assets/closets/glass-2.jpg', description: { he: 'תצוגת פריטים באלומיניום עדין', ru: 'Демонстрация вещей в изящном алюминиевом профиле', en: 'Display items in a delicate aluminum profile' } },
+        ],
+    };
 
     const features = [
         {
@@ -122,7 +153,7 @@ const Closets = () => {
                                 {language === 'he'
                                     ? 'האומנות שבסדר.'
                                     : language === 'ru'
-                                        ? 'Искусство порядка.'
+                                        ? 'Искусство порядка'
                                         : 'The Art of Order.'}
                             </h1>
                             <p className="text-xl md:text-2xl font-light text-white/90 mb-10 max-w-2xl leading-relaxed">
@@ -260,18 +291,92 @@ const Closets = () => {
                                         </div>
                                     </div>
 
-                                    {/* Image Area */}
-                                    <div className={`relative h-[500px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-none ${dir === 'rtl' ? 'lg:order-1' : ''}`}>
-                                        <img
-                                            src={activeTab === 'sliding' ? slidingImg : activeTab === 'hinged' ? hingedImg : activeTab === 'walkin' ? walkinImg : livingImg}
-                                            alt={activeTab}
-                                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                                        />
-                                        {/* Floating Tag */}
-                                        <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur px-6 py-3 rounded-xl shadow-lg">
-                                            <p className="text-xs font-bold uppercase tracking-widest text-[#2C2C2C]">{language === 'he' ? 'דגם 2024' : language === 'ru' ? 'Модель 2024' : 'Model 2024'}</p>
-                                            <p className="text-lg font-serif italic">{tabs.find(t => t.id === activeTab)?.label}</p>
+
+                                    {/* Image Area with Carousel */}
+                                    <div className={`relative h-[500px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-none ${dir === 'rtl' ? 'lg:order-1' : ''} group touch-pan-y`}>
+                                        <AnimatePresence mode="wait" initial={false}>
+                                            <motion.img
+                                                key={`${activeTab}-${currentImageIndex}`}
+                                                src={closetImages[activeTab][currentImageIndex].src}
+                                                alt={activeTab}
+                                                initial={{ opacity: 0, scale: 1.1 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.5 }}
+                                                drag="x"
+                                                dragConstraints={{ left: 0, right: 0 }}
+                                                dragElastic={0.2}
+                                                onDragEnd={(_, info) => {
+                                                    const swipeThreshold = 50;
+                                                    if (info.offset.x < -swipeThreshold) {
+                                                        // Swipe Left -> Next (or Prev in RTL)
+                                                        if (dir === 'rtl') {
+                                                            setCurrentImageIndex((prev) => (prev === 0 ? closetImages[activeTab].length - 1 : prev - 1));
+                                                        } else {
+                                                            setCurrentImageIndex((prev) => (prev === closetImages[activeTab].length - 1 ? 0 : prev + 1));
+                                                        }
+                                                    } else if (info.offset.x > swipeThreshold) {
+                                                        // Swipe Right -> Prev (or Next in RTL)
+                                                        if (dir === 'rtl') {
+                                                            setCurrentImageIndex((prev) => (prev === closetImages[activeTab].length - 1 ? 0 : prev + 1));
+                                                        } else {
+                                                            setCurrentImageIndex((prev) => (prev === 0 ? closetImages[activeTab].length - 1 : prev - 1));
+                                                        }
+                                                    }
+                                                }}
+                                                className="absolute inset-0 w-full h-full object-cover cursor-grab active:cursor-grabbing"
+                                            />
+                                        </AnimatePresence>
+
+                                        {/* Image Content Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+                                        <div className="absolute bottom-12 left-8 right-8 z-10 text-white pointer-events-none">
+                                            <motion.p
+                                                key={`desc-${activeTab}-${currentImageIndex}`}
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.2, duration: 0.4 }}
+                                                className="text-lg font-light leading-relaxed text-center lg:text-start"
+                                            >
+                                                {closetImages[activeTab][currentImageIndex].description[language as 'he' | 'ru' | 'en']}
+                                            </motion.p>
                                         </div>
+
+                                        {/* Carousel Navigation */}
+                                        {closetImages[activeTab].length > 1 && (
+                                            <>
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setCurrentImageIndex((prev) => (prev === 0 ? closetImages[activeTab].length - 1 : prev - 1));
+                                                    }}
+                                                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                                >
+                                                    <ArrowRight className="w-6 h-6 rotate-180" />
+                                                </button>
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setCurrentImageIndex((prev) => (prev === closetImages[activeTab].length - 1 ? 0 : prev + 1));
+                                                    }}
+                                                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/20 hover:bg-black/40 backdrop-blur rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                                >
+                                                    <ArrowRight className="w-6 h-6" />
+                                                </button>
+
+                                                {/* Dots */}
+                                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                                                    {closetImages[activeTab].map((_, idx) => (
+                                                        <div
+                                                            key={idx}
+                                                            className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex ? 'bg-white w-4' : 'bg-white/50'}`}
+                                                        />
+                                                    ))}
+                                                </div>
+                                            </>
+                                        )}
+
                                     </div>
                                 </motion.div>
                             </AnimatePresence>
