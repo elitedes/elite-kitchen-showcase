@@ -3,12 +3,12 @@ import Layout from '@/components/layout/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 
-import kitchenModern from '@/assets/kitchen-modern.jpg';
-import kitchenCountry from '@/assets/kitchen-country.jpg';
-import kitchenFormica from '@/assets/kitchen-formica.jpg';
-import kitchenWood from '@/assets/kitchen-wood.jpg';
-import kitchenNano from '@/assets/kitchen-nano.jpg';
-import kitchenAcrylic from '@/assets/kitchen-acrylic.jpg';
+import kitchenModern from '@/assets/gallery/kitchen-modern.jpg';
+import kitchenCountry from '@/assets/gallery/country-1.jpg';
+import kitchenFormica from '@/assets/gallery/kitchen-formica.jpg';
+import kitchenWood from '@/assets/gallery/kitchen-wood.jpg';
+import kitchenNano from '@/assets/gallery/kitchen-nano.jpg';
+import kitchenAcrylic from '@/assets/gallery/acrylic-1.jpg';
 
 const categories = [
   { key: 'modern', image: kitchenModern },

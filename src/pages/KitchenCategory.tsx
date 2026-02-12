@@ -9,12 +9,12 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 
 // Main category images
-import kitchenModern from '@/assets/kitchen-modern.jpg';
-import kitchenCountry from '@/assets/kitchen-country.jpg';
-import kitchenFormica from '@/assets/kitchen-formica.jpg';
-import kitchenWood from '@/assets/kitchen-wood.jpg';
-import kitchenNano from '@/assets/kitchen-nano.jpg';
-import kitchenAcrylic from '@/assets/kitchen-acrylic.jpg';
+import kitchenModern from '@/assets/gallery/kitchen-modern.jpg';
+import kitchenCountry from '@/assets/gallery/country-1.jpg';
+import kitchenFormica from '@/assets/gallery/kitchen-formica.jpg';
+import kitchenWood from '@/assets/gallery/kitchen-wood.jpg';
+import kitchenNano from '@/assets/gallery/kitchen-nano.jpg';
+import kitchenAcrylic from '@/assets/gallery/acrylic-1.jpg';
 
 // Gallery images - Modern
 import modern1 from '@/assets/gallery/modern-1.jpg';
