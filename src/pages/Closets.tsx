@@ -128,7 +128,6 @@ const Closets = () => {
                 description="ארונות בהתאמה אישית מ-Elite Design: ארונות הזזה, פתיחה, חדרי ארונות וויטרינות זכוכית. עיצוב פרימיום עם טריקה שקטה ותאורת LED."
                 canonical="/closets"
             />
-            <Breadcrumbs items={[{ label: t('nav.closets'), path: '/closets', isCurrent: true }]} />
             <div className="bg-[#F5F5F0] min-h-screen font-sans selection:bg-charcoal selection:text-white overflow-x-hidden">
                 <WhatsAppButton />
 
@@ -187,9 +186,10 @@ const Closets = () => {
                         </motion.div>
                     </div>
                 </section>
+                <Breadcrumbs items={[{ label: t('nav.closets'), path: '/closets', isCurrent: true }]} />
 
                 {/* TABS SECTION - CLOSET TYPES */}
-                <section className="py-24 bg-[#F5F5F0]">
+                < section className="py-24 bg-[#F5F5F0]" >
                     <div className="container mx-auto px-4">
                         {/* Tabs Navigation */}
                         <div className="flex flex-wrap justify-center gap-4 mb-16">
@@ -390,10 +390,10 @@ const Closets = () => {
                             </AnimatePresence>
                         </div>
                     </div>
-                </section>
+                </section >
 
                 {/* PROJECTS GRID - MASONRY + TILT */}
-                <section className="py-24 bg-white">
+                < section className="py-24 bg-white" >
                     <div className="container mx-auto px-4">
                         <div className="flex justify-between items-end mb-12">
                             <div>
@@ -463,10 +463,10 @@ const Closets = () => {
                             })}
                         </div>
                     </div>
-                </section>
+                </section >
 
                 {/* FEATURES - INTERACTIVE */}
-                <section className="py-24 bg-[#2C2C2C] text-white overflow-hidden">
+                < section className="py-24 bg-[#2C2C2C] text-white overflow-hidden" >
                     <div className="container mx-auto px-4">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                             {features.map((feature, idx) => (
@@ -492,10 +492,10 @@ const Closets = () => {
                             ))}
                         </div>
                     </div>
-                </section>
+                </section >
 
                 {/* SEO TEXT SECTION */}
-                <section className="py-20 bg-[#f9f9f6]" dir={dir}>
+                < section className="py-20 bg-[#f9f9f6]" dir={dir} >
                     <div className="container mx-auto px-4 max-w-5xl">
                         {/* Main Title */}
                         <motion.div
@@ -619,13 +619,13 @@ const Closets = () => {
                             </ul>
                         </motion.div>
                     </div>
-                </section>
+                </section >
 
                 <div id="contact">
                     <ContactSection />
                 </div>
-            </div>
-        </Layout>
+            </div >
+        </Layout >
     );
 };
 
