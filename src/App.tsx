@@ -23,35 +23,40 @@ import ScrollToTop from "./components/layout/ScrollToTop";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+// Extracted so it can be used with StaticRouter for SSG
+export const AppRoutes = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/kitchens" element={<Kitchens />} />
-            <Route path="/kitchens/:category" element={<KitchenCategory />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/promotions" element={<Promotions />} />
-            <Route path="/installation" element={<Installation />} />
-            <Route path="/magazine" element={<Magazine />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/closets" element={<Closets />} />
-            <Route path="/calculator" element={<Calculator />} />
-            <Route path="/quiz-selection" element={<QuizPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/kitchens" element={<Kitchens />} />
+          <Route path="/kitchens/:category" element={<KitchenCategory />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/promotions" element={<Promotions />} />
+          <Route path="/installation" element={<Installation />} />
+          <Route path="/magazine" element={<Magazine />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/closets" element={<Closets />} />
+          <Route path="/calculator" element={<Calculator />} />
+          <Route path="/quiz-selection" element={<QuizPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </TooltipProvider>
     </LanguageProvider>
   </QueryClientProvider>
+);
+
+const App = () => (
+  <BrowserRouter>
+    <AppRoutes />
+  </BrowserRouter>
 );
 
 export default App;

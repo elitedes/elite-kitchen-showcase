@@ -1,3 +1,4 @@
+# Crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -12,5 +13,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /api/
 
+# Sitemap
 Sitemap: https://elitedesign.co.il/sitemap.xml
