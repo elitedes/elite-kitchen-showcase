@@ -58,16 +58,12 @@ export default defineConfig(({ mode }) => ({
           'vendor-motion': ['framer-motion'],
           // UI libraries
           'vendor-ui': ['@radix-ui/react-dialog', '@radix-ui/react-tooltip'],
+          // SEO + data fetching — shared across all pages
+          'vendor-infra': ['react-helmet-async', '@tanstack/react-query'],
         },
       },
     },
-    // Minification
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: mode === 'production',
-        drop_debugger: true,
-      },
-    },
+    // Minification — esbuild is built into Vite and much faster than terser
+    minify: 'esbuild',
   },
 }));

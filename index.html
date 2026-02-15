@@ -2,24 +2,30 @@
 <html lang="he" dir="rtl">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-57LM90DX2M"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-57LM90DX2M');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#4a2c6a" />
 
-  <!-- Preconnect to Google Fonts for faster loading -->
+  <!-- Preconnect to critical third-party origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://cdn.enable.co.il" />
+
+  <!-- Preload LCP-critical resources -->
+  <link rel="preload" as="image" href="/hero-poster.png" fetchpriority="high" />
+  <link rel="preload" as="video" href="/elite_design_kitchens.webm" type="video/webm" />
+
+  <!-- Google Fonts — non-render-blocking with media swap trick -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
+    media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" />
+  </noscript>
 
   <title>Elite Design | מטבחים, ארונות ונגרות בהתאמה אישית - 20 שנות ניסיון</title>
   <meta name="description"
@@ -41,12 +47,35 @@
   <meta name="twitter:title" content="Elite Design | מטבחים, ארונות ונגרות בהתאמה אישית" />
   <meta name="twitter:description" content="נגריית Elite Design מתמחה בייצור מטבחים ורהיטים מעל 20 שנה." />
   <meta name="twitter:image" content="https://elitedesign.co.il/og-image.png" />
-  <script src="https://cdn.enable.co.il/licenses/enable-L537660ykhgbg8ph-0226-79105/init.js"></script>
 </head>
 
 <body>
   <div id="root"><!--app-html--></div>
   <script type="module" src="/src/main.tsx"></script>
+
+  <!-- Third-party scripts — deferred after main content -->
+  <script defer src="https://cdn.enable.co.il/licenses/enable-L537660ykhgbg8ph-0226-79105/init.js"></script>
+
+  <!-- Google Analytics — deferred to idle time -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-57LM90DX2M"></script>
+  <script>
+    // Defer analytics config to avoid blocking main thread
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-57LM90DX2M');
+      });
+    } else {
+      setTimeout(function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-57LM90DX2M');
+      }, 0);
+    }
+  </script>
 </body>
 
 </html>

@@ -16,6 +16,7 @@ const HeroSection = () => {
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
           poster="/hero-poster.png"
         >
@@ -31,13 +32,13 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+          transition={{ delay: 0, duration: 0.5 }}
           className="text-center text-primary-foreground"
         >
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
             className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg"
           >
             {t('hero.title')}
@@ -45,7 +46,7 @@ const HeroSection = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
             className="text-2xl md:text-3xl font-light mb-2 drop-shadow-md"
           >
             {t('hero.subtitle')}
@@ -53,7 +54,7 @@ const HeroSection = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
             className="font-playfair italic text-xl md:text-2xl text-primary-foreground/80 mb-10 drop-shadow-md"
           >
             {t('hero.tagline')}
@@ -62,7 +63,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.5 }}
+            transition={{ delay: 0.4, duration: 0.4 }}
             className="flex justify-center"
           >
             <motion.button
