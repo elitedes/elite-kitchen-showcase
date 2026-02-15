@@ -57,8 +57,8 @@ const Header = () => {
     ? '72px'
     : (isMobileView ? '80px' : '96px');
   const headerBg = isTransparent && !mobileMenuOpen
-    ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)'
-    : 'rgba(10, 10, 10, 0.5)';
+    ? 'rgba(10, 10, 10, 0.85)'
+    : 'rgba(10, 10, 10, 0.95)';
   const headerBlur = 'blur(10px)';
   const headerShadow = isScrolled ? '0 4px 20px rgba(0,0,0,0.1)' : 'none';
   const textColor = 'text-white drop-shadow-sm';
