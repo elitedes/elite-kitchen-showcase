@@ -57,7 +57,7 @@ const GoogleReviewsSection = () => {
   };
 
   return (
-    <section className="py-24 bg-[#f8f9fa] relative overflow-hidden">
+    <section className="py-24 bg-[#f8f9fa] relative overflow-hidden" aria-label="Customer reviews">
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />

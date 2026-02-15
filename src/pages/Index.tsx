@@ -1,14 +1,19 @@
+import { lazy, Suspense } from 'react';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
+
+// Above-fold: eagerly loaded for instant display
 import HeroSection from '@/components/home/HeroSection';
 import QuickNavSection from '@/components/home/QuickNavSection';
 import KitchenCategoriesSection from '@/components/home/KitchenCategoriesSection';
-import FeaturedProjectsSection from '@/components/home/FeaturedProjectsSection';
-import ContactSection from '@/components/home/ContactSection';
-import GoogleReviewsSection from '@/components/home/GoogleReviewsSection';
-import ImageComparisonSlider from '@/components/home/ImageComparisonSlider';
-import InteractiveFitting from '@/components/home/InteractiveFitting';
-import FAQ from '@/components/FAQ';
+
+// Below-fold: lazy loaded for faster initial paint
+const FeaturedProjectsSection = lazy(() => import('@/components/home/FeaturedProjectsSection'));
+const ImageComparisonSlider = lazy(() => import('@/components/home/ImageComparisonSlider'));
+const InteractiveFitting = lazy(() => import('@/components/home/InteractiveFitting'));
+const GoogleReviewsSection = lazy(() => import('@/components/home/GoogleReviewsSection'));
+const ContactSection = lazy(() => import('@/components/home/ContactSection'));
+const FAQ = lazy(() => import('@/components/FAQ'));
 
 const faqItems = [
   {
@@ -120,12 +125,14 @@ const Index = () => {
       <HeroSection />
       <QuickNavSection />
       <KitchenCategoriesSection />
-      <FeaturedProjectsSection />
-      <ImageComparisonSlider />
-      <InteractiveFitting />
-      <FAQ items={faqItems} />
-      <GoogleReviewsSection />
-      <ContactSection />
+      <Suspense fallback={null}>
+        <FeaturedProjectsSection />
+        <ImageComparisonSlider />
+        <InteractiveFitting />
+        <FAQ items={faqItems} />
+        <GoogleReviewsSection />
+        <ContactSection />
+      </Suspense>
     </Layout>
   );
 };

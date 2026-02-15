@@ -12,13 +12,12 @@ function sitemapPlugin(): Plugin {
       sequential: true,
       order: 'post',
       async handler() {
-        // Only run for client build (skip SSR build)
-        if (this.environment?.name === 'ssr') return;
         try {
-          const { generateSitemap } = await import('./generate-sitemap.js');
+          const { generateSitemap } = await import('./generate-sitemap.js' as string);
           generateSitemap();
-        } catch (e) {
-          console.warn('⚠️  Sitemap generation skipped:', e.message);
+        } catch (err: unknown) {
+          const message = err instanceof Error ? err.message : String(err);
+          console.warn('⚠️  Sitemap generation skipped:', message);
         }
       },
     },
@@ -42,6 +41,33 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  build: {
+    // Enable CSS code splitting for lazy-loaded routes
+    cssCodeSplit: true,
+    // Increase chunk size warning limit
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        // Manual chunk splitting for better caching
+        manualChunks: {
+          // Core React + router — rarely changes, cache long-term
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          // Animation library — used across many pages
+          'vendor-motion': ['framer-motion'],
+          // UI libraries
+          'vendor-ui': ['@radix-ui/react-dialog', '@radix-ui/react-tooltip'],
+        },
+      },
+    },
+    // Minification
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: mode === 'production',
+        drop_debugger: true,
+      },
     },
   },
 }));

@@ -90,6 +90,8 @@ const Header = () => {
                 setMobileMenuOpen(!mobileMenuOpen);
                 if (mobileMenuOpen) setMobileKitchensOpen(false);
               }}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen
                 ? <X className="w-6 h-6 text-white" />
@@ -116,7 +118,7 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-10">
+            <nav className="hidden lg:flex items-center gap-10" role="navigation" aria-label="Main navigation">
               {navItems.map((item) => (
                 <div
                   key={item.key}
@@ -230,7 +232,7 @@ const Header = () => {
             className="fixed inset-0 z-40 bg-black/80 backdrop-blur-xl flex flex-col pt-24 pb-8 px-6 lg:hidden"
             dir={dir}
           >
-            <nav className="flex flex-col gap-1 overflow-y-auto">
+            <nav className="flex flex-col gap-1 overflow-y-auto" role="navigation" aria-label="Mobile navigation">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.key}

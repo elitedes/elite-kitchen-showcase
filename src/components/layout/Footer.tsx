@@ -38,24 +38,24 @@ const Footer = () => {
             <p className="text-cream/70 text-sm leading-relaxed mb-6">
               {t('about.description').substring(0, 150)}...
             </p>
-            <div className="flex gap-4">
-              <a href="https://www.facebook.com/elitedesignkitchens" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors">
+            <div className="flex gap-4" aria-label="Social media">
+              <a href="https://www.facebook.com/elitedesignkitchens" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/elitedesignkitchens/" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors">
+              <a href="https://www.instagram.com/elitedesignkitchens/" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://www.youtube.com/@elitedesignkitchens" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors">
+              <a href="https://www.youtube.com/@elitedesignkitchens" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors" aria-label="YouTube">
                 <Youtube className="w-5 h-5" />
               </a>
-              <a href="https://share.google/2T8SzlQhkHRVIAI6X" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors">
-                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png" alt="Google Business" className="h-4 w-auto grayscale contrast-200 brightness-200" />
+              <a href="https://share.google/2T8SzlQhkHRVIAI6X" target="_blank" rel="noopener noreferrer" className="text-cream/70 hover:text-accent transition-colors" aria-label="Google Business">
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png" alt="" role="presentation" className="h-4 w-auto grayscale contrast-200 brightness-200" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
+          <nav aria-label="Quick links">
             <h4 className="text-lg font-bold mb-6">{t('nav.home')}</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -69,10 +69,10 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Kitchen Categories */}
-          <div>
+          <nav aria-label="Kitchen categories">
             <h4 className="text-lg font-bold mb-6">{t('nav.kitchens')}</h4>
             <ul className="space-y-3">
               {kitchenLinks.map((link) => (
@@ -86,7 +86,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Contact Info */}
           <div>
@@ -151,7 +151,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 };
 

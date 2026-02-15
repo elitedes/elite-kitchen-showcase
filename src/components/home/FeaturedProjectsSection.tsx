@@ -27,7 +27,7 @@ const FeaturedProjectsSection = () => {
     ];
 
     return (
-        <section className="py-24 bg-white overflow-hidden">
+        <section className="py-24 bg-white overflow-hidden" aria-label="Featured projects">
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -59,6 +59,8 @@ const FeaturedProjectsSection = () => {
                                     src={project.image}
                                     alt={t(project.city)}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
 
                                 {/* Overlay */}

@@ -35,6 +35,7 @@ const BlogPost = () => {
                     <img
                         src={post.image}
                         alt={localizedTitle}
+                        decoding="async"
                         className="w-full h-full object-cover"
                     />
                     <div className="absolute bottom-0 left-0 w-full z-20 p-8 bg-gradient-to-t from-black/80 to-transparent">
@@ -54,7 +55,7 @@ const BlogPost = () => {
                                 <div className="flex flex-wrap gap-4 text-sm text-white/70 mb-4">
                                     <span className="flex items-center gap-1">
                                         <Calendar className="w-4 h-4" />
-                                        {post.date}
+                                        <time dateTime={post.date}>{post.date}</time>
                                     </span>
                                     <span className="flex items-center gap-1">
                                         <User className="w-4 h-4" />

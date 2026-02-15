@@ -8,7 +8,7 @@ const HeroSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative h-[80vh] min-h-[600px] overflow-hidden flex items-center justify-center">
+    <section className="relative h-[80vh] min-h-[600px] overflow-hidden flex items-center justify-center" aria-label="Hero">
       {/* Video Background Layer */}
       <div className="absolute inset-0 z-0">
         <video

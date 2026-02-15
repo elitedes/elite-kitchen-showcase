@@ -91,7 +91,7 @@ const ImageComparisonSlider = () => {
     }, [isResizing]);
 
     return (
-        <section className="py-20 bg-background overflow-hidden select-none">
+        <section className="py-20 bg-background overflow-hidden select-none" aria-label="Before and after comparison">
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -127,6 +127,8 @@ const ImageComparisonSlider = () => {
                                 alt="After"
                                 className="w-full h-full object-cover select-none pointer-events-none"
                                 draggable="false"
+                                loading="lazy"
+                                decoding="async"
                             />
                             {/* In LTR, left-8 is left, right-8 is right. Force consistent labels. */}
                             <div className="absolute top-8 right-8 bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-full font-bold z-10 pointer-events-none">
@@ -148,6 +150,8 @@ const ImageComparisonSlider = () => {
                                 className="absolute inset-0 w-full h-full object-cover max-w-none select-none pointer-events-none"
                                 style={{ width: containerRef.current?.getBoundingClientRect().width || '100%' }}
                                 draggable="false"
+                                loading="lazy"
+                                decoding="async"
                             />
                             <div className="absolute top-8 left-8 bg-white/80 backdrop-blur-md text-black px-4 py-2 rounded-full font-bold z-10 pointer-events-none">
                                 {t('comparison.label.before')}

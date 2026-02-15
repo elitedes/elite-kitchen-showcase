@@ -19,7 +19,7 @@ const Blog = () => {
             />
             <div className="bg-background min-h-screen">
                 {/* Header */}
-                <section className="bg-[#1a1a1a] text-white py-24 relative overflow-hidden">
+                <section className="bg-[#1a1a1a] text-white py-24 relative overflow-hidden" aria-label="Blog header">
                     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />
                     <div className="container mx-auto px-4 relative z-10 text-center">
                         <h1 className="text-4xl md:text-6xl font-bold font-playfair mb-6">
@@ -36,7 +36,7 @@ const Blog = () => {
                 </section>
 
                 {/* Blog Grid */}
-                <section className="py-16">
+                <section className="py-16" aria-label="Blog articles">
                     <div className="container mx-auto px-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {blogPosts.map((post, index) => {
@@ -57,6 +57,8 @@ const Blog = () => {
                                             <img
                                                 src={post.image}
                                                 alt={title}
+                                                loading="lazy"
+                                                decoding="async"
                                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                             />
                                             <div className="absolute top-4 left-4 z-20 bg-white/90 dark:bg-black/80 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
@@ -68,7 +70,7 @@ const Blog = () => {
                                             <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
                                                 <span className="flex items-center gap-1">
                                                     <Calendar className="w-3 h-3" />
-                                                    {post.date}
+                                                    <time dateTime={post.date}>{post.date}</time>
                                                 </span>
                                                 <span className="flex items-center gap-1">
                                                     <Clock className="w-3 h-3" />

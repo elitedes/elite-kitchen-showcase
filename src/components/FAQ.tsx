@@ -34,7 +34,7 @@ const FAQ = ({ items }: FAQProps) => {
     };
 
     return (
-        <section className="py-20 bg-[#FAF8F5]" dir={dir}>
+        <section className="py-20 bg-[#FAF8F5]" dir={dir} aria-label="FAQ">
             <Helmet>
                 <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
             </Helmet>
@@ -75,8 +75,8 @@ const FAQ = ({ items }: FAQProps) => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.35, delay: i * 0.06 }}
                                 className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen
-                                        ? 'bg-white shadow-lg border-accent/30'
-                                        : 'bg-white/60 shadow-sm border-transparent hover:border-accent/15 hover:shadow-md'
+                                    ? 'bg-white shadow-lg border-accent/30'
+                                    : 'bg-white/60 shadow-sm border-transparent hover:border-accent/15 hover:shadow-md'
                                     }`}
                             >
                                 <dt>
