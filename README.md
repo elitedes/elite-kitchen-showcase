@@ -50,4 +50,45 @@ This project is built with:
 - Tailwind CSS
 
 ## Deployment
-The project is built with Vite and can be deployed to any static site hosting service like Netlify, Vercel, or GitHub Pages.
+
+### VPS Deployment (Recommended)
+
+The project is optimized for deployment on a VPS using Docker and Nginx.
+
+#### 1. Build and Run with Docker
+```sh
+# Build the image
+docker build -t elite-kitchens .
+
+# Run the container
+docker run -d -p 8080:80 --name elite-kitchens elite-kitchens
+```
+
+#### 2. Nginx Setup
+Use the provided `nginx.conf.example` as a template for your site configuration. 
+- Copy the content to `/etc/nginx/sites-available/elitedesign.co.il`
+- Create a symbolic link: `ln -s /etc/nginx/sites-available/elitedesign.co.il /etc/nginx/sites-enabled/`
+- Test configuration: `nginx -t`
+- Reload Nginx: `systemctl reload nginx`
+
+#### 3. SSL Configuration (Let's Encrypt)
+We recommend using Certbot for SSL:
+```sh
+sudo apt update
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d elitedesign.co.il -d www.elitedesign.co.il
+```
+
+### Static Hosting
+You can also deploy to static services like Vercel or Netlify:
+```sh
+npm run build:ssg
+# Deploy the contents of the 'dist' folder
+```
+
+## Performance & Security
+- **SSG**: Pre-rendered HTML for every route for SEO and speed.
+- **HTTP/2**: Enabled in Nginx for multiplexing.
+- **Gzip**: Compression for all text-based assets.
+- **Security Headers**: HSTS, CSP, and X-Frame-Options included in Nginx config.
+- **Healthcheck**: Available at `/health`.
