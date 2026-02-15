@@ -68,11 +68,10 @@ const Installation = () => {
         description="מדריך מקצועי להכנת הבית להתקנת מטבח חדש: פירוק, אינסטלציה, חשמל, קירות, ריצוף וגישה. צ'קליסט מלא מ-Elite Design."
         canonical="/installation"
       />
-      <Breadcrumbs items={[{ label: t('nav.kitchens.preparation'), path: '/installation', isCurrent: true }]} />
       {/* Hero Banner - Elite Style */}
       <section className="relative bg-[#1a1a1a] text-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#1a1a1a]" />
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent" />
 
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
@@ -89,6 +88,8 @@ const Installation = () => {
           </motion.div>
         </div>
       </section>
+
+      <Breadcrumbs items={[{ label: t('nav.kitchens.preparation'), path: '/installation', isCurrent: true }]} />
 
       {/* Intro & Steps Grid */}
       <section className="py-24 bg-white dark:bg-[#1a1a1a] dark:text-white">

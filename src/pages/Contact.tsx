@@ -15,7 +15,6 @@ const Contact = () => {
         description="צרו קשר עם Elite Design לייעוץ חינם בנושא מטבחים, ארונות ונגרות בהתאמה אישית. טלפון, וואטסאפ או השאירו פרטים ונחזור אליכם."
         canonical="/contact"
       />
-      <Breadcrumbs items={[{ label: t('nav.contact'), path: '/contact', isCurrent: true }]} />
       {/* Hero Banner */}
       <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">
@@ -34,6 +33,8 @@ const Contact = () => {
           </motion.div>
         </div>
       </section>
+
+      <Breadcrumbs items={[{ label: t('nav.contact'), path: '/contact', isCurrent: true }]} />
 
       <ContactSection />
     </Layout>

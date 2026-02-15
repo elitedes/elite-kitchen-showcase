@@ -18,24 +18,31 @@ const Blog = () => {
                 description="בלוג Elite Design: מאמרים מקצועיים, מדריכי הכנה למטבח, טיפים לעיצוב ארונות, והכל על נגרות בהתאמה אישית."
                 canonical="/blog"
             />
-            <Breadcrumbs items={[{ label: t('nav.magazine'), path: '/blog', isCurrent: true }]} />
             <div className="bg-background min-h-screen">
                 {/* Header */}
                 <section className="bg-[#1a1a1a] text-white py-24 relative overflow-hidden" aria-label="Blog header">
                     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />
                     <div className="container mx-auto px-4 relative z-10 text-center">
-                        <h1 className="text-4xl md:text-6xl font-bold font-playfair mb-6">
-                            {t('nav.magazine')}
-                        </h1>
-                        <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
-                            {language === 'he'
-                                ? 'טיפים, רעיונות והשראה לעיצוב המטבח המושלם'
-                                : language === 'ru'
-                                    ? 'Советы, идеи и вдохновение для дизайна идеальной кухни'
-                                    : 'Tips, ideas, and inspiration for the perfect kitchen design'}
-                        </p>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <h1 className="text-4xl md:text-6xl font-bold font-playfair mb-6">
+                                {t('nav.magazine')}
+                            </h1>
+                            <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
+                                {language === 'he'
+                                    ? 'טיפים, רעיונות והשראה לעיצוב המטבח המושלם'
+                                    : language === 'ru'
+                                        ? 'Советы, идеи и вдохновение для дизайна идеальной кухни'
+                                        : 'Tips, ideas, and inspiration for the perfect kitchen design'}
+                            </p>
+                        </motion.div>
                     </div>
                 </section>
+
+                <Breadcrumbs items={[{ label: t('nav.magazine'), path: '/blog', isCurrent: true }]} />
 
                 {/* Blog Grid */}
                 <section className="py-16" aria-label="Blog articles">

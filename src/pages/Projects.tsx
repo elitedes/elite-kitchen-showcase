@@ -146,25 +146,26 @@ const Projects = () => {
         description="גלריית פרויקטים של Elite Design: מעל 40 מטבחים וארונות שעוצבו והותקנו ברחבי הארץ. ראו את העבודות שלנו באשדוד, תל אביב, ירושלים ועוד."
         canonical="/projects"
       />
-      <Breadcrumbs items={[{ label: t('nav.projects'), path: '/projects', isCurrent: true }]} />
       {/* Hero Banner */}
-      <section className="bg-header pt-32 md:pt-40 pb-20">
-        <div className="container mx-auto px-4">
+      <section className="bg-[#1a1a1a] text-white py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-header-foreground mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold font-playfair mb-6">
               {t('page.projects.title')}
             </h1>
-            <p className="font-playfair italic text-xl text-header-foreground/80">
-              Our Projects
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light italic">
+              Where Dreams Become Reality
             </p>
           </motion.div>
         </div>
       </section>
+
+      <Breadcrumbs items={[{ label: t('nav.projects'), path: '/projects', isCurrent: true }]} />
 
       {/* Projects Grid */}
       <section className="py-20 bg-background">

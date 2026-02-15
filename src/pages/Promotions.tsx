@@ -262,28 +262,28 @@ const Promotions = () => {
         description="מבצעי מטבחים מיוחדים של Elite Design. מטבחי אקריל, פורמייקה ועץ במחירים משתלמים עם הובלה והתקנה מקצועית."
         canonical="/promotions"
       />
-      <Breadcrumbs items={[{ label: t('nav.promotions'), path: '/promotions', isCurrent: true }]} />
       {/* Hero Banner */}
-      <section className="bg-header pt-32 md:pt-40 pb-20">
-        <div className="container mx-auto px-4">
+      <section className="bg-header text-white py-24 relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-header-foreground mb-4">
-              {t('page.promotions.title')}
+            <h1 className="text-4xl md:text-5xl font-bold font-heebo mb-2">
+              {language === 'ru' ? 'Специальные акции' : language === 'he' ? 'מבצעים מיוחדים' : 'Special Promotions'}
             </h1>
-            <p className="font-playfair italic text-xl text-header-foreground/80">
+            <p className="text-2xl font-playfair italic text-white/90 mb-2">
               Special Offers
             </p>
-            <p className="font-playfair italic text-lg text-header-foreground/90 mt-2">
-              {language === 'he' ? 'עד סוף החודש' : language === 'ru' ? 'до конца месяца' : 'until the end of the month'}
+            <p className="text-xl font-playfair italic text-white/80">
+              {language === 'ru' ? 'до конца месяца' : language === 'he' ? 'עד סוף החודש' : 'until the end of the month'}
             </p>
           </motion.div>
         </div>
       </section>
+
+      <Breadcrumbs items={[{ label: t('nav.promotions'), path: '/promotions', isCurrent: true }]} />
 
       {/* Promotions Grid */}
       <section className="py-16 bg-muted/30">

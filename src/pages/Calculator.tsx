@@ -167,7 +167,29 @@ ${formData.dim3 ? `• ${t('calc.dimensions.len3')}: ${formData.dim3} cm` : ''}
                 description="חשבו את עלות המטבח החדש שלכם עם מחשבון מטבחים חכם של Elite Design. בחרו סוג מטבח, חזיתות, שיש ופרזול וקבלו הערכת מחיר מקצועית."
                 canonical="/calculator"
             />
-            <Breadcrumbs items={[{ label: t('nav.calculator'), path: '/calculator', isCurrent: true }]} />
+            {/* Hero Banner */}
+            <section className="relative bg-[#1a1a1a] text-white py-24 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556912170-c57cc6b63cd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
+                <div className="container mx-auto px-4 relative z-10 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h1 className="text-4xl md:text-6xl font-bold font-playfair mb-6">
+                            {t('nav.calculator')}
+                        </h1>
+                        <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light italic">
+                            {t('calc.desc')}
+                        </p>
+                    </motion.div>
+                </div>
+            </section>
+
+            <div className="container mx-auto px-4 mt-8">
+                <Breadcrumbs items={[{ label: t('nav.calculator'), path: '/calculator', isCurrent: true }]} />
+            </div>
+
             <section className="py-20 relative overflow-hidden bg-white">
                 {/* Decorative elements - wood shavings style */}
                 <div className="absolute top-10 right-[15%] w-32 h-32 opacity-20 hidden lg:block">
