@@ -59,9 +59,9 @@ const Header = () => {
   const headerBg = isTransparent && !mobileMenuOpen
     ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)'
     : 'rgba(10, 10, 10, 0.5)';
-  const headerBlur = 'blur(5px)';
+  const headerBlur = 'blur(10px)';
   const headerShadow = isScrolled ? '0 4px 20px rgba(0,0,0,0.1)' : 'none';
-  const textColor = 'text-white';
+  const textColor = 'text-white drop-shadow-sm';
   const logoScale = isScrolled ? 0.9 : 1;
 
   return (
@@ -71,7 +71,7 @@ const Header = () => {
         animate={{
           y: isVisible ? 0 : '-100%',
           height: headerHeight,
-          backgroundColor: headerBg,
+          background: headerBg,
           backdropFilter: headerBlur,
           boxShadow: headerShadow,
         }}
@@ -100,7 +100,7 @@ const Header = () => {
             </button>
 
             {/* Logo */}
-            <div className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 z-50">
+            <div className="absolute left-1/2 -translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0 z-50">
               <Link to="/" className="flex flex-col items-center group">
                 <motion.div
                   animate={{ scale: logoScale }}

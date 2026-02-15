@@ -25,7 +25,6 @@ const About = () => {
         description="נגריית Elite Design - מעל 20 שנות ניסיון בייצור מטבחים, ארונות ורהיטים בהתאמה אישית. מעל 1,000 פרויקטים מוצלחים ברחבי הארץ."
         canonical="/about"
       />
-      <Breadcrumbs items={[{ label: t('nav.about'), path: '/about', isCurrent: true }]} />
       {/* Hero Banner - Elite Style */}
       <section className="relative bg-[#1a1a1a] text-white py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />
@@ -46,6 +45,8 @@ const About = () => {
           </motion.div>
         </div>
       </section>
+
+      <Breadcrumbs items={[{ label: t('nav.about'), path: '/about', isCurrent: true }]} />
 
       {/* Block 1: Philosophy (Quote) */}
       <section className="py-24 bg-background relative z-20 -mt-24">

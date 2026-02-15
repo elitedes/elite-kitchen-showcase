@@ -32,7 +32,6 @@ const Kitchens = () => {
         description="גלו מגוון סגנונות מטבחים בהתאמה אישית: מודרני, כפרי, פורמייקה, עץ מלא, נאנו ואקרילי. עיצוב ייחודי ואיכות ללא פשרות."
         canonical="/kitchens"
       />
-      <Breadcrumbs items={[{ label: t('nav.kitchens'), path: '/kitchens', isCurrent: true }]} />
       {/* Hero Banner */}
       <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">
@@ -59,6 +58,8 @@ const Kitchens = () => {
           </motion.div>
         </div>
       </section>
+
+      <Breadcrumbs items={[{ label: t('nav.kitchens'), path: '/kitchens', isCurrent: true }]} />
 
       {/* Categories Grid */}
       <section className="py-20 bg-background">
