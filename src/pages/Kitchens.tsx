@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 
@@ -24,6 +25,11 @@ const Kitchens = () => {
 
   return (
     <Layout>
+      <SEO
+        title="מטבחים בהתאמה אישית | Elite Design - מודרני, כפרי, פורמייקה, עץ"
+        description="גלו מגוון סגנונות מטבחים בהתאמה אישית: מודרני, כפרי, פורמייקה, עץ מלא, נאנו ואקרילי. עיצוב ייחודי ואיכות ללא פשרות."
+        canonical="/kitchens"
+      />
       {/* Hero Banner */}
       <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">

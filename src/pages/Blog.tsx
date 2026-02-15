@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { blogPosts } from '@/data/blogPosts';
 import ContactSection from '@/components/home/ContactSection';
@@ -11,6 +12,11 @@ const Blog = () => {
 
     return (
         <Layout>
+            <SEO
+                title="בלוג | Elite Design - מדריכים וטיפים למטבח ולבית"
+                description="בלוג Elite Design: מאמרים מקצועיים, מדריכי הכנה למטבח, טיפים לעיצוב ארונות, והכל על נגרות בהתאמה אישית."
+                canonical="/blog"
+            />
             <div className="bg-background min-h-screen">
                 {/* Header */}
                 <section className="bg-[#1a1a1a] text-white py-24 relative overflow-hidden">

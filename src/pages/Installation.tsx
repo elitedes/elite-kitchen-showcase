@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 import InstallationDiagram from './InstallationDiagram';
@@ -61,6 +62,11 @@ const Installation = () => {
 
   return (
     <Layout>
+      <SEO
+        title="הכנה להתקנת מטבח | Elite Design - מדריך שלב אחרי שלב"
+        description="מדריך מקצועי להכנת הבית להתקנת מטבח חדש: פירוק, אינסטלציה, חשמל, קירות, ריצוף וגישה. צ'קליסט מלא מ-Elite Design."
+        canonical="/installation"
+      />
       {/* Hero Banner - Elite Style */}
       <section className="relative bg-[#1a1a1a] text-white py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />

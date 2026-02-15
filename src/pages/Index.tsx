@@ -1,4 +1,5 @@
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import HeroSection from '@/components/home/HeroSection';
 import QuickNavSection from '@/components/home/QuickNavSection';
 import KitchenCategoriesSection from '@/components/home/KitchenCategoriesSection';
@@ -11,6 +12,11 @@ import InteractiveFitting from '@/components/home/InteractiveFitting';
 const Index = () => {
   return (
     <Layout>
+      <SEO
+        title="Elite Design | מטבחים, ארונות ונגרות בהתאמה אישית - 20 שנות ניסיון"
+        description="נגריית Elite Design מתמחה בייצור מטבחים ורהיטים מעל 20 שנה. ארונות, חדרי רחצה ופתרונות נגרות לכל הבית במחירים נוחים ובאיכות מעולה."
+        canonical="/"
+      />
       <HeroSection />
       <QuickNavSection />
       <KitchenCategoriesSection />

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 import kitchenModern from '@/assets/kitchen-modern.jpg';
@@ -61,6 +62,11 @@ const Magazine = () => {
 
   return (
     <Layout>
+      <SEO
+        title="מגזין עיצוב מטבחים | Elite Design - טרנדים, טיפים והשראה"
+        description="מגזין עיצוב של Elite Design: טרנדים חדשים במטבחים, טיפים לבחירת חומרים, יתרונות נאנו ועץ מלא, ומדריכים מקצועיים."
+        canonical="/magazine"
+      />
       {/* Hero Banner */}
       <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">

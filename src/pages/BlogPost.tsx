@@ -2,6 +2,7 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, User, Clock, ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { blogPosts } from '@/data/blogPosts';
 import ContactSection from '@/components/home/ContactSection';
@@ -21,6 +22,12 @@ const BlogPost = () => {
 
     return (
         <Layout>
+            <SEO
+                title={`${localizedTitle} | Elite Design`}
+                description={(post.excerpt[language] || post.excerpt['en']).slice(0, 160)}
+                canonical={`/blog/${post.slug}`}
+                type="article"
+            />
             <article className="min-h-screen bg-background pb-16">
                 {/* Header Image */}
                 <div className="relative h-[400px] w-full overflow-hidden mb-12">

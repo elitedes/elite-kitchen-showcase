@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 import {
@@ -139,6 +140,11 @@ const Projects = () => {
 
   return (
     <Layout>
+      <SEO
+        title="הפרויקטים שלנו | Elite Design - גלריית מטבחים וארונות"
+        description="גלריית פרויקטים של Elite Design: מעל 40 מטבחים וארונות שעוצבו והותקנו ברחבי הארץ. ראו את העבודות שלנו באשדוד, תל אביב, ירושלים ועוד."
+        canonical="/projects"
+      />
       {/* Hero Banner */}
       <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">

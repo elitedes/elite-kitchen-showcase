@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -25,32 +26,34 @@ const queryClient = new QueryClient();
 
 // Extracted so it can be used with StaticRouter for SSG
 export const AppRoutes = () => (
-  <QueryClientProvider client={queryClient}>
-    <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/kitchens" element={<Kitchens />} />
-          <Route path="/kitchens/:category" element={<KitchenCategory />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/promotions" element={<Promotions />} />
-          <Route path="/installation" element={<Installation />} />
-          <Route path="/magazine" element={<Magazine />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/closets" element={<Closets />} />
-          <Route path="/calculator" element={<Calculator />} />
-          <Route path="/quiz-selection" element={<QuizPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </TooltipProvider>
-    </LanguageProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <LanguageProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/kitchens" element={<Kitchens />} />
+            <Route path="/kitchens/:category" element={<KitchenCategory />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/promotions" element={<Promotions />} />
+            <Route path="/installation" element={<Installation />} />
+            <Route path="/magazine" element={<Magazine />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/closets" element={<Closets />} />
+            <Route path="/calculator" element={<Calculator />} />
+            <Route path="/quiz-selection" element={<QuizPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </TooltipProvider>
+      </LanguageProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 const App = () => (

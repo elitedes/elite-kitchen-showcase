@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 import StatCounter from '@/components/common/StatCounter';
@@ -17,6 +18,11 @@ const About = () => {
 
   return (
     <Layout>
+      <SEO
+        title="אודות Elite Design | נגרייה עם 20+ שנות ניסיון"
+        description="נגריית Elite Design - מעל 20 שנות ניסיון בייצור מטבחים, ארונות ורהיטים בהתאמה אישית. מעל 1,000 פרויקטים מוצלחים ברחבי הארץ."
+        canonical="/about"
+      />
       {/* Hero Banner - Elite Style */}
       <section className="relative bg-[#1a1a1a] text-white py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
@@ -107,6 +108,11 @@ const KitchenCategory = () => {
 
   return (
     <Layout>
+      <SEO
+        title={`${t(`kitchens.${category}`)} | Elite Design - מטבחים בהתאמה אישית`}
+        description={`${t(`kitchens.${category}`)} מ-Elite Design. גלריית תמונות ועיצובים של מטבחי ${t(`kitchens.${category}`)} בהתאמה אישית. איכות פרימיום עם 20+ שנות ניסיון.`}
+        canonical={`/kitchens/${category}`}
+      />
       {/* Hero Banner */}
       <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
         <img

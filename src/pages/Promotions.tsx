@@ -1,6 +1,7 @@
 // Triggering update to ensure dev server picks up changes
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
+import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 
@@ -255,6 +256,11 @@ const Promotions = () => {
 
   return (
     <Layout>
+      <SEO
+        title="מבצעים והטבות | Elite Design - מטבחים במחירים מיוחדים"
+        description="מבצעי מטבחים מיוחדים של Elite Design. מטבחי אקריל, פורמייקה ועץ במחירים משתלמים עם הובלה והתקנה מקצועית."
+        canonical="/promotions"
+      />
       {/* Hero Banner */}
       <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">
