@@ -56,10 +56,10 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="max-w-5xl mx-auto glass-card-light p-12 md:p-20 text-center relative overflow-hidden"
+            className="max-w-5xl mx-auto glass-card-light p-10 md:p-20 text-center relative overflow-hidden"
           >
-            <Quote className="w-16 h-16 text-muted-gold/20 absolute top-8 left-8" />
-            <h2 className="text-2xl md:text-4xl font-playfair italic text-charcoal leading-snug mb-0 relative z-10">
+            <Quote className="w-10 h-10 md:w-16 md:h-16 text-muted-gold/20 absolute top-4 left-4 md:top-8 md:left-8" />
+            <h2 className="text-2xl md:text-4xl font-playfair italic text-charcoal leading-snug mb-0 relative z-10 pt-4 md:pt-0">
               {t('about.philosophy')}
             </h2>
           </motion.div>
