@@ -1,77 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://elitedesign.co.il/</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/about</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/about"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/about"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/kitchens</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/kitchens"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/kitchens"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/kitchens"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/kitchens"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/kitchens/modern</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/kitchens/modern"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/kitchens/modern"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/kitchens/modern"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/kitchens/modern"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/kitchens/country</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/kitchens/country"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/kitchens/country"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/kitchens/country"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/kitchens/country"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/kitchens/formica</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/kitchens/formica"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/kitchens/formica"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/kitchens/formica"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/kitchens/formica"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/kitchens/wood</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/kitchens/wood"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/kitchens/wood"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/kitchens/wood"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/kitchens/wood"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/kitchens/nano</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/kitchens/nano"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/kitchens/nano"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/kitchens/nano"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/kitchens/nano"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/closets</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/closets"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/closets"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/closets"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/closets"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/projects</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/projects"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/projects"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/projects"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/calculator</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/calculator"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/calculator"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/promotions</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/promotions"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/promotions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/promotions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/promotions"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/installation</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/installation"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/installation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/installation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/installation"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://elitedesign.co.il/magazine</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/magazine"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/magazine"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/magazine"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/magazine"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://elitedesign.co.il/kitchens/acrylic</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/kitchens/acrylic"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/kitchens/acrylic"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/kitchens/acrylic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/kitchens/acrylic"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://elitedesign.co.il/blog</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/blog"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/blog"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://elitedesign.co.il/contact</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://elitedesign.co.il/contact"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://elitedesign.co.il/ru/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elitedesign.co.il/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elitedesign.co.il/contact"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

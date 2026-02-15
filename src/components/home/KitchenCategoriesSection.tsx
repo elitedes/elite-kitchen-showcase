@@ -22,7 +22,7 @@ const KitchenCategoriesSection = () => {
   const { t, language } = useLanguage();
 
   return (
-    <section className="py-20 bg-muted" aria-label="Kitchen categories">
+    <section id="kitchen-styles" className="py-20 bg-muted" aria-label="Kitchen categories">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

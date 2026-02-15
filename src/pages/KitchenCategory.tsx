@@ -8,6 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 
 // Main category images
 import kitchenModern from '@/assets/gallery/kitchen-modern.jpg';
@@ -113,6 +114,10 @@ const KitchenCategory = () => {
         description={`${t(`kitchens.${category}`)} מ-Elite Design. גלריית תמונות ועיצובים של מטבחי ${t(`kitchens.${category}`)} בהתאמה אישית. איכות פרימיום עם 20+ שנות ניסיון.`}
         canonical={`/kitchens/${category}`}
       />
+      <Breadcrumbs items={[
+        { label: t('nav.kitchens'), path: '/kitchens' },
+        { label: t(`nav.kitchens.${category}`), path: `/kitchens/${category}`, isCurrent: true }
+      ]} />
       {/* Hero Banner */}
       <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
         <img

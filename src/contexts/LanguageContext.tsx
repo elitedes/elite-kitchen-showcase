@@ -7,6 +7,7 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
   dir: 'rtl' | 'ltr';
+  getLocalizedPath: (path: string, lang?: Language) => string;
 }
 
 const translations: Record<Language, Record<string, string>> = {
@@ -133,6 +134,8 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer
     'footer.rights': 'כל הזכויות שמורות',
     'footer.address': 'צה״ל 8, אשקלון',
+    'footer.accessibility': 'נגישות',
+    'footer.privacy': 'מדיניות פרטיות',
 
     // Floating CTA
     'floating.customer': 'שירות ללקוח קיים',
@@ -424,6 +427,8 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer
     'footer.rights': 'Все права защищены',
     'footer.address': 'Цахаль 8, Ашкелон',
+    'footer.accessibility': 'Доступность',
+    'footer.privacy': 'Политика конфиденциальности',
 
     // Floating CTA
     'floating.customer': 'Обслуживание клиентов',
@@ -716,6 +721,8 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer
     'footer.rights': 'All rights reserved',
     'footer.address': '8 Zahal St, Ashkelon',
+    'footer.accessibility': 'Accessibility',
+    'footer.privacy': 'Privacy Policy',
 
     // Floating CTA
     'floating.customer': 'Customer Service',
@@ -892,6 +899,11 @@ const SUPPORTED_LANGUAGES: Language[] = ['he', 'ru', 'en'];
 const getInitialLanguage = (): Language => {
   if (typeof window === 'undefined') return FALLBACK_LANGUAGE;
 
+  // Prioritize URL prefix for language detection
+  const path = window.location.pathname;
+  if (path.startsWith('/ru/')) return 'ru';
+  if (path.startsWith('/en/')) return 'en';
+
   // Check localStorage for user's manual language choice
   try {
     const saved = localStorage.getItem('language') as Language;
@@ -918,12 +930,39 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     document.documentElement.lang = language;
   }, [language, dir]);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path.startsWith('/ru/')) {
+        setLanguageState('ru');
+      } else if (path.startsWith('/en/')) {
+        setLanguageState('en');
+      } else {
+        setLanguageState('he');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     try {
       localStorage.setItem('language', lang);
     } catch (e) {
       console.error('Error saving to localStorage', e);
+    }
+
+    // Redirect to localized URL
+    const currentPath = window.location.pathname;
+    const cleanPath = currentPath.replace(/^\/(ru|en)(\/|$)/, '/');
+    const newPath = lang === 'he' ? cleanPath : `/${lang}${cleanPath === '/' ? '' : cleanPath}`;
+
+    if (currentPath !== newPath) {
+      window.history.pushState(null, '', newPath);
+      // Trigger a popstate manually
+      window.dispatchEvent(new Event('popstate'));
     }
   };
 
@@ -932,8 +971,14 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return translation !== undefined ? translation : key;
   };
 
+  const getLocalizedPath = (path: string, lang: Language = language) => {
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    if (lang === 'he') return cleanPath;
+    return `/${lang}${cleanPath === '/' ? '' : cleanPath}`;
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, dir }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, dir, getLocalizedPath }}>
       {children}
     </LanguageContext.Provider>
   );

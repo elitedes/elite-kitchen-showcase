@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 import kitchenModern from '@/assets/gallery/kitchen-modern.jpg';
 import kitchenCountry from '@/assets/gallery/country-1.jpg';
@@ -30,6 +32,7 @@ const Kitchens = () => {
         description="גלו מגוון סגנונות מטבחים בהתאמה אישית: מודרני, כפרי, פורמייקה, עץ מלא, נאנו ואקרילי. עיצוב ייחודי ואיכות ללא פשרות."
         canonical="/kitchens"
       />
+      <Breadcrumbs items={[{ label: t('nav.kitchens'), path: '/kitchens', isCurrent: true }]} />
       {/* Hero Banner */}
       <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">
@@ -42,9 +45,17 @@ const Kitchens = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-header-foreground mb-4">
               {t('nav.kitchens')}
             </h1>
-            <p className="font-playfair italic text-xl text-header-foreground/80">
+            <p className="font-playfair italic text-xl text-header-foreground/80 mb-8">
               Where Design Meets Quality
             </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button asChild variant="outline" className="rounded-full border-black/10">
+                <Link to="/about">{t('nav.about')}</Link>
+              </Button>
+              <Button asChild className="rounded-full bg-gold hover:bg-gold/90 text-charcoal font-bold">
+                <Link to="/closets">{t('nav.closets')}</Link>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>

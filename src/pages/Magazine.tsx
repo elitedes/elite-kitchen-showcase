@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 import kitchenModern from '@/assets/kitchen-modern.jpg';
@@ -67,6 +68,7 @@ const Magazine = () => {
         description="מגזין עיצוב של Elite Design: טרנדים חדשים במטבחים, טיפים לבחירת חומרים, יתרונות נאנו ועץ מלא, ומדריכים מקצועיים."
         canonical="/magazine"
       />
+      <Breadcrumbs items={[{ label: t('nav.magazine'), path: '/blog', isCurrent: true }]} />
       {/* Hero Banner */}
       <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">

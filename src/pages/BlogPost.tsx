@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, User, Clock, ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { blogPosts } from '@/data/blogPosts';
 import ContactSection from '@/components/home/ContactSection';
@@ -28,6 +29,10 @@ const BlogPost = () => {
                 canonical={`/blog/${post.slug}`}
                 type="article"
             />
+            <Breadcrumbs items={[
+                { label: t('nav.magazine'), path: '/blog' },
+                { label: localizedTitle, path: `/blog/${post.slug}`, isCurrent: true }
+            ]} />
             <article className="min-h-screen bg-background pb-16">
                 {/* Header Image */}
                 <div className="relative h-[400px] w-full overflow-hidden mb-12">

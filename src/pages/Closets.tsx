@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue, useMotionTemplate } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 import { ArrowRight, Star, Shield, Settings, Play, CheckCircle2, X } from 'lucide-react';
@@ -127,6 +128,7 @@ const Closets = () => {
                 description="ארונות בהתאמה אישית מ-Elite Design: ארונות הזזה, פתיחה, חדרי ארונות וויטרינות זכוכית. עיצוב פרימיום עם טריקה שקטה ותאורת LED."
                 canonical="/closets"
             />
+            <Breadcrumbs items={[{ label: t('nav.closets'), path: '/closets', isCurrent: true }]} />
             <div className="bg-[#F5F5F0] min-h-screen font-sans selection:bg-charcoal selection:text-white overflow-x-hidden">
                 <WhatsAppButton />
 

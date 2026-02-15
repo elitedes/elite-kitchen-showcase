@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const DOMAIN = 'https://elitedesign.co.il';
 const SITE_NAME = 'Elite Design kitchens & more מטבחים וארונות בהתאמה אישית';
@@ -20,14 +21,30 @@ const SEO = ({
     image = DEFAULT_IMAGE,
     type = DEFAULT_TYPE,
 }: SEOProps) => {
-    const fullCanonical = canonical.startsWith('http') ? canonical : `${DOMAIN}${canonical}`;
+    const { language, getLocalizedPath } = useLanguage();
+
+    // Ensure canonical is relative for processing
+    const relativePath = canonical.replace(DOMAIN, '').replace(/^\/(ru|en)(\/|$)/, '/');
+    const fullCanonical = `${DOMAIN}${getLocalizedPath(relativePath)}`;
     const fullImage = image.startsWith('http') ? image : `${DOMAIN}${image}`;
+
+    // Hreflang URLs
+    const heUrl = `${DOMAIN}${relativePath === '/' ? '' : relativePath}`;
+    const ruUrl = `${DOMAIN}/ru${relativePath === '/' ? '' : relativePath}`;
+    const enUrl = `${DOMAIN}/en${relativePath === '/' ? '' : relativePath}`;
 
     return (
         <Helmet>
+            <html lang={language} />
             <title>{title}</title>
             <meta name="description" content={description} />
             <link rel="canonical" href={fullCanonical} />
+
+            {/* hreflang tags */}
+            <link rel="alternate" hrefLang="he" href={heUrl} />
+            <link rel="alternate" hrefLang="ru" href={ruUrl} />
+            <link rel="alternate" hrefLang="en" href={enUrl} />
+            <link rel="alternate" hrefLang="x-default" href={heUrl} />
 
             {/* Open Graph */}
             <meta property="og:title" content={title} />
@@ -35,7 +52,7 @@ const SEO = ({
             <meta property="og:url" content={fullCanonical} />
             <meta property="og:image" content={fullImage} />
             <meta property="og:type" content={type} />
-            <meta property="og:locale" content="he_IL" />
+            <meta property="og:locale" content={language === 'he' ? 'he_IL' : language === 'ru' ? 'ru_RU' : 'en_US'} />
             <meta property="og:site_name" content={SITE_NAME} />
 
             {/* Twitter Card */}

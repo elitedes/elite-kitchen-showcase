@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 
@@ -261,6 +262,7 @@ const Promotions = () => {
         description="מבצעי מטבחים מיוחדים של Elite Design. מטבחי אקריל, פורמייקה ועץ במחירים משתלמים עם הובלה והתקנה מקצועית."
         canonical="/promotions"
       />
+      <Breadcrumbs items={[{ label: t('nav.promotions'), path: '/promotions', isCurrent: true }]} />
       {/* Hero Banner */}
       <section className="bg-header pt-32 md:pt-40 pb-20">
         <div className="container mx-auto px-4">

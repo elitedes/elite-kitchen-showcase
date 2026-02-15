@@ -12,6 +12,9 @@ const Footer = () => {
     { key: 'nav.closets', path: '/closets' },
     { key: 'nav.kitchens', path: '/kitchens' },
     { key: 'nav.projects', path: '/projects' },
+    { key: 'nav.magazine', path: '/blog' },
+    { key: 'nav.promotions', path: '/promotions' },
+    { key: 'nav.installation', path: '/installation' },
     { key: 'nav.calculator', path: '/calculator' },
     { key: 'nav.contact', path: '/contact' },
   ];
@@ -22,6 +25,7 @@ const Footer = () => {
     { key: 'nav.kitchens.formica', path: '/kitchens/formica' },
     { key: 'nav.kitchens.wood', path: '/kitchens/wood' },
     { key: 'nav.kitchens.nano', path: '/kitchens/nano' },
+    { key: 'nav.kitchens.acrylic', path: '/kitchens/acrylic' },
   ];
 
   return (
@@ -57,7 +61,7 @@ const Footer = () => {
           {/* Quick Links */}
           <nav aria-label="Quick links">
             <h4 className="text-lg font-bold mb-6">{t('nav.home')}</h4>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 md:grid-cols-1 gap-3">
               {quickLinks.map((link) => (
                 <li key={link.key}>
                   <Link
@@ -123,27 +127,32 @@ const Footer = () => {
       <div className="border-t border-cream/10">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-cream/50 text-sm">
-              © {new Date().getFullYear()} Elite Design kitchens & more. {t('footer.rights')}.
-            </p>
+            <div className="flex flex-col md:flex-row items-center gap-4 text-cream/50 text-sm">
+              <p>© {new Date().getFullYear()} Elite Design kitchens & more. {t('footer.rights')}.</p>
+              <div className="flex items-center gap-4">
+                <Link to="/contact" className="hover:text-accent transition-colors">{t('footer.accessibility')}</Link>
+                <span className="opacity-20">|</span>
+                <Link to="/contact" className="hover:text-accent transition-colors">{t('footer.privacy')}</Link>
+              </div>
+            </div>
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setLanguage('he')}
-                className={`transition-colors text-sm ${language === 'he' ? 'text-cream font-bold' : 'text-cream/50 hover:text-cream'}`}
+                className={`transition-colors text-sm ${language === 'he' ? 'text-accent font-bold' : 'text-cream/50 hover:text-accent'}`}
               >
                 עברית
               </button>
               <span className="text-cream/30">|</span>
               <button
                 onClick={() => setLanguage('ru')}
-                className={`transition-colors text-sm ${language === 'ru' ? 'text-cream font-bold' : 'text-cream/50 hover:text-cream'}`}
+                className={`transition-colors text-sm ${language === 'ru' ? 'text-accent font-bold' : 'text-cream/50 hover:text-accent'}`}
               >
                 Русский
               </button>
               <span className="text-cream/30">|</span>
               <button
                 onClick={() => setLanguage('en')}
-                className={`transition-colors text-sm ${language === 'en' ? 'text-cream font-bold' : 'text-cream/50 hover:text-cream'}`}
+                className={`transition-colors text-sm ${language === 'en' ? 'text-accent font-bold' : 'text-accent/50 hover:text-accent'}`}
               >
                 English
               </button>
@@ -151,7 +160,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer >
+    </footer>
   );
 };
 

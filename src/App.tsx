@@ -39,6 +39,26 @@ const PageLoader = () => (
   </div>
 );
 
+const RoutesContent = () => (
+  <Routes>
+    <Route path="/" element={<Index />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/kitchens" element={<Kitchens />} />
+    <Route path="/kitchens/:category" element={<KitchenCategory />} />
+    <Route path="/projects" element={<Projects />} />
+    <Route path="/contact" element={<Contact />} />
+    <Route path="/promotions" element={<Promotions />} />
+    <Route path="/installation" element={<Installation />} />
+    <Route path="/magazine" element={<Magazine />} />
+    <Route path="/blog" element={<Blog />} />
+    <Route path="/blog/:slug" element={<BlogPost />} />
+    <Route path="/closets" element={<Closets />} />
+    <Route path="/calculator" element={<Calculator />} />
+    <Route path="/quiz-selection" element={<QuizPage />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+);
+
 // Extracted so it can be used with StaticRouter for SSG
 export const AppRoutes = () => (
   <HelmetProvider>
@@ -50,21 +70,11 @@ export const AppRoutes = () => (
           <ScrollToTop />
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/kitchens" element={<Kitchens />} />
-              <Route path="/kitchens/:category" element={<KitchenCategory />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/promotions" element={<Promotions />} />
-              <Route path="/installation" element={<Installation />} />
-              <Route path="/magazine" element={<Magazine />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/closets" element={<Closets />} />
-              <Route path="/calculator" element={<Calculator />} />
-              <Route path="/quiz-selection" element={<QuizPage />} />
-              <Route path="*" element={<NotFound />} />
+              {/* Language prefixed routes */}
+              <Route path="/ru/*" element={<RoutesContent />} />
+              <Route path="/en/*" element={<RoutesContent />} />
+              {/* Default routes (Hebrew) */}
+              <Route path="/*" element={<RoutesContent />} />
             </Routes>
           </Suspense>
         </TooltipProvider>

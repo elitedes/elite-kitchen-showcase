@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
     Select,
@@ -166,6 +167,7 @@ ${formData.dim3 ? `• ${t('calc.dimensions.len3')}: ${formData.dim3} cm` : ''}
                 description="חשבו את עלות המטבח החדש שלכם עם מחשבון מטבחים חכם של Elite Design. בחרו סוג מטבח, חזיתות, שיש ופרזול וקבלו הערכת מחיר מקצועית."
                 canonical="/calculator"
             />
+            <Breadcrumbs items={[{ label: t('nav.calculator'), path: '/calculator', isCurrent: true }]} />
             <section className="py-20 relative overflow-hidden bg-white">
                 {/* Decorative elements - wood shavings style */}
                 <div className="absolute top-10 right-[15%] w-32 h-32 opacity-20 hidden lg:block">

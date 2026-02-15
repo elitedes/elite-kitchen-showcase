@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
+import Breadcrumbs from '@/components/common/Breadcrumbs';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ContactSection from '@/components/home/ContactSection';
 import StatCounter from '@/components/common/StatCounter';
@@ -23,6 +25,7 @@ const About = () => {
         description="נגריית Elite Design - מעל 20 שנות ניסיון בייצור מטבחים, ארונות ורהיטים בהתאמה אישית. מעל 1,000 פרויקטים מוצלחים ברחבי הארץ."
         canonical="/about"
       />
+      <Breadcrumbs items={[{ label: t('nav.about'), path: '/about', isCurrent: true }]} />
       {/* Hero Banner - Elite Style */}
       <section className="relative bg-[#1a1a1a] text-white py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />
@@ -125,9 +128,17 @@ const About = () => {
               <div className="text-7xl font-black mb-2 group-hover:text-muted-gold transition-colors tracking-tighter">
                 <StatCounter end={1000} suffix="+" />
               </div>
-              <p className="text-xl font-bold uppercase tracking-widest opacity-60">
+              <p className="text-xl font-bold uppercase tracking-widest opacity-60 mb-6">
                 {t('nav.projects')}
               </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button asChild variant="outline" className="rounded-full border-white/20 hover:bg-white/10 text-white">
+                  <Link to="/projects">{t('nav.projects')}</Link>
+                </Button>
+                <Button asChild className="rounded-full bg-gold hover:bg-gold/90 text-charcoal font-bold">
+                  <Link to="/kitchens">{t('nav.kitchens')}</Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </div>

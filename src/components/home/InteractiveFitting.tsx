@@ -60,7 +60,7 @@ const InteractiveFitting = () => {
     };
 
     return (
-        <section className="py-24 bg-background overflow-hidden" aria-label="Interactive kitchen fitting">
+        <section id="kitchen-fitting" className="py-24 bg-background overflow-hidden" aria-label="Interactive kitchen fitting">
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
