@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import { LanguageNavigator } from '@/components/LanguageNavigator';
 import ScrollToTop from "./components/layout/ScrollToTop";
 
 // Eagerly load the homepage — it's the critical path
@@ -86,7 +85,6 @@ export const AppRoutes = () => (
 
 const App = () => (
   <BrowserRouter>
-    <LanguageNavigator />
     <AppRoutes />
   </BrowserRouter>
 );

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type Language = 'he' | 'ru' | 'en';
+type Language = 'he' | 'ru' | 'en';
 
 interface LanguageContextType {
   language: Language;
@@ -953,7 +953,17 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     } catch (e) {
       console.error('Error saving to localStorage', e);
     }
-    // Navigation is now handled by LanguageNavigator component
+
+    // Redirect to localized URL
+    const currentPath = window.location.pathname;
+    const cleanPath = currentPath.replace(/^\/(ru|en)(\/|$)/, '/');
+    const newPath = lang === 'he' ? cleanPath : `/${lang}${cleanPath === '/' ? '' : cleanPath}`;
+
+    if (currentPath !== newPath) {
+      window.history.pushState(null, '', newPath);
+      // Trigger a popstate manually
+      window.dispatchEvent(new Event('popstate'));
+    }
   };
 
   const t = (key: string): string => {
