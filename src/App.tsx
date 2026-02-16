@@ -24,7 +24,7 @@ const Closets = lazy(() => import("./pages/Closets"));
 const Calculator = lazy(() => import("./pages/Calculator"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
-const QuizPage = lazy(() => import("./pages/QuizPage"));
+const QuizPage = lazy(() => import("@/pages/Quiz"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();

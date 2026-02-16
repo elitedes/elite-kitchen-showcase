@@ -954,15 +954,14 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       console.error('Error saving to localStorage', e);
     }
 
-    // Redirect to localized URL
+    // Navigate to localized URL using full page navigation
+    // pushState doesn't trigger React Router, so we use location.href
     const currentPath = window.location.pathname;
     const cleanPath = currentPath.replace(/^\/(ru|en)(\/|$)/, '/');
     const newPath = lang === 'he' ? cleanPath : `/${lang}${cleanPath === '/' ? '' : cleanPath}`;
 
     if (currentPath !== newPath) {
-      window.history.pushState(null, '', newPath);
-      // Trigger a popstate manually
-      window.dispatchEvent(new Event('popstate'));
+      window.location.href = newPath;
     }
   };
 
