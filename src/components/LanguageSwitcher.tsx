@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Globe, Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,6 +22,7 @@ interface LanguageSwitcherProps {
 const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
   const { language, setLanguage } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const currentLang = languages.find(l => l.code === language);
 
@@ -44,7 +45,7 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
     );
   }
 
-  // Mobile header: custom toggle panel — backdrop approach is most stable on touch devices
+  // Mobile header: backdrop approach with ref-based click detection
   if (variant === 'mobile-header') {
     return (
       <div className="relative">
@@ -65,16 +66,22 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
         <AnimatePresence>
           {mobileOpen && (
             <>
-              {/* Invisible backdrop to catch taps outside and close menu */}
+              {/* Backdrop: only closes if click is OUTSIDE dropdown */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 className="fixed inset-0 z-[100] bg-transparent"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => {
+                  // Only close if click was NOT inside the dropdown
+                  if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+                    setMobileOpen(false);
+                  }
+                }}
               />
 
               <motion.div
+                ref={dropdownRef}
                 initial={{ opacity: 0, scale: 0.95, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -85,9 +92,7 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
                   <button
                     key={lang.code}
                     type="button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
+                    onClick={() => {
                       setLanguage(lang.code);
                       setMobileOpen(false);
                     }}
