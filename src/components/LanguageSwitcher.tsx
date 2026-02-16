@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { Globe, Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,36 +22,8 @@ interface LanguageSwitcherProps {
 const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
   const { language, setLanguage } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const justOpenedRef = useRef(false);
 
   const currentLang = languages.find(l => l.code === language);
-
-  // Close panel when tapping outside — delayed registration to avoid catching the same tap
-  useEffect(() => {
-    if (!mobileOpen) return;
-
-    const handleOutside = (e: Event) => {
-      // Skip if we just opened — prevents same-tap closure
-      if (justOpenedRef.current) {
-        justOpenedRef.current = false;
-        return;
-      }
-      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
-        setMobileOpen(false);
-      }
-    };
-
-    // Delay listener registration by one frame to prevent same-event closure
-    const raf = requestAnimationFrame(() => {
-      document.addEventListener('pointerdown', handleOutside, true);
-    });
-
-    return () => {
-      cancelAnimationFrame(raf);
-      document.removeEventListener('pointerdown', handleOutside, true);
-    };
-  }, [mobileOpen]);
 
   if (variant === 'mobile') {
     return (
@@ -71,16 +44,16 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
     );
   }
 
-  // Mobile header: custom toggle panel — no Radix dropdown to avoid double-tap on touch
+  // Mobile header: custom toggle panel — backdrop approach is most stable on touch devices
   if (variant === 'mobile-header') {
     return (
-      <div className="relative" ref={panelRef}>
+      <div className="relative">
         <button
-          className="flex items-center justify-center p-2 text-current relative z-10"
-          onPointerDown={(e) => {
+          className="flex items-center justify-center min-w-[44px] min-h-[44px] -m-2 text-current relative z-[101]"
+          onClick={(e) => {
+            e.preventDefault();
             e.stopPropagation();
-            justOpenedRef.current = !mobileOpen;
-            setMobileOpen(prev => !prev);
+            setMobileOpen(!mobileOpen);
           }}
           aria-label="Switch language"
           aria-expanded={mobileOpen}
@@ -89,30 +62,48 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
           <Globe className="w-6 h-6" />
         </button>
 
-        {mobileOpen && (
-          <div
-            className="absolute top-full end-0 mt-2 min-w-[160px] rounded-md border bg-popover p-1 text-popover-foreground shadow-md z-[60]"
-          >
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                type="button"
-                onPointerDown={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  setLanguage(lang.code);
-                  setMobileOpen(false);
-                }}
-                className="flex items-center justify-between py-2.5 px-2 w-full rounded-sm text-sm transition-colors hover:bg-accent hover:text-accent-foreground active:bg-accent/80"
+        <AnimatePresence>
+          {mobileOpen && (
+            <>
+              {/* Invisible backdrop to catch taps outside and close menu */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[100] bg-transparent"
+                onClick={() => setMobileOpen(false)}
+              />
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="absolute top-full end-0 mt-3 min-w-[160px] rounded-2xl border border-white/10 bg-black/90 backdrop-blur-xl p-1.5 text-white shadow-[0_10px_40px_rgba(0,0,0,0.5)] z-[102] overflow-hidden"
               >
-                <span className="flex items-center gap-2 text-sm">
-                  <span>{lang.name}</span>
-                </span>
-                {language === lang.code && <Check className="w-4 h-4 text-accent" />}
-              </button>
-            ))}
-          </div>
-        )}
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setLanguage(lang.code);
+                      setMobileOpen(false);
+                    }}
+                    className={`flex items-center justify-between py-3 px-4 w-full rounded-xl text-sm transition-all active:scale-95 ${language === lang.code
+                        ? 'bg-white/10 text-accent font-semibold'
+                        : 'text-white/80 hover:bg-white/5 active:bg-white/10'
+                      }`}
+                  >
+                    <span>{lang.name}</span>
+                    {language === lang.code && <Check className="w-4 h-4" />}
+                  </button>
+                ))}
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </div>
     );
   }
