@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Globe, Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
@@ -19,8 +20,28 @@ interface LanguageSwitcherProps {
 
 const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
   const { language, setLanguage } = useLanguage();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const currentLang = languages.find(l => l.code === language);
+
+  // Close panel when clicking outside
+  const handleClickOutside = useCallback((e: MouseEvent | TouchEvent) => {
+    if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
+      setMobileOpen(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [mobileOpen, handleClickOutside]);
 
   if (variant === 'mobile') {
     return (
@@ -41,20 +62,55 @@ const LanguageSwitcher = ({ variant = 'desktop' }: LanguageSwitcherProps) => {
     );
   }
 
+  // Mobile header: custom toggle panel (no Radix dropdown — avoids double-tap issue)
+  if (variant === 'mobile-header') {
+    return (
+      <div className="relative" ref={panelRef}>
+        <button
+          className="flex items-center justify-center p-2 text-current relative z-10"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Switch language"
+          aria-expanded={mobileOpen}
+          type="button"
+        >
+          <Globe className="w-6 h-6" />
+        </button>
+
+        {mobileOpen && (
+          <div
+            className="absolute top-full end-0 mt-2 min-w-[160px] rounded-md border bg-popover p-1 text-popover-foreground shadow-md z-[60] animate-in fade-in-0 zoom-in-95"
+          >
+            {languages.map((lang) => (
+              <button
+                key={lang.code}
+                type="button"
+                onClick={() => {
+                  setLanguage(lang.code);
+                  setMobileOpen(false);
+                }}
+                className="flex items-center justify-between cursor-pointer py-2.5 px-2 w-full rounded-sm text-sm transition-colors hover:bg-accent hover:text-accent-foreground"
+              >
+                <span className="flex items-center gap-2 text-sm">
+                  <span>{lang.name}</span>
+                </span>
+                {language === lang.code && <Check className="w-4 h-4 text-accent" />}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Desktop: keep Radix DropdownMenu
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          className={
-            variant === 'mobile-header'
-              ? "flex items-center justify-center p-2 text-current relative z-10"
-              : "flex items-center gap-2 transition-all duration-200 px-3 py-2 rounded-full hover:bg-black/5 border border-current/20 hover:border-current/40 group"
-          }
+          className="flex items-center gap-2 transition-all duration-200 px-3 py-2 rounded-full hover:bg-black/5 border border-current/20 hover:border-current/40 group"
         >
-          <Globe className={variant === 'mobile-header' ? "w-6 h-6" : "w-4 h-4 opacity-80 group-hover:opacity-100"} />
-          {variant !== 'mobile-header' && (
-            <span className="text-sm font-medium">{currentLang?.name}</span>
-          )}
+          <Globe className="w-4 h-4 opacity-80 group-hover:opacity-100" />
+          <span className="text-sm font-medium">{currentLang?.name}</span>
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[160px] z-[60]">

@@ -16,7 +16,7 @@ const translations: Record<Language, Record<string, string>> = {
     'gallery.view': 'לצפייה',
     'about.process.desc': 'הדרך שלכם למטבח המושלם מתחילה כאן. אנו מנתחים את החלל שלכם, מתחשבים בהרגלים של כל בני המשפחה והופכים משימות טכניות מורכבות לפתרונות אלגנטיים. ב-Elite Design אנו לא רק מייצרים רהיטים – אנו יוצרים את הנוחות שתרגישו בכל יום.',
     'about.years.suffix': '+ שנים',
-    'about.philosophy': 'אנחנו לא רק מתקינים ארונות, אנחנו מעצבים את הארגונומיה של החיים שלכם',
+    'about.philosophy': 'שלמות איננה מקרה היא תוצאה של תכנון, איכות ותשוקה ליצירה.',
     'seo.title': 'Elite Design | מטבחים, ארונות ונגרות בהתאמה אישית - 20 שנות ניסיון',
     'seo.description': 'נגריית Elite Design מתמחה בייצור מטבחים ורהיטים מעל 20 שנה. ארונות, חדרי רחצה ופתרונות נגרות לכל הבית במחירים נוחים ובאיכות מעולה. פנו לייעוץ!',
     // Navigation
@@ -85,14 +85,14 @@ const translations: Record<Language, Record<string, string>> = {
     'benefits.local.title': 'ייצור מקומי',
     'benefits.local.desc': 'נגרות עילית כחול-לבן עם בקרה קפדנית על כל פרט ופרט.',
     'whyus.decorative': 'working process',
-    'process.step1.title': 'סקיצה והערכת מחיר',
-    'process.step1.desc': 'אנו נבנה סקיצה ראשונית ונחשב את עלות המטבח עבורכם',
-    'process.step2.title': 'מדידה',
-    'process.step2.desc': 'המודד המקצועי שלנו יגיע אליכם בזמן שנוח לכם',
+    'process.step1.title': 'תכנון והצעת מחיר',
+    'process.step1.desc': 'אנו יוצרים סקיצה אישית לפרויקט שלכם ומכינים הצעת מחיר מפורטת ושקופה, בהתאמה מלאה לצרכים, לסגנון ולתקציב.',
+    'process.step2.title': 'מדידה מקצועית בבית הלקוח',
+    'process.step2.desc': 'מודד מקצועי יגיע אליכם בזמן שנוח לכם, יבצע מדידות מדויקות ויוודא שכל פרט טכני נלקח בחשבון.',
     'process.step3.title': 'ייצור',
-    'process.step3.desc': 'אנו מייצרים את המטבח במפעל שלנו עם הטכנולוגיה המתקדמת ביותר',
-    'process.step4.title': 'הובלה והרכבה',
-    'process.step4.desc': 'נוביל את המטבח ונתקין אותו בביתכם בצורה מקצועית',
+    'process.step3.desc': 'הייצור מתבצע במפעלנו תוך שילוב מושלם של טכנולוגיה מתקדמת, חומרי גלם פרימיום ועבודת יד מוקפדת.',
+    'process.step4.title': 'אספקה והתקנה מקצועית',
+    'process.step4.desc': 'אנו מספקים ומתקינים בביתכם ברמת גימור גבוהה במיוחד, עד לתוצאה מושלמת ולשביעות רצון מלאה.',
     'process.step.label': 'שלב',
     'whyus.cta': 'לפרטים נוספים לחץ כאן',
 
@@ -142,9 +142,9 @@ const translations: Record<Language, Record<string, string>> = {
     'floating.appointment': 'להזמין מעצב',
 
     // Pages
-    'page.about.title': 'עלית דיזיין האומנות שבעיצוב החלל',
+    'page.about.title': 'כשעיצוב פוגש איכות',
 
-    'page.about.content': 'Elite Design — מעל 20 שנות ניסיון בתכנון וייצור מטבחים בהתאמה אישית בישראל. אנו מאמינים שהמטבח הוא לא רק רהיט, אלא לב הבית, שבו כל פרט קטן חשוב. אנו מתמחים בפתרונות יצירתיים: ממטבחי יוקרה בעיצוב מודרני עם ציפוי נאנו ועד לנגרות בהתאמה אישית וארונות מעוצבים. הייצור שלנו משלב טכנולוגיה מתקדמת ועבודת יד מוקפדת. אנו פועלים באזור המרכז והדרום: אשקלון, אשדוד ויישובים נוספים.',
+    'page.about.content': 'אנחנו ב־Elite Design מתמחים בתכנון וייצור מטבחים בהתאמה אישית בישראל כבר למעלה מ־20 שנה. אנו מאמינים שהמטבח הוא הרבה יותר מרהיט – הוא לב הבית, המקום שבו נוצרים זיכרונות וחוויות יומיומיות. לכן אנו משלבים חומרים מהאיכותיים ביותר עם טכנולוגיות ייצור מתקדמות כדי ליצור עבורכם מטבח יוקרתי, פונקציונלי ומעוצב בהתאמה מלאה לצרכים שלכם.\n\nאנו מתמחים בעיצוב וייצור מטבחי יוקרה מודרניים, מטבחים כפריים, מטבחים בסגנון אירופאי, וכן נגרות בהתאמה אישית וארונות מטבח מעוצבים. צוות המעצבים שלנו מעודכן באופן שוטף בטרנדים העולמיים בעולם עיצוב מטבחים, ומביא אליכם פתרונות חדשניים, פרקטיים ומרשימים ברמת גימור גבוהה במיוחד.\n\nתהליך הייצור שלנו משלב טכנולוגיה מתקדמת, חומרי גלם איכותיים ועבודת יד מוקפדת, תוך ביצוע בקרת איכות קפדנית בכל שלב – משלב התכנון ועד ההתקנה בבית הלקוח. אנו מקפידים על סטנדרטים גבוהים במיוחד בייצור ארונות מטבח, חזיתות, משטחי עבודה ופתרונות אחסון חכמים.\n\nמעבר לאיכות המוצר, אנו שמים דגש על שירות אישי וליווי מקצועי לאורך כל הדרך – משלב הרעיון הראשוני, דרך הדמיות ותכנון מדויק, ועד התקנה מושלמת בבית הלקוח. כל מטבח נבנה בשיתוף פעולה מלא עם הלקוח, תוך התאמה לסגנון החיים, לחלל ולתקציב.\n\nב־Elite Design אנו יוצרים עבורכם מטבח יוקרתי בהתאמה אישית בישראל, כזה שמשלב עיצוב, איכות ועמידות לאורך שנים. אם אתם מחפשים חברת מטבחים עם ניסיון, אמינות ורמת ביצוע גבוהה – הגעתם למקום הנכון.',
 
     'page.showroom.title': 'אולם התצוגה שלנו',
     'page.showroom.desc': 'הזמנו אתכם לבקר באולם התצוגה שלנו ולחוות את המטבחים שלנו מקרוב',
@@ -309,7 +309,7 @@ const translations: Record<Language, Record<string, string>> = {
     'gallery.view': 'Смотреть',
     'about.process.desc': 'Ваш путь к идеальной кухне начинается здесь. Мы анализируем ваше пространство, учитываем привычки каждого члена семьи и превращаем сложные технические задачи в элегантные решения. В Elite Design мы не просто производим мебель — мы создаем комфорт, который вы будете чувствовать каждый день.',
     'about.years.suffix': ' лет+',
-    'about.philosophy': '«Мы не просто ставим шкафы, мы создаем эргономику вашей жизни»',
+    'about.philosophy': 'Совершенство — это не случайность, а результат планирования, качества и страсти к созиданию.',
     'seo.title': 'Elite Design | Кухни, шкафы и столярные изделия на заказ - 20 лет опыта',
     'seo.description': 'Столярная мастерская Elite Design специализируется на производстве кухонь и мебели более 20 лет. Шкафы, ванные комнаты и столярные решения для всего дома по доступным ценам и в отличном качестве. Обращайтесь за консультацией!',
     // Navigation
@@ -378,14 +378,14 @@ const translations: Record<Language, Record<string, string>> = {
     'benefits.local.title': 'Местное производство',
     'benefits.local.desc': 'Элитные столярные изделия израильского производства с строгим контролем каждой детали.',
     'whyus.decorative': 'working process',
-    'process.step1.title': 'ЭСКИЗ И СТОИМОСТЬ',
-    'process.step1.desc': 'Мы создадим эскиз и рассчитаем стоимость вашего проекта',
-    'process.step2.title': 'ЗАМЕР',
-    'process.step2.desc': 'Замерщик приедет в удобное для вас время',
-    'process.step3.title': 'ИЗГОТОВЛЕНИЕ',
-    'process.step3.desc': 'Изготовим ваш заказ на собственной фабрике',
-    'process.step4.title': 'ДОСТАВКА И СБОРКА',
-    'process.step4.desc': 'Доставим и соберём в вашей квартире',
+    'process.step1.title': 'Планирование и расчет стоимости',
+    'process.step1.desc': 'Мы создаем индивидуальный эскиз для вашего проекта и готовим подробное и прозрачное предложение, полностью адаптированное под ваши потребности, стиль и бюджет.',
+    'process.step2.title': 'Профессиональный замер на дому',
+    'process.step2.desc': 'Профессиональный замерщик приедет к вам в удобное время, выполнит точные замеры и учтет каждую техническую деталь.',
+    'process.step3.title': 'Производство',
+    'process.step3.desc': 'Производство осуществляется на нашей фабрике при идеальном сочетании передовых технологий, материалов премиум-класса и тщательной ручной работы.',
+    'process.step4.title': 'Профессиональная доставка и установка',
+    'process.step4.desc': 'Мы доставляем и устанавливаем мебель в вашем доме с исключительно высоким уровнем отделки, обеспечивая идеальный результат и полное удовлетворение.',
     'process.step.label': 'шаг',
     'whyus.cta': 'Подробнее нажмите здесь',
 
@@ -435,9 +435,9 @@ const translations: Record<Language, Record<string, string>> = {
     'floating.appointment': 'Пригласить дизайнера',
 
     // Pages
-    'page.about.title': 'Elite Design Искусство создания пространства',
+    'page.about.title': 'Когда дизайн встречается с качеством',
 
-    'page.about.content': 'Elite Design — это более 20 лет опыта в проектировании и производстве кухонь на заказ в Израиле. Мы верим, что кухня — это не просто мебель, а сердце дома, где важна каждая деталь. Мы специализируемся на индивидуальных решениях: от современных дизайнерских кухонь с покрытием Nano до эксклюзивных столярных изделий и шкафов. Наше производство объединяет передовые технологии и мастерство ручной работы. Мы работаем в центре и на юге страны: Ашкелон, Ашдод и другие города.',
+    'page.about.content': 'В Elite Design мы специализируемся на проектировании и производстве кухонь на заказ в Израиле уже более 20 лет. Мы убеждены, что кухня — это гораздо больше, чем мебель — это сердце дома, место, где рождаются воспоминания и повседневные впечатления. Поэтому мы сочетаем материалы высочайшего качества с передовыми технологиями производства, чтобы создать для вас роскошную, функциональную кухню, полностью адаптированную под ваши потребности.\n\nМы специализируемся на дизайне и производстве современных кухонь класса люкс, кухонь в стиле кантри, кухонь в европейском стиле, а также на индивидуальной столярной работе и дизайнерских кухонных шкафах. Наша команда дизайнеров постоянно следит за мировыми трендами в области кухонного дизайна и предлагает вам инновационные, практичные и впечатляющие решения с особенно высоким уровнем отделки.\n\nНаш производственный процесс сочетает передовые технологии, качественное сырьё и тщательную ручную работу с проведением строгого контроля качества на каждом этапе — от проектирования до установки у клиента. Мы придерживаемся особенно высоких стандартов в производстве кухонных шкафов, фасадов, столешниц и решений для умного хранения.\n\nПомимо качества продукции, мы делаем акцент на персональном сервисе и профессиональном сопровождении на всём пути — от первоначальной идеи, через визуализации и точное проектирование, до идеальной установки у клиента. Каждая кухня создаётся в полном сотрудничестве с клиентом, с учётом образа жизни, пространства и бюджета.\n\nВ Elite Design мы создаём для вас роскошную кухню на заказ в Израиле, которая сочетает дизайн, качество и долговечность на долгие годы. Если вы ищете кухонную компанию с опытом, надёжностью и высоким уровнем исполнения — вы обратились по адресу.',
 
     'page.showroom.title': 'Наш шоурум',
     'page.showroom.desc': 'Приглашаем вас посетить наш шоурум и лично оценить качество наших кухонь',
@@ -603,7 +603,7 @@ const translations: Record<Language, Record<string, string>> = {
     'gallery.view': 'View',
     'about.process.desc': 'Your journey to the perfect kitchen starts here. We analyze your space, consider every family members habits, and turn complex technical tasks into elegant solutions. At Elite Design, we don’t just make furniture—we create the comfort you’ll feel every day.',
     'about.years.suffix': '+ Years',
-    'about.philosophy': '“We don’t just install cabinets, we design the ergonomics of your life”',
+    'about.philosophy': 'Perfection is not an accident; it\'s the result of planning, quality, and a passion for creation.',
     'seo.title': 'Elite Design | Custom Kitchens, Closets & Woodworking - 20 Years Experience',
     'seo.description': 'Elite Design Carpentry specializes in manufacturing kitchens and furniture for over 20 years. Closets, bathrooms, and woodworking solutions for the whole home at affordable prices and excellent quality. Contact us for a consultation!',
     // Navigation
@@ -672,14 +672,14 @@ const translations: Record<Language, Record<string, string>> = {
     'benefits.local.title': 'Local Production',
     'benefits.local.desc': 'Elite "Blue and White" cabinetry with strict control over every single detail.',
     'whyus.decorative': 'working process',
-    'process.step1.title': 'SKETCH & ESTIMATE',
-    'process.step1.desc': 'We will create a preliminary sketch and calculate the cost for you',
-    'process.step2.title': 'MEASUREMENT',
-    'process.step2.desc': 'Our professional measurer will visit at your convenience',
-    'process.step3.title': 'PRODUCTION',
-    'process.step3.desc': 'We manufacture your kitchen in our own factory with cutting-edge technology',
-    'process.step4.title': 'DELIVERY & ASSEMBLY',
-    'process.step4.desc': 'We transport and professionally install the kitchen in your home',
+    'process.step1.title': 'Planning & Price Quote',
+    'process.step1.desc': 'We create a custom sketch for your project and prepare a detailed, transparent price quote, fully tailored to your needs, style, and budget.',
+    'process.step2.title': 'Professional In-Home Measurement',
+    'process.step2.desc': 'A professional measurer will visit at your convenience, perform precise measurements, and ensure every technical detail is considered.',
+    'process.step3.title': 'Production',
+    'process.step3.desc': 'Production takes place in our factory through a perfect blend of advanced technology, premium raw materials, and meticulous craftsmanship.',
+    'process.step4.title': 'Professional Delivery & Installation',
+    'process.step4.desc': 'We deliver and install in your home with an exceptionally high level of finish, ensuring a perfect result and complete satisfaction.',
     'process.step.label': 'step',
     'whyus.cta': 'Click here for more details',
 
@@ -729,9 +729,9 @@ const translations: Record<Language, Record<string, string>> = {
     'floating.appointment': 'Invite Designer',
 
     // Pages
-    'page.about.title': 'Elite Design The Art of Space Creation',
+    'page.about.title': 'When Design Meets Quality',
 
-    'page.about.content': 'Elite Design brings over 20 years of experience in custom kitchen design and production in Israel. We believe a kitchen is more than just furniture—it’s the heart of the home, where every detail matters. We specialize in bespoke solutions: from modern designer kitchens with Nano coating to exclusive carpentry and closets. Our production combines cutting-edge technology with handcrafted mastery. Serving the Central and Southern regions, including Ashkelon, Ashdod, and surrounding areas.',
+    'page.about.content': 'At Elite Design, we specialize in custom kitchen design and manufacturing in Israel for over 20 years. We believe that a kitchen is much more than furniture — it is the heart of the home, the place where memories and everyday experiences are created. That is why we combine the highest quality materials with advanced manufacturing technologies to create a luxurious, functional kitchen fully tailored to your needs.\n\nWe specialize in the design and production of modern luxury kitchens, country-style kitchens, European-style kitchens, as well as custom carpentry and designer kitchen cabinets. Our team of designers stays constantly updated on global kitchen design trends, bringing you innovative, practical, and impressive solutions with an exceptionally high level of finish.\n\nOur manufacturing process combines advanced technology, quality raw materials, and meticulous craftsmanship, with rigorous quality control at every stage — from design to installation at the client\'s home. We maintain particularly high standards in the production of kitchen cabinets, facades, countertops, and smart storage solutions.\n\nBeyond product quality, we emphasize personal service and professional guidance throughout the entire journey — from the initial idea, through visualizations and precise planning, to perfect installation at the client\'s home. Every kitchen is built in full collaboration with the client, tailored to their lifestyle, space, and budget.\n\nAt Elite Design, we create luxury custom kitchens in Israel that combine design, quality, and durability for years to come. If you are looking for a kitchen company with experience, reliability, and a high level of execution — you have come to the right place.',
 
     'page.showroom.title': 'Our Showroom',
     'page.showroom.desc': 'We invite you to visit our showroom and experience our kitchens up close',
