@@ -313,7 +313,7 @@
             of: { he: 'מתוך', ru: 'ИЗ', en: 'OF' },
             next: { he: 'המשך', ru: 'Далее', en: 'Next Step' },
             back: { he: 'חזור', ru: 'Назад', en: 'Back' },
-            submit: { he: 'קבלת הצעת מחיר ב-WhatsApp', ru: 'Получить расчёт в WhatsApp', en: 'Get Quote via WhatsApp' },
+            submit: { he: 'קבלת הצעת מחיר', ru: 'Получить расчёт', en: 'Get Quote' },
             formTitle: { he: 'העיצוב שלכם מוכן!', ru: 'Ваш дизайн готов!', en: 'Your Design is Ready!' },
             formSubtitle: {
                 he: 'מלאו את הפרטים לקבלת הצעת מחיר אישית וייעוץ מקצועי בחינם', ru: 'Заполните данные для получения расчета и бесплатной консультации', en: "Fill in the details to get a personal quote and free consultation"
@@ -358,8 +358,8 @@
                     options: [
                         { id: 'up-to-3m', label: { he: 'עד 3 מטר', ru: 'До 3 метров', en: 'Up to 3m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="8" height="6" rx="1"/><path d="M4 9v6M6 9v3M8 9v6"/><path d="M10 12h10" stroke-dasharray="2 2"/></svg>' },
                         { id: '3-5m', label: { he: '3 - 5 מטר', ru: '3 - 5 метров', en: '3 - 5m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="12" height="6" rx="1"/><path d="M4 9v6M7 9v3M10 9v6M13 9v3"/><path d="M14 12h7" stroke-dasharray="2 2"/></svg>' },
-                        { id: '5-8m', label: { he: '5 - 8 מטר', ru: '5 - 8 метров', en: '5 - 8m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="16" height="6" rx="1"/><path d="M4 9v6M7 9v3M10 9v6M13 9v3M16 9v6"/><path d="M18 12h3" stroke-dasharray="2 2"/></svg>' },
-                        { id: 'over-8m', label: { he: 'מעל 8 מטר', ru: 'Более 8 метров', en: 'Over 8m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="20" height="6" rx="1"/><path d="M4 9v6M7 9v3M10 9v6M13 9v3M16 9v6M19 9v3"/></svg>' },
+                        { id: '5-10m', label: { he: '5 - 10 מטר', ru: '5 - 10 метров', en: '5 - 10m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="16" height="6" rx="1"/><path d="M4 9v6M7 9v3M10 9v6M13 9v3M16 9v6"/><path d="M18 12h3" stroke-dasharray="2 2"/></svg>' },
+                        { id: 'over-10m', label: { he: 'מעל 10 מטר', ru: 'Более 10 метров', en: 'Over 10m' }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="9" width="20" height="6" rx="1"/><path d="M4 9v6M7 9v3M10 9v6M13 9v3M16 9v6M19 9v3"/></svg>' },
                         { id: 'dont-know', label: { he: 'לא יודע / צריך מדידה', ru: 'Не знаю / нужен замер', en: "Need measurement" }, icon: '<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>' },
                     ],
                 },
@@ -597,13 +597,17 @@
         }
 
         /* ━━━ SUBMIT ━━━ */
-        function submitQuiz() {
+        async function submitQuiz() {
             const name = $('#inputName').value.trim();
             const phone = $('#inputPhone').value.trim();
             if (!name || !phone) { $('#formError')?.classList.remove('hidden'); return; }
 
+            const btnNext = $('#btnNext');
+            const originalText = btnNext.textContent;
+            btnNext.disabled = true;
+            btnNext.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...</span>';
+
             // Build human-readable summary
-            const labels = { he: {}, ru: {}, en: {} };
             const summaryParts = [];
             const stepTitles = [
                 { he: 'צורת מטבח', ru: 'Форма кухни', en: 'Kitchen shape' },
@@ -618,7 +622,7 @@
                 const stepData = T.steps[i];
                 const chosen = stepData.options.find(o => o.id === answers[i]);
                 if (chosen) {
-                    summaryParts.push(`*${txt(stepTitles[i])}:* ${txt(chosen.label)}`);
+                    summaryParts.push(`• *${txt(stepTitles[i])}:* ${txt(chosen.label)}`);
                 }
             }
 
@@ -628,19 +632,43 @@
 
             const message = [
                 `🏠 *Elite Design – Kitchen Quiz*`,
-                `👤 *${name}*`,
-                `📞 ${phone}`,
                 ``,
+                `👤 *Name:* ${name}`,
+                `📞 *Phone:* ${phone}`,
+                ``,
+                `🏗️ *Project Details:*`,
                 ...summaryParts,
                 ``,
                 giftLine,
             ].join('\n');
 
-            // REPLACE THIS NUMBER WITH YOUR WHATSAPP NUMBER
-            const whatsappNumber = '972086711767';
-            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-            showGiftReveal();
+            const botToken = '7840966634:AAGb94rcHU7WxW9BWBRIwtbh7b48GvYbSgU';
+            const chatId = '1492940504';
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'Markdown',
+                    }),
+                });
+
+                if (response.ok) {
+                    showGiftReveal();
+                } else {
+                    throw new Error('Telegram API error');
+                }
+            } catch (error) {
+                console.error('Error submitting quiz:', error);
+                alert(currentLang === 'he' ? 'שגיאה בשליחת הטופס. נסה שוב.' :
+                    currentLang === 'ru' ? 'Ошибка при отправке. Пожалуйста, попробуйте еще раз.' :
+                        'Error submitting form. Please try again.');
+                btnNext.disabled = false;
+                btnNext.textContent = originalText;
+            }
         }
 
         /* ━━━ GIFT REVEAL SCREEN ━━━ */
