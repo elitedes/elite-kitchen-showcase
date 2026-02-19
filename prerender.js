@@ -142,10 +142,19 @@ const blogSlugs = [
     'guest-room-sliding-closet',
 ];
 
-const routes = [
+const hebrewRoutes = [
     ...staticRoutes,
     ...kitchenCategories.map(c => `/kitchens/${c}`),
     ...blogSlugs.map(s => `/blog/${s}`),
+];
+
+// Generate /en and /ru prefixed versions of all routes
+const languagePrefixes = ['/en', '/ru'];
+const routes = [
+    ...hebrewRoutes,
+    ...languagePrefixes.flatMap(prefix =>
+        hebrewRoutes.map(route => route === '/' ? prefix : `${prefix}${route}`)
+    ),
 ];
 
 // ─── Main ──────────────────────────────────────────────────────

@@ -112,17 +112,49 @@ function discoverRoutes() {
     return routes;
 }
 
-// ─── Generate XML ──────────────────────────────────────────────
+// ─── Generate XML with hreflang ────────────────────────────────
 function generateSitemapXml(routes) {
-    const urls = routes.map(route => `  <url>
-    <loc>${DOMAIN}${route}</loc>
+    // For each base route, generate URL entries for all 3 languages with hreflang links
+    const urls = routes.map(route => {
+        const hePath = route === '/' ? '' : route;
+        const ruPath = route === '/' ? '/ru' : `/ru${route}`;
+        const enPath = route === '/' ? '/en' : `/en${route}`;
+
+        return `  <url>
+    <loc>${DOMAIN}${hePath || '/'}</loc>
     <lastmod>${TODAY}</lastmod>
     <changefreq>${getChangefreq(route)}</changefreq>
     <priority>${getPriority(route)}</priority>
-  </url>`);
+    <xhtml:link rel="alternate" hreflang="he" href="${DOMAIN}${hePath || '/'}" />
+    <xhtml:link rel="alternate" hreflang="ru" href="${DOMAIN}${ruPath}" />
+    <xhtml:link rel="alternate" hreflang="en" href="${DOMAIN}${enPath}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${hePath || '/'}" />
+  </url>
+  <url>
+    <loc>${DOMAIN}${ruPath}</loc>
+    <lastmod>${TODAY}</lastmod>
+    <changefreq>${getChangefreq(route)}</changefreq>
+    <priority>${getPriority(route)}</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="${DOMAIN}${hePath || '/'}" />
+    <xhtml:link rel="alternate" hreflang="ru" href="${DOMAIN}${ruPath}" />
+    <xhtml:link rel="alternate" hreflang="en" href="${DOMAIN}${enPath}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${hePath || '/'}" />
+  </url>
+  <url>
+    <loc>${DOMAIN}${enPath}</loc>
+    <lastmod>${TODAY}</lastmod>
+    <changefreq>${getChangefreq(route)}</changefreq>
+    <priority>${getPriority(route)}</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="${DOMAIN}${hePath || '/'}" />
+    <xhtml:link rel="alternate" hreflang="ru" href="${DOMAIN}${ruPath}" />
+    <xhtml:link rel="alternate" hreflang="en" href="${DOMAIN}${enPath}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${hePath || '/'}" />
+  </url>`;
+    });
 
     return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls.join('\n')}
 </urlset>
 `;

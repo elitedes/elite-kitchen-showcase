@@ -23,9 +23,10 @@ const SEO = ({
 }: SEOProps) => {
     const { language, getLocalizedPath } = useLanguage();
 
-    // Ensure canonical is relative for processing
-    const relativePath = canonical.replace(DOMAIN, '').replace(/^\/(ru|en)(\/|$)/, '/');
-    const fullCanonical = `${DOMAIN}${getLocalizedPath(relativePath)}`;
+    // Strip any existing language prefix to get the base path, then re-apply current language
+    const basePath = canonical.replace(DOMAIN, '').replace(/^\/(ru|en)(\/|$)/, '/');
+    const relativePath = basePath; // keep for hreflang generation
+    const fullCanonical = `${DOMAIN}${getLocalizedPath(basePath)}`;
     const fullImage = image.startsWith('http') ? image : `${DOMAIN}${image}`;
 
     // Hreflang URLs
