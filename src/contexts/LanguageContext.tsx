@@ -40,6 +40,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.showroom': 'אולם תצוגה',
     'nav.contact': 'צרו קשר',
     'nav.quiz': 'התאמת מטבח',
+    'nav.polymer_doors': 'דלתות פנים פולימר',
 
     // Hero
     'hero.title': 'Elite Design',
@@ -250,6 +251,9 @@ const translations: Record<Language, Record<string, string>> = {
     'closets.cta.desc': 'השאירו פרטים לייעוץ — אנו נעזור לכם לבחור את סוג הארון המתאים ביותר ונפתח פתרון שישתלב בצורה מושלמת בחלל שלכם.',
     'closets.seo.title': 'ארונות בהתאמה אישית, ארון הזזה, ארון ציר, ארון מובנה, רהיטים בהתאמה אישית, ארון למסדרון, ארון לחדר שינה, ארון לסלון.',
 
+    'seo.polymer_doors.title': 'דלתות פנים פולימר 100% | דלתות עמידות למים לאמבטיה - Elite Design',
+    'seo.polymer_doors.desc': 'מחפשים דלת פנים עמידה למים לחדר רחצה? דלתות פנים פולימר מלא 100% עם משקוף WPC להגנה מפני נזקי מים, טריקה שקטה וגימור שלייפלק יוקרתי.',
+
     'contact.error': 'לא ניתן לשלוח את ההודעה. אנא צור קשר ישירות.',
     'page.notfound.title': '404 - דף לא נמצא',
     'page.notfound.desc': 'אופס! הדף שחיפשת לא קיים.',
@@ -333,6 +337,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.showroom': 'Шоурум',
     'nav.contact': 'Контакты',
     'nav.quiz': 'Подбор кухни',
+    'nav.polymer_doors': 'Полимерные двери',
 
     // Hero
     'hero.title': 'Elite Design',
@@ -544,6 +549,9 @@ const translations: Record<Language, Record<string, string>> = {
     'closets.cta.desc': 'Оставьте заявку на консультацию — мы поможем подобрать оптимальный тип шкафа и разработаем решение, которое идеально впишется в ваше пространство.',
     'closets.seo.title': 'Шкафы на заказ, шкаф-купе, распашной шкаф, встроенный шкаф, мебель на заказ, шкаф в прихожую, шкаф в спальню, шкаф в гостиную.',
 
+    'seo.polymer_doors.title': 'Межкомнатные Полимерные Двери 100% | Водонепроницаемые Двери - Elite Design',
+    'seo.polymer_doors.desc': 'Ищете водонепроницаемую межкомнатную дверь для ванной комнаты? Двери из 100% цельного полимера с коробкой WPC для защиты от воды, тихим закрыванием и роскошной отделкой.',
+
     'contact.error': 'Не удалось отправить сообщение. Пожалуйста, свяжитесь с нами напрямую.',
     'page.notfound.title': '404 - Страница не найдена',
     'page.notfound.desc': 'Ой! Страница, которую вы ищете, не существует.',
@@ -627,6 +635,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.showroom': 'Showroom',
     'nav.contact': 'Contact Us',
     'nav.quiz': 'Kitchen Selector',
+    'nav.polymer_doors': 'Polymer Doors',
 
     // Hero
     'hero.title': 'Elite Design',
@@ -778,6 +787,9 @@ const translations: Record<Language, Record<string, string>> = {
     'closets.hinged.pros.1': 'quiet and smooth opening',
     'closets.hinged.pros.2': 'maximum useful internal volume',
     'closets.hinged.pros.3': 'facades are in the same plane',
+
+    'seo.polymer_doors.title': '100% Solid Polymer Interior Doors | Waterproof Bathroom Doors - Elite Design',
+    'seo.polymer_doors.desc': 'Looking for a waterproof interior door for your bathroom? 100% solid polymer interior doors with WPC frame for protection against water damage, silent closing, and luxury finish.',
 
     // Installation Page
     'install.steps.title': 'Preparation Checklist',

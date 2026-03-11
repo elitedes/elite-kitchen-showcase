@@ -25,6 +25,7 @@ const Calculator = lazy(() => import("./pages/Calculator"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const QuizPage = lazy(() => import("@/pages/Quiz"));
+const PolymerDoors = lazy(() => import("./pages/PolymerDoors"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ const RoutesContent = () => (
     <Route path="/closets" element={<Closets />} />
     <Route path="/calculator" element={<Calculator />} />
     <Route path="/quiz-selection" element={<QuizPage />} />
+    <Route path="/polymer-doors" element={<PolymerDoors />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );

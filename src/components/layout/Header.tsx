@@ -46,6 +46,7 @@ const Header = () => {
   const navItems = [
     { key: 'nav.about', path: '/about' },
     { key: 'nav.closets', path: '/closets' },
+    { key: 'nav.polymer_doors', path: '/polymer-doors' },
     { key: 'nav.kitchens', path: '/kitchens', hasDropdown: true },
     { key: 'nav.promotions', path: '/promotions' },
     { key: 'nav.magazine', path: '/blog' },

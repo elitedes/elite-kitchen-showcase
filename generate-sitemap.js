@@ -36,6 +36,7 @@ const PAGE_ROUTE_MAP = {
     'Closets': '/closets',
     'Calculator': '/calculator',
     'QuizPage': '/quiz-selection',
+    'PolymerDoors': '/polymer-doors',
 };
 
 // ─── Dynamic routes ────────────────────────────────────────────

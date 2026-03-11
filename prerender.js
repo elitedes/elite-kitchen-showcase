@@ -125,6 +125,7 @@ const staticRoutes = [
     '/closets',
     '/calculator',
     '/quiz-selection',
+    '/polymer-doors',
 ];
 
 const kitchenCategories = ['modern', 'country', 'formica', 'wood', 'nano', 'acrylic'];
