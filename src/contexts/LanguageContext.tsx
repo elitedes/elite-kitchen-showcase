@@ -901,8 +901,8 @@ const getInitialLanguage = (): Language => {
 
   // Prioritize URL prefix for language detection
   const path = window.location.pathname;
-  if (path.startsWith('/ru/')) return 'ru';
-  if (path.startsWith('/en/')) return 'en';
+  if (path === '/ru' || path.startsWith('/ru/')) return 'ru';
+  if (path === '/en' || path.startsWith('/en/')) return 'en';
 
   // Check localStorage for user's manual language choice
   try {
@@ -933,9 +933,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => {
     const handlePopState = () => {
       const path = window.location.pathname;
-      if (path.startsWith('/ru/')) {
+      if (path === '/ru' || path.startsWith('/ru/')) {
         setLanguageState('ru');
-      } else if (path.startsWith('/en/')) {
+      } else if (path === '/en' || path.startsWith('/en/')) {
         setLanguageState('en');
       } else {
         setLanguageState('he');

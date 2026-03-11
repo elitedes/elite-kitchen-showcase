@@ -183,6 +183,8 @@ async function prerender() {
 
     for (const route of routes) {
         try {
+            // Update location polyfill so LanguageContext reads the correct language from URL
+            globalThis.location = { pathname: route, search: '', hash: '', href: `http://localhost${route}` };
             const appHtml = render(route);
 
             // Primary: replace <!--app-html--> placeholder
