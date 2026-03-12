@@ -4,6 +4,7 @@ import Footer from './Footer';
 import FloatingCTA from './FloatingCTA';
 import WhatsAppButton from './WhatsAppButton';
 import ScrollTopButton from './ScrollTopButton';
+import CookieConsent from '../common/CookieConsent';
 import StructuredData from '@/components/StructuredData';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -30,6 +31,7 @@ const Layout = ({ children }: LayoutProps) => {
       <FloatingCTA />
       <WhatsAppButton />
       <ScrollTopButton />
+      <CookieConsent />
       <Footer />
     </div>
   );
