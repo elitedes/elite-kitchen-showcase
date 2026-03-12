@@ -59,6 +59,8 @@ const RoutesContent = () => (
     <Route path="/calculator" element={<Calculator />} />
     <Route path="/quiz-selection" element={<QuizPage />} />
     <Route path="/polymer-doors" element={<PolymerDoors />} />
+    <Route path="/privacy" element={<PrivacyPolicy />} />
+    <Route path="/accessibility" element={<Accessibility />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );
