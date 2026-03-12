@@ -132,9 +132,9 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row items-center gap-4 text-cream/50 text-sm">
               <p>© {new Date().getFullYear()} Elite Design kitchens & more. {t('footer.rights')}.</p>
               <div className="flex items-center gap-4">
-                <Link to="/contact" className="hover:text-accent transition-colors">{t('footer.accessibility')}</Link>
+                <Link to="/accessibility" className="hover:text-accent transition-colors">{t('footer.accessibility')}</Link>
                 <span className="opacity-20">|</span>
-                <Link to="/contact" className="hover:text-accent transition-colors">{t('footer.privacy')}</Link>
+                <Link to="/privacy" className="hover:text-accent transition-colors">{t('footer.privacy')}</Link>
               </div>
             </div>
             <div className="flex items-center gap-4">

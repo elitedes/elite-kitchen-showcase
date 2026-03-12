@@ -26,6 +26,8 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const QuizPage = lazy(() => import("@/pages/Quiz"));
 const PolymerDoors = lazy(() => import("./pages/PolymerDoors"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const Accessibility = lazy(() => import("./pages/Accessibility"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
