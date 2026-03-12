@@ -14,7 +14,9 @@ const Footer = () => {
     { key: 'nav.projects', path: '/projects' },
     { key: 'nav.magazine', path: '/blog' },
     { key: 'nav.promotions', path: '/promotions' },
+    { key: 'nav.polymer_doors', path: '/polymer-doors' },
     { key: 'nav.installation', path: '/installation' },
+
     { key: 'nav.calculator', path: '/calculator' },
     { key: 'nav.contact', path: '/contact' },
   ];

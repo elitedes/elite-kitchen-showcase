@@ -36,11 +36,11 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.projects': 'פרויקטים',
     'nav.promotions': 'מבצעים',
     'nav.installation': 'הכנה להתקנת מטבח',
+    'nav.polymer_doors': 'דלתות פולימר',
     'nav.magazine': 'בלוג',
     'nav.showroom': 'אולם תצוגה',
     'nav.contact': 'צרו קשר',
     'nav.quiz': 'התאמת מטבח',
-    'nav.polymer_doors': 'דלתות פנים פולימר',
 
     // Hero
     'hero.title': 'Elite Design',
@@ -333,11 +333,11 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.projects': 'Проекты',
     'nav.promotions': 'Акции',
     'nav.installation': 'Подготовка к установке',
+    'nav.polymer_doors': 'Полимерные двери',
     'nav.magazine': 'Блог',
     'nav.showroom': 'Шоурум',
     'nav.contact': 'Контакты',
     'nav.quiz': 'Подбор кухни',
-    'nav.polymer_doors': 'Полимерные двери',
 
     // Hero
     'hero.title': 'Elite Design',
@@ -631,11 +631,11 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.projects': 'Projects',
     'nav.promotions': 'Promotions',
     'nav.installation': 'Preparation for Installation',
+    'nav.polymer_doors': 'Polymer Doors',
     'nav.magazine': 'Blog',
     'nav.showroom': 'Showroom',
     'nav.contact': 'Contact Us',
     'nav.quiz': 'Kitchen Selector',
-    'nav.polymer_doors': 'Polymer Doors',
 
     // Hero
     'hero.title': 'Elite Design',
