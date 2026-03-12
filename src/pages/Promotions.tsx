@@ -1,5 +1,6 @@
-// Triggering update to ensure dev server picks up changes
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import SEO from '@/components/SEO';
 import Breadcrumbs from '@/components/common/Breadcrumbs';
@@ -34,6 +35,118 @@ interface Promotion {
 
 const Promotions = () => {
   const { t, language, dir } = useLanguage();
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+
+  const termsText = {
+    he: {
+      btn: "תנאי המבצע",
+      disclaimer: "*המחיר תקף בתנאים מסוימים. לפרטים נוספים:",
+      title: "תנאי המבצע",
+      content: `המחירים המצוינים בקטגוריית המבצעים תקפים בכפוף לתנאים הבאים:
+
+הכללת דגמים: המבצע חל אך ורק על דגמי מטבחים, חומרים, מידות וצבעים המשתתפים במבצע.
+
+המחשה בלבד: התמונות המופיעות באתר נועדו להמחשה בלבד ואינן בהכרח משקפות את המפרט המדויק של המטבח המוצע במסגרת המבצע.
+
+משלוח: המחירים המצוינים אינם כוללים דמי משלוח.
+
+תנאי תשלום: המחיר תקף לתשלום בהעברה בנקאית או בהמחאה בנקאית. בהתאם לתנאי חברת האשראי ומספר התשלומים, עשויה לחול תוספת מחיר בגין עמלות סליקה במקרה של תשלום בכרטיס אשראי או פריסה לתשלומים.
+
+מפרט כלול: מחיר המבצע כולל ארונות מטבח תחתונים ועליונים באורך הכולל המצוין בתיאור המבצע.
+
+מרכיבים שאינם כלולים:
+• שיש / משטח עבודה.
+• כיור.
+• ברז.
+• מוצרי חשמל.
+• אביזרים נלווים ואלמנטים נוספים.
+• פירוק ופינוי מטבח ישן, וכן עבודות בנייה או הכנה נוספות.
+
+זמן אספקה: זמן האספקה הינו עד 45 ימי עבודה, אלא אם סוכם אחרת מראש וצוין בהסכם.
+
+קביעת מחיר סופי: העלות הסופית של הפרויקט תיקבע רק לאחר ביצוע מדידה של החלל ואישור סופי של עיצוב המטבח.
+
+שינויים ועדכונים: החברה שומרת לעצמה את הזכות המלאה לשנות, לעדכן או לבטל את תנאי המבצע בכל עת וללא הודעה מוקדמת.
+
+תוקף המבצע: המבצע בתוקף עד סוף החודש הקרוב או עד גמר המלאי (המוקדם מביניהם).`
+    },
+    ru: {
+      btn: "Условия акции",
+      disclaimer: "*Цена действует при определённых условиях. Подробности:",
+      title: "Условия акции",
+      content: `Цены, указанные в разделе акций, действуют при соблюдении следующих условий:
+
+Акция распространяется только на определённые модели кухонь, материалы, размеры и цвета, участвующие в акции.
+
+Фотографии на сайте представлены исключительно в иллюстративных целях и могут не соответствовать точной комплектации кухни, предлагаемой в рамках акции.
+
+Указанные цены не включают стоимость доставки.
+
+Цена действительна при оплате банковским переводом или банковским чеком.
+
+При оплате кредитной картой или в рассрочку стоимость может увеличиваться в соответствии с условиями платежной системы и количеством платежей.
+
+Цена акции включает нижние и верхние кухонные шкафы общей длиной, указанной в описании предложения.
+
+В стоимость не входит столешница (шайш / countertop).
+
+В стоимость также не входят:
+• мойка
+• смеситель
+• бытовая техника
+• электротовары
+• аксессуары и дополнительные элементы
+
+Цена не включает демонтаж и вывоз старой кухни, а также дополнительные строительные или подготовительные работы.
+
+Срок поставки составляет до 45 рабочих дней, если иное не согласовано заранее и не указано в договоре.
+
+Окончательная стоимость проекта определяется после замера помещения и утверждения дизайна кухни.
+
+Компания оставляет за собой право изменять условия акции или прекращать её действие без предварительного уведомления.
+
+Акция действует до окончания текущего месяца или до окончания складских запасов.`
+    },
+    en: {
+      btn: "Terms and Conditions",
+      disclaimer: "*Price is valid under certain conditions. Details:",
+      title: "Terms and Conditions",
+      content: `The prices indicated in the promotions section are valid subject to the following conditions:
+
+The promotion applies only to specific kitchen models, materials, sizes, and colors participating in the promotion.
+
+Photos on the website are for illustrative purposes only and may not match the exact specifications of the kitchen offered in the promotion.
+
+The indicated prices do not include delivery costs.
+
+The price is valid for payment by bank transfer or bank check.
+
+When paying by credit card or in installments, the cost may increase in accordance with the terms of the payment system and the number of payments.
+
+The promotion price includes lower and upper kitchen cabinets for the total length specified in the offer description.
+
+The price does not include the worktop (countertop).
+
+The price also does not include:
+• sink
+• faucet
+• household appliances
+• electrical goods
+• accessories and additional elements
+
+The price does not include dismantling and removal of the old kitchen, as well as additional construction or preparatory work.
+
+Delivery time is up to 45 working days, unless otherwise agreed in advance and specified in the contract.
+
+The final cost of the project is determined after measuring the room and approving the kitchen design.
+
+The company reserves the right to change the terms of the promotion or terminate it without prior notice.
+
+The promotion is valid until the end of the current month or until out of stock.`
+    }
+  };
+
+  const currentTerms = termsText[language as keyof typeof termsText] || termsText.en;
 
   const promotions: Promotion[] = language === 'he' ? [
     {
@@ -340,7 +453,18 @@ const Promotions = () => {
                     <div className="flex items-baseline justify-center gap-2" style={{ minHeight: '60px' }}>
                       <p className="text-3xl font-extrabold text-primary">{promo.price}</p>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-4 text-center min-h-[30px] flex items-center justify-center" style={{ lineHeight: '1.4' }}>{promo.priceNote}</p>
+                    <div className="flex flex-col items-center justify-center mb-4 min-h-[50px] gap-1">
+                      <p className="text-xs text-muted-foreground text-center" style={{ lineHeight: '1.4' }}>{promo.priceNote}</p>
+                      <p className="text-[10px] text-muted-foreground/80 text-center flex items-center justify-center flex-wrap gap-1">
+                        <span>{currentTerms.disclaimer}</span>
+                        <button 
+                          onClick={() => setIsTermsOpen(true)} 
+                          className="text-primary hover:underline font-bold bg-transparent border-none p-0 cursor-pointer inline"
+                        >
+                          {currentTerms.btn}
+                        </button>
+                      </p>
+                    </div>
 
                     {/* Specs Grid - Flexible on mobile, strict on desktop */}
                     <div className="text-sm">
@@ -396,6 +520,51 @@ const Promotions = () => {
       </div>
 
       <ContactSection />
+
+      {/* Terms and Conditions Modal */}
+      <AnimatePresence>
+        {isTermsOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsTermsOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden"
+              dir={dir}
+            >
+              <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gray-50/50">
+                <h3 className="text-2xl font-bold text-foreground">{currentTerms.title}</h3>
+                <button
+                  onClick={() => setIsTermsOpen(false)}
+                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="p-6 overflow-y-auto custom-scrollbar">
+                <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap leading-relaxed">
+                  {currentTerms.content}
+                </div>
+              </div>
+              <div className="p-4 border-t border-gray-100 bg-gray-50/50 flex justify-end">
+                 <button
+                   onClick={() => setIsTermsOpen(false)}
+                   className="px-6 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition-colors"
+                 >
+                   {language === 'he' ? 'סגור' : language === 'ru' ? 'Закрыть' : 'Close'}
+                 </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Layout>
   );
 };
