@@ -42,107 +42,70 @@ const Promotions = () => {
       btn: "תנאי המבצע",
       disclaimer: "*המחיר תקף בתנאים מסוימים. לפרטים נוספים:",
       title: "תנאי המבצע",
-      content: `המחירים המצוינים בקטגוריית המבצעים תקפים בכפוף לתנאים הבאים:
-
-הכללת דגמים: המבצע חל אך ורק על דגמי מטבחים, חומרים, מידות וצבעים המשתתפים במבצע.
-
-המחשה בלבד: התמונות המופיעות באתר נועדו להמחשה בלבד ואינן בהכרח משקפות את המפרט המדויק של המטבח המוצע במסגרת המבצע.
-
-משלוח: המחירים המצוינים אינם כוללים דמי משלוח.
-
-תנאי תשלום: המחיר תקף לתשלום בהעברה בנקאית או בהמחאה בנקאית. בהתאם לתנאי חברת האשראי ומספר התשלומים, עשויה לחול תוספת מחיר בגין עמלות סליקה במקרה של תשלום בכרטיס אשראי או פריסה לתשלומים.
-
-מפרט כלול: מחיר המבצע כולל ארונות מטבח תחתונים ועליונים באורך הכולל המצוין בתיאור המבצע.
-
-מרכיבים שאינם כלולים:
-• שיש / משטח עבודה.
-• כיור.
-• ברז.
-• מוצרי חשמל.
-• אביזרים נלווים ואלמנטים נוספים.
-• פירוק ופינוי מטבח ישן, וכן עבודות בנייה או הכנה נוספות.
-
-זמן אספקה: זמן האספקה הינו עד 45 ימי עבודה, אלא אם סוכם אחרת מראש וצוין בהסכם.
-
-קביעת מחיר סופי: העלות הסופית של הפרויקט תיקבע רק לאחר ביצוע מדידה של החלל ואישור סופי של עיצוב המטבח.
-
-שינויים ועדכונים: החברה שומרת לעצמה את הזכות המלאה לשנות, לעדכן או לבטל את תנאי המבצע בכל עת וללא הודעה מוקדמת.
-
-תוקף המבצע: המבצע בתוקף עד סוף החודש הקרוב או עד גמר המלאי (המוקדם מביניהם).`
+      content: `1. המבצע חל אך ורק על דגמי המטבחים, החומרים, הגדלים והצבעים המצוינים במסגרת המבצע.
+2. התמונות באתר הן לצורכי המחשה בלבד ועלולות שלא לשקף את הרכיבים המדויקים של המטבח במסגרת המבצע.
+3. המחירים המצוינים אינם כוללים את עלות המשלוח.
+4. המחיר בתוקף בעת תשלום באמצעות העברה בנקאית או צ'ק בנקאי.
+5. בעת תשלום בכרטיס אשראי או בתשלומים, המחיר עשוי להיות גבוה בהתאם לתנאי מערכת התשלומים ומספר התשלומים.
+6. מחיר המבצע כולל את ארונות המטבח התחתונים והעליונים לאורך הכלול בתיאור ההצעה.
+7. המחיר אינו כולל משטח עבודה (שיש / countertop).
+8. המחיר אינו כולל גם:
+   • כיור
+   • ברז
+   • מכשירי חשמל לבית
+   • מוצרי חשמל נוספים
+   • אביזרים ורכיבים נוספים
+9. המחיר אינו כולל פירוק והוצאת המטבח הישן, וכן עבודות בנייה או הכנה נוספות.
+10. זמן האספקה עד 45 ימי עבודה, אלא אם צוין אחרת בהסכמה מראש ובחוזה.
+11. המחיר הסופי של הפרויקט נקבע לאחר מדידת החלל ואישור עיצוב המטבח.
+12. החברה שומרת לעצמה את הזכות לשנות את תנאי המבצע או להפסיקו ללא הודעה מוקדמת.
+13. המבצע בתוקף עד סוף החודש הנוכחי או עד גמר המלאי.`
     },
     ru: {
       btn: "Условия акции",
       disclaimer: "*Цена действует при определённых условиях. Подробности:",
       title: "Условия акции",
-      content: `Цены, указанные в разделе акций, действуют при соблюдении следующих условий:
-
-Акция распространяется только на определённые модели кухонь, материалы, размеры и цвета, участвующие в акции.
-
-Фотографии на сайте представлены исключительно в иллюстративных целях и могут не соответствовать точной комплектации кухни, предлагаемой в рамках акции.
-
-Указанные цены не включают стоимость доставки.
-
-Цена действительна при оплате банковским переводом или банковским чеком.
-
-При оплате кредитной картой или в рассрочку стоимость может увеличиваться в соответствии с условиями платежной системы и количеством платежей.
-
-Цена акции включает нижние и верхние кухонные шкафы общей длиной, указанной в описании предложения.
-
-В стоимость не входит столешница (шайш / countertop).
-
-В стоимость также не входят:
-• мойка
-• смеситель
-• бытовая техника
-• электротовары
-• аксессуары и дополнительные элементы
-
-Цена не включает демонтаж и вывоз старой кухни, а также дополнительные строительные или подготовительные работы.
-
-Срок поставки составляет до 45 рабочих дней, если иное не согласовано заранее и не указано в договоре.
-
-Окончательная стоимость проекта определяется после замера помещения и утверждения дизайна кухни.
-
-Компания оставляет за собой право изменять условия акции или прекращать её действие без предварительного уведомления.
-
-Акция действует до окончания текущего месяца или до окончания складских запасов.`
+      content: `1. Акция распространяется только на определённые модели кухонь, материалы, размеры и цвета, участвующие в акции.
+2. Фотографии на сайте представлены исключительно в иллюстративных целях и могут не соответствовать точной комплектации кухни, предлагаемой в рамках акции.
+3. Указанные цены не включают стоимость доставки.
+4. Цена действительна при оплате банковским переводом или банковским чеком.
+5. При оплате кредитной картой или в рассрочку стоимость может увеличиваться в соответствии с условиями платежной системы и количеством платежей.
+6. Цена акции включает нижние и верхние кухонные шкафы общей длиной, указанной в описании предложения.
+7. В стоимость не входит столешница (шайш / countertop).
+8. В стоимость также не входят:
+   • мойка
+   • смеситель
+   • бытовая техника
+   • электротовары
+   • аксессуары и дополнительные элементы
+9. Цена не включает демонтаж и вывоз старой кухни, а также дополнительные строительные или подготовительные работы.
+10. Срок поставки составляет до 45 рабочих дней, если иное не согласовано заранее и не указано в договоре.
+11. Окончательная стоимость проекта определяется после замера помещения и утверждения дизайна кухни.
+12. Компания оставляет за собой право изменять условия акции или прекращать её действие без предварительного уведомления.
+13. Акция действует до окончания текущего месяца или до окончания складских запасов.`
     },
     en: {
       btn: "Terms and Conditions",
       disclaimer: "*Price is valid under certain conditions. Details:",
       title: "Terms and Conditions",
-      content: `The prices indicated in the promotions section are valid subject to the following conditions:
-
-The promotion applies only to specific kitchen models, materials, sizes, and colors participating in the promotion.
-
-Photos on the website are for illustrative purposes only and may not match the exact specifications of the kitchen offered in the promotion.
-
-The indicated prices do not include delivery costs.
-
-The price is valid for payment by bank transfer or bank check.
-
-When paying by credit card or in installments, the cost may increase in accordance with the terms of the payment system and the number of payments.
-
-The promotion price includes lower and upper kitchen cabinets for the total length specified in the offer description.
-
-The price does not include the worktop (countertop).
-
-The price also does not include:
-• sink
-• faucet
-• household appliances
-• electrical goods
-• accessories and additional elements
-
-The price does not include dismantling and removal of the old kitchen, as well as additional construction or preparatory work.
-
-Delivery time is up to 45 working days, unless otherwise agreed in advance and specified in the contract.
-
-The final cost of the project is determined after measuring the room and approving the kitchen design.
-
-The company reserves the right to change the terms of the promotion or terminate it without prior notice.
-
-The promotion is valid until the end of the current month or until out of stock.`
+      content: `1. The promotion applies only to specific kitchen models, materials, sizes, and colors participating in the promotion.
+2. Photos on the website are for illustrative purposes only and may not match the exact specifications of the kitchen offered in the promotion.
+3. The indicated prices do not include delivery costs.
+4. The price is valid for payment by bank transfer or bank check.
+5. When paying by credit card or in installments, the cost may increase in accordance with the terms of the payment system and the number of payments.
+6. The promotion price includes lower and upper kitchen cabinets for the total length specified in the offer description.
+7. The price does not include the worktop (countertop).
+8. The price also does not include:
+   • sink
+   • faucet
+   • household appliances
+   • electrical goods
+   • accessories and additional elements
+9. The price does not include dismantling and removal of the old kitchen, as well as additional construction or preparatory work.
+10. Delivery time is up to 45 working days, unless otherwise agreed in advance and specified in the contract.
+11. The final cost of the project is determined after measuring the room and approving the kitchen design.
+12. The company reserves the right to change the terms of the promotion or terminate it without prior notice.
+13. The promotion is valid until the end of the current month or until out of stock.`
     }
   };
 
