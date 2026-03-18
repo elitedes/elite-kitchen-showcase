@@ -871,27 +871,32 @@ export const blogPosts: BlogPost[] = [
         </ul>
         
         <div class="my-8">
-            <img src="/assets/closets/hallway-small.png" alt="ארון כניסה" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/assets/closets/hallway-closet-modern.png" alt="ארון כניסה" class="rounded-xl shadow-lg w-full h-auto object-cover" />
         </div>
       `,
             ru: `
-        <p class="lead">Прихожая — это место первого впечатления. Шкаф в прихожей должен быть мастером маскировки: красивым снаружи и "рабочей лошадкой" внутри.</p>
+        <p class="lead">Прихожая — это визитная карточка вашего дома и место, где формируется первое впечатление. Шкаф в прихожей должен сочетать в себе искусство маскировки беспорядка и безупречный стиль: быть элегантным снаружи и невероятно вместительным внутри.</p>
 
-        <h2>Что храним?</h2>
+        <h2>Организация пространства: Что внутри?</h2>
+        <p>Ключ к идеальному порядку — это грамотное зонирование внутреннего пространства вашего шкафа:</p>
         <ul class="check-list">
-            <li><strong>Куртки и сумки:</strong> Высокие секции для повседневной одежды.</li>
-            <li><strong>Обувь:</strong> Выдвижные полки или наклонные стеллажи для часто используемой обуви.</li>
-            <li><strong>Мелочи:</strong> Ключи, почта, очки — в специальном ящике, чтобы не захламлять тумбу.</li>
+            <li><strong>Зона верхней одежды и сумок:</strong> Высокие, просторные секции с прочными штангами для повседневных курток, пальто и вместительных сумок.</li>
+            <li><strong>Хранение обуви:</strong> Глубокие выдвижные ящики с доводчиками или эргономичные наклонные полки обеспечат удобный доступ к часто используемой обуви и защитят её от пыли.</li>
+            <li><strong>Секция для важных мелочей:</strong> Выделите отдельный неглубокий ящик со встроенным органайзером для ключей, почты, солнцезащитных очков и перчаток. Забудьте о захламленных консолях!</li>
+            <li><strong>Антресоли:</strong> Верхние полки идеально подойдут для сезонного хранения, дорожных сумок и чемоданов.</li>
         </ul>
 
-        <h2>Дизайнерские трюки</h2>
+        <h2>Дизайнерские решения и актуальные тренды</h2>
+        <p>Как сделать прихожую не только функциональной, но и визуально привлекательной?</p>
         <ul>
-            <li><strong>Зеркала:</strong> Зеркальная дверь обязательна — проверить вид перед выходом и визуально расширить узкий коридор.</li>
-            <li><strong>Ниша для сидения:</strong> Горячий тренд — встроенная мягкая скамья внутри конструкции шкафа.</li>
+            <li><strong>Зеркальные фасады:</strong> Интеграция больших зеркал — двойная польза. Они позволяют оценить свой образ перед выходом и визуально расширяют границы часто узких коридоров, добавляя света.</li>
+            <li><strong>Встроенная ниша для сидения (Мягкая скамья):</strong> Абсолютный хит современного дизайна! Создайте уютную зону для переобувания прямо внутри мебельной композиции. Мягкая обивка, теплый свет и фактурное дерево сделают вашу прихожую роскошной.</li>
+            <li><strong>Скрытая подсветка:</strong> Светодиодные ленты внутри ниш и за профилями дверей не только облегчают поиск вещей, но и создают эффект «парящей» мебели.</li>
         </ul>
         
         <div class="my-8">
-            <img src="/assets/closets/hallway-small.png" alt="Шкаф в прихожую" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/assets/closets/hallway-closet-modern.png" alt="Современный шкаф в прихожую с нишей для сидения" class="rounded-xl shadow-lg w-full h-auto object-cover" />
+            <p class="text-sm text-gray-500 mt-2 text-center">Идеальное сочетание закрытого хранения, зеркальных поверхностей и уютной скамьи.</p>
         </div>
       `,
             en: `
@@ -911,7 +916,7 @@ export const blogPosts: BlogPost[] = [
         </ul>
         
         <div class="my-8">
-            <img src="/assets/closets/hallway-small.png" alt="Entryway Closet" class="rounded-xl shadow-lg w-full h-64 object-cover" />
+            <img src="/assets/closets/hallway-closet-modern.png" alt="Entryway Closet" class="rounded-xl shadow-lg w-full h-auto object-cover" />
         </div>
       `,
         },
@@ -919,7 +924,7 @@ export const blogPosts: BlogPost[] = [
         author: 'Elite Design Team',
         category: 'design',
         readTime: 3,
-        image: '/assets/closets/hallway-small.png',
+        image: '/assets/closets/hallway-closet-modern.png',
     },
     {
         id: '10',
@@ -989,5 +994,92 @@ export const blogPosts: BlogPost[] = [
         category: 'design',
         readTime: 3,
         image: '/assets/closets/sliding-new.png',
+    },
+    {
+        id: '11',
+        slug: 'polymer-doors-israel',
+        title: {
+            he: 'דלתות פנים פולימר (WPC): הסטנדרט החדש של ישראל',
+            ru: 'Полимерные внутренние двери в Израиле: Стандарт 100% водостойкости',
+            en: 'Polymer (WPC) Interior Doors in Israel: The New Waterproof Standard',
+        },
+        excerpt: {
+            he: 'למה דלתות פולימריות החליפו את העץ בישראל? כל מה שצריך לדעת על עמידות למים באמבטיה, שטיפת רצפות בראש שקט ובידוד אקוסטי ברמה מאסטר.',
+            ru: 'Почему полимерные двери заменили деревянные? Всё, что нужно знать о водонепроницаемости в ванной, спокойном мытье полов и отличной акустике.',
+            en: 'Why have polymer doors replaced wood in Israel? Everything you need to know about waterproof bathrooms, carefree floor washing, and master-level acoustic insulation.',
+        },
+        content: {
+            he: `
+        <p class="lead">לא משנה איזה סגנון עיצובי תבחרו לבית שלכם, כשזה מגיע לדלתות פנים בישראל - ישנו חוק אחד ברזל: הן חייבות להיות עמידות למים.</p>
+
+        <h2>למה דווקא ישראל? (סוד "הספונג'ה")</h2>
+        <p>תרבות הניקיון הישראלית, הכוללת שטיפת רצפות בהרבה מאוד מים (ספונג'ה), בשילוב עם העובדה שחדרי הרחצה שלנו לרוב קטנים יותר ומייצרים המון אדים ולחות - הפכה את דלתות העץ הישנות לבעייתיות במיוחד. דלת שמתנפחת בתחתית ומתקלפת היא מראה נפוץ. הפתרון? דלתות פולימריות מסוג WPC (Wood Plastic Composite).</p>
+        
+        <h2>היתרונות של דלתות הפולימר שלנו</h2>
+        <ul class="check-list">
+            <li><strong>100% עמידות למים:</strong> שלדות הדלת והמשקופים עשויים מתערובת חכמה של עץ ופלסטיק. גם אם תשפכו דלי מים ישר עליהן — הן לא יתנפחו ולא יירקבו לעולם.</li>
+            <li><strong>חסינות לטרמיטים ומזיקים:</strong> בניגוד לעץ, חרקים אינם נמשכים לפולימר.</li>
+            <li><strong>בידוד אקוסטי ותרמי:</strong> מילוי ייעודי, לרוב "פלקסבורד" (flexboard), בשילוב גומיות אטימה במשקופים, מבטיחים חדר שקט במיוחד.</li>
+            <li><strong>צירים סמויים, מנעול מגנטי:</strong> המילה האחרונה בטכנולוגיה - נעילה שקטה וחלקה לחלוטין.</li>
+        </ul>
+
+        <h2>עיצוב מינימליסטי ויוקרתי</h2>
+        <p>דלתות הפולימר כבר מזמן לא נראות כמו "פלסטיק". בזכות טכנולוגיית צביעה בתנור (אפוקסי) או חיפויי למינטו מתקדמים, הן בעלות טקסטורות עמוקות ואקסקלוסיביות. הצבעים הפופולריים כיום הם גימורי מאט בגווני לבן שלג, קרם, ושחור דרמטי, בשילוב חריטות רוחב או פאנלים ישרים למראה נקי.</p>
+        
+        <div class="my-8">
+            <img src="/blog/polymer-doors-guide.png" alt="דלת פולימר מודרנית" class="rounded-xl shadow-lg w-full h-auto object-cover" />
+            <p class="text-sm text-gray-500 mt-2 text-center">השילוב המושלם: דלת פולימר אטומה למים בעיצוב מודרני לבן ומינימליסטי</p>
+        </div>
+      `,
+            ru: `
+        <p class="lead">Независимо от того, какой стиль вы выберете для своего дома, когда дело доходит до межкомнатных дверей в Израиле, есть одно золотое правило: они должны быть водостойкими.</p>
+
+        <h2>Почему именно в Израиле? (Секрет «Спонжи» и влажности)</h2>
+        <p>Израильская культура уборки с обильным использованием воды («спонжа»), наряду с тем фактом, что мы часто открываем окна и наши ванные комнаты склонны собирать влагу и пар, делает старые деревянные двери крайне уязвимыми. Разбухшая внизу и облупившаяся дверь — знакомая многим картина. Решение? Полимерные двери из WPC (древесно-полимерного композита).</p>
+        
+        <h2>Преимущества наших полимерных дверей</h2>
+        <ul class="check-list">
+            <li><strong>100% защита от воды:</strong> Полотна и коробки изготовлены из уникальной смеси дерева и пластика. Даже если вылить на них ведро воды — они никогда не разбухнут и не сгниют.</li>
+            <li><strong>Защита от термитов и насекомых:</strong> В отличие от дерева, полимер вредителей не интересует.</li>
+            <li><strong>Акустическая и тепловая изоляция:</strong> Плотный качественный наполнитель (обычно «флексборд») в сочетании с резиновыми уплотнителями на коробке гарантируют тишину в вашей комнате.</li>
+            <li><strong>Скрытые петли и магнитный замок:</strong> Новейшие стандарты – абсолютно бесшумное и мягкое закрывание двери.</li>
+        </ul>
+
+        <h2>Минималистичный дизайн и Премиум отделка</h2>
+        <p>Полимерные двери давно перестали выглядеть как «дешевый пластик». Благодаря технологии запекания краски в печи (эпоксидная эмаль) или современным покрытиям, они обретают глубокие эксклюзивные текстуры. Сегодня в тренде матовые отделки снежно-белого, кремового и эффектного черного цветов без лишних деталей.</p>
+        
+        <div class="my-8">
+            <img src="/blog/polymer-doors-guide.png" alt="Современная полимерная дверь" class="rounded-xl shadow-lg w-full h-auto object-cover" />
+            <p class="text-sm text-gray-500 mt-2 text-center">Идеальное сочетание: водостойкая полимерная дверь в минималистичном дизайне</p>
+        </div>
+      `,
+            en: `
+        <p class="lead">No matter what design style you choose for your home, when it comes to interior doors in Israel, there is one golden rule: they must be water-resistant.</p>
+
+        <h2>Why Israel? (The "Sponga" secret)</h2>
+        <p>The Israeli cleaning culture, involving washing floors with plenty of water ("sponga"), combined with our steamy and sometimes small bathrooms, made old wooden doors historically problematic. A door swelling at the bottom and peeling is a common sight. The solution? WPC (Wood Plastic Composite) polymer doors.</p>
+        
+        <h2>The Advantages of Our Polymer Doors</h2>
+        <ul class="check-list">
+            <li><strong>100% Water Resistant:</strong> The door skeletons and frames are made from a clever mix of wood and plastic. Even with a bucket of water poured on them — they will never swell or rot.</li>
+            <li><strong>Termite and Pest Proof:</strong> Unlike wood, insects are not attracted to polymer whatsoever.</li>
+            <li><strong>Acoustic & Thermal Insulation:</strong> Dedicated filling, often "flexboard", combined with rubber seals on the frames, guarantees an exceptionally quiet room.</li>
+            <li><strong>Hidden Hinges & Magnetic Locks:</strong> The latest in door technology providing a completely silent and smooth locking mechanism.</li>
+        </ul>
+
+        <h2>Minimalist and Luxurious Design</h2>
+        <p>Polymer doors no longer look like "plastic". Thanks to oven-baked painting technology (epoxy) or advanced laminate finishes, they have deep and exclusive textures. Popular trends today are smooth matte finishes in snow-white, cream, and dramatic black, featuring clean lines and flush panels.</p>
+        
+        <div class="my-8">
+            <img src="/blog/polymer-doors-guide.png" alt="Modern Polymer Door" class="rounded-xl shadow-lg w-full h-auto object-cover" />
+            <p class="text-sm text-gray-500 mt-2 text-center">The perfect combination: waterproof polymer door in a modern and minimalist white design</p>
+        </div>
+      `,
+        },
+        date: '2024-03-20',
+        author: 'Elite Design Team',
+        category: 'design',
+        readTime: 5,
+        image: '/blog/polymer-doors-guide.png',
     },
 ];

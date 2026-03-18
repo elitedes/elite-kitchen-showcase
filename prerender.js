@@ -126,6 +126,8 @@ const staticRoutes = [
     '/calculator',
     '/quiz-selection',
     '/polymer-doors',
+    '/privacy',
+    '/accessibility',
 ];
 
 const kitchenCategories = ['modern', 'country', 'formica', 'wood', 'nano', 'acrylic'];
@@ -141,6 +143,7 @@ const blogSlugs = [
     'bedroom-closet-guide',
     'hallway-closet-guide',
     'guest-room-sliding-closet',
+    'polymer-doors-israel',
 ];
 
 const hebrewRoutes = [

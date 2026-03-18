@@ -25,14 +25,16 @@ const SEO = ({
 
     // Strip any existing language prefix to get the base path, then re-apply current language
     const basePath = canonical.replace(DOMAIN, '').replace(/^\/(ru|en)(\/|$)/, '/');
-    const relativePath = basePath; // keep for hreflang generation
-    const fullCanonical = `${DOMAIN}${getLocalizedPath(basePath)}`;
+    // Ensure trailing slash for all paths (matches Vercel trailingSlash: true)
+    const normalizedPath = basePath.endsWith('/') ? basePath : `${basePath}/`;
+    const localizedPath = getLocalizedPath(basePath);
+    const fullCanonical = `${DOMAIN}${localizedPath.endsWith('/') ? localizedPath : `${localizedPath}/`}`;
     const fullImage = image.startsWith('http') ? image : `${DOMAIN}${image}`;
 
-    // Hreflang URLs
-    const heUrl = `${DOMAIN}${relativePath === '/' ? '' : relativePath}`;
-    const ruUrl = `${DOMAIN}/ru${relativePath === '/' ? '' : relativePath}`;
-    const enUrl = `${DOMAIN}/en${relativePath === '/' ? '' : relativePath}`;
+    // Hreflang URLs — all with trailing slash
+    const heUrl = `${DOMAIN}${normalizedPath}`;
+    const ruUrl = `${DOMAIN}/ru${normalizedPath}`;
+    const enUrl = `${DOMAIN}/en${normalizedPath}`;
 
     return (
         <Helmet>

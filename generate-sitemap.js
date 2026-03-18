@@ -37,6 +37,8 @@ const PAGE_ROUTE_MAP = {
     'Calculator': '/calculator',
     'QuizPage': '/quiz-selection',
     'PolymerDoors': '/polymer-doors',
+    'PrivacyPolicy': '/privacy',
+    'Accessibility': '/accessibility',
 };
 
 // ─── Dynamic routes ────────────────────────────────────────────
@@ -52,6 +54,7 @@ const blogSlugs = [
     'bedroom-closet-guide',
     'hallway-closet-guide',
     'guest-room-sliding-closet',
+    'polymer-doors-israel',
 ];
 
 // ─── Priority & changefreq rules ──────────────────────────────
@@ -117,39 +120,40 @@ function discoverRoutes() {
 function generateSitemapXml(routes) {
     // For each base route, generate URL entries for all 3 languages with hreflang links
     const urls = routes.map(route => {
-        const hePath = route === '/' ? '' : route;
-        const ruPath = route === '/' ? '/ru' : `/ru${route}`;
-        const enPath = route === '/' ? '/en' : `/en${route}`;
+        // All URLs with trailing slash (matches Vercel trailingSlash: true)
+        const hePath = route === '/' ? '/' : `${route}/`;
+        const ruPath = `/ru${route === '/' ? '/' : `${route}/`}`;
+        const enPath = `/en${route === '/' ? '/' : `${route}/`}`;
 
         return `  <url>
-    <loc>${DOMAIN}${hePath || '/'}</loc>
+    <loc>${DOMAIN}${hePath}</loc>
     <lastmod>${TODAY}</lastmod>
     <changefreq>${getChangefreq(route)}</changefreq>
     <priority>${getPriority(route)}</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="${DOMAIN}${hePath || '/'}" />
+    <xhtml:link rel="alternate" hreflang="he" href="${DOMAIN}${hePath}" />
     <xhtml:link rel="alternate" hreflang="ru" href="${DOMAIN}${ruPath}" />
     <xhtml:link rel="alternate" hreflang="en" href="${DOMAIN}${enPath}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${hePath || '/'}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${hePath}" />
   </url>
   <url>
     <loc>${DOMAIN}${ruPath}</loc>
     <lastmod>${TODAY}</lastmod>
     <changefreq>${getChangefreq(route)}</changefreq>
     <priority>${getPriority(route)}</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="${DOMAIN}${hePath || '/'}" />
+    <xhtml:link rel="alternate" hreflang="he" href="${DOMAIN}${hePath}" />
     <xhtml:link rel="alternate" hreflang="ru" href="${DOMAIN}${ruPath}" />
     <xhtml:link rel="alternate" hreflang="en" href="${DOMAIN}${enPath}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${hePath || '/'}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${hePath}" />
   </url>
   <url>
     <loc>${DOMAIN}${enPath}</loc>
     <lastmod>${TODAY}</lastmod>
     <changefreq>${getChangefreq(route)}</changefreq>
     <priority>${getPriority(route)}</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="${DOMAIN}${hePath || '/'}" />
+    <xhtml:link rel="alternate" hreflang="he" href="${DOMAIN}${hePath}" />
     <xhtml:link rel="alternate" hreflang="ru" href="${DOMAIN}${ruPath}" />
     <xhtml:link rel="alternate" hreflang="en" href="${DOMAIN}${enPath}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${hePath || '/'}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}${hePath}" />
   </url>`;
     });
 

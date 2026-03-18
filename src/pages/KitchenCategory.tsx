@@ -38,6 +38,8 @@ const categoryData: Record<string, { image: string; gallery: string[] }> = {
       '/assets/gallery/country-2.jpg',
       '/assets/gallery/country-3.jpg',
       '/assets/gallery/country-4.jpg',
+      '/assets/gallery/country-5.png',
+      '/assets/gallery/country-6.png',
     ]
   },
   formica: {
@@ -57,6 +59,8 @@ const categoryData: Record<string, { image: string; gallery: string[] }> = {
       '/assets/gallery/wood-2.jpg',
       '/assets/gallery/wood-3.jpg',
       '/assets/gallery/wood-4.jpg',
+      '/assets/gallery/wood-5.png',
+      '/assets/gallery/wood-6.png',
     ]
   },
   nano: {
@@ -67,6 +71,7 @@ const categoryData: Record<string, { image: string; gallery: string[] }> = {
       '/assets/gallery/nano-3.jpg',
       '/assets/gallery/nano-4.jpg',
       '/assets/gallery/nano-5.jpg',
+      '/assets/gallery/nano-6.png',
     ]
   },
   acrylic: {
@@ -75,6 +80,9 @@ const categoryData: Record<string, { image: string; gallery: string[] }> = {
       '/assets/gallery/acrylic-1.jpg',
       '/assets/gallery/acrylic-2.jpg',
       '/assets/gallery/acrylic-3.jpg',
+      '/assets/gallery/acrylic-4.png',
+      '/assets/gallery/acrylic-5.png',
+      '/assets/gallery/acrylic-6.png',
     ]
   }
 };
